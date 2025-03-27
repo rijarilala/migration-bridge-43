@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -512,53 +511,38 @@ const EligibilityForm = () => {
             
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Âge (Sélectionner une tranche d'âge)</h3>
-              <div className="grid gap-3">
+              <RadioGroup value={formData.age} onValueChange={(value) => handleSingleOptionChange("age", value)} className="grid gap-3">
                 {ageOptions.map((option) => (
                   <div key={option.id} className="flex items-center space-x-2">
-                    <RadioGroupItem 
-                      id={option.id} 
-                      value={option.value}
-                      checked={formData.age === option.value}
-                      onClick={() => handleSingleOptionChange("age", option.value)}
-                    />
+                    <RadioGroupItem id={option.id} value={option.value} />
                     <Label htmlFor={option.id}>{option.label}</Label>
                   </div>
                 ))}
-              </div>
+              </RadioGroup>
             </div>
             
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Niveau d'études</h3>
-              <div className="grid gap-3">
+              <RadioGroup value={formData.education} onValueChange={(value) => handleSingleOptionChange("education", value)} className="grid gap-3">
                 {educationOptions.map((option) => (
                   <div key={option.id} className="flex items-center space-x-2">
-                    <RadioGroupItem 
-                      id={option.id} 
-                      value={option.value}
-                      checked={formData.education === option.value}
-                      onClick={() => handleSingleOptionChange("education", option.value)}
-                    />
+                    <RadioGroupItem id={option.id} value={option.value} />
                     <Label htmlFor={option.id}>{option.label}</Label>
                   </div>
                 ))}
-              </div>
+              </RadioGroup>
             </div>
             
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Expérience professionnelle</h3>
-              <div className="grid gap-3">
+              <RadioGroup value={formData.experience} onValueChange={(value) => handleSingleOptionChange("experience", value)} className="grid gap-3">
                 {experienceOptions.map((option) => (
                   <div key={option.id} className="flex items-center space-x-2">
-                    <RadioGroupItem 
-                      id={option.id} 
-                      value={option.value}
-                      checked={formData.experience === option.value}
-                      onClick={() => handleSingleOptionChange("experience", option.value)}
-                    />
+                    <RadioGroupItem id={option.id} value={option.value} />
                     <Label htmlFor={option.id}>{option.label}</Label>
                   </div>
                 ))}
-              </div>
+              </RadioGroup>
             </div>
             
             <div className="space-y-4">
@@ -615,23 +599,13 @@ const EligibilityForm = () => {
             
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Offre d'emploi validée au Canada ?</h3>
-              <RadioGroup className="grid gap-3">
+              <RadioGroup value={formData.jobOffer} onValueChange={(value) => handleSingleOptionChange("jobOffer", value)} className="grid gap-3">
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem 
-                    id="job-yes" 
-                    value="yes"
-                    checked={formData.jobOffer === "yes"}
-                    onClick={() => handleSingleOptionChange("jobOffer", "yes")}
-                  />
+                  <RadioGroupItem id="job-yes" value="yes" />
                   <Label htmlFor="job-yes">Oui</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem 
-                    id="job-no" 
-                    value="no"
-                    checked={formData.jobOffer === "no"}
-                    onClick={() => handleSingleOptionChange("jobOffer", "no")}
-                  />
+                  <RadioGroupItem id="job-no" value="no" />
                   <Label htmlFor="job-no">Non</Label>
                 </div>
               </RadioGroup>
@@ -639,23 +613,13 @@ const EligibilityForm = () => {
             
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Avez-vous des liens familiaux au Canada ?</h3>
-              <RadioGroup className="grid gap-3">
+              <RadioGroup value={formData.familyTies} onValueChange={(value) => handleSingleOptionChange("familyTies", value)} className="grid gap-3">
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem 
-                    id="family-yes" 
-                    value="yes"
-                    checked={formData.familyTies === "yes"}
-                    onClick={() => handleSingleOptionChange("familyTies", "yes")}
-                  />
+                  <RadioGroupItem id="family-yes" value="yes" />
                   <Label htmlFor="family-yes">Oui (famille directe: parents, frères/sœurs, enfants)</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem 
-                    id="family-no" 
-                    value="no"
-                    checked={formData.familyTies === "no"}
-                    onClick={() => handleSingleOptionChange("familyTies", "no")}
-                  />
+                  <RadioGroupItem id="family-no" value="no" />
                   <Label htmlFor="family-no">Non</Label>
                 </div>
               </RadioGroup>
@@ -663,15 +627,10 @@ const EligibilityForm = () => {
             
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Votre projet au Canada</h3>
-              <RadioGroup className="grid gap-3">
+              <RadioGroup value={formData.canadaProject} onValueChange={(value) => handleSingleOptionChange("canadaProject", value)} className="grid gap-3">
                 {projectOptions.map((option) => (
                   <div key={option.id} className="flex items-center space-x-2">
-                    <RadioGroupItem 
-                      id={option.id} 
-                      value={option.value}
-                      checked={formData.canadaProject === option.value}
-                      onClick={() => handleSingleOptionChange("canadaProject", option.value)}
-                    />
+                    <RadioGroupItem id={option.id} value={option.value} />
                     <Label htmlFor={option.id}>{option.label}</Label>
                   </div>
                 ))}
