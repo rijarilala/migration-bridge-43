@@ -1,12 +1,11 @@
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import EligibilityForm from "@/components/EligibilityForm";
 import Stats from "@/components/Stats";
 
 const Eligibility = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // Suppression de l'appel à window.scrollTo qui causait le rafraîchissement
+  // Nous allons utiliser un comportement de défilement plus fluide
 
   const immigrationStats = [
     { value: "350k+", label: "Immigrants acceptés par année" },

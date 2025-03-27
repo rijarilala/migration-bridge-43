@@ -57,13 +57,21 @@ const EligibilityForm = () => {
   const handleNextStep = () => {
     if (validateCurrentStep()) {
       setCurrentStep(currentStep + 1);
-      window.scrollTo(0, 0);
+      // Scroll to the top of the form container smoothly instead of refreshing the page
+      const formContainer = document.querySelector('.eligibility-form-container');
+      if (formContainer) {
+        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 
   const handlePrevStep = () => {
     setCurrentStep(currentStep - 1);
-    window.scrollTo(0, 0);
+    // Scroll to the top of the form container smoothly instead of refreshing the page
+    const formContainer = document.querySelector('.eligibility-form-container');
+    if (formContainer) {
+      formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const validateCurrentStep = () => {
@@ -114,7 +122,12 @@ const EligibilityForm = () => {
       
       // Passer à l'étape des résultats
       setCurrentStep(5);
-      window.scrollTo(0, 0);
+      
+      // Scroll to the top of the form container smoothly instead of refreshing the page
+      const formContainer = document.querySelector('.eligibility-form-container');
+      if (formContainer) {
+        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 
@@ -385,7 +398,7 @@ const EligibilityForm = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto eligibility-form-container">
       <div className="mb-8">
         <div className="flex justify-between items-center">
           {[1, 2, 3, 4, 5].map((step) => (
