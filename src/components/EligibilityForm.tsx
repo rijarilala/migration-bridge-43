@@ -335,7 +335,7 @@ const EligibilityForm = () => {
             </Button>
           )}
           {currentStep === 1 && (
-            <div className="w-20"></div> {/* Spacer for alignment */}
+            <div className="w-20"></div>
           )}
         </div>
       </form>
