@@ -28,10 +28,10 @@ const EligibilityForm = () => {
     age: "",
     education: "",
     experience: "",
-    languageFrench: false,
-    languageEnglish: false,
-    languageFrenchIntermediate: false,
-    languageEnglishIntermediate: false,
+    
+    // Compétences linguistiques séparées
+    frenchLevel: "",
+    englishLevel: "",
     
     // Informations supplémentaires
     jobOffer: "",
@@ -69,6 +69,19 @@ const EligibilityForm = () => {
     { id: "exp-1-3", label: "1 - 3 ans", value: "1-3" },
     { id: "exp-4-5", label: "4 - 5 ans", value: "4-5" },
     { id: "exp-more5", label: "Plus de 5 ans", value: "more5" },
+  ];
+
+  // Options pour les compétences linguistiques séparées
+  const frenchLevelOptions: CheckboxOption[] = [
+    { id: "french-none", label: "Aucune compétence", value: "none" },
+    { id: "french-intermediate", label: "Niveau intermédiaire", value: "intermediate" },
+    { id: "french-fluent", label: "Courant", value: "fluent" },
+  ];
+
+  const englishLevelOptions: CheckboxOption[] = [
+    { id: "english-none", label: "Aucune compétence", value: "none" },
+    { id: "english-intermediate", label: "Niveau intermédiaire", value: "intermediate" },
+    { id: "english-fluent", label: "Courant", value: "fluent" },
   ];
 
   const projectOptions: CheckboxOption[] = [
@@ -124,10 +137,12 @@ const EligibilityForm = () => {
         toast.error("Veuillez sélectionner votre expérience professionnelle");
         return false;
       }
-      const hasLanguage = formData.languageFrench || formData.languageEnglish || 
-                         formData.languageFrenchIntermediate || formData.languageEnglishIntermediate;
-      if (!hasLanguage) {
-        toast.error("Veuillez sélectionner au moins une option pour vos compétences linguistiques");
+      if (!formData.frenchLevel) {
+        toast.error("Veuillez indiquer votre niveau de français");
+        return false;
+      }
+      if (!formData.englishLevel) {
+        toast.error("Veuillez indiquer votre niveau d'anglais");
         return false;
       }
     } else if (currentStep === 2) {
@@ -250,11 +265,30 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Points pour les compétences linguistiques
-    if (formData.languageFrench) expressPoints += 15;
-    if (formData.languageEnglish) expressPoints += 15;
-    if (formData.languageFrenchIntermediate) expressPoints += 8;
-    if (formData.languageEnglishIntermediate) expressPoints += 8;
+    // Points pour les compétences linguistiques séparées
+    switch(formData.frenchLevel) {
+      case "fluent":
+        expressPoints += 15;
+        break;
+      case "intermediate":
+        expressPoints += 8;
+        break;
+      case "none":
+        expressPoints += 0;
+        break;
+    }
+    
+    switch(formData.englishLevel) {
+      case "fluent":
+        expressPoints += 15;
+        break;
+      case "intermediate":
+        expressPoints += 8;
+        break;
+      case "none":
+        expressPoints += 0;
+        break;
+    }
     
     // Bonus pour offre d'emploi
     if (formData.jobOffer === "yes") expressPoints += 15;
@@ -346,10 +380,29 @@ const EligibilityForm = () => {
     }
     
     // Points pour les compétences linguistiques (Français priorisé pour le Québec)
-    if (formData.languageFrench) prtqPoints += 20;
-    if (formData.languageFrenchIntermediate) prtqPoints += 10;
-    if (formData.languageEnglish) prtqPoints += 10;
-    if (formData.languageEnglishIntermediate) prtqPoints += 5;
+    switch(formData.frenchLevel) {
+      case "fluent":
+        prtqPoints += 20;
+        break;
+      case "intermediate":
+        prtqPoints += 10;
+        break;
+      case "none":
+        prtqPoints += 0;
+        break;
+    }
+    
+    switch(formData.englishLevel) {
+      case "fluent":
+        prtqPoints += 10;
+        break;
+      case "intermediate":
+        prtqPoints += 5;
+        break;
+      case "none":
+        prtqPoints += 0;
+        break;
+    }
     
     // Bonus pour offre d'emploi
     if (formData.jobOffer === "yes") prtqPoints += 16;
@@ -383,7 +436,7 @@ const EligibilityForm = () => {
     });
     
     // Évaluation pour le PEQ (Programme de l'Expérience Québécoise)
-    const isPeqEligible = formData.languageFrench || formData.languageFrenchIntermediate;
+    const isPeqEligible = formData.frenchLevel === "fluent" || formData.frenchLevel === "intermediate";
     const peqLevel: "high" | "medium" | "low" = isPeqEligible ? 
       (formData.experience !== "none" ? "high" : "medium") : "low";
     
@@ -545,49 +598,31 @@ const EligibilityForm = () => {
               </RadioGroup>
             </div>
             
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium">Compétences linguistiques (Anglais / Français)</h3>
-              <div className="grid gap-3">
-                <div className="flex items-start space-x-2">
-                  <Checkbox 
-                    id="language-french" 
-                    checked={formData.languageFrench}
-                    onCheckedChange={(checked) => handleCheckboxChange("languageFrench", checked === true)}
-                  />
-                  <div className="grid gap-1.5 leading-none">
-                    <Label htmlFor="language-french">Je parle couramment français</Label>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <Checkbox 
-                    id="language-english" 
-                    checked={formData.languageEnglish}
-                    onCheckedChange={(checked) => handleCheckboxChange("languageEnglish", checked === true)}
-                  />
-                  <div className="grid gap-1.5 leading-none">
-                    <Label htmlFor="language-english">Je parle couramment anglais</Label>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <Checkbox 
-                    id="language-french-intermediate" 
-                    checked={formData.languageFrenchIntermediate}
-                    onCheckedChange={(checked) => handleCheckboxChange("languageFrenchIntermediate", checked === true)}
-                  />
-                  <div className="grid gap-1.5 leading-none">
-                    <Label htmlFor="language-french-intermediate">Niveau intermédiaire en français</Label>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <Checkbox 
-                    id="language-english-intermediate" 
-                    checked={formData.languageEnglishIntermediate}
-                    onCheckedChange={(checked) => handleCheckboxChange("languageEnglishIntermediate", checked === true)}
-                  />
-                  <div className="grid gap-1.5 leading-none">
-                    <Label htmlFor="language-english-intermediate">Niveau intermédiaire en anglais</Label>
-                  </div>
-                </div>
+            <div className="space-y-6">
+              <h3 className="text-lg font-medium">Compétences linguistiques</h3>
+              
+              <div className="bg-blue-50 rounded-lg p-4 space-y-4">
+                <h4 className="font-medium text-blue-800">Français</h4>
+                <RadioGroup value={formData.frenchLevel} onValueChange={(value) => handleSingleOptionChange("frenchLevel", value)} className="grid gap-3">
+                  {frenchLevelOptions.map((option) => (
+                    <div key={option.id} className="flex items-center space-x-2">
+                      <RadioGroupItem id={option.id} value={option.value} />
+                      <Label htmlFor={option.id}>{option.label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </div>
+              
+              <div className="bg-red-50 rounded-lg p-4 space-y-4">
+                <h4 className="font-medium text-red-800">Anglais</h4>
+                <RadioGroup value={formData.englishLevel} onValueChange={(value) => handleSingleOptionChange("englishLevel", value)} className="grid gap-3">
+                  {englishLevelOptions.map((option) => (
+                    <div key={option.id} className="flex items-center space-x-2">
+                      <RadioGroupItem id={option.id} value={option.value} />
+                      <Label htmlFor={option.id}>{option.label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
               </div>
             </div>
           </div>
