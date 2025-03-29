@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -740,4 +741,230 @@ const EligibilityForm = () => {
               <h3 className="text-lg font-medium">{t('canada_project')}</h3>
               <RadioGroup value={formData.canadaProject} onValueChange={(value) => handleSingleOptionChange("canadaProject", value)} className="grid gap-3">
                 {getProjectOptions().map((option) => (
-                  <div key={option.id} className="flex items-center space-x-2
+                  <div key={option.id} className="flex items-center space-x-2">
+                    <RadioGroupItem id={option.id} value={option.value} />
+                    <Label htmlFor={option.id}>{option.label}</Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+            
+            {formData.canadaProject === "work" && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium">{t('profession_type')}</h3>
+                <RadioGroup value={formData.professionType} onValueChange={(value) => handleSingleOptionChange("professionType", value)} className="grid gap-3">
+                  {getProfessionTypeOptions().map((option) => (
+                    <div key={option.id} className="flex items-center space-x-2">
+                      <RadioGroupItem id={option.id} value={option.value} />
+                      <Label htmlFor={option.id}>{option.label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+                
+                {formData.professionType === "regulated" && (
+                  <div className="mt-4 ml-6 p-4 border border-dashed rounded-lg border-gray-300 bg-gray-50">
+                    <h4 className="font-medium mb-2">{t('license_quebec')}</h4>
+                    <RadioGroup value={formData.licenseInQuebec} onValueChange={(value) => handleSingleOptionChange("licenseInQuebec", value)} className="grid gap-2">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem id="license-yes" value="yes" />
+                        <Label htmlFor="license-yes">{t('yes')}</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem id="license-no" value="no" />
+                        <Label htmlFor="license-no">{t('no')}</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+                )}
+                
+                {formData.professionType === "exceptional" && (
+                  <div className="mt-4 ml-6 p-4 border border-dashed rounded-lg border-gray-300 bg-gray-50">
+                    <h4 className="font-medium mb-2">{t('exceptional_recognition')}</h4>
+                    <RadioGroup value={formData.exceptionalTalent} onValueChange={(value) => handleSingleOptionChange("exceptionalTalent", value)} className="grid gap-2">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem id="exceptional-yes" value="yes" />
+                        <Label htmlFor="exceptional-yes">{t('yes')}</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem id="exceptional-no" value="no" />
+                        <Label htmlFor="exceptional-no">{t('no')}</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+                )}
+              </div>
+            )}
+            
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium">{t('job_offer')}</h3>
+              <RadioGroup value={formData.jobOffer} onValueChange={(value) => handleSingleOptionChange("jobOffer", value)} className="grid gap-3">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem id="job-yes" value="yes" />
+                  <Label htmlFor="job-yes">{t('yes')}</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem id="job-no" value="no" />
+                  <Label htmlFor="job-no">{t('no')}</Label>
+                </div>
+              </RadioGroup>
+            </div>
+            
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium">{t('family_ties')}</h3>
+              <RadioGroup value={formData.familyTies} onValueChange={(value) => handleSingleOptionChange("familyTies", value)} className="grid gap-3">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem id="family-yes" value="yes" />
+                  <Label htmlFor="family-yes">{t('yes')}</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem id="family-no" value="no" />
+                  <Label htmlFor="family-no">{t('no')}</Label>
+                </div>
+              </RadioGroup>
+            </div>
+          </div>
+        )}
+
+        {currentStep === 3 && (
+          <div className="space-y-8 animate-fade-in">
+            <h2 className="text-2xl font-semibold mb-6">{t('contact_information')}</h2>
+            
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="name" className="text-base font-medium">{t('full_name')}</Label>
+                <Input 
+                  id="name"
+                  type="text" 
+                  value={formData.name}
+                  onChange={(e) => handleTextChange("name", e.target.value)}
+                  className="mt-1"
+                  placeholder={t('enter_name')}
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="email" className="text-base font-medium">{t('email')}</Label>
+                <Input 
+                  id="email"
+                  type="email" 
+                  value={formData.email}
+                  onChange={(e) => handleTextChange("email", e.target.value)}
+                  className="mt-1"
+                  placeholder={t('enter_email')}
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="phone" className="text-base font-medium">{t('phone')}</Label>
+                <Input 
+                  id="phone"
+                  type="tel" 
+                  value={formData.phone}
+                  onChange={(e) => handleTextChange("phone", e.target.value)}
+                  className="mt-1"
+                  placeholder={t('enter_phone')}
+                />
+              </div>
+            </div>
+            
+            <div className="pt-4 border-t border-gray-200">
+              <p className="text-sm text-gray-500 mb-4">{t('privacy_notice')}</p>
+              <div className="flex items-start space-x-2">
+                <Checkbox id="privacy" required />
+                <div className="grid gap-1.5 leading-none">
+                  <Label htmlFor="privacy" className="text-sm font-normal">
+                    {t('agree_privacy')}
+                  </Label>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {currentStep === 4 && (
+          <div className="space-y-8 animate-fade-in">
+            <div className="text-center pb-6 border-b border-gray-200">
+              <h2 className="text-2xl font-bold mb-2">{t('eligibility_results_title')}</h2>
+              <p className="text-gray-600">{t('eligibility_results_description')}</p>
+            </div>
+            
+            <div className="p-4 bg-blue-50 border border-blue-100 rounded-lg">
+              <h3 className="font-bold text-xl mb-2">{t('best_program')}</h3>
+              <p className="font-medium text-lg text-blue-800">{bestProgram}</p>
+            </div>
+            
+            <div className="space-y-6">
+              {results.map((result, index) => (
+                <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
+                  <div className="p-4 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
+                    <h3 className="font-bold">{result.program}</h3>
+                    <span className={`px-3 py-1 rounded-full text-xs ${getStatusBadgeClass(result.level)}`}>
+                      {getStatusText(result.level)}
+                    </span>
+                  </div>
+                  <div className="p-4">
+                    <p className="font-medium mb-2">{result.message}</p>
+                    <p className="text-gray-600 text-sm">{result.details}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="p-6 bg-gray-50 rounded-lg border border-gray-200 text-center">
+              <h3 className="text-xl font-bold mb-3">{t('what_next')}</h3>
+              <p className="mb-4">{t('next_steps')}</p>
+              <Button
+                type="button"
+                className="bg-primary hover:bg-primary/80 text-white py-2 px-4"
+                onClick={() => window.location.href = '/contact'}
+              >
+                {t('contact_consultant')}
+              </Button>
+            </div>
+          </div>
+        )}
+        
+        <div className="flex justify-between pt-6">
+          {currentStep > 1 && currentStep < 4 ? (
+            <Button
+              type="button"
+              onClick={handlePrevStep}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700"
+            >
+              {t('previous')}
+            </Button>
+          ) : currentStep === 4 ? (
+            <Button
+              type="button"
+              onClick={resetForm}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700"
+            >
+              {t('restart_form')}
+            </Button>
+          ) : (
+            <div></div>
+          )}
+          
+          {currentStep < 3 ? (
+            <Button
+              type="button"
+              onClick={handleNextStep}
+              className="bg-primary hover:bg-primary/80 text-white"
+            >
+              {t('next')}
+            </Button>
+          ) : currentStep === 3 ? (
+            <Button
+              type="submit"
+              className="bg-primary hover:bg-primary/80 text-white"
+            >
+              {t('submit')}
+            </Button>
+          ) : null}
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default EligibilityForm;
