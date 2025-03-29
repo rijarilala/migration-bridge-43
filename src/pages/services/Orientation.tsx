@@ -32,7 +32,7 @@ const Orientation = () => {
       subtitle="Trouvez votre voie professionnelle grâce à nos services de conseil et d'orientation personnalisés."
       description="Nos conseillers vous aident à faire le point sur vos compétences, à identifier vos aspirations et à définir un plan d'action concret pour votre avenir professionnel."
       features={features}
-      imageSrc="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1024&auto=format&fit=crop"
+      imageSrc="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
       ctaText="Demander un rendez-vous"
     />

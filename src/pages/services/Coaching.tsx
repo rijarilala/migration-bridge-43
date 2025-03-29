@@ -32,7 +32,7 @@ const Coaching = () => {
       subtitle="Développez votre potentiel et préparez-vous efficacement pour réussir dans votre parcours professionnel."
       description="Nos coachs certifiés vous accompagnent dans le développement de vos compétences et la préparation aux défis professionnels."
       features={features}
-      imageSrc="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1024&auto=format&fit=crop"
+      imageSrc="https://images.unsplash.com/photo-1633008808000-ce86bff6c1ed?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
       ctaText="Prendre rendez-vous"
     />

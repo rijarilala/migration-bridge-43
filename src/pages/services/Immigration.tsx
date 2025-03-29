@@ -77,7 +77,7 @@ const Immigration = () => {
               </div>
               <div className="order-first lg:order-last mb-6 lg:mb-0">
                 <img
-                  src="https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=1024&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1565033544535-24d7e6be5158?q=80&w=1024&auto=format&fit=crop"
                   alt="Documents d'immigration canadienne"
                   className="w-full h-auto rounded-xl shadow-md object-cover aspect-video"
                 />
