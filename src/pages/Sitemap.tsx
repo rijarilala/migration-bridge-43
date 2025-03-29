@@ -11,7 +11,7 @@ const Sitemap = () => {
     {
       title: t('home'),
       path: "/",
-      description: "Page d'accueil de MigraPro"
+      description: t('home_page')
     },
     {
       title: t('services'),
@@ -19,72 +19,72 @@ const Sitemap = () => {
         {
           title: t('immigration'),
           path: "/services/immigration",
-          description: "Services de conseil et d'accompagnement en immigration"
+          description: t('immigration_services_page')
         },
         {
           title: t('formation'),
           path: "/services/formation",
-          description: "Formation professionnelle et linguistique"
+          description: t('training_services_page')
         },
         {
           title: t('coaching'),
           path: "/services/coaching",
-          description: "Coaching personnalisé pour votre projet"
+          description: t('coaching_services_page')
         },
         {
           title: t('orientation'),
           path: "/services/orientation",
-          description: "Services d'orientation et de développement de carrière"
+          description: t('orientation_services_page')
         },
         {
           title: t('recrutement'),
           path: "/services/recrutement",
-          description: "Services de recrutement et placement professionnel"
+          description: t('recruitment_services_page')
         }
       ]
     },
     {
       title: t('about'),
       path: "/about",
-      description: "Informations sur MigraPro, notre mission et notre équipe"
+      description: t('about_page')
     },
     {
       title: t('blog'),
       path: "/blog",
-      description: "Articles et actualités sur l'immigration et nos services"
+      description: t('blog_page')
     },
     {
       title: t('faq'),
       path: "/faq",
-      description: "Questions fréquemment posées sur nos services"
+      description: t('faq_page')
     },
     {
       title: t('contact'),
       path: "/contact",
-      description: "Nos coordonnées et formulaire de contact"
+      description: t('contact_page')
     },
     {
       title: t('eligibility'),
       path: "/eligibility",
-      description: "Évaluez votre éligibilité pour l'immigration"
+      description: t('eligibility_page')
     },
     {
-      title: "Informations légales",
+      title: t('legal_info'),
       children: [
         {
           title: t('privacy'),
           path: "/privacy",
-          description: "Notre politique de confidentialité et protection des données"
+          description: t('privacy_page')
         },
         {
           title: t('terms'),
           path: "/terms",
-          description: "Conditions générales d'utilisation de nos services"
+          description: t('terms_page')
         },
         {
           title: t('sitemap'),
           path: "/sitemap",
-          description: "Structure complète du site web"
+          description: t('sitemap_page')
         }
       ]
     }
@@ -134,7 +134,7 @@ const Sitemap = () => {
           </h1>
           <div className="bg-white shadow-md rounded-lg p-6 md:p-8">
             <p className="text-gray-700 mb-8">
-              Cette page vous présente la structure complète du site de MigraPro pour vous aider à naviguer et à trouver rapidement l'information que vous recherchez.
+              {t('sitemap_description')}
             </p>
             
             <div className="mt-8">

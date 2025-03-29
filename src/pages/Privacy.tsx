@@ -1,29 +1,32 @@
 
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Privacy = () => {
+  const { t } = useLanguage();
+  
   return (
     <>
       <Helmet>
-        <title>Politique de Confidentialité | MigraPro</title>
+        <title>{t('privacy')} | MigraPro</title>
       </Helmet>
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4 md:px-6">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Politique de Confidentialité
+            {t('privacy_policy')}
           </h1>
           <div className="bg-white shadow-md rounded-lg p-6 md:p-8">
             <div className="prose prose-sm md:prose-base max-w-none text-gray-700">
               <p className="mb-4">
-                <strong>Date d'entrée en vigueur:</strong> 1er Septembre 2023
+                <strong>{t('effective_date')}</strong>
               </p>
               
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                1. Introduction
+                {t('introduction')}
               </h2>
               <p className="mb-4">
-                Bienvenue sur la Politique de Confidentialité de MigraPro. Nous respectons votre vie privée et nous engageons à protéger les informations personnelles que vous nous fournissez. Cette politique explique comment nous recueillons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez nos services.
+                {t('intro_text')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
