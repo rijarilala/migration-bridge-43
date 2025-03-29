@@ -12,9 +12,9 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ title, description, icon, link }: ServiceCardProps) => {
   return (
-    <div className="card-gradient rounded-xl overflow-hidden h-full group hover:scale-[1.02] transition-all duration-300">
+    <div className="bg-white rounded-xl overflow-hidden h-full group hover:scale-[1.02] transition-all duration-300 shadow-md border border-gray-100">
       <div className="p-8 h-full flex flex-col">
-        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary/20 transition-all duration-300">
+        <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary/20 transition-all duration-300">
           {icon}
         </div>
         <h3 className="text-2xl font-serif font-semibold mb-3 text-gray-900">{title}</h3>
