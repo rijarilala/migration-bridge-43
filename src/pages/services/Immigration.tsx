@@ -50,7 +50,7 @@ const Immigration = () => {
               {t('immigration_services')}
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {t('immigration_services_description')}
+              {t('immigration_services_desc')}
             </p>
           </div>
 
