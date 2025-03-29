@@ -91,6 +91,11 @@ const Footer = () => {
                   Conditions d'Utilisation
                 </Link>
               </li>
+              <li>
+                <Link to="/sitemap" className="text-gray-600 hover:text-brand-600 transition-colors">
+                  Plan du Site
+                </Link>
+              </li>
             </ul>
           </div>
 
