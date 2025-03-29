@@ -32,7 +32,7 @@ const Formation = () => {
       subtitle="Développez vos compétences et optimisez votre présentation professionnelle pour maximiser vos chances de réussite."
       description="Nos experts vous aident à valoriser votre profil professionnel et à acquérir de nouvelles compétences pour atteindre vos objectifs de carrière."
       features={features}
-      imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1024&auto=format&fit=crop"
+      imageSrc="https://images.unsplash.com/photo-1554774853-719586f82d77?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
       ctaText="Demander un devis"
     />

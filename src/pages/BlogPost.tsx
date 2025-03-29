@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { 
@@ -14,7 +13,6 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
-// Définition des types
 interface BlogPost {
   id: string;
   title: string;
@@ -25,10 +23,9 @@ interface BlogPost {
   readTime: string;
   imageSrc: string;
   sponsored?: boolean;
-  content?: string; // Ajout du contenu
+  content?: string;
 }
 
-// Données des articles (nous utiliserons les mêmes que sur la page Blog)
 const blogPosts: BlogPost[] = [
   {
     id: "1",
@@ -38,7 +35,7 @@ const blogPosts: BlogPost[] = [
     author: "Marie Dubois",
     date: "12 juin 2023",
     readTime: "8 min",
-    imageSrc: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?q=80&w=800&auto=format&fit=crop",
     sponsored: true,
     content: `
       <h2>Préparer son projet d'immigration au Canada</h2>
@@ -88,7 +85,7 @@ const blogPosts: BlogPost[] = [
     author: "Thomas Martin",
     date: "24 mai 2023",
     readTime: "6 min",
-    imageSrc: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1563906267088-b029e7101114?q=80&w=800&auto=format&fit=crop",
     content: `
       <h2>Structurer efficacement son CV</h2>
       <p>Un CV bien structuré est la première étape pour retenir l'attention des recruteurs. Voici quelques conseils pour organiser votre CV de manière efficace :</p>
@@ -141,7 +138,7 @@ const blogPosts: BlogPost[] = [
     author: "Sophie Bernard",
     date: "5 avril 2023",
     readTime: "5 min",
-    imageSrc: "https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop",
     content: `
       <h2>Comment se préparer avant l'entretien</h2>
       <p>La préparation est la clé d'un entretien réussi. Voici les étapes essentielles :</p>
@@ -194,7 +191,7 @@ const blogPosts: BlogPost[] = [
     author: "Pierre Leroy",
     date: "18 mars 2023",
     readTime: "7 min",
-    imageSrc: "https://images.unsplash.com/photo-1664575599736-c5197c684128?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
     sponsored: true,
     content: `
       <h2>L'évolution du marché du travail canadien</h2>
@@ -254,7 +251,7 @@ const blogPosts: BlogPost[] = [
     author: "Claire Dumas",
     date: "2 février 2023",
     readTime: "9 min",
-    imageSrc: "https://images.unsplash.com/photo-1586473219010-2ffc57b0d282?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop",
     content: `
       <h2>Pourquoi définir un projet professionnel ?</h2>
       <p>Un projet professionnel bien défini permet de :</p>
@@ -326,7 +323,7 @@ const blogPosts: BlogPost[] = [
     author: "Jean Moreau",
     date: "15 janvier 2023",
     readTime: "10 min",
-    imageSrc: "https://images.unsplash.com/photo-1546538994-4f15d0aa966f?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800&auto=format&fit=crop",
     content: `
       <h2>Les défis de l'adaptation culturelle</h2>
       <p>S'installer dans un nouveau pays implique de s'adapter à un environnement culturel différent. Ce processus d'adaptation comporte plusieurs phases :</p>
@@ -395,12 +392,10 @@ const blogPosts: BlogPost[] = [
   },
 ];
 
-// Composant pour les articles associés
 const RelatedPosts = ({ currentPostId, category }: { currentPostId: string, category: string }) => {
-  // Filtrer pour trouver des articles de la même catégorie, en excluant l'article actuel
   const relatedPosts = blogPosts
     .filter(post => post.id !== currentPostId && post.category === category)
-    .slice(0, 3); // Limiter à 3 articles associés
+    .slice(0, 3);
 
   if (relatedPosts.length === 0) {
     return null;
@@ -455,7 +450,6 @@ const BlogPost = () => {
       if (foundPost) {
         setPost(foundPost);
       } else {
-        // Rediriger vers la page 404 si l'article n'existe pas
         navigate("/not-found");
       }
     }
@@ -473,17 +467,13 @@ const BlogPost = () => {
     <div className="pt-24 pb-16 min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
-          {/* Retour au blog */}
-          <div className="mb-8">
-            <Button variant="outline" asChild className="group">
-              <Link to="/blog" className="flex items-center">
-                <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-                Retour aux articles
-              </Link>
-            </Button>
-          </div>
+          <Button variant="outline" asChild className="group">
+            <Link to="/blog" className="flex items-center">
+              <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
+              Retour aux articles
+            </Link>
+          </Button>
 
-          {/* En-tête de l'article */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -516,7 +506,6 @@ const BlogPost = () => {
             </div>
           </motion.div>
 
-          {/* Image principale */}
           <div className="rounded-xl overflow-hidden mb-8 shadow-md">
             <img 
               src={post.imageSrc} 
@@ -525,7 +514,6 @@ const BlogPost = () => {
             />
           </div>
 
-          {/* Actions de l'article */}
           <div className="flex justify-end mb-8 space-x-2">
             <Button variant="outline" size="sm" className="flex items-center">
               <BookmarkPlus size={16} className="mr-2" />
@@ -558,13 +546,13 @@ const BlogPost = () => {
                   </Button>
                   <Button variant="outline" className="flex items-center justify-center py-6">
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fillRule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clipRule="evenodd" />
+                      <path fillRule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 01-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 01-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 01 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clipRule="evenodd" />
                     </svg>
                     YouTube
                   </Button>
                   <Button variant="outline" className="flex items-center justify-center py-6">
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858-.182-.466-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+                      <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.01-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.045-1.064.207-1.504.344-1.857.182-.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858-.182-.466-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
                     </svg>
                     Instagram
                   </Button>
@@ -593,12 +581,10 @@ const BlogPost = () => {
             </Dialog>
           </div>
 
-          {/* Contenu de l'article */}
           <div className="prose prose-lg max-w-none bg-white rounded-xl shadow-sm p-8 mb-12">
             <div dangerouslySetInnerHTML={{ __html: post.content || "" }} />
           </div>
 
-          {/* Bannière publicitaire */}
           {post.sponsored && (
             <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl p-6 mb-12 shadow-sm">
               <div className="flex items-start justify-between gap-4">
@@ -614,7 +600,6 @@ const BlogPost = () => {
             </div>
           )}
 
-          {/* Articles associés */}
           <RelatedPosts currentPostId={post.id} category={post.category} />
         </div>
       </div>

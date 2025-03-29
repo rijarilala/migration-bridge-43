@@ -76,8 +76,8 @@ const Hero = ({
               <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-2xl rotate-3 opacity-20"></div>
               <div className="relative overflow-hidden rounded-xl shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&h=800" 
-                  alt="Personne souriant après son processus d'immigration réussi"
+                  src="https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?auto=format&fit=crop&w=600&h=800" 
+                  alt="Personne tenant un passeport canadien"
                   className="w-full object-cover animate-float"
                 />
               </div>

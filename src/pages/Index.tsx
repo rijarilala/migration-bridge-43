@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Users, GraduationCap, Briefcase, MapPin, FileText } from "lucide-react";
@@ -72,7 +71,7 @@ const Index = () => {
       role: "Immigrée au Canada",
       testimonial: "Grâce à MigraPro, mon processus d'immigration au Canada s'est déroulé sans accroc. Leur équipe m'a accompagnée à chaque étape et je suis maintenant installée à Montréal avec un emploi stable.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&h=200"
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&h=200"
     },
     {
       name: "Thomas Dubois",
@@ -86,7 +85,7 @@ const Index = () => {
       role: "Ingénieure",
       testimonial: "Leur service de création de CV a fait toute la différence dans ma recherche d'emploi. Mon profil est désormais beaucoup plus visible auprès des recruteurs.",
       rating: 4,
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&h=200"
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&h=200"
     }
   ];
 
@@ -107,7 +106,7 @@ const Index = () => {
         ctaLink="/eligibility"
         secondaryCtaText="Nos services"
         secondaryCtaLink="/services"
-        imageSrc="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2000&q=80"
+        imageSrc="https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?auto=format&fit=crop&w=2000&q=80"
       />
 
       {/* Services section */}
@@ -139,7 +138,7 @@ const Index = () => {
         title="Immigration simplifiée"
         subtitle="Notre équipe d'experts vous guide à travers le processus d'immigration complexe, en vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
         features={featuresImmigration}
-        imageSrc="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80"
+        imageSrc="https://images.unsplash.com/photo-1592429823804-ff9a548f55fe?auto=format&fit=crop&w=1000&q=80"
       />
 
       {/* Stats section */}
@@ -201,7 +200,7 @@ const Index = () => {
             description: "Évaluation approfondie de vos compétences et identification des opportunités de carrière adaptées à votre profil."
           }
         ]}
-        imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80"
+        imageSrc="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=80"
         reversed={true}
       />
 

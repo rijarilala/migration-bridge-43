@@ -28,7 +28,7 @@ const blogPosts: BlogPost[] = [
     author: "Marie Dubois",
     date: "12 juin 2023",
     readTime: "8 min",
-    imageSrc: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?q=80&w=800&auto=format&fit=crop",
     sponsored: true,
   },
   {
@@ -39,7 +39,7 @@ const blogPosts: BlogPost[] = [
     author: "Thomas Martin",
     date: "24 mai 2023",
     readTime: "6 min",
-    imageSrc: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1563906267088-b029e7101114?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "3",
@@ -49,7 +49,7 @@ const blogPosts: BlogPost[] = [
     author: "Sophie Bernard",
     date: "5 avril 2023",
     readTime: "5 min",
-    imageSrc: "https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "4",
@@ -59,7 +59,7 @@ const blogPosts: BlogPost[] = [
     author: "Pierre Leroy",
     date: "18 mars 2023",
     readTime: "7 min",
-    imageSrc: "https://images.unsplash.com/photo-1664575599736-c5197c684128?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
     sponsored: true,
   },
   {
@@ -70,7 +70,7 @@ const blogPosts: BlogPost[] = [
     author: "Claire Dumas",
     date: "2 février 2023",
     readTime: "9 min",
-    imageSrc: "https://images.unsplash.com/photo-1586473219010-2ffc57b0d282?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "6",
@@ -80,7 +80,7 @@ const blogPosts: BlogPost[] = [
     author: "Jean Moreau",
     date: "15 janvier 2023",
     readTime: "10 min",
-    imageSrc: "https://images.unsplash.com/photo-1546538994-4f15d0aa966f?q=80&w=800&auto=format&fit=crop",
+    imageSrc: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800&auto=format&fit=crop",
   },
 ];
 
