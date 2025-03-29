@@ -1,13 +1,19 @@
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,15 +30,9 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
-  const handleDropdownToggle = (dropdown: string) => {
-    // Si le dropdown cliqué est déjà actif, on le ferme
-    // Sinon, on ferme celui qui est actif et on ouvre le nouveau
-    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
-  };
-
-  // Fonction pour fermer tous les dropdowns
-  const closeAllDropdowns = () => {
-    setActiveDropdown(null);
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    setIsMenuOpen(false);
   };
 
   const navLinks = [
@@ -82,7 +82,6 @@ const Navbar = () => {
           <Link 
             to="/" 
             className="text-2xl font-bold text-brand-600 flex items-center"
-            onClick={closeAllDropdowns}
           >
             <span className="mr-2">MigraPro</span>
           </Link>
@@ -91,50 +90,46 @@ const Navbar = () => {
           <nav className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => (
               link.dropdown ? (
-                <div key={link.name} className="relative group">
-                  <button
-                    onClick={() => handleDropdownToggle(link.name)}
-                    className="px-3 py-2 flex items-center text-sm font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
-                  >
-                    {link.name}
-                    <ChevronDown size={16} className="ml-1" />
-                  </button>
-                  
-                  <div className={`absolute left-0 mt-2 w-56 origin-top-left rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none transition-all duration-200 transform opacity-0 scale-95 pointer-events-none ${
-                    activeDropdown === link.name ? "opacity-100 scale-100 pointer-events-auto" : ""
-                  }`}>
-                    <div className="py-1">
+                <div key={link.name} className="relative">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button className="px-3 py-2 flex items-center text-sm font-medium text-gray-700 hover:text-brand-600 transition-all duration-200">
+                        {link.name}
+                        <ChevronDown size={16} className="ml-1" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="bg-white w-56 z-50">
                       {link.items?.map((item) => (
-                        <Link
-                          key={item.name}
-                          to={item.path}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-brand-600"
-                          onClick={closeAllDropdowns}
-                        >
-                          {item.name}
-                        </Link>
+                        <DropdownMenuItem key={item.name} asChild>
+                          <Link
+                            to={item.path}
+                            className="w-full cursor-pointer"
+                          >
+                            {item.name}
+                          </Link>
+                        </DropdownMenuItem>
                       ))}
-                    </div>
-                  </div>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               ) : (
                 <Link
                   key={link.name}
                   to={link.path}
                   className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
-                  onClick={closeAllDropdowns}
                 >
                   {link.name}
                 </Link>
               )
             ))}
-            <Button 
-              className="ml-4 bg-brand-600 hover:bg-brand-700 text-white" 
-              size="sm"
-              onClick={closeAllDropdowns}
-            >
-              Test d'Éligibilité
-            </Button>
+            <Link to="/eligibility">
+              <Button 
+                className="ml-4 bg-brand-600 hover:bg-brand-700 text-white" 
+                size="sm"
+              >
+                Test d'Éligibilité
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -166,54 +161,40 @@ const Navbar = () => {
             <div key={link.name}>
               {link.dropdown ? (
                 <div className="py-2">
-                  <button
-                    onClick={() => handleDropdownToggle(link.name)}
-                    className="w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200 flex items-center justify-between"
-                  >
-                    {link.name}
-                    <ChevronDown size={20} className={`transform transition-transform ${activeDropdown === link.name ? "rotate-180" : ""}`} />
-                  </button>
-                  
-                  <div className={`mt-2 space-y-1 pl-4 overflow-hidden transition-all duration-300 ${
-                    activeDropdown === link.name ? "max-h-96" : "max-h-0"
-                  }`}>
-                    {link.items?.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.path}
-                        className="block py-2 text-gray-600 hover:text-brand-600"
-                        onClick={() => {
-                          closeAllDropdowns();
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button className="w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200 flex items-center justify-between">
+                        {link.name}
+                        <ChevronDown size={20} />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="bg-white w-56 ml-4 mt-2 z-50">
+                      {link.items?.map((item) => (
+                        <DropdownMenuItem key={item.name} onClick={() => {
+                          handleNavigate(item.path);
                           toggleMenu();
-                        }}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
+                        }}>
+                          {item.name}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               ) : (
-                <Link
+                <button
                   key={link.name}
-                  to={link.path}
-                  className="block py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
-                  onClick={() => {
-                    closeAllDropdowns();
-                    toggleMenu();
-                  }}
+                  onClick={() => handleNavigate(link.path)}
+                  className="block w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
                 >
                   {link.name}
-                </Link>
+                </button>
               )}
             </div>
           ))}
           <div className="mt-8">
             <Button 
               className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-              onClick={() => {
-                closeAllDropdowns();
-                toggleMenu();
-              }}
+              onClick={() => handleNavigate('/eligibility')}
             >
               Test d'Éligibilité
             </Button>
