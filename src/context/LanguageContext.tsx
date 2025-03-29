@@ -283,7 +283,55 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       privacy_short: 'Privacy',
       terms_short: 'Terms',
       sitemap_short: 'Sitemap',
-      our_location: 'Our Location'
+      our_location: 'Our Location',
+      
+      // Coaching page
+      coaching_services: 'Career Coaching Services',
+      coaching_subtitle: 'Professional guidance to succeed in the Canadian workplace',
+      coaching_description: 'Our career coaching services help you navigate Canadian work culture, improve your skills, and maximize your professional potential.',
+      interview_preparation: 'Interview Preparation',
+      interview_preparation_description: 'Learn strategies to excel in Canadian job interviews.',
+      coaching_workshops: 'Group Workshops',
+      workshops_description: 'Join our interactive group sessions focused on professional development.',
+      personalized_coaching: 'One-on-One Coaching',
+      personalized_coaching_description: 'Tailored career guidance based on your specific goals and needs.',
+      make_appointment: 'Schedule Appointment',
+      
+      // Formation page
+      training_services: 'Professional Training Services',
+      training_subtitle: 'Skills development for the Canadian job market',
+      training_description: 'Our training programs prepare you for success in the Canadian workplace with practical skills and knowledge.',
+      custom_cv: 'CV Optimization',
+      cv_custom_description: 'Learn to create a Canadian-style resume that stands out.',
+      cover_letter: 'Cover Letter Writing',
+      cover_letter_description: 'Master the art of writing compelling cover letters for Canadian employers.',
+      training_offers: 'Training Programs',
+      training_offers_description: 'Access specialized training courses for various professional fields.',
+      request_quote: 'Request Quote',
+      
+      // Orientation page
+      counseling_orientation: 'Settlement Orientation Services',
+      orientation_subtitle: 'Guidance for successful integration in Canada',
+      orientation_description: 'Our settlement services help newcomers navigate Canadian systems, culture, and daily life for a smooth transition.',
+      career_counseling: 'Career Path Analysis',
+      career_counseling_description: 'Assessment of your professional goals and Canadian opportunities.',
+      skills_market_analysis: 'Labor Market Information',
+      analysis_description: 'Insights into industry trends and job prospects in your field.',
+      skills_assessment_title: 'Skills Assessment',
+      skills_assessment_description: 'Evaluation of your skills and qualifications in the Canadian context.',
+      request_appointment: 'Book Consultation',
+      
+      // Recruitment page
+      recruitment_services: 'Recruitment Services',
+      recruitment_subtitle: 'Connecting talent with Canadian employers',
+      recruitment_description: 'Our recruitment services bridge the gap between international professionals and Canadian companies looking for qualified talent.',
+      job_listings: 'Job Opportunities',
+      listings_description: 'Access exclusive job postings from Canadian employers seeking international talent.',
+      custom_search: 'Customized Job Search',
+      search_description: 'Personalized approach to finding positions that match your skills and goals.',
+      offers_filtering: 'Offers Analysis',
+      filtering_description: 'Expert review of job offers and employment contracts.',
+      view_job_offers: 'View Opportunities'
     },
     fr: {
       // En-tête/Navigation
@@ -543,7 +591,55 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       privacy_short: 'Confidentialité',
       terms_short: 'Conditions',
       sitemap_short: 'Plan du site',
-      our_location: 'Notre emplacement'
+      our_location: 'Notre emplacement',
+      
+      // Page coaching
+      coaching_services: 'Services de Coaching de Carrière',
+      coaching_subtitle: 'Orientation professionnelle pour réussir dans le milieu de travail canadien',
+      coaching_description: 'Nos services de coaching de carrière vous aident à naviguer dans la culture de travail canadienne, à améliorer vos compétences et à maximiser votre potentiel professionnel.',
+      interview_preparation: 'Préparation aux Entretiens',
+      interview_preparation_description: 'Apprenez des stratégies pour exceller lors des entretiens d\'embauche canadiens.',
+      coaching_workshops: 'Ateliers de Groupe',
+      workshops_description: 'Participez à nos sessions interactives axées sur le développement professionnel.',
+      personalized_coaching: 'Coaching Individuel',
+      personalized_coaching_description: 'Orientation de carrière personnalisée basée sur vos objectifs et besoins spécifiques.',
+      make_appointment: 'Prendre Rendez-vous',
+      
+      // Page formation
+      training_services: 'Services de Formation Professionnelle',
+      training_subtitle: 'Développement de compétences pour le marché du travail canadien',
+      training_description: 'Nos programmes de formation vous préparent au succès dans le milieu de travail canadien avec des compétences pratiques et des connaissances essentielles.',
+      custom_cv: 'Optimisation de CV',
+      cv_custom_description: 'Apprenez à créer un CV à la canadienne qui se démarque.',
+      cover_letter: 'Rédaction de Lettres de Motivation',
+      cover_letter_description: 'Maîtrisez l\'art d\'écrire des lettres de motivation convaincantes pour les employeurs canadiens.',
+      training_offers: 'Programmes de Formation',
+      training_offers_description: 'Accédez à des cours de formation spécialisés pour divers domaines professionnels.',
+      request_quote: 'Demander un Devis',
+      
+      // Page orientation
+      counseling_orientation: 'Services d\'Orientation et d\'Intégration',
+      orientation_subtitle: 'Accompagnement pour une intégration réussie au Canada',
+      orientation_description: 'Nos services d\'établissement aident les nouveaux arrivants à naviguer dans les systèmes canadiens, la culture et la vie quotidienne pour une transition en douceur.',
+      career_counseling: 'Analyse de Parcours Professionnel',
+      career_counseling_description: 'Évaluation de vos objectifs professionnels et des opportunités canadiennes.',
+      skills_market_analysis: 'Information sur le Marché du Travail',
+      analysis_description: 'Aperçu des tendances de l\'industrie et des perspectives d\'emploi dans votre domaine.',
+      skills_assessment_title: 'Évaluation des Compétences',
+      skills_assessment_description: 'Évaluation de vos compétences et qualifications dans le contexte canadien.',
+      request_appointment: 'Réserver une Consultation',
+      
+      // Page recrutement
+      recruitment_services: 'Services de Recrutement',
+      recruitment_subtitle: 'Mise en relation des talents avec les employeurs canadiens',
+      recruitment_description: 'Nos services de recrutement comblent le fossé entre les professionnels internationaux et les entreprises canadiennes à la recherche de talents qualifiés.',
+      job_listings: 'Offres d\'Emploi',
+      listings_description: 'Accédez à des offres d\'emploi exclusives d\'employeurs canadiens à la recherche de talents internationaux.',
+      custom_search: 'Recherche d\'Emploi Personnalisée',
+      search_description: 'Approche personnalisée pour trouver des postes correspondant à vos compétences et objectifs.',
+      offers_filtering: 'Analyse des Offres',
+      filtering_description: 'Examen expert des offres d\'emploi et des contrats de travail.',
+      view_job_offers: 'Voir les Opportunités'
     }
   };
 
@@ -566,3 +662,4 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 export const useLanguage = () => {
   return useContext(LanguageContext);
 };
+
