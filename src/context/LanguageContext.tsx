@@ -275,6 +275,15 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       
       // Footer links and copyright
       copyright: 'All rights reserved.',
+      
+      // Additional translations for Footer
+      resources: 'Resources',
+      about_description: 'Professional immigration services to guide you through your Canadian journey',
+      all_rights_reserved: 'All rights reserved.',
+      privacy_short: 'Privacy',
+      terms_short: 'Terms',
+      sitemap_short: 'Sitemap',
+      our_location: 'Our Location'
     },
     fr: {
       // En-tête/Navigation
@@ -526,6 +535,15 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       
       // Liens de pied de page et copyright
       copyright: 'Tous droits réservés.',
+      
+      // Traductions supplémentaires pour le Footer
+      resources: 'Ressources',
+      about_description: 'Services professionnels d\'immigration pour vous guider tout au long de votre parcours canadien',
+      all_rights_reserved: 'Tous droits réservés.',
+      privacy_short: 'Confidentialité',
+      terms_short: 'Conditions',
+      sitemap_short: 'Plan du site',
+      our_location: 'Notre emplacement'
     }
   };
 
