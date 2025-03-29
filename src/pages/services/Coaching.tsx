@@ -2,43 +2,39 @@
 import { useEffect } from "react";
 import ServicePage from "@/components/ServicePage";
 import { MessageSquare, Users, Target } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext";
 
 const Coaching = () => {
-  const { t } = useLanguage();
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const features = [
     {
-      title: t('interview_preparation'),
-      description: t('interview_preparation_description'),
+      title: "Préparation aux entretiens d'embauche",
+      description: "Des conseils pratiques et des simulations pour réussir vos entretiens professionnels.",
       icon: <MessageSquare size={24} />,
     },
     {
-      title: t('coaching_workshops'),
-      description: t('workshops_description'),
+      title: "Ateliers de coaching",
+      description: "Sessions interactives pour développer vos compétences en communication et gestion du stress.",
       icon: <Users size={24} />,
     },
     {
-      title: t('personalized_coaching'),
-      description: t('personalized_coaching_description'),
+      title: "Coaching personnalisé",
+      description: "Un accompagnement sur-mesure pour atteindre vos objectifs professionnels.",
       icon: <Target size={24} />,
     },
   ];
 
   return (
     <ServicePage 
-      title={t('coaching_services')}
-      subtitle={t('coaching_subtitle')}
-      description={t('coaching_description')}
+      title="Services de Coaching"
+      subtitle="Développez votre potentiel et préparez-vous efficacement pour réussir dans votre parcours professionnel."
+      description="Nos coachs certifiés vous accompagnent dans le développement de vos compétences et la préparation aux défis professionnels."
       features={features}
       imageSrc="https://images.unsplash.com/photo-1633008808000-ce86bff6c1ed?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
-      ctaText={t('make_appointment')}
-      accentColor="brown"
+      ctaText="Prendre rendez-vous"
     />
   );
 };

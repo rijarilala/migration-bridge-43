@@ -43,9 +43,7 @@ export default {
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))',
-					light: 'hsl(25, 70%, 85%)',
-					dark: 'hsl(25, 70%, 30%)'
+					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -77,18 +75,6 @@ export default {
 					800: '#075985',
 					900: '#0c4a6e',
 				},
-				brown: {
-					50: '#fdf8f6',
-					100: '#f2e8e5',
-					200: '#eaddd7',
-					300: '#e0cec7',
-					400: '#d2bab0',
-					500: '#bfa094',
-					600: '#a18072',
-					700: '#977669',
-					800: '#846358',
-					900: '#43302b',
-				}
 			},
 			fontFamily: {
 				sans: ['Poppins', 'sans-serif'],

@@ -8,28 +8,13 @@ interface ServiceCardProps {
   description: string;
   icon: ReactNode;
   link: string;
-  accentColor?: "blue" | "brown";
 }
 
-const ServiceCard = ({ 
-  title, 
-  description, 
-  icon, 
-  link,
-  accentColor = "blue"
-}: ServiceCardProps) => {
-  const iconBgClass = accentColor === "brown" 
-    ? "bg-brown-100 text-brown-700 group-hover:bg-brown-200" 
-    : "bg-primary/10 text-primary group-hover:bg-primary/20";
-  
-  const linkClass = accentColor === "brown" 
-    ? "text-brown-700 hover:text-brown-800" 
-    : "text-primary hover:text-primary/80";
-
+const ServiceCard = ({ title, description, icon, link }: ServiceCardProps) => {
   return (
     <div className="bg-white rounded-xl overflow-hidden h-full group hover:scale-[1.02] transition-all duration-300 shadow-md border border-gray-100">
       <div className="p-8 h-full flex flex-col">
-        <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 ${iconBgClass}`}>
+        <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary/20 transition-all duration-300">
           {icon}
         </div>
         <h3 className="text-2xl font-serif font-semibold mb-3 text-gray-900">{title}</h3>
@@ -38,7 +23,7 @@ const ServiceCard = ({
         {link.startsWith('http') ? (
           <a
             href={link}
-            className={`mt-auto inline-flex items-center font-medium transition-colors group-hover:translate-x-1 transition-transform duration-300 ${linkClass}`}
+            className="mt-auto inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors group-hover:translate-x-1 transition-transform duration-300"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -47,7 +32,7 @@ const ServiceCard = ({
         ) : (
           <Link
             to={link}
-            className={`mt-auto inline-flex items-center font-medium transition-colors group-hover:translate-x-1 transition-transform duration-300 ${linkClass}`}
+            className="mt-auto inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors group-hover:translate-x-1 transition-transform duration-300"
           >
             En savoir plus <ArrowRight size={16} className="ml-1" />
           </Link>

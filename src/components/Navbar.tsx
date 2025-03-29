@@ -9,14 +9,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import { useLanguage } from "@/context/LanguageContext";
-import LanguageSelector from "./LanguageSelector";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,34 +37,34 @@ const Navbar = () => {
 
   const navLinks = [
     { 
-      name: t('home'), 
+      name: "Accueil", 
       path: "/" 
     },
     { 
-      name: t('services'),
+      name: "Services",
       dropdown: true,
       items: [
-        { name: t('immigration'), path: "/services/immigration" },
-        { name: t('formation'), path: "/services/formation" },
-        { name: t('coaching'), path: "/services/coaching" },
-        { name: t('orientation'), path: "/services/orientation" },
-        { name: t('recrutement'), path: "/services/recrutement" }
+        { name: "Immigration", path: "/services/immigration" },
+        { name: "Formation", path: "/services/formation" },
+        { name: "Coaching", path: "/services/coaching" },
+        { name: "Orientation Professionnelle", path: "/services/orientation" },
+        { name: "Recrutement", path: "/services/recrutement" }
       ]
     },
     { 
-      name: t('blog'), 
+      name: "Blog", 
       path: "/blog" 
     },
     { 
-      name: t('faq'), 
+      name: "FAQ", 
       path: "/faq" 
     },
     { 
-      name: t('about'), 
+      name: "À Propos", 
       path: "/about" 
     },
     { 
-      name: t('contact'), 
+      name: "Contact", 
       path: "/contact" 
     }
   ];
@@ -130,23 +127,13 @@ const Navbar = () => {
                 className="ml-4 bg-brand-600 hover:bg-brand-700 text-white" 
                 size="sm"
               >
-                {t('eligibility')}
+                Test d'Éligibilité
               </Button>
             </Link>
-            
-            {/* Language selector */}
-            <div className="ml-4">
-              <LanguageSelector />
-            </div>
           </nav>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
-            {/* Language selector for mobile */}
-            <div className="mr-4">
-              <LanguageSelector />
-            </div>
-            
             <button
               onClick={toggleMenu}
               className="p-2 rounded-md text-gray-700"
@@ -209,7 +196,7 @@ const Navbar = () => {
               className="w-full bg-brand-600 hover:bg-brand-700 text-white"
               onClick={() => handleNavigate('/eligibility')}
             >
-              {t('eligibility')}
+              Test d'Éligibilité
             </Button>
           </div>
         </nav>
