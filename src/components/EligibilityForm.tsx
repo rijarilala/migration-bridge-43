@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "sonner";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface CheckboxOption {
   id: string;
@@ -22,6 +23,8 @@ interface EligibilityResult {
 }
 
 const EligibilityForm = () => {
+  const { t, language } = useLanguage();
+  
   const initialFormData = {
     // Informations personnelles
     age: "",
@@ -55,54 +58,54 @@ const EligibilityForm = () => {
   const [bestProgram, setBestProgram] = useState<string>("");
 
   // Options pour les cases à cocher
-  const ageOptions: CheckboxOption[] = [
-    { id: "age-18-29", label: "18 - 29 ans", value: "18-29" },
-    { id: "age-30-39", label: "30 - 39 ans", value: "30-39" },
-    { id: "age-40-44", label: "40 - 44 ans", value: "40-44" },
-    { id: "age-45-plus", label: "45 ans et plus", value: "45+" },
+  const getAgeOptions = (): CheckboxOption[] => [
+    { id: "age-18-29", label: t('age_18_29'), value: "18-29" },
+    { id: "age-30-39", label: t('age_30_39'), value: "30-39" },
+    { id: "age-40-44", label: t('age_40_44'), value: "40-44" },
+    { id: "age-45-plus", label: t('age_45_plus'), value: "45+" },
   ];
 
-  const educationOptions: CheckboxOption[] = [
-    { id: "edu-none", label: "Aucun diplôme", value: "none" },
-    { id: "edu-highschool", label: "Diplôme d'études secondaires", value: "highschool" },
-    { id: "edu-postsecondary", label: "Diplôme postsecondaire (Bac+2)", value: "postsecondary" },
-    { id: "edu-bachelor", label: "Licence (Bac+3)", value: "bachelor" },
-    { id: "edu-master", label: "Master ou Doctorat", value: "master" },
+  const getEducationOptions = (): CheckboxOption[] => [
+    { id: "edu-none", label: t('edu_none'), value: "none" },
+    { id: "edu-highschool", label: t('edu_highschool'), value: "highschool" },
+    { id: "edu-postsecondary", label: t('edu_postsecondary'), value: "postsecondary" },
+    { id: "edu-bachelor", label: t('edu_bachelor'), value: "bachelor" },
+    { id: "edu-master", label: t('edu_master'), value: "master" },
   ];
 
-  const experienceOptions: CheckboxOption[] = [
-    { id: "exp-none", label: "Aucune expérience", value: "none" },
-    { id: "exp-less1", label: "Moins d'un an", value: "less1" },
-    { id: "exp-1-3", label: "1 - 3 ans", value: "1-3" },
-    { id: "exp-4-5", label: "4 - 5 ans", value: "4-5" },
-    { id: "exp-more5", label: "Plus de 5 ans", value: "more5" },
+  const getExperienceOptions = (): CheckboxOption[] => [
+    { id: "exp-none", label: t('exp_none'), value: "none" },
+    { id: "exp-less1", label: t('exp_less1'), value: "less1" },
+    { id: "exp-1-3", label: t('exp_1_3'), value: "1-3" },
+    { id: "exp-4-5", label: t('exp_4_5'), value: "4-5" },
+    { id: "exp-more5", label: t('exp_more5'), value: "more5" },
   ];
 
-  const frenchLevelOptions: CheckboxOption[] = [
-    { id: "french-none", label: "Aucune compétence", value: "none" },
-    { id: "french-intermediate", label: "Niveau intermédiaire", value: "intermediate" },
-    { id: "french-fluent", label: "Courant", value: "fluent" },
+  const getFrenchLevelOptions = (): CheckboxOption[] => [
+    { id: "french-none", label: t('french_none'), value: "none" },
+    { id: "french-intermediate", label: t('french_intermediate'), value: "intermediate" },
+    { id: "french-fluent", label: t('french_fluent'), value: "fluent" },
   ];
 
-  const englishLevelOptions: CheckboxOption[] = [
-    { id: "english-none", label: "Aucune compétence", value: "none" },
-    { id: "english-intermediate", label: "Niveau intermédiaire", value: "intermediate" },
-    { id: "english-fluent", label: "Courant", value: "fluent" },
+  const getEnglishLevelOptions = (): CheckboxOption[] => [
+    { id: "english-none", label: t('english_none'), value: "none" },
+    { id: "english-intermediate", label: t('english_intermediate'), value: "intermediate" },
+    { id: "english-fluent", label: t('english_fluent'), value: "fluent" },
   ];
 
-  const projectOptions: CheckboxOption[] = [
-    { id: "project-study", label: "Étudier", value: "study" },
-    { id: "project-work", label: "Travailler", value: "work" },
-    { id: "project-settle", label: "M'établir de façon permanente", value: "settle" },
-    { id: "project-family", label: "Rejoindre un membre de ma famille", value: "family" },
+  const getProjectOptions = (): CheckboxOption[] => [
+    { id: "project-study", label: t('project_study'), value: "study" },
+    { id: "project-work", label: t('project_work'), value: "work" },
+    { id: "project-settle", label: t('project_settle'), value: "settle" },
+    { id: "project-family", label: t('project_family'), value: "family" },
   ];
 
-  const professionTypeOptions: CheckboxOption[] = [
-    { id: "prof-highly-skilled", label: "Profession hautement qualifiée (volet 1)", value: "highly-skilled" },
-    { id: "prof-intermediate", label: "Profession intermédiaire/manuelle (volet 2)", value: "intermediate" },
-    { id: "prof-regulated", label: "Profession réglementée requérant un permis au Québec (volet 3)", value: "regulated" },
-    { id: "prof-exceptional", label: "Talent d'exception (volet 4)", value: "exceptional" },
-    { id: "prof-unknown", label: "Je ne sais pas", value: "unknown" },
+  const getProfessionTypeOptions = (): CheckboxOption[] => [
+    { id: "prof-highly-skilled", label: t('prof_highly_skilled'), value: "highly-skilled" },
+    { id: "prof-intermediate", label: t('prof_intermediate'), value: "intermediate" },
+    { id: "prof-regulated", label: t('prof_regulated'), value: "regulated" },
+    { id: "prof-exceptional", label: t('prof_exceptional'), value: "exceptional" },
+    { id: "prof-unknown", label: t('prof_unknown'), value: "unknown" },
   ];
 
   const handleSingleOptionChange = (fieldName: string, value: string) => {
@@ -150,57 +153,57 @@ const EligibilityForm = () => {
     if (formContainer) {
       formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    toast.success("Le formulaire a été réinitialisé");
+    toast.success(t('form_reset_success'));
   };
 
   const validateCurrentStep = () => {
     if (currentStep === 1) {
       if (!formData.age) {
-        toast.error("Veuillez sélectionner votre tranche d'âge");
+        toast.error(t('select_age_error'));
         return false;
       }
       if (!formData.education) {
-        toast.error("Veuillez sélectionner votre niveau d'études");
+        toast.error(t('select_education_error'));
         return false;
       }
       if (!formData.experience) {
-        toast.error("Veuillez sélectionner votre expérience professionnelle");
+        toast.error(t('select_experience_error'));
         return false;
       }
       if (!formData.frenchLevel) {
-        toast.error("Veuillez indiquer votre niveau de français");
+        toast.error(t('select_french_error'));
         return false;
       }
       if (!formData.englishLevel) {
-        toast.error("Veuillez indiquer votre niveau d'anglais");
+        toast.error(t('select_english_error'));
         return false;
       }
     } else if (currentStep === 2) {
       if (!formData.professionType && formData.canadaProject === "work") {
-        toast.error("Veuillez sélectionner un type de profession");
+        toast.error(t('select_profession_error'));
         return false;
       }
       if (!formData.jobOffer) {
-        toast.error("Veuillez indiquer si vous avez une offre d'emploi");
+        toast.error(t('select_job_offer_error'));
         return false;
       }
       if (!formData.familyTies) {
-        toast.error("Veuillez indiquer si vous avez des liens familiaux au Canada");
+        toast.error(t('select_family_ties_error'));
         return false;
       }
       if (!formData.canadaProject) {
-        toast.error("Veuillez sélectionner au moins un projet au Canada");
+        toast.error(t('select_project_error'));
         return false;
       }
     } else if (currentStep === 3) {
       if (!formData.name || !formData.email || !formData.phone) {
-        toast.error("Veuillez remplir tous les champs de contact");
+        toast.error(t('fill_contact_error'));
         return false;
       }
       // Basic email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
-        toast.error("Veuillez entrer une adresse email valide");
+        toast.error(t('valid_email_error'));
         return false;
       }
     }
@@ -223,7 +226,7 @@ const EligibilityForm = () => {
         if (mediumEligibilityPrograms.length > 0) {
           setBestProgram(mediumEligibilityPrograms[0].program);
         } else {
-          setBestProgram("Aucun programme optimal");
+          setBestProgram(t('no_optimal_program'));
         }
       }
       
@@ -335,20 +338,20 @@ const EligibilityForm = () => {
     const expressPercentage = expressPoints / expressMaxPoints;
     if (expressPercentage >= 0.7) {
       expressLevel = "high";
-      expressMessage = "✅ Vous semblez éligible à Entrée Express, découvrez les prochaines étapes !";
-      expressDetails = "Votre profil correspond aux critères du programme Entrée Express. Nous vous recommandons de poursuivre votre démarche avec un conseiller en immigration.";
+      expressMessage = language === 'en' ? "✅ You appear eligible for Express Entry, discover the next steps!" : "✅ Vous semblez éligible à Entrée Express, découvrez les prochaines étapes !";
+      expressDetails = language === 'en' ? "Your profile matches the criteria of the Express Entry program. We recommend that you continue your application with an immigration consultant." : "Votre profil correspond aux critères du programme Entrée Express. Nous vous recommandons de poursuivre votre démarche avec un conseiller en immigration.";
     } else if (expressPercentage >= 0.5) {
       expressLevel = "medium";
-      expressMessage = "⚠️ Votre profil pourrait convenir à Entrée Express, contactez-nous pour une analyse approfondie.";
-      expressDetails = "Vous avez un potentiel d'éligibilité au programme Entrée Express, mais certains aspects de votre profil pourraient nécessiter une attention particulière.";
+      expressMessage = language === 'en' ? "⚠️ Your profile may be suitable for Express Entry, contact us for an in-depth analysis." : "⚠️ Votre profil pourrait convenir à Entrée Express, contactez-nous pour une analyse approfondie.";
+      expressDetails = language === 'en' ? "You have potential eligibility for the Express Entry program, but certain aspects of your profile may require special attention." : "Vous avez un potentiel d'éligibilité au programme Entrée Express, mais certains aspects de votre profil pourraient nécessiter une attention particulière.";
     } else {
       expressLevel = "low";
-      expressMessage = "❌ Vous ne remplissez pas actuellement les critères d'Entrée Express, mais d'autres options peuvent être envisageables.";
-      expressDetails = "Votre profil actuel ne correspond pas suffisamment aux critères d'Entrée Express. Un conseiller pourrait vous suggérer d'autres programmes.";
+      expressMessage = language === 'en' ? "❌ You currently do not meet the Express Entry criteria, but other options may be available." : "❌ Vous ne remplissez pas actuellement les critères d'Entrée Express, mais d'autres options peuvent être envisageables.";
+      expressDetails = language === 'en' ? "Your current profile does not sufficiently match Express Entry criteria. A consultant could suggest other programs for you." : "Votre profil actuel ne correspond pas suffisamment aux critères d'Entrée Express. Un conseiller pourrait vous suggérer d'autres programmes.";
     }
     
     results.push({
-      program: "Entrée Express",
+      program: language === 'en' ? "Express Entry" : "Entrée Express",
       eligible: expressLevel === "high",
       message: expressMessage,
       details: expressDetails,
@@ -447,24 +450,24 @@ const EligibilityForm = () => {
     
     switch(formData.professionType) {
       case "highly-skilled":
-        pstqVolet = "Volet 1 (Professions hautement qualifiées)";
+        pstqVolet = language === 'en' ? "Stream 1 (Highly skilled professions)" : "Volet 1 (Professions hautement qualifiées)";
         if (formData.frenchLevel === "fluent") pstqVoletBonus += 10;
         if (formData.education === "master" || formData.education === "bachelor") pstqVoletBonus += 10;
         break;
       case "intermediate":
-        pstqVolet = "Volet 2 (Professions intermédiaires et manuelles)";
+        pstqVolet = language === 'en' ? "Stream 2 (Intermediate and manual professions)" : "Volet 2 (Professions intermédiaires et manuelles)";
         if (formData.experience === "4-5" || formData.experience === "more5") pstqVoletBonus += 15;
         break;
       case "regulated":
-        pstqVolet = "Volet 3 (Professions réglementées)";
+        pstqVolet = language === 'en' ? "Stream 3 (Regulated professions)" : "Volet 3 (Professions réglementées)";
         if (formData.licenseInQuebec === "yes") pstqVoletBonus += 20;
         break;
       case "exceptional":
-        pstqVolet = "Volet 4 (Talents d'exception)";
+        pstqVolet = language === 'en' ? "Stream 4 (Exceptional talents)" : "Volet 4 (Talents d'exception)";
         if (formData.exceptionalTalent === "yes") pstqVoletBonus += 25;
         break;
       default:
-        pstqVolet = "Non déterminé";
+        pstqVolet = language === 'en' ? "Not determined" : "Non déterminé";
         break;
     }
     
@@ -478,20 +481,34 @@ const EligibilityForm = () => {
     const pstqPercentage = pstqPoints / pstqMaxPoints;
     if (pstqPercentage >= 0.7) {
       pstqLevel = "high";
-      pstqMessage = `✅ Vous semblez éligible au PSTQ ${pstqVolet}, découvrez les prochaines étapes !`;
-      pstqDetails = `Votre profil correspond aux critères du Programme de sélection des travailleurs qualifiés du Québec pour le ${pstqVolet}. Nous vous recommandons de poursuivre votre démarche avec un conseiller.`;
+      pstqMessage = language === 'en' 
+        ? `✅ You appear eligible for the QSWP ${pstqVolet}, discover the next steps!` 
+        : `✅ Vous semblez éligible au PSTQ ${pstqVolet}, découvrez les prochaines étapes !`;
+      pstqDetails = language === 'en'
+        ? `Your profile matches the criteria of the Quebec Skilled Worker Program for the ${pstqVolet}. We recommend that you continue your application with a consultant.`
+        : `Votre profil correspond aux critères du Programme de sélection des travailleurs qualifiés du Québec pour le ${pstqVolet}. Nous vous recommandons de poursuivre votre démarche avec un conseiller.`;
     } else if (pstqPercentage >= 0.5) {
       pstqLevel = "medium";
-      pstqMessage = `⚠️ Votre profil pourrait convenir au PSTQ ${pstqVolet}, contactez-nous pour une analyse approfondie.`;
-      pstqDetails = `Vous avez un potentiel d'éligibilité au PSTQ pour le ${pstqVolet}, mais certains aspects de votre profil pourraient nécessiter une attention particulière.`;
+      pstqMessage = language === 'en'
+        ? `⚠️ Your profile may be suitable for the QSWP ${pstqVolet}, contact us for an in-depth analysis.`
+        : `⚠️ Votre profil pourrait convenir au PSTQ ${pstqVolet}, contactez-nous pour une analyse approfondie.`;
+      pstqDetails = language === 'en'
+        ? `You have potential eligibility for the QSWP for the ${pstqVolet}, but certain aspects of your profile may require special attention.`
+        : `Vous avez un potentiel d'éligibilité au PSTQ pour le ${pstqVolet}, mais certains aspects de votre profil pourraient nécessiter une attention particulière.`;
     } else {
       pstqLevel = "low";
-      pstqMessage = "❌ Vous ne remplissez pas actuellement les critères du PSTQ, mais d'autres options peuvent être envisageables.";
-      pstqDetails = "Votre profil actuel ne correspond pas suffisamment aux critères du PSTQ. Un conseiller pourrait vous suggérer d'autres programmes.";
+      pstqMessage = language === 'en'
+        ? "❌ You currently do not meet the QSWP criteria, but other options may be available."
+        : "❌ Vous ne remplissez pas actuellement les critères du PSTQ, mais d'autres options peuvent être envisageables.";
+      pstqDetails = language === 'en'
+        ? "Your current profile does not sufficiently match QSWP criteria. A consultant could suggest other programs for you."
+        : "Votre profil actuel ne correspond pas suffisamment aux critères du PSTQ. Un conseiller pourrait vous suggérer d'autres programmes.";
     }
     
     results.push({
-      program: `Programme de sélection des travailleurs qualifiés (PSTQ) - ${pstqVolet}`,
+      program: language === 'en' 
+        ? `Quebec Skilled Worker Program (QSWP) - ${pstqVolet}`
+        : `Programme de sélection des travailleurs qualifiés (PSTQ) - ${pstqVolet}`,
       eligible: pstqLevel === "high",
       message: pstqMessage,
       details: pstqDetails,
@@ -507,18 +524,30 @@ const EligibilityForm = () => {
     let peqDetails = "";
     
     if (peqLevel === "high") {
-      peqMessage = "✅ Vous semblez éligible au PEQ, découvrez les prochaines étapes !";
-      peqDetails = "Votre profil semble correspondre aux critères du Programme de l'Expérience Québécoise. Vos compétences en français et votre expérience professionnelle sont des atouts.";
+      peqMessage = language === 'en'
+        ? "✅ You appear eligible for the PEQ, discover the next steps!"
+        : "✅ Vous semblez éligible au PEQ, découvrez les prochaines étapes !";
+      peqDetails = language === 'en'
+        ? "Your profile seems to match the criteria of the Quebec Experience Program. Your French language skills and professional experience are assets."
+        : "Votre profil semble correspondre aux critères du Programme de l'Expérience Québécoise. Vos compétences en français et votre expérience professionnelle sont des atouts.";
     } else if (peqLevel === "medium") {
-      peqMessage = "⚠️ Votre profil pourrait convenir au PEQ avec quelques ajustements.";
-      peqDetails = "Vous pourriez être éligible au PEQ, mais il vous manque peut-être de l'expérience professionnelle pertinente.";
+      peqMessage = language === 'en'
+        ? "⚠️ Your profile may be suitable for the PEQ with some adjustments."
+        : "⚠️ Votre profil pourrait convenir au PEQ avec quelques ajustements.";
+      peqDetails = language === 'en'
+        ? "You may be eligible for the PEQ, but you may be lacking relevant professional experience."
+        : "Vous pourriez être éligible au PEQ, mais il vous manque peut-être de l'expérience professionnelle pertinente.";
     } else {
-      peqMessage = "❌ Vous ne remplissez pas actuellement les critères du PEQ.";
-      peqDetails = "Le PEQ exige généralement une bonne maîtrise du français. Sans cette compétence, ce programme n'est pas recommandé.";
+      peqMessage = language === 'en'
+        ? "❌ You currently do not meet the PEQ criteria."
+        : "❌ Vous ne remplissez pas actuellement les critères du PEQ.";
+      peqDetails = language === 'en'
+        ? "The PEQ generally requires a good command of French. Without this skill, this program is not recommended."
+        : "Le PEQ exige généralement une bonne maîtrise du français. Sans cette compétence, ce programme n'est pas recommandé.";
     }
     
     results.push({
-      program: "Programme de l'Expérience Québécoise (PEQ)",
+      program: language === 'en' ? "Quebec Experience Program (PEQ)" : "Programme de l'Expérience Québécoise (PEQ)",
       eligible: peqLevel === "high",
       message: peqMessage,
       details: peqDetails,
@@ -536,18 +565,30 @@ const EligibilityForm = () => {
     let familyDetails = "";
     
     if (familyLevel === "high") {
-      familyMessage = "✅ Vous semblez éligible au Regroupement Familial, découvrez les prochaines étapes !";
-      familyDetails = "Avec de la famille directe au Canada et votre projet de les rejoindre, le programme de Regroupement Familial semble parfaitement adapté à votre situation.";
+      familyMessage = language === 'en'
+        ? "✅ You appear eligible for Family Reunification, discover the next steps!"
+        : "✅ Vous semblez éligible au Regroupement Familial, découvrez les prochaines étapes !";
+      familyDetails = language === 'en'
+        ? "With direct family in Canada and your project to join them, the Family Reunification program seems perfectly suited to your situation."
+        : "Avec de la famille directe au Canada et votre projet de les rejoindre, le programme de Regroupement Familial semble parfaitement adapté à votre situation.";
     } else if (familyLevel === "medium") {
-      familyMessage = "⚠️ Vous pourriez être éligible au Regroupement Familial selon les liens familiaux exacts.";
-      familyDetails = "Bien que vous ayez de la famille au Canada, l'éligibilité au Regroupement Familial dépend du type de relation et du statut de résidence de votre famille au Canada.";
+      familyMessage = language === 'en'
+        ? "⚠️ You may be eligible for Family Reunification depending on the exact family ties."
+        : "⚠️ Vous pourriez être éligible au Regroupement Familial selon les liens familiaux exacts.";
+      familyDetails = language === 'en'
+        ? "Although you have family in Canada, eligibility for Family Reunification depends on the type of relationship and the residence status of your family in Canada."
+        : "Bien que vous ayez de la famille au Canada, l'éligibilité au Regroupement Familial dépend du type de relation et du statut de résidence de votre famille au Canada.";
     } else {
-      familyMessage = "❌ Sans liens familiaux au Canada, vous n'êtes pas éligible au Regroupement Familial.";
-      familyDetails = "Ce programme est exclusivement destiné aux personnes ayant des membres de leur famille proche déjà établis au Canada.";
+      familyMessage = language === 'en'
+        ? "❌ Without family ties in Canada, you are not eligible for Family Reunification."
+        : "❌ Sans liens familiaux au Canada, vous n'êtes pas éligible au Regroupement Familial.";
+      familyDetails = language === 'en'
+        ? "This program is exclusively for people who have close family members already established in Canada."
+        : "Ce programme est exclusivement destiné aux personnes ayant des membres de leur famille proche déjà établis au Canada.";
     }
     
     results.push({
-      program: "Regroupement Familial",
+      program: language === 'en' ? "Family Reunification" : "Regroupement Familial",
       eligible: familyLevel === "high",
       message: familyMessage,
       details: familyDetails,
@@ -573,13 +614,13 @@ const EligibilityForm = () => {
   const getStatusText = (level: "high" | "medium" | "low") => {
     switch (level) {
       case "high":
-        return "Forte chance d'éligibilité";
+        return language === 'en' ? "Strong chance of eligibility" : "Forte chance d'éligibilité";
       case "medium":
-        return "Éligibilité possible";
+        return language === 'en' ? "Possible eligibility" : "Éligibilité possible";
       case "low":
-        return "Faible chance d'éligibilité";
+        return language === 'en' ? "Low chance of eligibility" : "Faible chance d'éligibilité";
       default:
-        return "Indéterminé";
+        return language === 'en' ? "Undetermined" : "Indéterminé";
     }
   };
 
@@ -602,12 +643,12 @@ const EligibilityForm = () => {
               </div>
               <div className="text-xs text-gray-500">
                 {step === 1
-                  ? "Profil"
+                  ? t('profile')
                   : step === 2
-                  ? "Projet"
+                  ? t('project')
                   : step === 3
-                  ? "Contact"
-                  : "Résultats"}
+                  ? t('contact')
+                  : t('results')}
               </div>
             </div>
           ))}
@@ -623,12 +664,12 @@ const EligibilityForm = () => {
       <form onSubmit={handleSubmit} className="space-y-8">
         {currentStep === 1 && (
           <div className="space-y-8 animate-fade-in">
-            <h2 className="text-2xl font-semibold mb-6">Informations personnelles</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t('personal_information')}</h2>
             
             <div className="space-y-4">
-              <h3 className="text-lg font-medium">Âge (Sélectionner une tranche d'âge)</h3>
+              <h3 className="text-lg font-medium">{t('age_select')}</h3>
               <RadioGroup value={formData.age} onValueChange={(value) => handleSingleOptionChange("age", value)} className="grid gap-3">
-                {ageOptions.map((option) => (
+                {getAgeOptions().map((option) => (
                   <div key={option.id} className="flex items-center space-x-2">
                     <RadioGroupItem id={option.id} value={option.value} />
                     <Label htmlFor={option.id}>{option.label}</Label>
@@ -638,9 +679,9 @@ const EligibilityForm = () => {
             </div>
             
             <div className="space-y-4">
-              <h3 className="text-lg font-medium">Niveau d'études</h3>
+              <h3 className="text-lg font-medium">{t('education_level')}</h3>
               <RadioGroup value={formData.education} onValueChange={(value) => handleSingleOptionChange("education", value)} className="grid gap-3">
-                {educationOptions.map((option) => (
+                {getEducationOptions().map((option) => (
                   <div key={option.id} className="flex items-center space-x-2">
                     <RadioGroupItem id={option.id} value={option.value} />
                     <Label htmlFor={option.id}>{option.label}</Label>
@@ -650,9 +691,9 @@ const EligibilityForm = () => {
             </div>
             
             <div className="space-y-4">
-              <h3 className="text-lg font-medium">Expérience professionnelle</h3>
+              <h3 className="text-lg font-medium">{t('professional_experience')}</h3>
               <RadioGroup value={formData.experience} onValueChange={(value) => handleSingleOptionChange("experience", value)} className="grid gap-3">
-                {experienceOptions.map((option) => (
+                {getExperienceOptions().map((option) => (
                   <div key={option.id} className="flex items-center space-x-2">
                     <RadioGroupItem id={option.id} value={option.value} />
                     <Label htmlFor={option.id}>{option.label}</Label>
@@ -662,12 +703,12 @@ const EligibilityForm = () => {
             </div>
             
             <div className="space-y-6">
-              <h3 className="text-lg font-medium">Compétences linguistiques</h3>
+              <h3 className="text-lg font-medium">{t('language_skills')}</h3>
               
               <div className="bg-blue-50 rounded-lg p-4 space-y-4">
-                <h4 className="font-medium text-blue-800">Français</h4>
+                <h4 className="font-medium text-blue-800">{t('french')}</h4>
                 <RadioGroup value={formData.frenchLevel} onValueChange={(value) => handleSingleOptionChange("frenchLevel", value)} className="grid gap-3">
-                  {frenchLevelOptions.map((option) => (
+                  {getFrenchLevelOptions().map((option) => (
                     <div key={option.id} className="flex items-center space-x-2">
                       <RadioGroupItem id={option.id} value={option.value} />
                       <Label htmlFor={option.id}>{option.label}</Label>
@@ -677,9 +718,9 @@ const EligibilityForm = () => {
               </div>
               
               <div className="bg-red-50 rounded-lg p-4 space-y-4">
-                <h4 className="font-medium text-red-800">Anglais</h4>
+                <h4 className="font-medium text-red-800">{t('english')}</h4>
                 <RadioGroup value={formData.englishLevel} onValueChange={(value) => handleSingleOptionChange("englishLevel", value)} className="grid gap-3">
-                  {englishLevelOptions.map((option) => (
+                  {getEnglishLevelOptions().map((option) => (
                     <div key={option.id} className="flex items-center space-x-2">
                       <RadioGroupItem id={option.id} value={option.value} />
                       <Label htmlFor={option.id}>{option.label}</Label>
@@ -693,236 +734,10 @@ const EligibilityForm = () => {
 
         {currentStep === 2 && (
           <div className="space-y-8 animate-fade-in">
-            <h2 className="text-2xl font-semibold mb-6">Votre projet d'immigration</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t('immigration_project')}</h2>
             
             <div className="space-y-4">
-              <h3 className="text-lg font-medium">Votre projet au Canada</h3>
+              <h3 className="text-lg font-medium">{t('canada_project')}</h3>
               <RadioGroup value={formData.canadaProject} onValueChange={(value) => handleSingleOptionChange("canadaProject", value)} className="grid gap-3">
-                {projectOptions.map((option) => (
-                  <div key={option.id} className="flex items-center space-x-2">
-                    <RadioGroupItem id={option.id} value={option.value} />
-                    <Label htmlFor={option.id}>{option.label}</Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </div>
-            
-            {formData.canadaProject === "work" && (
-              <div className="space-y-4 bg-blue-50 p-4 rounded-lg">
-                <h3 className="text-lg font-medium">Type de profession (PSTQ)</h3>
-                <p className="text-sm text-blue-800 mb-4">
-                  Le nouveau Programme de sélection des travailleurs qualifiés (PSTQ) du Québec comprend 4 volets distincts :
-                </p>
-                <RadioGroup value={formData.professionType} onValueChange={(value) => handleSingleOptionChange("professionType", value)} className="grid gap-3">
-                  {professionTypeOptions.map((option) => (
-                    <div key={option.id} className="flex items-center space-x-2">
-                      <RadioGroupItem id={option.id} value={option.value} />
-                      <Label htmlFor={option.id}>{option.label}</Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-
-                {formData.professionType === "regulated" && (
-                  <div className="mt-4 p-3 bg-white rounded-lg">
-                    <h4 className="font-medium mb-2">Autorisation ou permis d'exercice</h4>
-                    <RadioGroup value={formData.licenseInQuebec} onValueChange={(value) => handleSingleOptionChange("licenseInQuebec", value)} className="grid gap-3">
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="license-yes" value="yes" />
-                        <Label htmlFor="license-yes">J'ai ou je peux obtenir une autorisation d'exercice au Québec</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="license-no" value="no" />
-                        <Label htmlFor="license-no">Je n'ai pas d'autorisation d'exercice au Québec</Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
-                )}
-
-                {formData.professionType === "exceptional" && (
-                  <div className="mt-4 p-3 bg-white rounded-lg">
-                    <h4 className="font-medium mb-2">Talents d'exception</h4>
-                    <RadioGroup value={formData.exceptionalTalent} onValueChange={(value) => handleSingleOptionChange("exceptionalTalent", value)} className="grid gap-3">
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="talent-yes" value="yes" />
-                        <Label htmlFor="talent-yes">J'ai une reconnaissance internationale dans mon domaine</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="talent-no" value="no" />
-                        <Label htmlFor="talent-no">Je n'ai pas de reconnaissance internationale</Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
-                )}
-              </div>
-            )}
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium">Offre d'emploi validée au Canada ?</h3>
-              <RadioGroup value={formData.jobOffer} onValueChange={(value) => handleSingleOptionChange("jobOffer", value)} className="grid gap-3">
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem id="job-yes" value="yes" />
-                  <Label htmlFor="job-yes">Oui</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem id="job-no" value="no" />
-                  <Label htmlFor="job-no">Non</Label>
-                </div>
-              </RadioGroup>
-            </div>
-            
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium">Avez-vous des liens familiaux au Canada ?</h3>
-              <RadioGroup value={formData.familyTies} onValueChange={(value) => handleSingleOptionChange("familyTies", value)} className="grid gap-3">
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem id="family-yes" value="yes" />
-                  <Label htmlFor="family-yes">Oui (famille directe: parents, frères/sœurs, enfants)</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem id="family-no" value="no" />
-                  <Label htmlFor="family-no">Non</Label>
-                </div>
-              </RadioGroup>
-            </div>
-          </div>
-        )}
-
-        {currentStep === 3 && (
-          <div className="space-y-8 animate-fade-in">
-            <h2 className="text-2xl font-semibold mb-6">Vos coordonnées</h2>
-            
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Nom complet</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => handleTextChange("name", e.target.value)}
-                  placeholder="Entrez votre nom complet"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="email">Adresse email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleTextChange("email", e.target.value)}
-                  placeholder="votre@email.com"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="phone">Numéro de téléphone</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleTextChange("phone", e.target.value)}
-                  placeholder="+33 6 12 34 56 78"
-                />
-              </div>
-            </div>
-            
-            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-sm text-blue-800">
-                En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe pour une analyse plus approfondie de votre situation.
-              </p>
-            </div>
-          </div>
-        )}
-
-        {currentStep === 4 && (
-          <div className="space-y-8 animate-fade-in">
-            <div className="text-center mb-6">
-              <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Résultats de votre évaluation</h2>
-              <p className="text-gray-600 mb-6">
-                Voici une analyse préliminaire de votre admissibilité aux différents programmes d'immigration canadiens.
-              </p>
-            </div>
-
-            {bestProgram && (
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <h3 className="font-bold text-blue-800 mb-2">Recommandation principale</h3>
-                <p>
-                  Selon votre profil, le programme le plus adapté à votre situation est le <span className="font-bold">{bestProgram}</span>.
-                </p>
-              </div>
-            )}
-
-            <div className="space-y-6">
-              {results.map((result, index) => (
-                <div key={index} className="border rounded-lg overflow-hidden">
-                  <div className={`p-4 ${result.level === "high" ? "bg-green-50 border-b border-green-200" : result.level === "medium" ? "bg-yellow-50 border-b border-yellow-200" : "bg-red-50 border-b border-red-200"}`}>
-                    <div className="flex justify-between items-center">
-                      <h3 className="font-semibold text-gray-800">{result.program}</h3>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusBadgeClass(result.level)}`}>
-                        {getStatusText(result.level)}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-white">
-                    <p className="text-gray-700 font-medium mb-2">{result.message}</p>
-                    <p className="text-gray-600 text-sm">{result.details}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-6">
-              <h3 className="font-semibold mb-2">Prochaines étapes</h3>
-              <p className="text-gray-600 mb-4">
-                Pour continuer votre processus d'immigration, nous vous recommandons de :
-              </p>
-              <ul className="list-disc pl-5 space-y-1 text-gray-600">
-                <li>Consulter notre simulateur détaillé pour une évaluation plus précise</li>
-                <li>Prendre rendez-vous avec un de nos consultants en immigration</li>
-                <li>Préparer vos documents justificatifs (diplômes, certificats de langue, etc.)</li>
-              </ul>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-              <Button type="button" onClick={resetForm} variant="outline">
-                Faire un nouveau test
-              </Button>
-              <Button asChild className="bg-brand-600 hover:bg-brand-700">
-                <a href="/contact">Prendre rendez-vous avec un consultant</a>
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {currentStep < 3 && (
-          <div className="flex justify-end">
-            <Button type="button" onClick={handleNextStep} className="bg-brand-600 hover:bg-brand-700">
-              Continuer
-            </Button>
-          </div>
-        )}
-        
-        {currentStep === 3 && (
-          <div className="flex justify-end">
-            <Button type="submit" className="bg-brand-600 hover:bg-brand-700">
-              Soumettre
-            </Button>
-          </div>
-        )}
-        
-        {currentStep > 1 && currentStep < 4 && (
-          <div className="flex justify-start mt-6">
-            <Button type="button" variant="outline" onClick={handlePrevStep}>
-              Précédent
-            </Button>
-          </div>
-        )}
-      </form>
-    </div>
-  );
-};
-
-export default EligibilityForm;
+                {getProjectOptions().map((option) => (
+                  <div key={option.id} className="flex items-center space-x-2
