@@ -25,7 +25,14 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
   const handleDropdownToggle = (dropdown: string) => {
+    // Si le dropdown cliqué est déjà actif, on le ferme
+    // Sinon, on ferme celui qui est actif et on ouvre le nouveau
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
+  };
+
+  // Fonction pour fermer tous les dropdowns
+  const closeAllDropdowns = () => {
+    setActiveDropdown(null);
   };
 
   const navLinks = [
@@ -75,6 +82,7 @@ const Navbar = () => {
           <Link 
             to="/" 
             className="text-2xl font-bold text-brand-600 flex items-center"
+            onClick={closeAllDropdowns}
           >
             <span className="mr-2">MigraPro</span>
           </Link>
@@ -101,7 +109,7 @@ const Navbar = () => {
                           key={item.name}
                           to={item.path}
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-brand-600"
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={closeAllDropdowns}
                         >
                           {item.name}
                         </Link>
@@ -114,6 +122,7 @@ const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
+                  onClick={closeAllDropdowns}
                 >
                   {link.name}
                 </Link>
@@ -122,6 +131,7 @@ const Navbar = () => {
             <Button 
               className="ml-4 bg-brand-600 hover:bg-brand-700 text-white" 
               size="sm"
+              onClick={closeAllDropdowns}
             >
               Test d'Éligibilité
             </Button>
@@ -172,7 +182,10 @@ const Navbar = () => {
                         key={item.name}
                         to={item.path}
                         className="block py-2 text-gray-600 hover:text-brand-600"
-                        onClick={toggleMenu}
+                        onClick={() => {
+                          closeAllDropdowns();
+                          toggleMenu();
+                        }}
                       >
                         {item.name}
                       </Link>
@@ -184,7 +197,10 @@ const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   className="block py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    closeAllDropdowns();
+                    toggleMenu();
+                  }}
                 >
                   {link.name}
                 </Link>
@@ -194,6 +210,10 @@ const Navbar = () => {
           <div className="mt-8">
             <Button 
               className="w-full bg-brand-600 hover:bg-brand-700 text-white"
+              onClick={() => {
+                closeAllDropdowns();
+                toggleMenu();
+              }}
             >
               Test d'Éligibilité
             </Button>
