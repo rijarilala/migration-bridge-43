@@ -192,7 +192,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Coaching Service Page
     'coaching_services': 'Services de Coaching',
     'coaching_subtitle': 'Développez votre potentiel et préparez-vous efficacement pour réussir dans votre parcours professionnel.',
-    'coaching_description': 'Nos coachs certifiés vous accompagnent dans le développement de vos compétences et la préparation aux défis professionnels.',
+    'coachings_description': 'Nos coachs certifiés vous accompagnent dans le développement de vos compétences et la préparation aux défis professionnels.',
     'interview_preparation': 'Préparation aux entretiens d\'embauche',
     'interview_preparation_description': 'Des conseils pratiques et des simulations pour réussir vos entretiens professionnels.',
     'coaching_workshops': 'Ateliers de coaching',
@@ -204,7 +204,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Orientation Service Page
     'counseling_orientation': 'Conseil et Orientation Professionnelle',
     'orientation_subtitle': 'Trouvez votre voie professionnelle grâce à nos services de conseil et d\'orientation personnalisés.',
-    'orientation_description': 'Nos conseillers vous aident à faire le point sur vos compétences, à identifier vos aspirations et à définir un plan d\'action concret pour votre avenir professionnel.',
+    'orientations_description': 'Nos conseillers vous aident à faire le point sur vos compétences, à identifier vos aspirations et à définir un plan d\'action concret pour votre avenir professionnel.',
     'career_counseling': 'Conseil en orientation professionnelle',
     'career_counseling_description': 'Accompagnement personnalisé pour définir votre parcours professionnel idéal.',
     'skills_market_analysis': 'Analyse des compétences et du marché',
@@ -435,7 +435,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Coaching Service Page
     'coaching_services': 'Coaching Services',
     'coaching_subtitle': 'Develop your potential and prepare effectively to succeed in your professional journey.',
-    'coaching_description': 'Our certified coaches support you in developing your skills and preparing for professional challenges.',
+    'coachings_description': 'Our certified coaches support you in developing your skills and preparing for professional challenges.',
     'interview_preparation': 'Job interview preparation',
     'interview_preparation_description': 'Practical advice and simulations to succeed in your professional interviews.',
     'coaching_workshops': 'Coaching workshops',
@@ -447,7 +447,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Orientation Service Page
     'counseling_orientation': 'Career Counseling and Guidance',
     'orientation_subtitle': 'Find your professional path through our personalized counseling and guidance services.',
-    'orientation_description': 'Our counselors help you assess your skills, identify your aspirations, and define a concrete action plan for your professional future.',
+    'orientations_description': 'Our counselors help you assess your skills, identify your aspirations, and define a concrete action plan for your professional future.',
     'career_counseling': 'Career counseling',
     'career_counseling_description': 'Personalized support to define your ideal career path.',
     'skills_market_analysis': 'Skills and market analysis',
