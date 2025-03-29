@@ -396,7 +396,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Immigration Service Page
     'immigration_services': 'Canadian Immigration Services',
     'immigration_services_description': 'Customized solutions to facilitate your immigration journey and integration in different provinces of Canada.',
-    'we_accompany_you': 'We accompany you at every stage of your immigration process, from initial assessment to successful integration in your Canadian province.',
+    'we_accompany_you': 'We are with you every step of the way, from initial assessment to successful integration into your Canadian province.',
     'eligibility_assessment': 'Eligibility assessment',
     'assessment_description': 'Evaluate your chances of Canadian immigration through our interactive form based on the criteria of official programs.',
     'file_preparation_title': 'File preparation',
