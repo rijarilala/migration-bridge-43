@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight, Award, Clock, Users, Globe, Check } from "lucide-react";
 import Stats from "@/components/Stats";
+import { useLanguage } from "@/context/LanguageContext";
 
 const About = () => {
+  const { t } = useLanguage();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -40,31 +43,31 @@ const About = () => {
   const values = [
     {
       icon: <Users size={24} className="text-brand-600" />,
-      title: "Expertise",
-      description: "Une équipe de professionnels qualifiés dans leurs domaines respectifs, offrant des conseils basés sur une expérience solide et une connaissance approfondie.",
+      title: t('expertise'),
+      description: t('expertise_description'),
     },
     {
       icon: <Award size={24} className="text-brand-600" />,
-      title: "Excellence",
-      description: "Un engagement constant envers la qualité et l'excellence dans tous nos services, avec un souci du détail et une attention particulière aux besoins de chaque client.",
+      title: t('excellence'),
+      description: t('excellence_description'),
     },
     {
       icon: <Globe size={24} className="text-brand-600" />,
-      title: "Inclusivité",
-      description: "Une approche inclusive qui respecte la diversité culturelle et s'adapte aux besoins spécifiques de chaque personne, quelle que soit son origine.",
+      title: t('inclusivity'),
+      description: t('inclusivity_description'),
     },
     {
       icon: <Clock size={24} className="text-brand-600" />,
-      title: "Efficacité",
-      description: "Des processus optimisés et une communication claire pour vous faire gagner du temps et faciliter vos démarches à chaque étape.",
+      title: t('efficiency'),
+      description: t('efficiency_description'),
     },
   ];
 
   const stats = [
-    { value: "10+", label: "Années d'expérience" },
-    { value: "1500+", label: "Clients satisfaits" },
-    { value: "95%", label: "Taux de réussite" },
-    { value: "25+", label: "Pays de destination" },
+    { value: "10+", label: t('years_experience') },
+    { value: "1500+", label: t('satisfied_clients') },
+    { value: "95%", label: t('success_rate') },
+    { value: "25+", label: t('destination_countries') },
   ];
 
   return (
@@ -74,11 +77,10 @@ const About = () => {
         <div className="max-w-5xl mx-auto mb-16">
           <div className="text-center mb-10">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              À Propos de MigraPro
+              {t('about_migrapro')}
             </h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              MigraPro accompagne les particuliers et les professionnels dans leurs projets d'immigration, 
-              de formation et de développement de carrière depuis plus de 10 ans.
+              {t('about_description')}
             </p>
           </div>
           
@@ -97,25 +99,21 @@ const About = () => {
         <div className="max-w-5xl mx-auto mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white shadow-sm border border-gray-100 rounded-xl p-6">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Notre Mission</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('our_mission')}</h2>
               <p className="text-gray-600 mb-4">
-                Faciliter l'accès à de nouvelles opportunités professionnelles et personnelles pour nos clients, 
-                en leur fournissant un accompagnement personnalisé et des outils adaptés à leurs besoins spécifiques.
+                {t('mission_text1')}
               </p>
               <p className="text-gray-600">
-                Nous nous engageons à simplifier les démarches complexes liées à l'immigration et au développement 
-                professionnel, en offrant un service humain, efficace et de qualité.
+                {t('mission_text2')}
               </p>
             </div>
             <div className="bg-white shadow-sm border border-gray-100 rounded-xl p-6">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Notre Vision</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('our_vision')}</h2>
               <p className="text-gray-600 mb-4">
-                Être reconnu comme un partenaire de confiance pour tous ceux qui souhaitent réaliser leurs projets 
-                d'immigration et de développement professionnel, en France et à l'international.
+                {t('vision_text1')}
               </p>
               <p className="text-gray-600">
-                Nous aspirons à créer un monde où les frontières ne sont plus des obstacles aux ambitions 
-                professionnelles et où chacun peut développer pleinement son potentiel.
+                {t('vision_text2')}
               </p>
             </div>
           </div>
@@ -123,17 +121,17 @@ const About = () => {
 
         {/* Stats */}
         <Stats
-          title="MigraPro en Chiffres"
-          description="Des résultats concrets qui témoignent de notre expertise et de notre engagement envers nos clients."
+          title={t('migrapro_numbers')}
+          description={t('numbers_description')}
           stats={stats}
         />
 
         {/* Our Values */}
         <div className="max-w-5xl mx-auto my-16">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Nos Valeurs</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('our_values')}</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ces valeurs guident chacune de nos actions et font partie intégrante de notre culture d'entreprise.
+              {t('values_description')}
             </p>
           </div>
           
@@ -153,9 +151,9 @@ const About = () => {
         {/* Our Team */}
         <div className="max-w-5xl mx-auto my-16">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Notre Équipe</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('our_team')}</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Des professionnels passionnés et expérimentés, dédiés à la réussite de vos projets.
+              {t('team_description')}
             </p>
           </div>
           
@@ -182,13 +180,13 @@ const About = () => {
         {/* CTA */}
         <div className="max-w-5xl mx-auto mt-16">
           <div className="bg-brand-50 rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Prêt à commencer votre projet avec nous ?</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('ready_to_start_with_us')}</h2>
             <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-              Contactez notre équipe dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous aider.
+              {t('contact_team')}
             </p>
             <Button asChild size="lg" className="bg-brand-600 hover:bg-brand-700">
               <Link to="/contact">
-                Nous contacter <ChevronRight className="ml-2 h-4 w-4" />
+                {t('contact_us')} <ChevronRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>

@@ -1,89 +1,93 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { MapPin } from 'lucide-react';
 
-// Moramanga, Madagascar coordinates
-const OFFICE_LOCATION = {
-  lng: 48.1974,
-  lat: -18.9297,
-  name: "MigraPro Cabinet - Moramanga"
-};
+// You'll need to set your Mapbox token as an environment variable
+// For development purposes, we're including it directly here, but in production
+// this should be loaded from environment variables
+const MAPBOX_TOKEN = 'pk.eyJ1IjoieW91ci11c2VybmFtZSIsImEiOiJjbHhhbXBsZS10b2tlbi0xMjM0NSJ9.example';
 
 const Map = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
-  const [mapError, setMapError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  
+  // Define the location coordinates and settings
+  const longitude = 47.737598; // Moramanga, Madagascar approximate longitude
+  const latitude = -18.939822; // Moramanga, Madagascar approximate latitude
+  const zoom = 14;
 
   useEffect(() => {
-    if (!mapContainer.current) return;
-
-    try {
-      // This should be replaced with your actual Mapbox token
-      // For security reasons, consider storing this in environment variables in production
-      mapboxgl.accessToken = 'pk.eyJ1IjoibG92YWJsZXNhbXBsZSIsImEiOiJjbHV1cTEyeWUwN2ZpMmpwZ3M5OWVqaWh0In0.1bAAJHpdcNVXTpEHW9qrKw';
-
-      // Check if WebGL is supported before initializing the map
-      if (!mapboxgl.supported()) {
-        setMapError("Your browser does not support Mapbox GL");
-        return;
-      }
-
-      map.current = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [OFFICE_LOCATION.lng, OFFICE_LOCATION.lat],
-        zoom: 13,
-        failIfMajorPerformanceCaveat: false // Be more tolerant of performance issues
-      });
-
-      // Handle map load error
-      map.current.on('error', (e) => {
-        console.error('Mapbox error:', e);
-        setMapError("Unable to load the map");
-      });
-
-      map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
-
-      // Add marker for office location
-      const marker = new mapboxgl.Marker({ color: '#8b5cf6' })
-        .setLngLat([OFFICE_LOCATION.lng, OFFICE_LOCATION.lat])
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 })
-            .setHTML(`<h3 class="text-sm font-medium">${OFFICE_LOCATION.name}</h3>`)
-        )
-        .addTo(map.current);
-
-      // Open popup by default
-      marker.togglePopup();
-
-      return () => {
-        map.current?.remove();
-      };
-    } catch (error) {
-      console.error("Map initialization error:", error);
-      setMapError("Unable to initialize the map");
+    // Check if mapboxgl is supported in this browser
+    if (!mapboxgl.supported()) {
+      setError('Your browser does not support Mapbox GL');
       return;
     }
+
+    // Don't initialize map if it already exists or container is missing
+    if (map.current || !mapContainer.current) return;
+
+    try {
+      // Set your access token
+      mapboxgl.accessToken = MAPBOX_TOKEN;
+
+      // Initialize map with error handling options
+      map.current = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [longitude, latitude],
+        zoom: zoom,
+        failIfMajorPerformanceCaveat: false, // Don't fail on performance issues
+      });
+
+      // Add navigation control (zoom buttons)
+      map.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+
+      // Add a marker for the location
+      new mapboxgl.Marker()
+        .setLngLat([longitude, latitude])
+        .addTo(map.current);
+
+      // Handle map load success
+      map.current.on('load', () => {
+        console.log('Map loaded successfully');
+      });
+
+      // Handle map error
+      map.current.on('error', (e) => {
+        console.error('Map error:', e);
+        setError('Error loading map');
+      });
+    } catch (err) {
+      console.error('Failed to initialize map:', err);
+      setError('Failed to initialize map. Try using a different browser or device.');
+    }
+
+    // Cleanup on unmount
+    return () => {
+      if (map.current) {
+        map.current.remove();
+        map.current = null;
+      }
+    };
   }, []);
 
-  // Fallback UI when map cannot be displayed
-  if (mapError) {
+  // If there's an error, show fallback content with location information and a link to Google Maps
+  if (error) {
     return (
-      <div className="relative rounded-lg overflow-hidden shadow-md border border-gray-100 bg-gray-50">
-        <div className="flex flex-col items-center justify-center p-8 h-64 text-center">
-          <MapPin size={32} className="text-brand-600 mb-3" />
-          <h3 className="text-lg font-medium text-gray-800 mb-2">{OFFICE_LOCATION.name}</h3>
-          <p className="text-gray-600 mb-3">Lot 108T Moramanga 514, Madagascar</p>
-          <p className="text-sm text-gray-500">{mapError}</p>
+      <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
+        <p className="text-red-600 mb-2">{error}</p>
+        <div className="flex flex-col gap-2">
+          <p className="font-medium">Notre Adresse:</p>
+          <p>Lot 108T Moramanga 514, Madagascar</p>
           <a 
-            href={`https://www.google.com/maps/search/?api=1&query=${OFFICE_LOCATION.lat},${OFFICE_LOCATION.lng}`}
+            href={`https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 text-brand-600 hover:text-brand-700 text-sm flex items-center"
+            className="text-brand-600 hover:text-brand-700 underline mt-2"
           >
-            View on Google Maps
+            Voir sur Google Maps
           </a>
         </div>
       </div>
@@ -91,12 +95,11 @@ const Map = () => {
   }
 
   return (
-    <div className="relative rounded-lg overflow-hidden shadow-md border border-gray-100">
-      <div ref={mapContainer} className="w-full h-64" />
-      <div className="absolute bottom-2 right-2 bg-white px-2 py-1 rounded text-xs text-gray-500">
-        MigraPro Cabinet - Moramanga, Madagascar
-      </div>
-    </div>
+    <div 
+      ref={mapContainer}
+      className="h-[300px] w-full rounded-lg overflow-hidden border border-gray-200"
+      style={{ backgroundColor: '#e5e7eb' }}
+    />
   );
 };
 
