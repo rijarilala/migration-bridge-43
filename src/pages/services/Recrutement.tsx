@@ -38,6 +38,7 @@ const Recrutement = () => {
       imageSrc="https://images.unsplash.com/photo-1578574577315-3fbeb0cecdc2?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
       ctaText={t('view_job_offers')}
+      accentColor="blue"
     />
   );
 };

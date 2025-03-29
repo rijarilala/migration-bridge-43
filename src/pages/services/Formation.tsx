@@ -38,6 +38,7 @@ const Formation = () => {
       imageSrc="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
       ctaText={t('request_quote')}
+      accentColor="brown"
     />
   );
 };
