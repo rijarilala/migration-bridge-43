@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -32,6 +33,12 @@ const EligibilityForm = () => {
     // Compétences linguistiques séparées
     frenchLevel: "",
     englishLevel: "",
+    
+    // Informations professionnelles (pour PSTQ)
+    profession: "",
+    professionType: "",
+    licenseInQuebec: "",
+    exceptionalTalent: "",
     
     // Informations supplémentaires
     jobOffer: "",
@@ -91,6 +98,15 @@ const EligibilityForm = () => {
     { id: "project-family", label: "Rejoindre un membre de ma famille", value: "family" },
   ];
 
+  // Nouvelles options pour le PSTQ
+  const professionTypeOptions: CheckboxOption[] = [
+    { id: "prof-highly-skilled", label: "Profession hautement qualifiée (volet 1)", value: "highly-skilled" },
+    { id: "prof-intermediate", label: "Profession intermédiaire/manuelle (volet 2)", value: "intermediate" },
+    { id: "prof-regulated", label: "Profession réglementée requérant un permis au Québec (volet 3)", value: "regulated" },
+    { id: "prof-exceptional", label: "Talent d'exception (volet 4)", value: "exceptional" },
+    { id: "prof-unknown", label: "Je ne sais pas", value: "unknown" },
+  ];
+
   const handleSingleOptionChange = (fieldName: string, value: string) => {
     setFormData({ ...formData, [fieldName]: value });
   };
@@ -146,6 +162,10 @@ const EligibilityForm = () => {
         return false;
       }
     } else if (currentStep === 2) {
+      if (!formData.professionType && formData.canadaProject === "work") {
+        toast.error("Veuillez sélectionner un type de profession");
+        return false;
+      }
       if (!formData.jobOffer) {
         toast.error("Veuillez indiquer si vous avez une offre d'emploi");
         return false;
@@ -321,118 +341,147 @@ const EligibilityForm = () => {
       level: expressLevel
     });
     
-    // Évaluation pour le PRTQ (Programme Régulier des Travailleurs Qualifiés - Québec)
-    let prtqPoints = 0;
-    let prtqMaxPoints = 100;
+    // Évaluation pour le PSTQ (Programme de sélection des travailleurs qualifiés - Québec)
+    let pstqPoints = 0;
+    let pstqMaxPoints = 100;
     
     // Points pour l'âge
     switch(formData.age) {
       case "18-29":
-        prtqPoints += 20;
+        pstqPoints += 20;
         break;
       case "30-39":
-        prtqPoints += 16;
+        pstqPoints += 16;
         break;
       case "40-44":
-        prtqPoints += 8;
+        pstqPoints += 8;
         break;
       case "45+":
-        prtqPoints += 0;
+        pstqPoints += 0;
         break;
     }
     
     // Points pour l'éducation
     switch(formData.education) {
       case "none":
-        prtqPoints += 0;
+        pstqPoints += 0;
         break;
       case "highschool":
-        prtqPoints += 4;
+        pstqPoints += 4;
         break;
       case "postsecondary":
-        prtqPoints += 8;
+        pstqPoints += 8;
         break;
       case "bachelor":
-        prtqPoints += 14;
+        pstqPoints += 14;
         break;
       case "master":
-        prtqPoints += 18;
+        pstqPoints += 18;
         break;
     }
     
     // Points pour l'expérience professionnelle
     switch(formData.experience) {
       case "none":
-        prtqPoints += 0;
+        pstqPoints += 0;
         break;
       case "less1":
-        prtqPoints += 4;
+        pstqPoints += 4;
         break;
       case "1-3":
-        prtqPoints += 8;
+        pstqPoints += 8;
         break;
       case "4-5":
-        prtqPoints += 12;
+        pstqPoints += 12;
         break;
       case "more5":
-        prtqPoints += 16;
+        pstqPoints += 16;
         break;
     }
     
     // Points pour les compétences linguistiques (Français priorisé pour le Québec)
     switch(formData.frenchLevel) {
       case "fluent":
-        prtqPoints += 20;
+        pstqPoints += 20;
         break;
       case "intermediate":
-        prtqPoints += 10;
+        pstqPoints += 10;
         break;
       case "none":
-        prtqPoints += 0;
+        pstqPoints += 0;
         break;
     }
     
     switch(formData.englishLevel) {
       case "fluent":
-        prtqPoints += 10;
+        pstqPoints += 10;
         break;
       case "intermediate":
-        prtqPoints += 5;
+        pstqPoints += 5;
         break;
       case "none":
-        prtqPoints += 0;
+        pstqPoints += 0;
         break;
     }
     
     // Bonus pour offre d'emploi
-    if (formData.jobOffer === "yes") prtqPoints += 16;
+    if (formData.jobOffer === "yes") pstqPoints += 16;
     
-    // Déterminer l'éligibilité pour le PRTQ
-    let prtqLevel: "high" | "medium" | "low" = "low";
-    let prtqMessage = "";
-    let prtqDetails = "";
+    // Bonus spécifiques pour les volets du PSTQ
+    let pstqVolet = "";
+    let pstqVoletBonus = 0;
     
-    const prtqPercentage = prtqPoints / prtqMaxPoints;
-    if (prtqPercentage >= 0.7) {
-      prtqLevel = "high";
-      prtqMessage = "✅ Vous semblez éligible au PRTQ, découvrez les prochaines étapes !";
-      prtqDetails = "Votre profil correspond aux critères du Programme Régulier des Travailleurs Qualifiés du Québec. Nous vous recommandons de poursuivre votre démarche avec un conseiller.";
-    } else if (prtqPercentage >= 0.5) {
-      prtqLevel = "medium";
-      prtqMessage = "⚠️ Votre profil pourrait convenir au PRTQ, contactez-nous pour une analyse approfondie.";
-      prtqDetails = "Vous avez un potentiel d'éligibilité au PRTQ, mais certains aspects de votre profil pourraient nécessiter une attention particulière.";
+    switch(formData.professionType) {
+      case "highly-skilled":
+        pstqVolet = "Volet 1 (Professions hautement qualifiées)";
+        if (formData.frenchLevel === "fluent") pstqVoletBonus += 10;
+        if (formData.education === "master" || formData.education === "bachelor") pstqVoletBonus += 10;
+        break;
+      case "intermediate":
+        pstqVolet = "Volet 2 (Professions intermédiaires et manuelles)";
+        if (formData.experience === "4-5" || formData.experience === "more5") pstqVoletBonus += 15;
+        break;
+      case "regulated":
+        pstqVolet = "Volet 3 (Professions réglementées)";
+        if (formData.licenseInQuebec === "yes") pstqVoletBonus += 20;
+        break;
+      case "exceptional":
+        pstqVolet = "Volet 4 (Talents d'exception)";
+        if (formData.exceptionalTalent === "yes") pstqVoletBonus += 25;
+        break;
+      default:
+        pstqVolet = "Non déterminé";
+        break;
+    }
+    
+    pstqPoints += pstqVoletBonus;
+    
+    // Déterminer l'éligibilité pour le PSTQ
+    let pstqLevel: "high" | "medium" | "low" = "low";
+    let pstqMessage = "";
+    let pstqDetails = "";
+    
+    const pstqPercentage = pstqPoints / pstqMaxPoints;
+    if (pstqPercentage >= 0.7) {
+      pstqLevel = "high";
+      pstqMessage = `✅ Vous semblez éligible au PSTQ ${pstqVolet}, découvrez les prochaines étapes !`;
+      pstqDetails = `Votre profil correspond aux critères du Programme de sélection des travailleurs qualifiés du Québec pour le ${pstqVolet}. Nous vous recommandons de poursuivre votre démarche avec un conseiller.`;
+    } else if (pstqPercentage >= 0.5) {
+      pstqLevel = "medium";
+      pstqMessage = `⚠️ Votre profil pourrait convenir au PSTQ ${pstqVolet}, contactez-nous pour une analyse approfondie.`;
+      pstqDetails = `Vous avez un potentiel d'éligibilité au PSTQ pour le ${pstqVolet}, mais certains aspects de votre profil pourraient nécessiter une attention particulière.`;
     } else {
-      prtqLevel = "low";
-      prtqMessage = "❌ Vous ne remplissez pas actuellement les critères du PRTQ, mais d'autres options peuvent être envisageables.";
-      prtqDetails = "Votre profil actuel ne correspond pas suffisamment aux critères du PRTQ. Un conseiller pourrait vous suggérer d'autres programmes.";
+      pstqLevel = "low";
+      pstqMessage = "❌ Vous ne remplissez pas actuellement les critères du PSTQ, mais d'autres options peuvent être envisageables.";
+      pstqDetails = "Votre profil actuel ne correspond pas suffisamment aux critères du PSTQ. Un conseiller pourrait vous suggérer d'autres programmes.";
     }
     
     results.push({
-      program: "Programme des Travailleurs Qualifiés (PRTQ)",
-      eligible: prtqLevel === "high",
-      message: prtqMessage,
-      details: prtqDetails,
-      level: prtqLevel
+      program: `Programme de sélection des travailleurs qualifiés (PSTQ) - ${pstqVolet}`,
+      eligible: pstqLevel === "high",
+      message: pstqMessage,
+      details: pstqDetails,
+      level: pstqLevel
     });
     
     // Évaluation pour le PEQ (Programme de l'Expérience Québécoise)
@@ -633,6 +682,67 @@ const EligibilityForm = () => {
             <h2 className="text-2xl font-semibold mb-6">Votre projet d'immigration</h2>
             
             <div className="space-y-4">
+              <h3 className="text-lg font-medium">Votre projet au Canada</h3>
+              <RadioGroup value={formData.canadaProject} onValueChange={(value) => handleSingleOptionChange("canadaProject", value)} className="grid gap-3">
+                {projectOptions.map((option) => (
+                  <div key={option.id} className="flex items-center space-x-2">
+                    <RadioGroupItem id={option.id} value={option.value} />
+                    <Label htmlFor={option.id}>{option.label}</Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+            
+            {formData.canadaProject === "work" && (
+              <div className="space-y-4 bg-blue-50 p-4 rounded-lg">
+                <h3 className="text-lg font-medium">Type de profession (PSTQ)</h3>
+                <p className="text-sm text-blue-800 mb-4">
+                  Le nouveau Programme de sélection des travailleurs qualifiés (PSTQ) du Québec comprend 4 volets distincts :
+                </p>
+                <RadioGroup value={formData.professionType} onValueChange={(value) => handleSingleOptionChange("professionType", value)} className="grid gap-3">
+                  {professionTypeOptions.map((option) => (
+                    <div key={option.id} className="flex items-center space-x-2">
+                      <RadioGroupItem id={option.id} value={option.value} />
+                      <Label htmlFor={option.id}>{option.label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+
+                {formData.professionType === "regulated" && (
+                  <div className="mt-4 p-3 bg-white rounded-lg">
+                    <h4 className="font-medium mb-2">Autorisation ou permis d'exercice</h4>
+                    <RadioGroup value={formData.licenseInQuebec} onValueChange={(value) => handleSingleOptionChange("licenseInQuebec", value)} className="grid gap-3">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem id="license-yes" value="yes" />
+                        <Label htmlFor="license-yes">J'ai ou je peux obtenir une autorisation d'exercice au Québec</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem id="license-no" value="no" />
+                        <Label htmlFor="license-no">Je n'ai pas d'autorisation d'exercice au Québec</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+                )}
+
+                {formData.professionType === "exceptional" && (
+                  <div className="mt-4 p-3 bg-white rounded-lg">
+                    <h4 className="font-medium mb-2">Talents d'exception</h4>
+                    <RadioGroup value={formData.exceptionalTalent} onValueChange={(value) => handleSingleOptionChange("exceptionalTalent", value)} className="grid gap-3">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem id="talent-yes" value="yes" />
+                        <Label htmlFor="talent-yes">J'ai une reconnaissance internationale dans mon domaine</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem id="talent-no" value="no" />
+                        <Label htmlFor="talent-no">Je n'ai pas de reconnaissance internationale</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <div className="space-y-4">
               <h3 className="text-lg font-medium">Offre d'emploi validée au Canada ?</h3>
               <RadioGroup value={formData.jobOffer} onValueChange={(value) => handleSingleOptionChange("jobOffer", value)} className="grid gap-3">
                 <div className="flex items-center space-x-2">
@@ -657,18 +767,6 @@ const EligibilityForm = () => {
                   <RadioGroupItem id="family-no" value="no" />
                   <Label htmlFor="family-no">Non</Label>
                 </div>
-              </RadioGroup>
-            </div>
-            
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium">Votre projet au Canada</h3>
-              <RadioGroup value={formData.canadaProject} onValueChange={(value) => handleSingleOptionChange("canadaProject", value)} className="grid gap-3">
-                {projectOptions.map((option) => (
-                  <div key={option.id} className="flex items-center space-x-2">
-                    <RadioGroupItem id={option.id} value={option.value} />
-                    <Label htmlFor={option.id}>{option.label}</Label>
-                  </div>
-                ))}
               </RadioGroup>
             </div>
           </div>

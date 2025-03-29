@@ -94,8 +94,8 @@ const Immigration = () => {
                 <div className="text-xs text-gray-500">Délai de traitement: 6 mois</div>
               </div>
               <div className="bg-white p-5 rounded-lg shadow-sm border border-blue-100">
-                <h3 className="font-semibold text-lg mb-2">Programme des Travailleurs Qualifiés (Québec)</h3>
-                <p className="text-sm text-gray-600 mb-4">Programme provincial pour immigrer spécifiquement au Québec.</p>
+                <h3 className="font-semibold text-lg mb-2">PSTQ (Québec)</h3>
+                <p className="text-sm text-gray-600 mb-4">Nouveau Programme de sélection des travailleurs qualifiés du Québec avec 4 volets distincts.</p>
                 <div className="text-xs text-gray-500">Délai de traitement: 12-24 mois</div>
               </div>
               <div className="bg-white p-5 rounded-lg shadow-sm border border-blue-100">
