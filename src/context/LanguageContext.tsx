@@ -38,6 +38,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       contact: 'Contact',
       about: 'About Us',
       faq: 'FAQ',
+      eligibility: 'Eligibility Check',
       
       // Hero Section
       hero_title: 'Your New Life in Canada Starts Here',
@@ -288,6 +289,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       contact: 'Contact',
       about: 'À Propos',
       faq: 'FAQ',
+      eligibility: 'Test d\'Éligibilité',
       
       // Section Héro
       hero_title: 'Votre nouvelle vie au Canada commence ici',
