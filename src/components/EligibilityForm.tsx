@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -23,8 +22,7 @@ interface EligibilityResult {
 }
 
 const EligibilityForm = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     // Informations personnelles
     age: "",
     education: "",
@@ -49,8 +47,10 @@ const EligibilityForm = () => {
     name: "",
     email: "",
     phone: "",
-  });
-  
+  };
+
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState(initialFormData);
   const [results, setResults] = useState<EligibilityResult[]>([]);
   const [bestProgram, setBestProgram] = useState<string>("");
 
@@ -78,7 +78,6 @@ const EligibilityForm = () => {
     { id: "exp-more5", label: "Plus de 5 ans", value: "more5" },
   ];
 
-  // Options pour les compétences linguistiques séparées
   const frenchLevelOptions: CheckboxOption[] = [
     { id: "french-none", label: "Aucune compétence", value: "none" },
     { id: "french-intermediate", label: "Niveau intermédiaire", value: "intermediate" },
@@ -98,7 +97,6 @@ const EligibilityForm = () => {
     { id: "project-family", label: "Rejoindre un membre de ma famille", value: "family" },
   ];
 
-  // Nouvelles options pour le PSTQ
   const professionTypeOptions: CheckboxOption[] = [
     { id: "prof-highly-skilled", label: "Profession hautement qualifiée (volet 1)", value: "highly-skilled" },
     { id: "prof-intermediate", label: "Profession intermédiaire/manuelle (volet 2)", value: "intermediate" },
@@ -137,6 +135,22 @@ const EligibilityForm = () => {
     if (formContainer) {
       formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  };
+
+  const resetForm = () => {
+    // Reset the form data to initial state
+    setFormData(initialFormData);
+    // Reset results
+    setResults([]);
+    setBestProgram("");
+    // Return to step 1
+    setCurrentStep(1);
+    // Scroll to the top of the form container smoothly
+    const formContainer = document.querySelector('.eligibility-form-container');
+    if (formContainer) {
+      formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    toast.success("Le formulaire a été réinitialisé");
   };
 
   const validateCurrentStep = () => {
@@ -873,7 +887,7 @@ const EligibilityForm = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-              <Button type="button" onClick={() => setCurrentStep(1)} variant="outline">
+              <Button type="button" onClick={resetForm} variant="outline">
                 Faire un nouveau test
               </Button>
               <Button asChild className="bg-brand-600 hover:bg-brand-700">
