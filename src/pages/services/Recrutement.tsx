@@ -32,7 +32,7 @@ const Recrutement = () => {
       subtitle="Trouvez l'emploi qui vous correspond grâce à notre plateforme de recrutement spécialisée."
       description="Notre équipe vous aide à naviguer dans le marché de l'emploi et à trouver des opportunités adaptées à votre profil et à vos ambitions."
       features={features}
-      imageSrc="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?q=80&w=1024&auto=format&fit=crop"
+      imageSrc="https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
       ctaText="Voir les offres d'emploi"
     />

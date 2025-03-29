@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Users, GraduationCap, Briefcase, MapPin, FileText } from "lucide-react";
@@ -106,7 +107,7 @@ const Index = () => {
         ctaLink="/eligibility"
         secondaryCtaText="Nos services"
         secondaryCtaLink="/services"
-        imageSrc="https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?auto=format&fit=crop&w=2000&q=80"
+        imageSrc="https://images.unsplash.com/photo-1524569970261-f3b491d7933b?auto=format&fit=crop&w=2000&q=80"
       />
 
       {/* Services section */}
@@ -138,7 +139,7 @@ const Index = () => {
         title="Immigration simplifiée"
         subtitle="Notre équipe d'experts vous guide à travers le processus d'immigration complexe, en vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
         features={featuresImmigration}
-        imageSrc="https://images.unsplash.com/photo-1592429823804-ff9a548f55fe?auto=format&fit=crop&w=1000&q=80"
+        imageSrc="https://images.unsplash.com/photo-1529386084422-5aded8767727?auto=format&fit=crop&w=1000&q=80"
       />
 
       {/* Stats section */}
@@ -200,7 +201,7 @@ const Index = () => {
             description: "Évaluation approfondie de vos compétences et identification des opportunités de carrière adaptées à votre profil."
           }
         ]}
-        imageSrc="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=80"
+        imageSrc="https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?auto=format&fit=crop&w=1000&q=80"
         reversed={true}
       />
 
