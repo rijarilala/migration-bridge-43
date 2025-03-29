@@ -4,6 +4,11 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "luc
 import Map from "./Map";
 
 const Footer = () => {
+  // Fonction pour gérer le défilement vers le haut lors des clics sur les liens
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="bg-gray-50 pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
@@ -35,32 +40,32 @@ const Footer = () => {
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Liens Rapides</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Accueil
                 </Link>
               </li>
               <li>
-                <Link to="/services/immigration" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/services/immigration" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Immigration
                 </Link>
               </li>
               <li>
-                <Link to="/services/formation" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/services/formation" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Formation
                 </Link>
               </li>
               <li>
-                <Link to="/services/coaching" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/services/coaching" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Coaching
                 </Link>
               </li>
               <li>
-                <Link to="/services/orientation" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/services/orientation" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Orientation Professionnelle
                 </Link>
               </li>
               <li>
-                <Link to="/services/recrutement" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/services/recrutement" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Recrutement
                 </Link>
               </li>
@@ -72,27 +77,27 @@ const Footer = () => {
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Ressources</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/blog" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/blog" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/faq" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/privacy" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Politique de Confidentialité
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/terms" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Conditions d'Utilisation
                 </Link>
               </li>
               <li>
-                <Link to="/sitemap" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <Link to="/sitemap" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   Plan du Site
                 </Link>
               </li>
@@ -139,17 +144,17 @@ const Footer = () => {
             <div className="mt-4 md:mt-0">
               <ul className="flex space-x-6">
                 <li>
-                  <Link to="/privacy" className="text-gray-500 hover:text-brand-600 text-sm transition-colors">
+                  <Link to="/privacy" onClick={handleLinkClick} className="text-gray-500 hover:text-brand-600 text-sm transition-colors">
                     Confidentialité
                   </Link>
                 </li>
                 <li>
-                  <Link to="/terms" className="text-gray-500 hover:text-brand-600 text-sm transition-colors">
+                  <Link to="/terms" onClick={handleLinkClick} className="text-gray-500 hover:text-brand-600 text-sm transition-colors">
                     Conditions
                   </Link>
                 </li>
                 <li>
-                  <Link to="/sitemap" className="text-gray-500 hover:text-brand-600 text-sm transition-colors">
+                  <Link to="/sitemap" onClick={handleLinkClick} className="text-gray-500 hover:text-brand-600 text-sm transition-colors">
                     Plan du site
                   </Link>
                 </li>

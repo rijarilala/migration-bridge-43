@@ -1,9 +1,17 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const Sitemap = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   const siteStructure = [
     {
       title: "Accueil",
@@ -93,7 +101,11 @@ const Sitemap = () => {
         <li key={index} className="ml-0">
           {item.path ? (
             <div className="mb-2">
-              <Link to={item.path} className="text-lg font-medium text-brand-600 hover:text-brand-700 transition-colors">
+              <Link 
+                to={item.path} 
+                onClick={handleLinkClick}
+                className="text-lg font-medium text-brand-600 hover:text-brand-700 transition-colors"
+              >
                 {item.title}
               </Link>
               {item.description && (
