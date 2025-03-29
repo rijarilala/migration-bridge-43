@@ -274,10 +274,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       office_quebec: 'Quebec City Office',
       office_toronto: 'Toronto Office',
       
-      // Footer links and copyright
-      copyright: 'All rights reserved.',
-      
-      // Additional translations for Footer
+      // Footer links and resources
       resources: 'Resources',
       about_description: 'Professional immigration services to guide you through your Canadian journey',
       all_rights_reserved: 'All rights reserved.',
@@ -332,7 +329,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       search_description: 'Personalized approach to finding positions that match your skills and goals.',
       offers_filtering: 'Offers Analysis',
       filtering_description: 'Expert review of job offers and employment contracts.',
-      view_job_offers: 'View Opportunities'
+      view_job_offers: 'View Opportunities',
+      
+      // Copyright
+      copyright: 'All rights reserved.'
     },
     fr: {
       // En-tête/Navigation
@@ -583,7 +583,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       office_quebec: 'Bureau de Québec',
       office_toronto: 'Bureau de Toronto',
       
-      // Footer links and copyright
+      // Footer links and resources
       resources: 'Ressources',
       about_description: 'Services professionnels d\'immigration pour vous guider tout au long de votre parcours canadien',
       all_rights_reserved: 'Tous droits réservés.',
@@ -664,3 +664,4 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 export const useLanguage = () => {
   return useContext(LanguageContext);
 };
+
