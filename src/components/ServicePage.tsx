@@ -16,7 +16,6 @@ interface ServicePageProps {
   imageSrc: string;
   ctaLink: string;
   ctaText: string;
-  accentColor?: "blue" | "brown";
 }
 
 const ServicePage = ({
@@ -27,17 +26,13 @@ const ServicePage = ({
   imageSrc,
   ctaLink,
   ctaText,
-  accentColor = "blue",
 }: ServicePageProps) => {
-  const accentClass = accentColor === "brown" ? "from-primary to-brown-600" : "from-primary to-accent";
-  const highlightClass = accentColor === "brown" ? "bg-brown-100 text-brown-800" : "bg-primary/10 text-primary";
-
   return (
     <div className="pt-24 pb-16 min-h-screen bg-gradient-to-b from-secondary/20 to-background/0">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className={`text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4 text-transparent bg-clip-text bg-gradient-to-r ${accentClass}`}>
+            <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4 gradient-text">
               {title}
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -52,7 +47,7 @@ const ServicePage = ({
                 <div className="space-y-4 my-6">
                   {features.map((feature, index) => (
                     <div key={index} className="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                      <div className={`mr-4 flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${highlightClass}`}>
+                      <div className="mr-4 text-primary flex-shrink-0 bg-primary/10 w-10 h-10 rounded-lg flex items-center justify-center">
                         {feature.icon}
                       </div>
                       <div>
@@ -62,7 +57,7 @@ const ServicePage = ({
                     </div>
                   ))}
                 </div>
-                <Button asChild className={`mt-4 px-6 py-2 rounded-lg ${accentColor === "brown" ? "bg-brown-700 hover:bg-brown-800" : "bg-primary hover:bg-primary/90"}`}>
+                <Button asChild className="mt-4 px-6 py-2 rounded-lg">
                   <Link to={ctaLink}>
                     {ctaText} <ChevronRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -70,7 +65,7 @@ const ServicePage = ({
               </div>
               <div className="order-first lg:order-last mb-6 lg:mb-0">
                 <div className="relative">
-                  <div className={`absolute inset-0 bg-gradient-to-r ${accentClass} rounded-xl rotate-2 blur-sm`}></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl rotate-2 blur-sm"></div>
                   <img
                     src={imageSrc}
                     alt={title}

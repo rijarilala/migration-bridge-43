@@ -9,43 +9,40 @@ import CTA from "@/components/CTA";
 import Stats from "@/components/Stats";
 import TestimonialCard from "@/components/TestimonialCard";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/context/LanguageContext";
 
 const Index = () => {
-  const { t } = useLanguage();
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const services = [
     {
-      title: t('immigration'),
-      description: t('immigration_description'),
+      title: "Immigration",
+      description: "Accompagnement personnalisé pour toutes vos démarches d'immigration et d'intégration dans votre pays d'accueil.",
       icon: <MapPin size={24} />,
       link: "/services/immigration"
     },
     {
-      title: t('formation'),
-      description: t('formation_description'),
+      title: "Formation",
+      description: "Création de CV et lettres de motivation adaptés aux standards professionnels avec des modèles personnalisés.",
       icon: <FileText size={24} />,
       link: "/services/formation"
     },
     {
-      title: t('coaching'),
-      description: t('coaching_description'),
+      title: "Coaching",
+      description: "Préparation aux entretiens d'embauche et développement des compétences professionnelles.",
       icon: <Users size={24} />,
       link: "/services/coaching"
     },
     {
-      title: t('orientation'),
-      description: t('orientation_description'),
+      title: "Orientation Professionnelle",
+      description: "Conseil personnalisé pour orienter votre carrière selon vos compétences et le marché du travail.",
       icon: <GraduationCap size={24} />,
       link: "/services/orientation"
     },
     {
-      title: t('recrutement'),
-      description: t('recrutement_description'),
+      title: "Recrutement",
+      description: "Accès aux offres d'emploi et mise en relation avec des entreprises qui recrutent dans votre domaine.",
       icon: <Briefcase size={24} />,
       link: "/services/recrutement"
     }
@@ -54,18 +51,18 @@ const Index = () => {
   const featuresImmigration = [
     {
       icon: <FileText size={24} />,
-      title: t('file_preparation'),
-      description: t('file_description')
+      title: "Préparation du dossier",
+      description: "Nous vous guidons dans la préparation et la vérification de tous les documents nécessaires pour votre dossier d'immigration."
     },
     {
       icon: <MapPin size={24} />,
-      title: t('procedure_follow'),
-      description: t('procedure_description')
+      title: "Suivi des procédures",
+      description: "Bénéficiez d'un suivi personnalisé de votre dossier avec des mises à jour régulières sur l'avancement de vos démarches."
     },
     {
       icon: <Users size={24} />,
-      title: t('local_integration'),
-      description: t('local_description')
+      title: "Intégration locale",
+      description: "Nous vous aidons à vous intégrer dans votre pays d'accueil grâce à des conseils culturels et administratifs."
     }
   ];
 
@@ -94,21 +91,21 @@ const Index = () => {
   ];
 
   const stats = [
-    { value: "10k+", label: t('clients_helped') },
-    { value: "95%", label: t('satisfaction_rate') },
-    { value: "85%", label: t('accepted_files') },
-    { value: "30+", label: t('expertise_countries') }
+    { value: "10k+", label: "Clients accompagnés" },
+    { value: "95%", label: "Taux de satisfaction" },
+    { value: "85%", label: "Dossiers acceptés" },
+    { value: "30+", label: "Pays d'expertise" }
   ];
 
   return (
     <div className="min-h-screen">
       {/* Hero section */}
       <Hero
-        title={t('hero_title')}
-        subtitle={t('hero_subtitle')}
-        ctaText={t('cta_eligibility')}
+        title="Votre partenaire pour un nouveau départ"
+        subtitle="Nous vous accompagnons dans toutes vos démarches d'immigration, de formation et d'intégration professionnelle."
+        ctaText="Tester mon éligibilité"
         ctaLink="/eligibility"
-        secondaryCtaText={t('cta_services')}
+        secondaryCtaText="Nos services"
         secondaryCtaLink="/services"
         imageSrc="https://images.unsplash.com/photo-1524569970261-f3b491d7933b?auto=format&fit=crop&w=2000&q=80"
       />
@@ -117,9 +114,9 @@ const Index = () => {
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('our_services')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
             <p className="text-lg text-gray-600">
-              {t('services_description')}
+              Découvrez notre gamme complète de services conçus pour vous accompagner dans votre projet d'immigration et de développement professionnel.
             </p>
           </div>
 
@@ -139,16 +136,16 @@ const Index = () => {
 
       {/* Feature section - Immigration */}
       <FeatureSection
-        title={t('immigration_simplified')}
-        subtitle={t('immigration_subtitle')}
+        title="Immigration simplifiée"
+        subtitle="Notre équipe d'experts vous guide à travers le processus d'immigration complexe, en vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
         features={featuresImmigration}
         imageSrc="https://images.unsplash.com/photo-1529386084422-5aded8767727?auto=format&fit=crop&w=1000&q=80"
       />
 
       {/* Stats section */}
       <Stats
-        title={t('our_impact')}
-        description={t('impact_description')}
+        title="Notre impact en chiffres"
+        description="Des résultats qui parlent d'eux-mêmes. Découvrez comment nous avons aidé des milliers de personnes à réaliser leurs projets d'immigration et d'évolution professionnelle."
         stats={stats}
       />
 
@@ -156,9 +153,9 @@ const Index = () => {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('testimonials_title')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ce que nos clients disent</h2>
             <p className="text-lg text-gray-600">
-              {t('testimonials_description')}
+              Découvrez les témoignages de personnes qui ont fait confiance à nos services et ont réussi leur projet.
             </p>
           </div>
 
@@ -177,7 +174,7 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Button asChild variant="outline">
-              <Link to="/testimonials">{t('more_testimonials')}</Link>
+              <Link to="/testimonials">Voir plus de témoignages</Link>
             </Button>
           </div>
         </div>
@@ -185,23 +182,23 @@ const Index = () => {
 
       {/* Feature section - Career coaching */}
       <FeatureSection
-        title={t('develop_career')}
-        subtitle={t('career_subtitle')}
+        title="Développez votre carrière"
+        subtitle="Nos services de coaching vous aident à révéler votre potentiel professionnel et à vous démarquer sur le marché du travail concurrentiel."
         features={[
           {
             icon: <Briefcase size={24} />,
-            title: t('interview_prep'),
-            description: t('interview_description')
+            title: "Préparation aux entretiens",
+            description: "Des séances de simulation d'entretien personnalisées pour vous aider à gagner en confiance et à maîtriser votre discours."
           },
           {
             icon: <FileText size={24} />,
-            title: t('cv_letter'),
-            description: t('cv_description')
+            title: "CV et Lettre de motivation",
+            description: "Création de documents professionnels qui mettent en valeur vos compétences et attirent l'attention des recruteurs."
           },
           {
             icon: <GraduationCap size={24} />,
-            title: t('skills_assessment'),
-            description: t('skills_description')
+            title: "Bilan de compétences",
+            description: "Évaluation approfondie de vos compétences et identification des opportunités de carrière adaptées à votre profil."
           }
         ]}
         imageSrc="https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?auto=format&fit=crop&w=1000&q=80"
@@ -210,11 +207,11 @@ const Index = () => {
 
       {/* CTA section */}
       <CTA
-        title={t('ready_to_start')}
-        description={t('cta_description')}
-        buttonText={t('cta_eligibility')}
+        title="Prêt à démarrer votre projet?"
+        description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé."
+        buttonText="Tester mon éligibilité"
         buttonLink="/eligibility"
-        secondaryButtonText={t('contact_us')}
+        secondaryButtonText="Contactez-nous"
         secondaryButtonLink="/contact"
       />
     </div>
