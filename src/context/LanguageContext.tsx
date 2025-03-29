@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 type Language = 'fr' | 'en';
@@ -34,6 +33,12 @@ const translations: Record<Language, Record<string, string>> = {
     'privacy': 'Politique de Confidentialité',
     'terms': 'Conditions d\'Utilisation',
     'sitemap': 'Plan du Site',
+    'resources': 'Ressources',
+    'our_location': 'Notre Emplacement',
+    'all_rights_reserved': 'Tous droits réservés.',
+    'privacy_short': 'Confidentialité',
+    'terms_short': 'Conditions',
+    'sitemap_short': 'Plan du site',
     
     // Common
     'language': 'Langue',
@@ -277,6 +282,12 @@ const translations: Record<Language, Record<string, string>> = {
     'privacy': 'Privacy Policy',
     'terms': 'Terms of Use',
     'sitemap': 'Sitemap',
+    'resources': 'Resources',
+    'our_location': 'Our Location',
+    'all_rights_reserved': 'All rights reserved.',
+    'privacy_short': 'Privacy',
+    'terms_short': 'Terms',
+    'sitemap_short': 'Sitemap',
     
     // Common
     'language': 'Language',
