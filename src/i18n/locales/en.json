@@ -1,0 +1,175 @@
+
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "about": "About",
+    "contact": "Contact",
+    "eligibility": "Eligibility Test"
+  },
+  "services": {
+    "immigration": "Immigration",
+    "training": "Training",
+    "coaching": "Coaching",
+    "professionalOrientation": "Professional Orientation",
+    "recruitment": "Recruitment"
+  },
+  "home": {
+    "hero": {
+      "title": "Your partner for a new beginning",
+      "subtitle": "We support you in all your immigration, training and professional integration procedures.",
+      "ctaTest": "Test my eligibility",
+      "ctaServices": "Our services"
+    },
+    "services": {
+      "title": "Our Services",
+      "description": "Discover our complete range of services designed to support you in your immigration and professional development project."
+    },
+    "immigration": {
+      "title": "Simplified immigration",
+      "subtitle": "Our team of experts guides you through the complex immigration process, offering you tailored support to make your life project abroad a reality."
+    },
+    "stats": {
+      "title": "Our impact in numbers",
+      "description": "Results that speak for themselves. Discover how we've helped thousands of people achieve their immigration and career development goals.",
+      "clients": "Clients supported",
+      "satisfaction": "Satisfaction rate",
+      "cases": "Accepted cases",
+      "countries": "Countries of expertise"
+    },
+    "testimonials": {
+      "title": "What our clients say",
+      "description": "Discover testimonials from people who have trusted our services and succeeded in their project.",
+      "more": "See more testimonials"
+    },
+    "career": {
+      "title": "Develop your career",
+      "subtitle": "Our coaching services help you reveal your professional potential and stand out in the competitive job market.",
+      "interviews": "Interview preparation",
+      "interviewsDesc": "Personalized interview simulation sessions to help you gain confidence and master your speech.",
+      "cv": "CV and Cover letter",
+      "cvDesc": "Creation of professional documents that highlight your skills and attract the attention of recruiters.",
+      "skills": "Skills assessment",
+      "skillsDesc": "In-depth assessment of your skills and identification of career opportunities suited to your profile."
+    },
+    "cta": {
+      "title": "Ready to start your project?",
+      "description": "Take the first step towards your new life. Test your eligibility or contact us for personalized support.",
+      "test": "Test my eligibility",
+      "contact": "Contact us"
+    }
+  },
+  "footer": {
+    "company": "MigraPro",
+    "companyDesc": "Professional solutions for immigration, training and recruitment.",
+    "quickLinks": "Quick Links",
+    "resources": "Resources",
+    "contact": "Contact",
+    "location": "Our Location",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "sitemap": "Sitemap"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "effectiveDate": "Effective date",
+    "introduction": "Introduction",
+    "introText": "Welcome to MigraPro's Privacy Policy. We respect your privacy and are committed to protecting the personal information you provide to us. This policy explains how we collect, use, disclose and protect your information when you use our services.",
+    "infoCollected": "Information we collect",
+    "infoCollectedText": "We may collect the following types of information:",
+    "infoCollectedItems": [
+      "Personal information: name, address, email, phone number",
+      "Identification information: copies of passport, visa, work permit",
+      "Professional information: CV, employment history, qualifications",
+      "Financial information: bank statements, proof of funds",
+      "Navigation data: IP address, browser type, pages visited"
+    ],
+    "infoUse": "How we use your information",
+    "infoUseText": "We use your personal information to:",
+    "infoUseItems": [
+      "Provide our immigration consulting, training and recruitment services",
+      "Prepare and submit immigration applications on your behalf",
+      "Contact you regarding your case or our services",
+      "Improve our services and your user experience",
+      "Comply with legal and regulatory obligations"
+    ],
+    "infoSharing": "Sharing your information",
+    "infoSharingText": "We do not sell your personal information to third parties. We may share your information with:",
+    "infoSharingItems": [
+      "Immigration and government authorities as part of your application",
+      "Our service partners who help us provide our services",
+      "Legal experts or consultants involved in your case"
+    ],
+    "dataSecurity": "Data security",
+    "dataSecurityText": "We implement appropriate security measures to protect your personal information against unauthorized access, modification, disclosure or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.",
+    "dataRetention": "Data retention",
+    "dataRetentionText": "We retain your personal information for as long as necessary for the purposes for which it was collected, including to satisfy any legal, accounting, or reporting requirements.",
+    "yourRights": "Your rights",
+    "yourRightsText": "Depending on your place of residence, you may have the right to:",
+    "yourRightsItems": [
+      "Access the personal information we hold about you",
+      "Correct inaccurate information",
+      "Delete your personal information",
+      "Restrict or object to the processing of your information",
+      "Request the portability of your data"
+    ],
+    "policyChanges": "Changes to this policy",
+    "policyChangesText": "We may update this privacy policy from time to time. The most recent version will always be available on our website with the effective date.",
+    "contactUs": "Contact us",
+    "contactUsText": "If you have any questions regarding this privacy policy or our data processing practices, please contact us at:"
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "effectiveDate": "Effective date",
+    "acceptance": "Acceptance of terms",
+    "acceptanceText": "By accessing or using MigraPro's services, you agree to be bound by these Terms of Use. If you do not accept these terms, please do not use our services.",
+    "services": "Description of services",
+    "servicesText": "MigraPro offers immigration consulting, professional training, coaching, career guidance and recruitment services. Our services include, but are not limited to:",
+    "servicesItems": [
+      "Immigration eligibility consultation and assessment",
+      "Preparation and submission of immigration applications",
+      "Professional and language training services",
+      "Employment preparation coaching",
+      "Professional orientation services",
+      "Recruitment assistance and professional placement"
+    ],
+    "fees": "Fees and payment",
+    "feesText": "Fees for our services are communicated before any service begins. Payment must be made according to the agreed terms. All fees are non-refundable unless otherwise specified in a specific written agreement.",
+    "clientObligations": "Client obligations",
+    "clientObligationsText": "By using our services, you agree to:",
+    "clientObligationsItems": [
+      "Provide truthful, accurate and complete information",
+      "Promptly update your information if changes occur",
+      "Actively collaborate on your case",
+      "Respect agreed deadlines for providing documents",
+      "Comply with applicable laws and regulations"
+    ],
+    "liability": "Limitation of liability",
+    "liabilityText": "MigraPro strives to provide quality services, but cannot guarantee the favorable outcome of any immigration application or administrative procedure. We are not responsible for decisions made by governmental or immigration authorities.",
+    "liabilityText2": "Our liability is limited to providing the services agreed upon in our contract. In no case shall our liability exceed the amount paid for our services.",
+    "intellectualProperty": "Intellectual property",
+    "intellectualPropertyText": "All content on our website and our documents are protected by copyright and other intellectual property rights. You may not reproduce, distribute, modify or create derivative works without our prior written permission.",
+    "confidentiality": "Confidentiality",
+    "confidentialityText": "We are committed to protecting your personal information in accordance with our Privacy Policy. By using our services, you consent to the collection and use of your information as described in this policy.",
+    "termination": "Termination",
+    "terminationText": "We reserve the right to suspend or terminate our services at any time, for any reason. You may also terminate your engagement with us, subject to the specific conditions of your contract.",
+    "modifications": "Modifications to terms",
+    "modificationsText": "We may modify these terms of use at any time. Modifications will take effect upon their publication on our website. It is your responsibility to regularly review these terms.",
+    "law": "Applicable law and jurisdiction",
+    "lawText": "These terms of use are governed by the laws of Madagascar. Any dispute arising from or related to these terms will be submitted to the exclusive jurisdiction of the courts of Madagascar.",
+    "contactUs": "Contact us",
+    "contactUsText": "If you have any questions regarding these terms of use, please contact us at:"
+  },
+  "sitemap": {
+    "title": "Sitemap",
+    "description": "This page presents the complete structure of the MigraPro website to help you navigate and quickly find the information you are looking for."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home"
+  }
+}

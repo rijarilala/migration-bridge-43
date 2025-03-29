@@ -1,8 +1,11 @@
 
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
 const Privacy = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -10,100 +13,94 @@ const Privacy = () => {
   return (
     <>
       <Helmet>
-        <title>Politique de Confidentialité | MigraPro</title>
+        <title>{t('privacy.title')} | MigraPro</title>
       </Helmet>
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4 md:px-6">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Politique de Confidentialité
+            {t('privacy.title')}
           </h1>
           <div className="bg-white shadow-md rounded-lg p-6 md:p-8">
             <div className="prose prose-sm md:prose-base max-w-none text-gray-700">
               <p className="mb-4">
-                <strong>Date d'entrée en vigueur:</strong> 1er Septembre 2023
+                <strong>{t('privacy.effectiveDate')}:</strong> 1er Septembre 2023
               </p>
               
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                1. Introduction
+                1. {t('privacy.introduction')}
               </h2>
               <p className="mb-4">
-                Bienvenue sur la Politique de Confidentialité de MigraPro. Nous respectons votre vie privée et nous engageons à protéger les informations personnelles que vous nous fournissez. Cette politique explique comment nous recueillons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez nos services.
+                {t('privacy.introText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                2. Informations que nous collectons
+                2. {t('privacy.infoCollected')}
               </h2>
-              <p className="mb-2">Nous pouvons recueillir les types d'informations suivants:</p>
+              <p className="mb-2">{t('privacy.infoCollectedText')}</p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                <li>Informations personnelles: nom, adresse, email, numéro de téléphone</li>
-                <li>Informations d'identification: copies de passeport, visa, permis de travail</li>
-                <li>Informations professionnelles: CV, historique d'emploi, qualifications</li>
-                <li>Informations financières: relevés bancaires, preuves de fonds</li>
-                <li>Données de navigation: adresse IP, type de navigateur, pages visitées</li>
+                {t('privacy.infoCollectedItems', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                3. Comment nous utilisons vos informations
+                3. {t('privacy.infoUse')}
               </h2>
-              <p className="mb-2">Nous utilisons vos informations personnelles pour:</p>
+              <p className="mb-2">{t('privacy.infoUseText')}</p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                <li>Fournir nos services de conseil en immigration, formation et recrutement</li>
-                <li>Préparer et soumettre des demandes d'immigration en votre nom</li>
-                <li>Vous contacter concernant votre dossier ou nos services</li>
-                <li>Améliorer nos services et votre expérience utilisateur</li>
-                <li>Se conformer aux obligations légales et réglementaires</li>
+                {t('privacy.infoUseItems', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                4. Partage de vos informations
+                4. {t('privacy.infoSharing')}
               </h2>
               <p className="mb-4">
-                Nous ne vendons pas vos informations personnelles à des tiers. Nous pouvons partager vos informations avec:
+                {t('privacy.infoSharingText')}
               </p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                <li>Les autorités d'immigration et gouvernementales dans le cadre de votre demande</li>
-                <li>Nos partenaires de service qui nous aident à fournir nos services</li>
-                <li>Des experts juridiques ou consultants impliqués dans votre dossier</li>
+                {t('privacy.infoSharingItems', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                5. Sécurité des données
+                5. {t('privacy.dataSecurity')}
               </h2>
               <p className="mb-4">
-                Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos informations personnelles contre l'accès non autorisé, la modification, la divulgation ou la destruction. Cependant, aucune méthode de transmission sur Internet ou de stockage électronique n'est totalement sécurisée.
+                {t('privacy.dataSecurityText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                6. Conservation des données
+                6. {t('privacy.dataRetention')}
               </h2>
               <p className="mb-4">
-                Nous conservons vos informations personnelles aussi longtemps que nécessaire pour les finalités pour lesquelles elles ont été collectées, y compris pour satisfaire à toute exigence légale, comptable ou de déclaration.
+                {t('privacy.dataRetentionText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                7. Vos droits
+                7. {t('privacy.yourRights')}
               </h2>
-              <p className="mb-2">Selon votre lieu de résidence, vous pouvez avoir le droit de:</p>
+              <p className="mb-2">{t('privacy.yourRightsText')}</p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                <li>Accéder aux informations personnelles que nous détenons sur vous</li>
-                <li>Corriger les informations inexactes</li>
-                <li>Supprimer vos informations personnelles</li>
-                <li>Restreindre ou s'opposer au traitement de vos informations</li>
-                <li>Demander la portabilité de vos données</li>
+                {t('privacy.yourRightsItems', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                8. Modifications de cette politique
+                8. {t('privacy.policyChanges')}
               </h2>
               <p className="mb-4">
-                Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. La version la plus récente sera toujours disponible sur notre site web avec la date d'entrée en vigueur.
+                {t('privacy.policyChangesText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                9. Nous contacter
+                9. {t('privacy.contactUs')}
               </h2>
               <p className="mb-4">
-                Si vous avez des questions concernant cette politique de confidentialité ou nos pratiques de traitement des données, veuillez nous contacter à:
+                {t('privacy.contactUsText')}
               </p>
               <div className="mb-4">
                 <p><strong>MigraPro</strong></p>

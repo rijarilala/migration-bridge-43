@@ -2,8 +2,11 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
 const Sitemap = () => {
+  const { t } = useTranslation();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,62 +17,62 @@ const Sitemap = () => {
 
   const siteStructure = [
     {
-      title: "Accueil",
+      title: t('navigation.home'),
       path: "/",
-      description: "Page d'accueil de MigraPro"
+      description: t('sitemap.description')
     },
     {
-      title: "Services",
+      title: t('navigation.services'),
       children: [
         {
-          title: "Immigration",
+          title: t('services.immigration'),
           path: "/services/immigration",
           description: "Services de conseil et d'accompagnement en immigration"
         },
         {
-          title: "Formation",
+          title: t('services.training'),
           path: "/services/formation",
           description: "Formation professionnelle et linguistique"
         },
         {
-          title: "Coaching",
+          title: t('services.coaching'),
           path: "/services/coaching",
           description: "Coaching personnalisé pour votre projet"
         },
         {
-          title: "Orientation Professionnelle",
+          title: t('services.professionalOrientation'),
           path: "/services/orientation",
           description: "Services d'orientation et de développement de carrière"
         },
         {
-          title: "Recrutement",
+          title: t('services.recruitment'),
           path: "/services/recrutement",
           description: "Services de recrutement et placement professionnel"
         }
       ]
     },
     {
-      title: "À Propos",
+      title: t('navigation.about'),
       path: "/about",
       description: "Informations sur MigraPro, notre mission et notre équipe"
     },
     {
-      title: "Blog",
+      title: t('navigation.blog'),
       path: "/blog",
       description: "Articles et actualités sur l'immigration et nos services"
     },
     {
-      title: "FAQ",
+      title: t('navigation.faq'),
       path: "/faq",
       description: "Questions fréquemment posées sur nos services"
     },
     {
-      title: "Contact",
+      title: t('navigation.contact'),
       path: "/contact",
       description: "Nos coordonnées et formulaire de contact"
     },
     {
-      title: "Test d'Éligibilité",
+      title: t('navigation.eligibility'),
       path: "/eligibility",
       description: "Évaluez votre éligibilité pour l'immigration"
     },
@@ -77,17 +80,17 @@ const Sitemap = () => {
       title: "Informations légales",
       children: [
         {
-          title: "Politique de Confidentialité",
+          title: t('privacy.title'),
           path: "/privacy",
           description: "Notre politique de confidentialité et protection des données"
         },
         {
-          title: "Conditions d'Utilisation",
+          title: t('terms.title'),
           path: "/terms",
           description: "Conditions générales d'utilisation de nos services"
         },
         {
-          title: "Plan du Site",
+          title: t('sitemap.title'),
           path: "/sitemap",
           description: "Structure complète du site web"
         }
@@ -134,16 +137,16 @@ const Sitemap = () => {
   return (
     <>
       <Helmet>
-        <title>Plan du Site | MigraPro</title>
+        <title>{t('sitemap.title')} | MigraPro</title>
       </Helmet>
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4 md:px-6">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Plan du Site
+            {t('sitemap.title')}
           </h1>
           <div className="bg-white shadow-md rounded-lg p-6 md:p-8">
             <p className="text-gray-700 mb-8">
-              Cette page vous présente la structure complète du site de MigraPro pour vous aider à naviguer et à trouver rapidement l'information que vous recherchez.
+              {t('sitemap.description')}
             </p>
             
             <div className="mt-8">

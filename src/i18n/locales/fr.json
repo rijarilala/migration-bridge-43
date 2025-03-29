@@ -1,0 +1,175 @@
+
+{
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "about": "À Propos",
+    "contact": "Contact",
+    "eligibility": "Test d'Éligibilité"
+  },
+  "services": {
+    "immigration": "Immigration",
+    "training": "Formation",
+    "coaching": "Coaching",
+    "professionalOrientation": "Orientation Professionnelle",
+    "recruitment": "Recrutement"
+  },
+  "home": {
+    "hero": {
+      "title": "Votre partenaire pour un nouveau départ",
+      "subtitle": "Nous vous accompagnons dans toutes vos démarches d'immigration, de formation et d'intégration professionnelle.",
+      "ctaTest": "Tester mon éligibilité",
+      "ctaServices": "Nos services"
+    },
+    "services": {
+      "title": "Nos Services",
+      "description": "Découvrez notre gamme complète de services conçus pour vous accompagner dans votre projet d'immigration et de développement professionnel."
+    },
+    "immigration": {
+      "title": "Immigration simplifiée",
+      "subtitle": "Notre équipe d'experts vous guide à travers le processus d'immigration complexe, en vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
+    },
+    "stats": {
+      "title": "Notre impact en chiffres",
+      "description": "Des résultats qui parlent d'eux-mêmes. Découvrez comment nous avons aidé des milliers de personnes à réaliser leurs projets d'immigration et d'évolution professionnelle.",
+      "clients": "Clients accompagnés",
+      "satisfaction": "Taux de satisfaction",
+      "cases": "Dossiers acceptés",
+      "countries": "Pays d'expertise"
+    },
+    "testimonials": {
+      "title": "Ce que nos clients disent",
+      "description": "Découvrez les témoignages de personnes qui ont fait confiance à nos services et ont réussi leur projet.",
+      "more": "Voir plus de témoignages"
+    },
+    "career": {
+      "title": "Développez votre carrière",
+      "subtitle": "Nos services de coaching vous aident à révéler votre potentiel professionnel et à vous démarquer sur le marché du travail concurrentiel.",
+      "interviews": "Préparation aux entretiens",
+      "interviewsDesc": "Des séances de simulation d'entretien personnalisées pour vous aider à gagner en confiance et à maîtriser votre discours.",
+      "cv": "CV et Lettre de motivation",
+      "cvDesc": "Création de documents professionnels qui mettent en valeur vos compétences et attirent l'attention des recruteurs.",
+      "skills": "Bilan de compétences",
+      "skillsDesc": "Évaluation approfondie de vos compétences et identification des opportunités de carrière adaptées à votre profil."
+    },
+    "cta": {
+      "title": "Prêt à démarrer votre projet?",
+      "description": "Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé.",
+      "test": "Tester mon éligibilité",
+      "contact": "Contactez-nous"
+    }
+  },
+  "footer": {
+    "company": "MigraPro",
+    "companyDesc": "Solutions professionnelles pour l'immigration, la formation et le recrutement.",
+    "quickLinks": "Liens Rapides",
+    "resources": "Ressources",
+    "contact": "Contact",
+    "location": "Notre Emplacement",
+    "rights": "Tous droits réservés.",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "sitemap": "Plan du site"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "effectiveDate": "Date d'entrée en vigueur",
+    "introduction": "Introduction",
+    "introText": "Bienvenue sur la Politique de Confidentialité de MigraPro. Nous respectons votre vie privée et nous engageons à protéger les informations personnelles que vous nous fournissez. Cette politique explique comment nous recueillons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez nos services.",
+    "infoCollected": "Informations que nous collectons",
+    "infoCollectedText": "Nous pouvons recueillir les types d'informations suivants:",
+    "infoCollectedItems": [
+      "Informations personnelles: nom, adresse, email, numéro de téléphone",
+      "Informations d'identification: copies de passeport, visa, permis de travail",
+      "Informations professionnelles: CV, historique d'emploi, qualifications",
+      "Informations financières: relevés bancaires, preuves de fonds",
+      "Données de navigation: adresse IP, type de navigateur, pages visitées"
+    ],
+    "infoUse": "Comment nous utilisons vos informations",
+    "infoUseText": "Nous utilisons vos informations personnelles pour:",
+    "infoUseItems": [
+      "Fournir nos services de conseil en immigration, formation et recrutement",
+      "Préparer et soumettre des demandes d'immigration en votre nom",
+      "Vous contacter concernant votre dossier ou nos services",
+      "Améliorer nos services et votre expérience utilisateur",
+      "Se conformer aux obligations légales et réglementaires"
+    ],
+    "infoSharing": "Partage de vos informations",
+    "infoSharingText": "Nous ne vendons pas vos informations personnelles à des tiers. Nous pouvons partager vos informations avec:",
+    "infoSharingItems": [
+      "Les autorités d'immigration et gouvernementales dans le cadre de votre demande",
+      "Nos partenaires de service qui nous aident à fournir nos services",
+      "Des experts juridiques ou consultants impliqués dans votre dossier"
+    ],
+    "dataSecurity": "Sécurité des données",
+    "dataSecurityText": "Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos informations personnelles contre l'accès non autorisé, la modification, la divulgation ou la destruction. Cependant, aucune méthode de transmission sur Internet ou de stockage électronique n'est totalement sécurisée.",
+    "dataRetention": "Conservation des données",
+    "dataRetentionText": "Nous conservons vos informations personnelles aussi longtemps que nécessaire pour les finalités pour lesquelles elles ont été collectées, y compris pour satisfaire à toute exigence légale, comptable ou de déclaration.",
+    "yourRights": "Vos droits",
+    "yourRightsText": "Selon votre lieu de résidence, vous pouvez avoir le droit de:",
+    "yourRightsItems": [
+      "Accéder aux informations personnelles que nous détenons sur vous",
+      "Corriger les informations inexactes",
+      "Supprimer vos informations personnelles",
+      "Restreindre ou s'opposer au traitement de vos informations",
+      "Demander la portabilité de vos données"
+    ],
+    "policyChanges": "Modifications de cette politique",
+    "policyChangesText": "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. La version la plus récente sera toujours disponible sur notre site web avec la date d'entrée en vigueur.",
+    "contactUs": "Nous contacter",
+    "contactUsText": "Si vous avez des questions concernant cette politique de confidentialité ou nos pratiques de traitement des données, veuillez nous contacter à:"
+  },
+  "terms": {
+    "title": "Conditions d'Utilisation",
+    "effectiveDate": "Date d'entrée en vigueur",
+    "acceptance": "Acceptation des conditions",
+    "acceptanceText": "En accédant ou en utilisant les services de MigraPro, vous acceptez d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser nos services.",
+    "services": "Description des services",
+    "servicesText": "MigraPro offre des services de conseil en immigration, formation professionnelle, coaching, orientation professionnelle et recrutement. Nos services comprennent, sans s'y limiter:",
+    "servicesItems": [
+      "Consultation et évaluation d'éligibilité pour l'immigration",
+      "Préparation et soumission de demandes d'immigration",
+      "Services de formation professionnelle et linguistique",
+      "Coaching pour la préparation à l'emploi",
+      "Services d'orientation professionnelle",
+      "Assistance au recrutement et placement professionnel"
+    ],
+    "fees": "Frais et paiement",
+    "feesText": "Les frais pour nos services sont communiqués avant le début de toute prestation. Le paiement doit être effectué selon les modalités convenues. Tous les frais sont non remboursables, sauf indication contraire dans un accord écrit spécifique.",
+    "clientObligations": "Obligations du client",
+    "clientObligationsText": "En utilisant nos services, vous acceptez de:",
+    "clientObligationsItems": [
+      "Fournir des informations véridiques, précises et complètes",
+      "Mettre à jour rapidement vos informations en cas de changement",
+      "Collaborer activement dans le cadre de votre dossier",
+      "Respecter les délais convenus pour la fourniture de documents",
+      "Respecter les lois et réglementations applicables"
+    ],
+    "liability": "Limitation de responsabilité",
+    "liabilityText": "MigraPro s'efforce de fournir des services de qualité, mais ne peut garantir l'issue favorable de toute demande d'immigration ou procédure administrative. Nous ne sommes pas responsables des décisions prises par les autorités gouvernementales ou d'immigration.",
+    "liabilityText2": "Notre responsabilité se limite à la fourniture des services convenus dans le cadre de notre contrat. En aucun cas, notre responsabilité ne dépassera le montant payé pour nos services.",
+    "intellectualProperty": "Propriété intellectuelle",
+    "intellectualPropertyText": "Tous les contenus présents sur notre site web et nos documents sont protégés par des droits d'auteur et autres droits de propriété intellectuelle. Vous ne pouvez pas reproduire, distribuer, modifier ou créer des œuvres dérivées sans notre autorisation écrite préalable.",
+    "confidentiality": "Confidentialité",
+    "confidentialityText": "Nous nous engageons à protéger vos informations personnelles conformément à notre Politique de Confidentialité. En utilisant nos services, vous consentez à la collecte et à l'utilisation de vos informations comme décrit dans cette politique.",
+    "termination": "Résiliation",
+    "terminationText": "Nous nous réservons le droit de suspendre ou de mettre fin à nos services à tout moment, pour quelque raison que ce soit. Vous pouvez également mettre fin à votre engagement avec nous, sous réserve des conditions spécifiques de votre contrat.",
+    "modifications": "Modifications des conditions",
+    "modificationsText": "Nous pouvons modifier ces conditions d'utilisation à tout moment. Les modifications prendront effet dès leur publication sur notre site web. Il est de votre responsabilité de consulter régulièrement ces conditions.",
+    "law": "Loi applicable et juridiction",
+    "lawText": "Ces conditions d'utilisation sont régies par les lois de Madagascar. Tout litige découlant de ou lié à ces conditions sera soumis à la juridiction exclusive des tribunaux de Madagascar.",
+    "contactUs": "Nous contacter",
+    "contactUsText": "Si vous avez des questions concernant ces conditions d'utilisation, veuillez nous contacter à:"
+  },
+  "sitemap": {
+    "title": "Plan du Site",
+    "description": "Cette page vous présente la structure complète du site de MigraPro pour vous aider à naviguer et à trouver rapidement l'information que vous recherchez."
+  },
+  "notFound": {
+    "title": "Page non trouvée",
+    "description": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil"
+  }
+}

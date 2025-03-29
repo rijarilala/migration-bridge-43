@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +14,7 @@ import {
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,34 +40,34 @@ const Navbar = () => {
 
   const navLinks = [
     { 
-      name: "Accueil", 
+      name: t('navigation.home'), 
       path: "/" 
     },
     { 
-      name: "Services",
+      name: t('navigation.services'),
       dropdown: true,
       items: [
-        { name: "Immigration", path: "/services/immigration" },
-        { name: "Formation", path: "/services/formation" },
-        { name: "Coaching", path: "/services/coaching" },
-        { name: "Orientation Professionnelle", path: "/services/orientation" },
-        { name: "Recrutement", path: "/services/recrutement" }
+        { name: t('services.immigration'), path: "/services/immigration" },
+        { name: t('services.training'), path: "/services/formation" },
+        { name: t('services.coaching'), path: "/services/coaching" },
+        { name: t('services.professionalOrientation'), path: "/services/orientation" },
+        { name: t('services.recruitment'), path: "/services/recrutement" }
       ]
     },
     { 
-      name: "Blog", 
+      name: t('navigation.blog'), 
       path: "/blog" 
     },
     { 
-      name: "FAQ", 
+      name: t('navigation.faq'), 
       path: "/faq" 
     },
     { 
-      name: "À Propos", 
+      name: t('navigation.about'), 
       path: "/about" 
     },
     { 
-      name: "Contact", 
+      name: t('navigation.contact'), 
       path: "/contact" 
     }
   ];
@@ -127,13 +130,17 @@ const Navbar = () => {
                 className="ml-4 bg-brand-600 hover:bg-brand-700 text-white" 
                 size="sm"
               >
-                Test d'Éligibilité
+                {t('navigation.eligibility')}
               </Button>
             </Link>
+            <div className="ml-2">
+              <LanguageSwitcher />
+            </div>
           </nav>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher />
             <button
               onClick={toggleMenu}
               className="p-2 rounded-md text-gray-700"
@@ -196,7 +203,7 @@ const Navbar = () => {
               className="w-full bg-brand-600 hover:bg-brand-700 text-white"
               onClick={() => handleNavigate('/eligibility')}
             >
-              Test d'Éligibilité
+              {t('navigation.eligibility')}
             </Button>
           </div>
         </nav>

@@ -1,8 +1,11 @@
 
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
 const Terms = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -10,110 +13,105 @@ const Terms = () => {
   return (
     <>
       <Helmet>
-        <title>Conditions d'Utilisation | MigraPro</title>
+        <title>{t('terms.title')} | MigraPro</title>
       </Helmet>
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4 md:px-6">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Conditions d'Utilisation
+            {t('terms.title')}
           </h1>
           <div className="bg-white shadow-md rounded-lg p-6 md:p-8">
             <div className="prose prose-sm md:prose-base max-w-none text-gray-700">
               <p className="mb-4">
-                <strong>Date d'entrée en vigueur:</strong> 1er Septembre 2023
+                <strong>{t('terms.effectiveDate')}:</strong> 1er Septembre 2023
               </p>
               
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                1. Acceptation des conditions
+                1. {t('terms.acceptance')}
               </h2>
               <p className="mb-4">
-                En accédant ou en utilisant les services de MigraPro, vous acceptez d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser nos services.
+                {t('terms.acceptanceText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                2. Description des services
+                2. {t('terms.services')}
               </h2>
               <p className="mb-4">
-                MigraPro offre des services de conseil en immigration, formation professionnelle, coaching, orientation professionnelle et recrutement. Nos services comprennent, sans s'y limiter:
+                {t('terms.servicesText')}
               </p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                <li>Consultation et évaluation d'éligibilité pour l'immigration</li>
-                <li>Préparation et soumission de demandes d'immigration</li>
-                <li>Services de formation professionnelle et linguistique</li>
-                <li>Coaching pour la préparation à l'emploi</li>
-                <li>Services d'orientation professionnelle</li>
-                <li>Assistance au recrutement et placement professionnel</li>
+                {t('terms.servicesItems', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                3. Frais et paiement
+                3. {t('terms.fees')}
               </h2>
               <p className="mb-4">
-                Les frais pour nos services sont communiqués avant le début de toute prestation. Le paiement doit être effectué selon les modalités convenues. Tous les frais sont non remboursables, sauf indication contraire dans un accord écrit spécifique.
+                {t('terms.feesText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                4. Obligations du client
+                4. {t('terms.clientObligations')}
               </h2>
-              <p className="mb-2">En utilisant nos services, vous acceptez de:</p>
+              <p className="mb-2">{t('terms.clientObligationsText')}</p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                <li>Fournir des informations véridiques, précises et complètes</li>
-                <li>Mettre à jour rapidement vos informations en cas de changement</li>
-                <li>Collaborer activement dans le cadre de votre dossier</li>
-                <li>Respecter les délais convenus pour la fourniture de documents</li>
-                <li>Respecter les lois et réglementations applicables</li>
+                {t('terms.clientObligationsItems', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                5. Limitation de responsabilité
+                5. {t('terms.liability')}
               </h2>
               <p className="mb-4">
-                MigraPro s'efforce de fournir des services de qualité, mais ne peut garantir l'issue favorable de toute demande d'immigration ou procédure administrative. Nous ne sommes pas responsables des décisions prises par les autorités gouvernementales ou d'immigration.
+                {t('terms.liabilityText')}
               </p>
               <p className="mb-4">
-                Notre responsabilité se limite à la fourniture des services convenus dans le cadre de notre contrat. En aucun cas, notre responsabilité ne dépassera le montant payé pour nos services.
-              </p>
-
-              <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                6. Propriété intellectuelle
-              </h2>
-              <p className="mb-4">
-                Tous les contenus présents sur notre site web et nos documents sont protégés par des droits d'auteur et autres droits de propriété intellectuelle. Vous ne pouvez pas reproduire, distribuer, modifier ou créer des œuvres dérivées sans notre autorisation écrite préalable.
+                {t('terms.liabilityText2')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                7. Confidentialité
+                6. {t('terms.intellectualProperty')}
               </h2>
               <p className="mb-4">
-                Nous nous engageons à protéger vos informations personnelles conformément à notre Politique de Confidentialité. En utilisant nos services, vous consentez à la collecte et à l'utilisation de vos informations comme décrit dans cette politique.
+                {t('terms.intellectualPropertyText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                8. Résiliation
+                7. {t('terms.confidentiality')}
               </h2>
               <p className="mb-4">
-                Nous nous réservons le droit de suspendre ou de mettre fin à nos services à tout moment, pour quelque raison que ce soit. Vous pouvez également mettre fin à votre engagement avec nous, sous réserve des conditions spécifiques de votre contrat.
+                {t('terms.confidentialityText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                9. Modifications des conditions
+                8. {t('terms.termination')}
               </h2>
               <p className="mb-4">
-                Nous pouvons modifier ces conditions d'utilisation à tout moment. Les modifications prendront effet dès leur publication sur notre site web. Il est de votre responsabilité de consulter régulièrement ces conditions.
+                {t('terms.terminationText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                10. Loi applicable et juridiction
+                9. {t('terms.modifications')}
               </h2>
               <p className="mb-4">
-                Ces conditions d'utilisation sont régies par les lois de Madagascar. Tout litige découlant de ou lié à ces conditions sera soumis à la juridiction exclusive des tribunaux de Madagascar.
+                {t('terms.modificationsText')}
               </p>
 
               <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
-                11. Nous contacter
+                10. {t('terms.law')}
               </h2>
               <p className="mb-4">
-                Si vous avez des questions concernant ces conditions d'utilisation, veuillez nous contacter à:
+                {t('terms.lawText')}
+              </p>
+
+              <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-3">
+                11. {t('terms.contactUs')}
+              </h2>
+              <p className="mb-4">
+                {t('terms.contactUsText')}
               </p>
               <div className="mb-4">
                 <p><strong>MigraPro</strong></p>
