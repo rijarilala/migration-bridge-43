@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { toast } from "sonner";
+import Map from "@/components/Map";
 
 const Contact = () => {
   useEffect(() => {
@@ -66,7 +67,7 @@ const Contact = () => {
     {
       icon: <Phone className="w-5 h-5 text-brand-600" />,
       title: "Téléphone",
-      details: ["+33 1 23 45 67 89"],
+      details: ["+261 34 05 350 68"],
     },
     {
       icon: <Mail className="w-5 h-5 text-brand-600" />,
@@ -76,7 +77,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-5 h-5 text-brand-600" />,
       title: "Adresse",
-      details: ["123 Avenue de l'Immigration", "75000 Paris, France"],
+      details: ["Lot 108T Moramanga 514", "Madagascar"],
     },
     {
       icon: <Clock className="w-5 h-5 text-brand-600" />,
@@ -160,6 +161,11 @@ const Contact = () => {
                       </svg>
                     </a>
                   </div>
+                </div>
+                
+                <div className="mt-8">
+                  <h3 className="font-medium text-gray-900 mb-3">Notre Emplacement</h3>
+                  <Map />
                 </div>
               </div>
             </div>

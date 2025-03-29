@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import Map from "./Map";
 
 const Footer = () => {
   return (
@@ -100,13 +101,13 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={20} className="mr-2 text-brand-600 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600">
-                  123 Avenue de l'Immigration<br />75000 Paris, France
+                  Lot 108T Moramanga 514<br />Madagascar
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-2 text-brand-600" />
-                <a href="tel:+33123456789" className="text-gray-600 hover:text-brand-600 transition-colors">
-                  +33 1 23 45 67 89
+                <a href="tel:+261340535068" className="text-gray-600 hover:text-brand-600 transition-colors">
+                  +261 34 05 350 68
                 </a>
               </li>
               <li className="flex items-center">
@@ -117,6 +118,12 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+        </div>
+        
+        {/* Map Section */}
+        <div className="mt-12 mb-8">
+          <h3 className="text-xl font-semibold text-gray-800 mb-4">Notre Emplacement</h3>
+          <Map />
         </div>
         
         <div className="border-t border-gray-200 mt-12 pt-8">
