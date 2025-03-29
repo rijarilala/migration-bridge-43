@@ -152,8 +152,8 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Immigration Service Page
     'immigration_services': 'Services d\'Immigration Canadienne',
-    'immigration_services_description': 'Des solutions personnalisées pour faciliter votre parcours d\'immigration et votre intégration dans les différentes provinces du Canada.',
-    'we_accompany_you': 'Nous vous accompagnons à chaque étape de votre processus d\'immigration, de l\'évaluation initiale à l\'intégration réussie dans votre province canadienne.',
+    'immigration_services_subtitle': 'Des solutions personnalisées pour faciliter votre parcours d\'immigration et votre intégration dans les différentes provinces du Canada.',
+    'immigration_services_desc': 'Nous vous accompagnons à chaque étape de votre processus d\'immigration, de l\'évaluation initiale à l\'intégration réussie dans votre province canadienne.',
     'eligibility_assessment': 'Évaluation d\'admissibilité',
     'assessment_description': 'Évaluez vos chances d\'immigration canadienne grâce à notre formulaire interactif basé sur les critères des programmes officiels.',
     'file_preparation_title': 'Préparation du dossier',
@@ -395,8 +395,8 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Immigration Service Page
     'immigration_services': 'Canadian Immigration Services',
-    'immigration_services_description': 'Customized solutions to facilitate your immigration journey and integration in different provinces of Canada.',
-    'we_accompany_you': 'We are with you every step of the way, from initial assessment to successful integration into your Canadian province.',
+    'immigration_services_subtitle': 'Customized solutions to facilitate your immigration journey and integration in different provinces of Canada.',
+    'immigration_services_desc': 'We are with you every step of the way, from initial assessment to successful integration into your Canadian province.',
     'eligibility_assessment': 'Eligibility assessment',
     'assessment_description': 'Evaluate your chances of Canadian immigration through our interactive form based on the criteria of official programs.',
     'file_preparation_title': 'File preparation',

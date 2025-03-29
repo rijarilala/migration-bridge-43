@@ -38,6 +38,7 @@ const Coaching = () => {
       imageSrc="https://images.unsplash.com/photo-1633008808000-ce86bff6c1ed?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
       ctaText={t('make_appointment')}
+      accentColor="brown"
     />
   );
 };
