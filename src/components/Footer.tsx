@@ -139,19 +139,28 @@ const Footer = () => {
             <div className="mt-4 md:mt-0">
               <ul className="flex space-x-6">
                 <li>
-                  <Link to="/privacy" className="text-gray-500 hover:text-brand-600 text-sm transition-colors">
+                  <a 
+                    href="/privacy" 
+                    className="text-gray-500 hover:text-brand-600 text-sm transition-colors"
+                  >
                     Confidentialité
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/terms" className="text-gray-500 hover:text-brand-600 text-sm transition-colors">
+                  <a 
+                    href="/terms" 
+                    className="text-gray-500 hover:text-brand-600 text-sm transition-colors"
+                  >
                     Conditions
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/sitemap" className="text-gray-500 hover:text-brand-600 text-sm transition-colors">
+                  <a 
+                    href="/sitemap" 
+                    className="text-gray-500 hover:text-brand-600 text-sm transition-colors"
+                  >
                     Plan du site
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
