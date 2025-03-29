@@ -254,6 +254,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       
       form_reset_success: 'Form reset successfully. You can start a new evaluation.',
       
+      // About page
       about_title: 'About Us',
       about_subtitle: 'Guiding Your Immigration Journey with Expertise and Care',
       
@@ -562,10 +563,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       
       form_reset_success: 'Formulaire réinitialisé avec succès. Vous pouvez commencer une nouvelle évaluation.',
       
+      // About page
       about_title: 'À Propos de Nous',
       about_subtitle: 'Guider votre parcours d\'immigration avec expertise et attention',
       
-      // Page de contact
+      // Contact page
       contact_title: 'Contactez-Nous',
       contact_subtitle: 'Entrez en contact avec nos experts en immigration',
       send_message: 'Envoyer le message',
@@ -581,10 +583,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       office_quebec: 'Bureau de Québec',
       office_toronto: 'Bureau de Toronto',
       
-      // Liens de pied de page et copyright
-      copyright: 'Tous droits réservés.',
-      
-      // Traductions supplémentaires pour le Footer
+      // Footer links and copyright
       resources: 'Ressources',
       about_description: 'Services professionnels d\'immigration pour vous guider tout au long de votre parcours canadien',
       all_rights_reserved: 'Tous droits réservés.',
@@ -593,7 +592,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       sitemap_short: 'Plan du site',
       our_location: 'Notre emplacement',
       
-      // Page coaching
+      // Coaching page
       coaching_services: 'Services de Coaching de Carrière',
       coaching_subtitle: 'Orientation professionnelle pour réussir dans le milieu de travail canadien',
       coaching_description: 'Nos services de coaching de carrière vous aident à naviguer dans la culture de travail canadienne, à améliorer vos compétences et à maximiser votre potentiel professionnel.',
@@ -605,7 +604,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       personalized_coaching_description: 'Orientation de carrière personnalisée basée sur vos objectifs et besoins spécifiques.',
       make_appointment: 'Prendre Rendez-vous',
       
-      // Page formation
+      // Formation page
       training_services: 'Services de Formation Professionnelle',
       training_subtitle: 'Développement de compétences pour le marché du travail canadien',
       training_description: 'Nos programmes de formation vous préparent au succès dans le milieu de travail canadien avec des compétences pratiques et des connaissances essentielles.',
@@ -617,7 +616,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       training_offers_description: 'Accédez à des cours de formation spécialisés pour divers domaines professionnels.',
       request_quote: 'Demander un Devis',
       
-      // Page orientation
+      // Orientation page
       counseling_orientation: 'Services d\'Orientation et d\'Intégration',
       orientation_subtitle: 'Accompagnement pour une intégration réussie au Canada',
       orientation_description: 'Nos services d\'établissement aident les nouveaux arrivants à naviguer dans les systèmes canadiens, la culture et la vie quotidienne pour une transition en douceur.',
@@ -629,7 +628,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       skills_assessment_description: 'Évaluation de vos compétences et qualifications dans le contexte canadien.',
       request_appointment: 'Réserver une Consultation',
       
-      // Page recrutement
+      // Recruitment page
       recruitment_services: 'Services de Recrutement',
       recruitment_subtitle: 'Mise en relation des talents avec les employeurs canadiens',
       recruitment_description: 'Nos services de recrutement comblent le fossé entre les professionnels internationaux et les entreprises canadiennes à la recherche de talents qualifiés.',
@@ -639,7 +638,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       search_description: 'Approche personnalisée pour trouver des postes correspondant à vos compétences et objectifs.',
       offers_filtering: 'Analyse des Offres',
       filtering_description: 'Examen expert des offres d\'emploi et des contrats de travail.',
-      view_job_offers: 'Voir les Opportunités'
+      view_job_offers: 'Voir les Opportunités',
+      
+      // Copyright
+      copyright: 'Tous droits réservés.'
     }
   };
 
@@ -662,4 +664,3 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 export const useLanguage = () => {
   return useContext(LanguageContext);
 };
-
