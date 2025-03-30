@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "sonner";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface CheckboxOption {
   id: string;
@@ -22,6 +22,7 @@ interface EligibilityResult {
 }
 
 const EligibilityForm = () => {
+  const navigate = useNavigate();
   const initialFormData = {
     age: "",
     education: "",
@@ -127,6 +128,11 @@ const EligibilityForm = () => {
       formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     toast.success("Le formulaire a été réinitialisé");
+  };
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo(0, 0);
   };
 
   const validateCurrentStep = () => {
@@ -705,10 +711,8 @@ const EligibilityForm = () => {
                   <Button onClick={resetForm} variant="outline">
                     Refaire l'évaluation
                   </Button>
-                  <Button asChild>
-                    <Link to="/contact">
-                      Prendre rendez-vous
-                    </Link>
+                  <Button onClick={() => handleNavigation("/contact")}>
+                    Prendre rendez-vous
                   </Button>
                 </div>
               </div>

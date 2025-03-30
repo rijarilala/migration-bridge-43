@@ -3,13 +3,19 @@ import { useEffect } from "react";
 import ServicePage from "@/components/ServicePage";
 import { FileCheck, Users, BarChart, Globe, Briefcase, CheckCircle2, HeartHandshake, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Immigration = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleNavigateToEligibility = () => {
+    navigate("/eligibility");
+    window.scrollTo(0, 0);
+  };
   const features = [
     {
       title: "Évaluation d'admissibilité",
@@ -69,10 +75,8 @@ const Immigration = () => {
                     </div>
                   ))}
                 </div>
-                <Button asChild className="mt-4">
-                  <Link to="/eligibility">
-                    Tester mon admissibilité
-                  </Link>
+                <Button onClick={handleNavigateToEligibility} className="mt-4">
+                  Tester mon admissibilité
                 </Button>
               </div>
               <div className="order-first lg:order-last mb-6 lg:mb-0">
@@ -111,10 +115,8 @@ const Immigration = () => {
               </div>
             </div>
             <div className="text-center mt-8">
-              <Button asChild variant="outline">
-                <Link to="/eligibility">
-                  Évaluer mon admissibilité maintenant
-                </Link>
+            <Button onClick={handleNavigateToEligibility} variant="outline">
+                Évaluer mon admissibilité maintenant
               </Button>
             </div>
           </div>
