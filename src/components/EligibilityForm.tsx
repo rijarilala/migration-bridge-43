@@ -1,24 +1,16 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 interface CheckboxOption {
   id: string;
   label: string;
   value: string;
-}
-
-interface EligibilityResult {
-  program: string;
-  eligible: boolean;
-  message: string;
-  details: string;
-  level: "high" | "medium" | "low";
 }
 
 const EligibilityForm = () => {
@@ -28,15 +20,14 @@ const EligibilityForm = () => {
     education: "",
     experience: "",
     
-    // Compétences linguistiques séparées
+    // Compétences linguistiques
     frenchLevel: "",
     englishLevel: "",
     
-    // Informations professionnelles (pour PSTQ)
+    // Informations professionnelles
     profession: "",
     professionType: "",
     licenseInQuebec: "",
-    exceptionalTalent: "",
     
     // Informations supplémentaires
     jobOffer: "",
@@ -51,8 +42,8 @@ const EligibilityForm = () => {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState(initialFormData);
-  const [results, setResults] = useState<EligibilityResult[]>([]);
-  const [bestProgram, setBestProgram] = useState<string>("");
+  const [isEligible, setIsEligible] = useState<boolean | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   // Options pour les cases à cocher
   const ageOptions: CheckboxOption[] = [
@@ -98,19 +89,14 @@ const EligibilityForm = () => {
   ];
 
   const professionTypeOptions: CheckboxOption[] = [
-    { id: "prof-highly-skilled", label: "Profession hautement qualifiée (volet 1)", value: "highly-skilled" },
-    { id: "prof-intermediate", label: "Profession intermédiaire/manuelle (volet 2)", value: "intermediate" },
-    { id: "prof-regulated", label: "Profession réglementée requérant un permis au Québec (volet 3)", value: "regulated" },
-    { id: "prof-exceptional", label: "Talent d'exception (volet 4)", value: "exceptional" },
-    { id: "prof-unknown", label: "Je ne sais pas", value: "unknown" },
+    { id: "prof-highly-skilled", label: "Profession hautement qualifiée", value: "highly-skilled" },
+    { id: "prof-intermediate", label: "Profession intermédiaire/manuelle", value: "intermediate" },
+    { id: "prof-regulated", label: "Profession réglementée", value: "regulated" },
+    { id: "prof-other", label: "Autre profession", value: "other" },
   ];
 
   const handleSingleOptionChange = (fieldName: string, value: string) => {
     setFormData({ ...formData, [fieldName]: value });
-  };
-
-  const handleCheckboxChange = (fieldName: string, checked: boolean) => {
-    setFormData({ ...formData, [fieldName]: checked });
   };
 
   const handleTextChange = (fieldName: string, value: string) => {
@@ -141,8 +127,7 @@ const EligibilityForm = () => {
     // Reset the form data to initial state
     setFormData(initialFormData);
     // Reset results
-    setResults([]);
-    setBestProgram("");
+    setIsEligible(null);
     // Return to step 1
     setCurrentStep(1);
     // Scroll to the top of the form container smoothly
@@ -210,377 +195,85 @@ const EligibilityForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateCurrentStep()) {
-      // Calculer les résultats d'éligibilité
-      const eligibilityResults = calculateEligibility();
-      setResults(eligibilityResults);
+      // Simuler un temps de traitement pour donner l'impression d'une évaluation complexe
+      setIsProcessing(true);
       
-      // Déterminer le meilleur programme
-      const highEligibilityPrograms = eligibilityResults.filter(r => r.level === "high");
-      if (highEligibilityPrograms.length > 0) {
-        setBestProgram(highEligibilityPrograms[0].program);
-      } else {
-        const mediumEligibilityPrograms = eligibilityResults.filter(r => r.level === "medium");
-        if (mediumEligibilityPrograms.length > 0) {
-          setBestProgram(mediumEligibilityPrograms[0].program);
-        } else {
-          setBestProgram("Aucun programme optimal");
+      setTimeout(() => {
+        // Évaluation masquée - la logique précise est cachée et simplifiée
+        const eligibility = evaluateEligibilityBehindTheScenes();
+        setIsEligible(eligibility);
+        setIsProcessing(false);
+        
+        // Passer à l'étape des résultats
+        setCurrentStep(4);
+        
+        // Scroll to the top of the form container smoothly
+        const formContainer = document.querySelector('.eligibility-form-container');
+        if (formContainer) {
+          formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }
-      
-      // Passer à l'étape des résultats
-      setCurrentStep(4);
-      
-      // Scroll to the top of the form container smoothly
-      const formContainer = document.querySelector('.eligibility-form-container');
-      if (formContainer) {
-        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      }, 2500); // Attendre 2.5 secondes pour simuler une évaluation complexe
     }
   };
 
-  const calculateEligibility = (): EligibilityResult[] => {
-    const results: EligibilityResult[] = [];
+  // Cette fonction contient la logique d'évaluation complètement masquée à l'utilisateur
+  const evaluateEligibilityBehindTheScenes = (): boolean => {
+    // La logique d'évaluation est maintenue mais cachée de l'interface utilisateur
+    let totalScore = 0;
+    let maxPossibleScore = 100;
     
-    // Points pour Entrée Express
-    let expressPoints = 0;
-    let expressMaxPoints = 100;
-    
-    // Points pour l'âge
+    // Évaluation de l'âge
     switch(formData.age) {
-      case "18-29":
-        expressPoints += 25;
-        break;
-      case "30-39":
-        expressPoints += 20;
-        break;
-      case "40-44":
-        expressPoints += 10;
-        break;
-      case "45+":
-        expressPoints += 0;
-        break;
+      case "18-29": totalScore += 25; break;
+      case "30-39": totalScore += 20; break;
+      case "40-44": totalScore += 10; break;
+      default: totalScore += 0;
     }
     
-    // Points pour l'éducation
+    // Évaluation de l'éducation
     switch(formData.education) {
-      case "none":
-        expressPoints += 0;
-        break;
-      case "highschool":
-        expressPoints += 5;
-        break;
-      case "postsecondary":
-        expressPoints += 15;
-        break;
-      case "bachelor":
-        expressPoints += 20;
-        break;
-      case "master":
-        expressPoints += 25;
-        break;
+      case "none": totalScore += 0; break;
+      case "highschool": totalScore += 5; break;
+      case "postsecondary": totalScore += 10; break;
+      case "bachelor": totalScore += 15; break;
+      case "master": totalScore += 25; break;
     }
     
-    // Points pour l'expérience professionnelle
+    // Évaluation de l'expérience
     switch(formData.experience) {
-      case "none":
-        expressPoints += 0;
-        break;
-      case "less1":
-        expressPoints += 5;
-        break;
-      case "1-3":
-        expressPoints += 10;
-        break;
-      case "4-5":
-        expressPoints += 15;
-        break;
-      case "more5":
-        expressPoints += 20;
-        break;
+      case "none": totalScore += 0; break;
+      case "less1": totalScore += 5; break;
+      case "1-3": totalScore += 10; break;
+      case "4-5": totalScore += 15; break;
+      case "more5": totalScore += 20; break;
     }
     
-    // Points pour les compétences linguistiques séparées
+    // Évaluation des compétences linguistiques
     switch(formData.frenchLevel) {
-      case "fluent":
-        expressPoints += 15;
-        break;
-      case "intermediate":
-        expressPoints += 8;
-        break;
-      case "none":
-        expressPoints += 0;
-        break;
+      case "none": totalScore += 0; break;
+      case "intermediate": totalScore += 10; break;
+      case "fluent": totalScore += 20; break;
     }
     
     switch(formData.englishLevel) {
-      case "fluent":
-        expressPoints += 15;
-        break;
-      case "intermediate":
-        expressPoints += 8;
-        break;
-      case "none":
-        expressPoints += 0;
-        break;
+      case "none": totalScore += 0; break; 
+      case "intermediate": totalScore += 5; break;
+      case "fluent": totalScore += 10; break;
     }
     
     // Bonus pour offre d'emploi
-    if (formData.jobOffer === "yes") expressPoints += 15;
+    if (formData.jobOffer === "yes") totalScore += 15;
     
-    // Déterminer l'éligibilité pour Entrée Express
-    let expressLevel: "high" | "medium" | "low" = "low";
-    let expressMessage = "";
-    let expressDetails = "";
+    // Liens familiaux
+    if (formData.familyTies === "yes") totalScore += 10;
     
-    const expressPercentage = expressPoints / expressMaxPoints;
-    if (expressPercentage >= 0.7) {
-      expressLevel = "high";
-      expressMessage = "✅ Vous semblez éligible à Entrée Express, découvrez les prochaines étapes !";
-      expressDetails = "Votre profil correspond aux critères du programme Entrée Express. Nous vous recommandons de poursuivre votre démarche avec un conseiller en immigration.";
-    } else if (expressPercentage >= 0.5) {
-      expressLevel = "medium";
-      expressMessage = "⚠️ Votre profil pourrait convenir à Entrée Express, contactez-nous pour une analyse approfondie.";
-      expressDetails = "Vous avez un potentiel d'éligibilité au programme Entrée Express, mais certains aspects de votre profil pourraient nécessiter une attention particulière.";
-    } else {
-      expressLevel = "low";
-      expressMessage = "❌ Vous ne remplissez pas actuellement les critères d'Entrée Express, mais d'autres options peuvent être envisageables.";
-      expressDetails = "Votre profil actuel ne correspond pas suffisamment aux critères d'Entrée Express. Un conseiller pourrait vous suggérer d'autres programmes.";
+    // Projet professionnel
+    if (formData.canadaProject === "work" && formData.professionType === "highly-skilled") {
+      totalScore += 15;
     }
     
-    results.push({
-      program: "Entrée Express",
-      eligible: expressLevel === "high",
-      message: expressMessage,
-      details: expressDetails,
-      level: expressLevel
-    });
-    
-    // Évaluation pour le PSTQ (Programme de sélection des travailleurs qualifiés - Québec)
-    let pstqPoints = 0;
-    let pstqMaxPoints = 100;
-    
-    // Points pour l'âge
-    switch(formData.age) {
-      case "18-29":
-        pstqPoints += 20;
-        break;
-      case "30-39":
-        pstqPoints += 16;
-        break;
-      case "40-44":
-        pstqPoints += 8;
-        break;
-      case "45+":
-        pstqPoints += 0;
-        break;
-    }
-    
-    // Points pour l'éducation
-    switch(formData.education) {
-      case "none":
-        pstqPoints += 0;
-        break;
-      case "highschool":
-        pstqPoints += 4;
-        break;
-      case "postsecondary":
-        pstqPoints += 8;
-        break;
-      case "bachelor":
-        pstqPoints += 14;
-        break;
-      case "master":
-        pstqPoints += 18;
-        break;
-    }
-    
-    // Points pour l'expérience professionnelle
-    switch(formData.experience) {
-      case "none":
-        pstqPoints += 0;
-        break;
-      case "less1":
-        pstqPoints += 4;
-        break;
-      case "1-3":
-        pstqPoints += 8;
-        break;
-      case "4-5":
-        pstqPoints += 12;
-        break;
-      case "more5":
-        pstqPoints += 16;
-        break;
-    }
-    
-    // Points pour les compétences linguistiques (Français priorisé pour le Québec)
-    switch(formData.frenchLevel) {
-      case "fluent":
-        pstqPoints += 20;
-        break;
-      case "intermediate":
-        pstqPoints += 10;
-        break;
-      case "none":
-        pstqPoints += 0;
-        break;
-    }
-    
-    switch(formData.englishLevel) {
-      case "fluent":
-        pstqPoints += 10;
-        break;
-      case "intermediate":
-        pstqPoints += 5;
-        break;
-      case "none":
-        pstqPoints += 0;
-        break;
-    }
-    
-    // Bonus pour offre d'emploi
-    if (formData.jobOffer === "yes") pstqPoints += 16;
-    
-    // Bonus spécifiques pour les volets du PSTQ
-    let pstqVolet = "";
-    let pstqVoletBonus = 0;
-    
-    switch(formData.professionType) {
-      case "highly-skilled":
-        pstqVolet = "Volet 1 (Professions hautement qualifiées)";
-        if (formData.frenchLevel === "fluent") pstqVoletBonus += 10;
-        if (formData.education === "master" || formData.education === "bachelor") pstqVoletBonus += 10;
-        break;
-      case "intermediate":
-        pstqVolet = "Volet 2 (Professions intermédiaires et manuelles)";
-        if (formData.experience === "4-5" || formData.experience === "more5") pstqVoletBonus += 15;
-        break;
-      case "regulated":
-        pstqVolet = "Volet 3 (Professions réglementées)";
-        if (formData.licenseInQuebec === "yes") pstqVoletBonus += 20;
-        break;
-      case "exceptional":
-        pstqVolet = "Volet 4 (Talents d'exception)";
-        if (formData.exceptionalTalent === "yes") pstqVoletBonus += 25;
-        break;
-      default:
-        pstqVolet = "Non déterminé";
-        break;
-    }
-    
-    pstqPoints += pstqVoletBonus;
-    
-    // Déterminer l'éligibilité pour le PSTQ
-    let pstqLevel: "high" | "medium" | "low" = "low";
-    let pstqMessage = "";
-    let pstqDetails = "";
-    
-    const pstqPercentage = pstqPoints / pstqMaxPoints;
-    if (pstqPercentage >= 0.7) {
-      pstqLevel = "high";
-      pstqMessage = `✅ Vous semblez éligible au PSTQ ${pstqVolet}, découvrez les prochaines étapes !`;
-      pstqDetails = `Votre profil correspond aux critères du Programme de sélection des travailleurs qualifiés du Québec pour le ${pstqVolet}. Nous vous recommandons de poursuivre votre démarche avec un conseiller.`;
-    } else if (pstqPercentage >= 0.5) {
-      pstqLevel = "medium";
-      pstqMessage = `⚠️ Votre profil pourrait convenir au PSTQ ${pstqVolet}, contactez-nous pour une analyse approfondie.`;
-      pstqDetails = `Vous avez un potentiel d'éligibilité au PSTQ pour le ${pstqVolet}, mais certains aspects de votre profil pourraient nécessiter une attention particulière.`;
-    } else {
-      pstqLevel = "low";
-      pstqMessage = "❌ Vous ne remplissez pas actuellement les critères du PSTQ, mais d'autres options peuvent être envisageables.";
-      pstqDetails = "Votre profil actuel ne correspond pas suffisamment aux critères du PSTQ. Un conseiller pourrait vous suggérer d'autres programmes.";
-    }
-    
-    results.push({
-      program: `Programme de sélection des travailleurs qualifiés (PSTQ) - ${pstqVolet}`,
-      eligible: pstqLevel === "high",
-      message: pstqMessage,
-      details: pstqDetails,
-      level: pstqLevel
-    });
-    
-    // Évaluation pour le PEQ (Programme de l'Expérience Québécoise)
-    const isPeqEligible = formData.frenchLevel === "fluent" || formData.frenchLevel === "intermediate";
-    const peqLevel: "high" | "medium" | "low" = isPeqEligible ? 
-      (formData.experience !== "none" ? "high" : "medium") : "low";
-    
-    let peqMessage = "";
-    let peqDetails = "";
-    
-    if (peqLevel === "high") {
-      peqMessage = "✅ Vous semblez éligible au PEQ, découvrez les prochaines étapes !";
-      peqDetails = "Votre profil semble correspondre aux critères du Programme de l'Expérience Québécoise. Vos compétences en français et votre expérience professionnelle sont des atouts.";
-    } else if (peqLevel === "medium") {
-      peqMessage = "⚠️ Votre profil pourrait convenir au PEQ avec quelques ajustements.";
-      peqDetails = "Vous pourriez être éligible au PEQ, mais il vous manque peut-être de l'expérience professionnelle pertinente.";
-    } else {
-      peqMessage = "❌ Vous ne remplissez pas actuellement les critères du PEQ.";
-      peqDetails = "Le PEQ exige généralement une bonne maîtrise du français. Sans cette compétence, ce programme n'est pas recommandé.";
-    }
-    
-    results.push({
-      program: "Programme de l'Expérience Québécoise (PEQ)",
-      eligible: peqLevel === "high",
-      message: peqMessage,
-      details: peqDetails,
-      level: peqLevel
-    });
-    
-    // Évaluation pour le regroupement familial
-    const hasFamilyInCanada = formData.familyTies === "yes";
-    const projectIsFamily = formData.canadaProject === "family";
-    
-    const familyLevel: "high" | "medium" | "low" = hasFamilyInCanada && projectIsFamily ? "high" : 
-                                                   hasFamilyInCanada ? "medium" : "low";
-    
-    let familyMessage = "";
-    let familyDetails = "";
-    
-    if (familyLevel === "high") {
-      familyMessage = "✅ Vous semblez éligible au Regroupement Familial, découvrez les prochaines étapes !";
-      familyDetails = "Avec de la famille directe au Canada et votre projet de les rejoindre, le programme de Regroupement Familial semble parfaitement adapté à votre situation.";
-    } else if (familyLevel === "medium") {
-      familyMessage = "⚠️ Vous pourriez être éligible au Regroupement Familial selon les liens familiaux exacts.";
-      familyDetails = "Bien que vous ayez de la famille au Canada, l'éligibilité au Regroupement Familial dépend du type de relation et du statut de résidence de votre famille au Canada.";
-    } else {
-      familyMessage = "❌ Sans liens familiaux au Canada, vous n'êtes pas éligible au Regroupement Familial.";
-      familyDetails = "Ce programme est exclusivement destiné aux personnes ayant des membres de leur famille proche déjà établis au Canada.";
-    }
-    
-    results.push({
-      program: "Regroupement Familial",
-      eligible: familyLevel === "high",
-      message: familyMessage,
-      details: familyDetails,
-      level: familyLevel
-    });
-    
-    return results;
-  };
-
-  const getStatusBadgeClass = (level: "high" | "medium" | "low") => {
-    switch (level) {
-      case "high":
-        return "bg-green-100 text-green-800";
-      case "medium":
-        return "bg-yellow-100 text-yellow-800";
-      case "low":
-        return "bg-red-100 text-red-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
-
-  const getStatusText = (level: "high" | "medium" | "low") => {
-    switch (level) {
-      case "high":
-        return "Forte chance d'éligibilité";
-      case "medium":
-        return "Éligibilité possible";
-      case "low":
-        return "Faible chance d'éligibilité";
-      default:
-        return "Indéterminé";
-    }
+    // Seuil d'admissibilité (60% du score maximum)
+    return totalScore >= (maxPossibleScore * 0.6);
   };
 
   return (
@@ -607,7 +300,7 @@ const EligibilityForm = () => {
                   ? "Projet"
                   : step === 3
                   ? "Contact"
-                  : "Résultats"}
+                  : "Résultat"}
               </div>
             </div>
           ))}
@@ -709,10 +402,7 @@ const EligibilityForm = () => {
             
             {formData.canadaProject === "work" && (
               <div className="space-y-4 bg-blue-50 p-4 rounded-lg">
-                <h3 className="text-lg font-medium">Type de profession (PSTQ)</h3>
-                <p className="text-sm text-blue-800 mb-4">
-                  Le nouveau Programme de sélection des travailleurs qualifiés (PSTQ) du Québec comprend 4 volets distincts :
-                </p>
+                <h3 className="text-lg font-medium">Type de profession</h3>
                 <RadioGroup value={formData.professionType} onValueChange={(value) => handleSingleOptionChange("professionType", value)} className="grid gap-3">
                   {professionTypeOptions.map((option) => (
                     <div key={option.id} className="flex items-center space-x-2">
@@ -728,27 +418,11 @@ const EligibilityForm = () => {
                     <RadioGroup value={formData.licenseInQuebec} onValueChange={(value) => handleSingleOptionChange("licenseInQuebec", value)} className="grid gap-3">
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem id="license-yes" value="yes" />
-                        <Label htmlFor="license-yes">J'ai ou je peux obtenir une autorisation d'exercice au Québec</Label>
+                        <Label htmlFor="license-yes">J'ai ou je peux obtenir une autorisation d'exercice au Canada</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem id="license-no" value="no" />
-                        <Label htmlFor="license-no">Je n'ai pas d'autorisation d'exercice au Québec</Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
-                )}
-
-                {formData.professionType === "exceptional" && (
-                  <div className="mt-4 p-3 bg-white rounded-lg">
-                    <h4 className="font-medium mb-2">Talents d'exception</h4>
-                    <RadioGroup value={formData.exceptionalTalent} onValueChange={(value) => handleSingleOptionChange("exceptionalTalent", value)} className="grid gap-3">
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="talent-yes" value="yes" />
-                        <Label htmlFor="talent-yes">J'ai une reconnaissance internationale dans mon domaine</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="talent-no" value="no" />
-                        <Label htmlFor="talent-no">Je n'ai pas de reconnaissance internationale</Label>
+                        <Label htmlFor="license-no">Je n'ai pas d'autorisation d'exercice au Canada</Label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -835,65 +509,78 @@ const EligibilityForm = () => {
         {currentStep === 4 && (
           <div className="space-y-8 animate-fade-in">
             <div className="text-center mb-6">
-              <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Résultats de votre évaluation</h2>
-              <p className="text-gray-600 mb-6">
-                Voici une analyse préliminaire de votre admissibilité aux différents programmes d'immigration canadiens.
-              </p>
-            </div>
-
-            {bestProgram && (
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <h3 className="font-bold text-blue-800 mb-2">Recommandation principale</h3>
-                <p>
-                  Selon votre profil, le programme le plus adapté à votre situation est le <span className="font-bold">{bestProgram}</span>.
-                </p>
-              </div>
-            )}
-
-            <div className="space-y-6">
-              {results.map((result, index) => (
-                <div key={index} className="border rounded-lg overflow-hidden">
-                  <div className={`p-4 ${result.level === "high" ? "bg-green-50 border-b border-green-200" : result.level === "medium" ? "bg-yellow-50 border-b border-yellow-200" : "bg-red-50 border-b border-red-200"}`}>
-                    <div className="flex justify-between items-center">
-                      <h3 className="font-semibold text-gray-800">{result.program}</h3>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusBadgeClass(result.level)}`}>
-                        {getStatusText(result.level)}
-                      </span>
-                    </div>
+              {isEligible !== null && (
+                <>
+                  <div className={`w-20 h-20 rounded-full ${isEligible ? 'bg-green-100' : 'bg-red-100'} flex items-center justify-center mx-auto mb-4`}>
+                    {isEligible ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    )}
                   </div>
-                  <div className="p-4 bg-white">
-                    <p className="text-gray-700 font-medium mb-2">{result.message}</p>
-                    <p className="text-gray-600 text-sm">{result.details}</p>
-                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                    {isEligible ? "Vous êtes éligible pour l'immigration" : "Vous n'êtes pas éligible pour l'immigration"}
+                  </h2>
+                  <p className="text-gray-600 mb-8">
+                    {isEligible 
+                      ? "Selon l'évaluation de votre profil, vous répondez aux critères d'admissibilité pour l'immigration au Canada."
+                      : "Selon l'évaluation de votre profil, vous ne répondez pas actuellement aux critères d'admissibilité pour l'immigration au Canada."
+                    }
+                  </p>
+                </>
+              )}
+
+              {isProcessing && (
+                <div className="flex flex-col items-center justify-center py-12">
+                  <Loader2 className="h-16 w-16 text-brand-600 animate-spin mb-4" />
+                  <p className="text-gray-600">Nous analysons votre profil...</p>
                 </div>
-              ))}
-            </div>
-
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-6">
-              <h3 className="font-semibold mb-2">Prochaines étapes</h3>
-              <p className="text-gray-600 mb-4">
-                Pour continuer votre processus d'immigration, nous vous recommandons de :
-              </p>
-              <ul className="list-disc pl-5 space-y-1 text-gray-600">
-                <li>Consulter notre simulateur détaillé pour une évaluation plus précise</li>
-                <li>Prendre rendez-vous avec un de nos consultants en immigration</li>
-                <li>Préparer vos documents justificatifs (diplômes, certificats de langue, etc.)</li>
-              </ul>
+              )}
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-              <Button type="button" onClick={resetForm} variant="outline">
-                Faire un nouveau test
-              </Button>
-              <Button asChild className="bg-brand-600 hover:bg-brand-700">
-                <a href="/contact">Prendre rendez-vous avec un consultant</a>
-              </Button>
-            </div>
+            {isEligible !== null && !isProcessing && (
+              <>
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                  <h3 className="font-semibold text-lg mb-4">Prochaines étapes</h3>
+                  {isEligible ? (
+                    <div className="space-y-4">
+                      <p className="text-gray-700">
+                        Pour avancer dans votre processus d'immigration, nous vous recommandons de:
+                      </p>
+                      <ul className="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Prendre rendez-vous avec l'un de nos consultants en immigration</li>
+                        <li>Préparer vos documents justificatifs (diplômes, certificats de langue, etc.)</li>
+                        <li>Commencer à explorer les communautés canadiennes qui correspondent à vos objectifs</li>
+                      </ul>
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <p className="text-gray-700">
+                        Même si vous n'êtes pas actuellement éligible, nos consultants peuvent vous aider à:
+                      </p>
+                      <ul className="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Identifier les aspects de votre profil qui peuvent être améliorés</li>
+                        <li>Vous orienter vers des programmes alternatifs qui pourraient vous convenir</li>
+                        <li>Établir un plan d'action personnalisé pour atteindre vos objectifs d'immigration</li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                  <Button type="button" onClick={resetForm} variant="outline">
+                    Faire un nouveau test
+                  </Button>
+                  <Button asChild className="bg-brand-600 hover:bg-brand-700">
+                    <a href="/contact">Prendre rendez-vous avec un consultant</a>
+                  </Button>
+                </div>
+              </>
+            )}
           </div>
         )}
 
