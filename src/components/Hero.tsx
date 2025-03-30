@@ -16,7 +16,7 @@ const Hero = ({
   title,
   subtitle,
   ctaText = "En savoir plus",
-  ctaLink = "/eligibility",
+  ctaLink = "/services",
   secondaryCtaText,
   secondaryCtaLink,
   imageSrc,
