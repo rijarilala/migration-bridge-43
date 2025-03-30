@@ -140,7 +140,7 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Hero section */}
       <Hero
-        title="Votre partenaire pour un nouveau départ"
+        title="Votre partenaire pour un nouveau départ."
         subtitle="Nous vous accompagnons dans toutes vos démarches d'immigration, de formation et d'intégration professionnelle."
         ctaText="Tester mon éligibilité"
         ctaLink="/eligibility"
