@@ -267,8 +267,7 @@ const Index = () => {
       {/* CTA section */}
       <CTA
         title="Prêt à démarrer votre projet?"
-        description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé."
-        
+        description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé." buttonText={""} buttonLink={""}        
       />
     </div>
   );
