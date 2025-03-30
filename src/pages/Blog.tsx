@@ -26,7 +26,7 @@ interface BlogPost {
 
 const Blog = () => {
   const { t, i18n } = useTranslation();
-  const currentLanguage = i18n.language;
+  const currentLanguage = i18n.language || "fr"; // Add fallback to prevent undefined
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
@@ -139,9 +139,13 @@ const Blog = () => {
 
   // Filter posts based on search query and selected category
   const filteredPosts = blogPosts.filter(post => {
+    // Check if language exists in title and excerpt
+    const postTitle = post.title[currentLanguage as keyof typeof post.title] || "";
+    const postExcerpt = post.excerpt[currentLanguage as keyof typeof post.excerpt] || "";
+    
     const matchesSearch = 
-      post.title[currentLanguage as keyof typeof post.title].toLowerCase().includes(searchQuery.toLowerCase()) || 
-      post.excerpt[currentLanguage as keyof typeof post.excerpt].toLowerCase().includes(searchQuery.toLowerCase());
+      postTitle.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      postExcerpt.toLowerCase().includes(searchQuery.toLowerCase());
     
     const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
     
@@ -204,7 +208,7 @@ const Blog = () => {
                     <div className="relative">
                       <img
                         src={post.image}
-                        alt={post.title[currentLanguage as keyof typeof post.title]}
+                        alt={post.title[currentLanguage as keyof typeof post.title] || ""}
                         className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-4 left-4 flex gap-2">
@@ -225,11 +229,11 @@ const Blog = () => {
                       </div>
                       
                       <h2 className="text-xl font-serif font-semibold mb-3 text-gray-900 group-hover:text-brand-600 transition-colors duration-200">
-                        {post.title[currentLanguage as keyof typeof post.title]}
+                        {post.title[currentLanguage as keyof typeof post.title] || ""}
                       </h2>
                       
                       <p className="text-gray-600 mb-4 flex-grow">
-                        {post.excerpt[currentLanguage as keyof typeof post.excerpt]}
+                        {post.excerpt[currentLanguage as keyof typeof post.excerpt] || ""}
                       </p>
                       
                       <div className="mt-auto">
