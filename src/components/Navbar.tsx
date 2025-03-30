@@ -144,6 +144,7 @@ const Navbar = () => {
               <Button 
                 className="ml-4 bg-brand-600 hover:bg-brand-700 text-white" 
                 size="sm"
+                onClick={handleNavigateToEligibility}
               >
                 {t('navigation.eligibility')}
               </Button>
@@ -216,10 +217,7 @@ const Navbar = () => {
                     <div className="mt-8">
                       <Button 
                         className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-                        onClick={(handleNavigateToEligibility) => {
-                          handleNavigate('/eligibility');
-                          setIsMenuOpen(false);
-                        }}
+                        onClick={handleNavigateToEligibility}
                       >
                         {t('navigation.eligibility')}
                       </Button>
