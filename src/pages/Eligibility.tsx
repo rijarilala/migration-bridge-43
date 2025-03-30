@@ -20,8 +20,8 @@ const Eligibility = () => {
   const benefits = [
     { 
       icon: <Lock className="h-5 w-5" />, 
-      title: "Évaluation sécurisée",
-      description: "Notre système d'évaluation propriétaire analyse votre profil selon des critères rigoureux et confidentiels"
+      title: "Évaluation multi-programmes",
+      description: "Notre système analyse votre profil selon les trois principaux programmes d'immigration canadiens"
     },
     { 
       icon: <Shield className="h-5 w-5" />, 
@@ -54,8 +54,8 @@ const Eligibility = () => {
               Vérifiez votre <span className="gradient-text">admissibilité</span> à l'immigration canadienne
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Notre système d'évaluation analyse votre profil selon les critères officiels
-              d'immigration et vous indique si vous êtes éligible pour immigrer au Canada.
+              Notre système d'évaluation analyse votre profil selon les programmes Entrée Express, 
+              PSTQ (Québec) et Programme des Candidats Provinciaux pour déterminer votre éligibilité.
             </p>
           </motion.div>
 
@@ -87,6 +87,13 @@ const Eligibility = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+              
+              <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                <p className="text-sm text-blue-800">
+                  <strong>Notre critère d'éligibilité :</strong> Vous êtes considéré comme admissible 
+                  si votre profil correspond aux critères d'au moins un des trois programmes d'immigration canadiens.
+                </p>
               </div>
             </div>
             

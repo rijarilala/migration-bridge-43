@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -218,62 +217,103 @@ const EligibilityForm = () => {
 
   // Cette fonction contient la logique d'évaluation complètement masquée à l'utilisateur
   const evaluateEligibilityBehindTheScenes = (): boolean => {
-    // La logique d'évaluation est maintenue mais cachée de l'interface utilisateur
-    let totalScore = 0;
-    let maxPossibleScore = 100;
+    // Nouvelle logique: Le candidat est admissible sauf s'il ne correspond à aucun des trois programmes
+    
+    // Évaluation pour le programme Entrée Express
+    const isEligibleForExpressEntry = evaluateExpressEntry();
+    
+    // Évaluation pour le programme PSTQ (Québec)
+    const isEligibleForPSTQ = evaluatePSTQ();
+    
+    // Évaluation pour le Programme des Candidats Provinciaux
+    const isEligibleForPCP = evaluatePCP();
+    
+    // Le candidat est éligible s'il correspond à AU MOINS UN des programmes
+    return isEligibleForExpressEntry || isEligibleForPSTQ || isEligibleForPCP;
+  };
+  
+  // Évaluation pour Entrée Express (logique masquée)
+  const evaluateExpressEntry = (): boolean => {
+    let score = 0;
     
     // Évaluation de l'âge
     switch(formData.age) {
-      case "18-29": totalScore += 25; break;
-      case "30-39": totalScore += 20; break;
-      case "40-44": totalScore += 10; break;
-      default: totalScore += 0;
+      case "18-29": score += 25; break;
+      case "30-39": score += 20; break;
+      case "40-44": score += 10; break;
+      default: score += 0;
     }
     
     // Évaluation de l'éducation
     switch(formData.education) {
-      case "none": totalScore += 0; break;
-      case "highschool": totalScore += 5; break;
-      case "postsecondary": totalScore += 10; break;
-      case "bachelor": totalScore += 15; break;
-      case "master": totalScore += 25; break;
+      case "none": score += 0; break;
+      case "highschool": score += 5; break;
+      case "postsecondary": score += 10; break;
+      case "bachelor": score += 15; break;
+      case "master": score += 25; break;
     }
     
-    // Évaluation de l'expérience
-    switch(formData.experience) {
-      case "none": totalScore += 0; break;
-      case "less1": totalScore += 5; break;
-      case "1-3": totalScore += 10; break;
-      case "4-5": totalScore += 15; break;
-      case "more5": totalScore += 20; break;
-    }
-    
-    // Évaluation des compétences linguistiques
-    switch(formData.frenchLevel) {
-      case "none": totalScore += 0; break;
-      case "intermediate": totalScore += 10; break;
-      case "fluent": totalScore += 20; break;
-    }
-    
+    // Évaluation des langues (plus important pour Entrée Express)
     switch(formData.englishLevel) {
-      case "none": totalScore += 0; break; 
-      case "intermediate": totalScore += 5; break;
-      case "fluent": totalScore += 10; break;
+      case "none": score += 0; break;
+      case "intermediate": score += 10; break;
+      case "fluent": score += 20; break;
     }
     
-    // Bonus pour offre d'emploi
-    if (formData.jobOffer === "yes") totalScore += 15;
+    return score >= 45; // Seuil pour Entrée Express
+  };
+  
+  // Évaluation pour PSTQ - Québec (logique masquée)
+  const evaluatePSTQ = (): boolean => {
+    let score = 0;
     
-    // Liens familiaux
-    if (formData.familyTies === "yes") totalScore += 10;
-    
-    // Projet professionnel
-    if (formData.canadaProject === "work" && formData.professionType === "highly-skilled") {
-      totalScore += 15;
+    // Pour PSTQ, le français est très important
+    switch(formData.frenchLevel) {
+      case "none": score += 0; break;
+      case "intermediate": score += 15; break;
+      case "fluent": score += 30; break;
     }
     
-    // Seuil d'admissibilité (60% du score maximum)
-    return totalScore >= (maxPossibleScore * 0.6);
+    // Éducation et expérience
+    if (formData.education === "bachelor" || formData.education === "master") {
+      score += 20;
+    }
+    
+    if (formData.experience === "4-5" || formData.experience === "more5") {
+      score += 15;
+    }
+    
+    // Bonus pour offre d'emploi au Québec
+    if (formData.jobOffer === "yes") score += 10;
+    
+    return score >= 45; // Seuil pour PSTQ
+  };
+  
+  // Évaluation pour Programme des Candidats Provinciaux (logique masquée)
+  const evaluatePCP = (): boolean => {
+    let score = 0;
+    
+    // L'offre d'emploi est très importante pour le PCP
+    if (formData.jobOffer === "yes") score += 25;
+    
+    // Les liens familiaux aident beaucoup
+    if (formData.familyTies === "yes") score += 15;
+    
+    // Évaluation de l'expérience (cruciale pour certains PCP)
+    switch(formData.experience) {
+      case "none": score += 0; break;
+      case "less1": score += 5; break;
+      case "1-3": score += 10; break;
+      case "4-5": score += 20; break;
+      case "more5": score += 25; break;
+    }
+    
+    // Éducation
+    if (formData.education === "postsecondary" || formData.education === "bachelor" || formData.education === "master") {
+      score += 15;
+    }
+    
+    return score >= 40; // Seuil pour PCP
   };
 
   return (
@@ -527,8 +567,8 @@ const EligibilityForm = () => {
                   </h2>
                   <p className="text-gray-600 mb-8">
                     {isEligible 
-                      ? "Selon l'évaluation de votre profil, vous répondez aux critères d'admissibilité pour l'immigration au Canada."
-                      : "Selon l'évaluation de votre profil, vous ne répondez pas actuellement aux critères d'admissibilité pour l'immigration au Canada."
+                      ? "Selon l'évaluation de votre profil, vous répondez aux critères d'admissibilité pour au moins un des programmes d'immigration au Canada."
+                      : "Selon l'évaluation de votre profil, vous ne répondez actuellement aux critères d'aucun des programmes d'immigration au Canada."
                     }
                   </p>
                 </>
@@ -537,7 +577,7 @@ const EligibilityForm = () => {
               {isProcessing && (
                 <div className="flex flex-col items-center justify-center py-12">
                   <Loader2 className="h-16 w-16 text-brand-600 animate-spin mb-4" />
-                  <p className="text-gray-600">Nous analysons votre profil...</p>
+                  <p className="text-gray-600">Nous analysons votre profil selon les trois programmes d'immigration...</p>
                 </div>
               )}
             </div>
@@ -554,7 +594,7 @@ const EligibilityForm = () => {
                       <ul className="list-disc pl-5 space-y-2 text-gray-600">
                         <li>Prendre rendez-vous avec l'un de nos consultants en immigration</li>
                         <li>Préparer vos documents justificatifs (diplômes, certificats de langue, etc.)</li>
-                        <li>Commencer à explorer les communautés canadiennes qui correspondent à vos objectifs</li>
+                        <li>Explorer les différentes options de programmes qui correspondent à votre profil</li>
                       </ul>
                     </div>
                   ) : (
@@ -564,7 +604,7 @@ const EligibilityForm = () => {
                       </p>
                       <ul className="list-disc pl-5 space-y-2 text-gray-600">
                         <li>Identifier les aspects de votre profil qui peuvent être améliorés</li>
-                        <li>Vous orienter vers des programmes alternatifs qui pourraient vous convenir</li>
+                        <li>Vous orienter vers d'autres programmes qui pourraient vous convenir</li>
                         <li>Établir un plan d'action personnalisé pour atteindre vos objectifs d'immigration</li>
                       </ul>
                     </div>
