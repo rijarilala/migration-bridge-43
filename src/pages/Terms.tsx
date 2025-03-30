@@ -40,7 +40,7 @@ const Terms = () => {
                 {t('terms.servicesText')}
               </p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                {t('terms.servicesItems', { returnObjects: true }).map((item: string, index: number) => (
+                {(t('terms.servicesItems', { returnObjects: true }) as string[]).map((item: string, index: number) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
@@ -57,7 +57,7 @@ const Terms = () => {
               </h2>
               <p className="mb-2">{t('terms.clientObligationsText')}</p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                {t('terms.clientObligationsItems', { returnObjects: true }).map((item: string, index: number) => (
+                {(t('terms.clientObligationsItems', { returnObjects: true }) as string[]).map((item: string, index: number) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>

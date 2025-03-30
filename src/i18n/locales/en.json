@@ -73,6 +73,75 @@
     "terms": "Terms",
     "sitemap": "Sitemap"
   },
+  "about": {
+    "pageTitle": "About Us",
+    "title": "About MigraPro",
+    "description": "MigraPro has been supporting individuals and professionals in their immigration, training, and career development projects for over 10 years.",
+    "teamImageAlt": "MigraPro Team",
+    "mission": {
+      "title": "Our Mission",
+      "paragraph1": "Facilitate access to new professional and personal opportunities for our clients by providing them with personalized support and tools tailored to their specific needs.",
+      "paragraph2": "We are committed to simplifying complex immigration and professional development processes by offering a human, efficient, and quality service."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "paragraph1": "To be recognized as a trusted partner for all those who wish to realize their immigration and professional development projects, in France and internationally.",
+      "paragraph2": "We aspire to create a world where borders are no longer obstacles to professional ambitions and where everyone can fully develop their potential."
+    },
+    "stats": {
+      "title": "MigraPro in Numbers",
+      "description": "Concrete results that testify to our expertise and commitment to our clients.",
+      "yearsExperience": "Years of experience",
+      "satisfiedClients": "Satisfied clients",
+      "successRate": "Success rate",
+      "destinationCountries": "Destination countries"
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "These values guide each of our actions and are an integral part of our corporate culture.",
+      "expertise": {
+        "title": "Expertise",
+        "description": "A team of qualified professionals in their respective fields, offering advice based on solid experience and in-depth knowledge."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "A constant commitment to quality and excellence in all our services, with attention to detail and a focus on the needs of each client."
+      },
+      "inclusivity": {
+        "title": "Inclusivity",
+        "description": "An inclusive approach that respects cultural diversity and adapts to the specific needs of each person, regardless of their origin."
+      },
+      "efficiency": {
+        "title": "Efficiency",
+        "description": "Optimized processes and clear communication to save you time and facilitate your procedures at every step."
+      }
+    },
+    "team": {
+      "title": "Our Team",
+      "subtitle": "Passionate and experienced professionals dedicated to the success of your projects.",
+      "member1": {
+        "role": "Director & Immigration Advisor",
+        "bio": "Immigration specialist with over 15 years of experience in supporting immigration candidates."
+      },
+      "member2": {
+        "role": "Training Advisor",
+        "bio": "Expert in professional development and creation of personalized training paths."
+      },
+      "member3": {
+        "role": "Professional Coach",
+        "bio": "Certified coach specializing in supporting professional transitions and personal development."
+      },
+      "member4": {
+        "role": "Recruitment Advisor",
+        "bio": "International recruitment specialist with particular expertise in the technology and health sectors."
+      }
+    },
+    "cta": {
+      "title": "Ready to start your project with us?",
+      "description": "Contact our team today to discuss your needs and find out how we can help you.",
+      "button": "Contact us"
+    }
+  },
   "privacy": {
     "title": "Privacy Policy",
     "effectiveDate": "Effective date",

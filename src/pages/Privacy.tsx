@@ -38,7 +38,7 @@ const Privacy = () => {
               </h2>
               <p className="mb-2">{t('privacy.infoCollectedText')}</p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                {t('privacy.infoCollectedItems', { returnObjects: true }).map((item: string, index: number) => (
+                {(t('privacy.infoCollectedItems', { returnObjects: true }) as string[]).map((item: string, index: number) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
@@ -48,7 +48,7 @@ const Privacy = () => {
               </h2>
               <p className="mb-2">{t('privacy.infoUseText')}</p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                {t('privacy.infoUseItems', { returnObjects: true }).map((item: string, index: number) => (
+                {(t('privacy.infoUseItems', { returnObjects: true }) as string[]).map((item: string, index: number) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
@@ -60,7 +60,7 @@ const Privacy = () => {
                 {t('privacy.infoSharingText')}
               </p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                {t('privacy.infoSharingItems', { returnObjects: true }).map((item: string, index: number) => (
+                {(t('privacy.infoSharingItems', { returnObjects: true }) as string[]).map((item: string, index: number) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
@@ -84,7 +84,7 @@ const Privacy = () => {
               </h2>
               <p className="mb-2">{t('privacy.yourRightsText')}</p>
               <ul className="list-disc pl-5 mb-4 space-y-1">
-                {t('privacy.yourRightsItems', { returnObjects: true }).map((item: string, index: number) => (
+                {(t('privacy.yourRightsItems', { returnObjects: true }) as string[]).map((item: string, index: number) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>

@@ -4,8 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight, Award, Clock, Users, Globe, Check } from "lucide-react";
 import Stats from "@/components/Stats";
+import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 const About = () => {
+  const { t } = useTranslation();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -13,72 +17,74 @@ const About = () => {
   const teamMembers = [
     {
       name: "Sarah Martin",
-      role: "Directrice & Conseillère en Immigration",
+      role: t('about.team.member1.role'),
       imageSrc: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400&auto=format&fit=crop",
-      bio: "Spécialiste en immigration avec plus de 15 ans d'expérience dans l'accompagnement des candidats à l'immigration.",
+      bio: t('about.team.member1.bio'),
     },
     {
       name: "Thomas Dubois",
-      role: "Conseiller en Formation",
+      role: t('about.team.member2.role'),
       imageSrc: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop",
-      bio: "Expert en développement professionnel et en création de parcours de formation personnalisés.",
+      bio: t('about.team.member2.bio'),
     },
     {
       name: "Lucie Bernard",
-      role: "Coach Professionnelle",
+      role: t('about.team.member3.role'),
       imageSrc: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop",
-      bio: "Coach certifiée spécialisée dans l'accompagnement des transitions professionnelles et le développement personnel.",
+      bio: t('about.team.member3.bio'),
     },
     {
       name: "Pierre Moreau",
-      role: "Conseiller en Recrutement",
+      role: t('about.team.member4.role'),
       imageSrc: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
-      bio: "Spécialiste du recrutement international avec une expertise particulière dans les secteurs de la technologie et de la santé.",
+      bio: t('about.team.member4.bio'),
     },
   ];
 
   const values = [
     {
       icon: <Users size={24} className="text-brand-600" />,
-      title: "Expertise",
-      description: "Une équipe de professionnels qualifiés dans leurs domaines respectifs, offrant des conseils basés sur une expérience solide et une connaissance approfondie.",
+      title: t('about.values.expertise.title'),
+      description: t('about.values.expertise.description'),
     },
     {
       icon: <Award size={24} className="text-brand-600" />,
-      title: "Excellence",
-      description: "Un engagement constant envers la qualité et l'excellence dans tous nos services, avec un souci du détail et une attention particulière aux besoins de chaque client.",
+      title: t('about.values.excellence.title'),
+      description: t('about.values.excellence.description'),
     },
     {
       icon: <Globe size={24} className="text-brand-600" />,
-      title: "Inclusivité",
-      description: "Une approche inclusive qui respecte la diversité culturelle et s'adapte aux besoins spécifiques de chaque personne, quelle que soit son origine.",
+      title: t('about.values.inclusivity.title'),
+      description: t('about.values.inclusivity.description'),
     },
     {
       icon: <Clock size={24} className="text-brand-600" />,
-      title: "Efficacité",
-      description: "Des processus optimisés et une communication claire pour vous faire gagner du temps et faciliter vos démarches à chaque étape.",
+      title: t('about.values.efficiency.title'),
+      description: t('about.values.efficiency.description'),
     },
   ];
 
   const stats = [
-    { value: "10+", label: "Années d'expérience" },
-    { value: "1500+", label: "Clients satisfaits" },
-    { value: "95%", label: "Taux de réussite" },
-    { value: "25+", label: "Pays de destination" },
+    { value: "10+", label: t('about.stats.yearsExperience') },
+    { value: "1500+", label: t('about.stats.satisfiedClients') },
+    { value: "95%", label: t('about.stats.successRate') },
+    { value: "25+", label: t('about.stats.destinationCountries') },
   ];
 
   return (
     <div className="pt-24 pb-16 min-h-screen">
+      <Helmet>
+        <title>{t('about.pageTitle')} | MigraPro</title>
+      </Helmet>
       <div className="container mx-auto px-4 md:px-6">
         {/* Hero Section */}
         <div className="max-w-5xl mx-auto mb-16">
           <div className="text-center mb-10">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              À Propos de MigraPro
+              {t('about.title')}
             </h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              MigraPro accompagne les particuliers et les professionnels dans leurs projets d'immigration, 
-              de formation et de développement de carrière depuis plus de 10 ans.
+              {t('about.description')}
             </p>
           </div>
           
@@ -86,7 +92,7 @@ const About = () => {
             <div className="aspect-video w-full">
               <img 
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1280&auto=format&fit=crop" 
-                alt="L'équipe MigraPro" 
+                alt={t('about.teamImageAlt')} 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -97,25 +103,21 @@ const About = () => {
         <div className="max-w-5xl mx-auto mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white shadow-sm border border-gray-100 rounded-xl p-6">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Notre Mission</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('about.mission.title')}</h2>
               <p className="text-gray-600 mb-4">
-                Faciliter l'accès à de nouvelles opportunités professionnelles et personnelles pour nos clients, 
-                en leur fournissant un accompagnement personnalisé et des outils adaptés à leurs besoins spécifiques.
+                {t('about.mission.paragraph1')}
               </p>
               <p className="text-gray-600">
-                Nous nous engageons à simplifier les démarches complexes liées à l'immigration et au développement 
-                professionnel, en offrant un service humain, efficace et de qualité.
+                {t('about.mission.paragraph2')}
               </p>
             </div>
             <div className="bg-white shadow-sm border border-gray-100 rounded-xl p-6">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Notre Vision</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('about.vision.title')}</h2>
               <p className="text-gray-600 mb-4">
-                Être reconnu comme un partenaire de confiance pour tous ceux qui souhaitent réaliser leurs projets 
-                d'immigration et de développement professionnel, en France et à l'international.
+                {t('about.vision.paragraph1')}
               </p>
               <p className="text-gray-600">
-                Nous aspirons à créer un monde où les frontières ne sont plus des obstacles aux ambitions 
-                professionnelles et où chacun peut développer pleinement son potentiel.
+                {t('about.vision.paragraph2')}
               </p>
             </div>
           </div>
@@ -123,17 +125,17 @@ const About = () => {
 
         {/* Stats */}
         <Stats
-          title="MigraPro en Chiffres"
-          description="Des résultats concrets qui témoignent de notre expertise et de notre engagement envers nos clients."
+          title={t('about.stats.title')}
+          description={t('about.stats.description')}
           stats={stats}
         />
 
         {/* Our Values */}
         <div className="max-w-5xl mx-auto my-16">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Nos Valeurs</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('about.values.title')}</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ces valeurs guident chacune de nos actions et font partie intégrante de notre culture d'entreprise.
+              {t('about.values.subtitle')}
             </p>
           </div>
           
@@ -153,9 +155,9 @@ const About = () => {
         {/* Our Team */}
         <div className="max-w-5xl mx-auto my-16">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Notre Équipe</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('about.team.title')}</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Des professionnels passionnés et expérimentés, dédiés à la réussite de vos projets.
+              {t('about.team.subtitle')}
             </p>
           </div>
           
@@ -182,13 +184,13 @@ const About = () => {
         {/* CTA */}
         <div className="max-w-5xl mx-auto mt-16">
           <div className="bg-brand-50 rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Prêt à commencer votre projet avec nous ?</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('about.cta.title')}</h2>
             <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-              Contactez notre équipe dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous aider.
+              {t('about.cta.description')}
             </p>
             <Button asChild size="lg" className="bg-brand-600 hover:bg-brand-700">
               <Link to="/contact">
-                Nous contacter <ChevronRight className="ml-2 h-4 w-4" />
+                {t('about.cta.button')} <ChevronRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
