@@ -1,7 +1,7 @@
 
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, GraduationCap, Briefcase, MapPin, FileText } from "lucide-react";
+import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield } from "lucide-react";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import FeatureSection from "@/components/FeatureSection";
@@ -9,6 +9,7 @@ import CTA from "@/components/CTA";
 import Stats from "@/components/Stats";
 import TestimonialCard from "@/components/TestimonialCard";
 import { Button } from "@/components/ui/button";
+import ComparisonSection from "@/components/ComparisonSection";
 
 const Index = () => {
   useEffect(() => {
@@ -97,6 +98,45 @@ const Index = () => {
     { value: "30+", label: "Pays d'expertise" }
   ];
 
+  const comparisonData = {
+    withoutMembership: [
+      {
+        icon: <XCircle size={20} className="text-red-500" />,
+        text: "Papiers administratifs accablants et confusion juridique sans accompagnement d'expert."
+      },
+      {
+        icon: <XCircle size={20} className="text-red-500" />,
+        text: "Délais manqués et opportunités perdues en raison du manque de soutien."
+      },
+      {
+        icon: <XCircle size={20} className="text-red-500" />,
+        text: "Risques accrus de rejet de visa, de retards ou d'erreurs coûteuses."
+      },
+      {
+        icon: <XCircle size={20} className="text-red-500" />,
+        text: "Risque d'être victime d'arnaques à l'immigration, mettant en péril votre avenir au Canada."
+      }
+    ],
+    withMembership: [
+      {
+        icon: <CheckCircle size={20} className="text-green-500" />,
+        text: "Des avocats experts en immigration canadienne vous accompagnent à chaque étape."
+      },
+      {
+        icon: <CheckCircle size={20} className="text-green-500" />,
+        text: "Remboursement à 100 % si votre visa est refusé—votre succès est notre priorité."
+      },
+      {
+        icon: <CheckCircle size={20} className="text-green-500" />,
+        text: "Gagnez du temps et évitez les complications inutiles dans votre demande."
+      },
+      {
+        icon: <CheckCircle size={20} className="text-green-500" />,
+        text: "Emménagez au Canada avec confiance, clarté et un soutien total."
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero section */}
@@ -109,6 +149,29 @@ const Index = () => {
         secondaryCtaLink="/services"
         imageSrc="https://images.unsplash.com/photo-1524569970261-f3b491d7933b?auto=format&fit=crop&w=2000&q=80"
       />
+
+      {/* Comparison Section - NEW */}
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Prenez 2 minutes pour sécuriser votre avenir</h2>
+            <p className="text-xl font-medium text-primary mb-4">Quels sont les enjeux ?</p>
+          </div>
+          
+          <ComparisonSection 
+            withoutMembershipTitle="Sans adhésion"
+            withMembershipTitle="Avec une adhésion"
+            withoutMembershipItems={comparisonData.withoutMembership}
+            withMembershipItems={comparisonData.withMembership}
+          />
+          
+          <div className="text-center mt-12">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              <Link to="/eligibility">Commencer votre essai GRATUIT de 7 jours</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* Services section */}
       <section className="py-24 bg-gray-50">
