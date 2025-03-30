@@ -1,7 +1,7 @@
 
 import { useEffect } from "react";
 import ServicePage from "@/components/ServicePage";
-import { FileCheck, Users, BarChart, Globe, Briefcase } from "lucide-react";
+import { FileCheck, Users, BarChart, Globe, Briefcase, CheckCircle2, HeartHandshake, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -86,22 +86,28 @@ const Immigration = () => {
           </div>
 
           <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 md:p-8">
-            <h2 className="text-2xl font-semibold text-center mb-6">Programmes d'immigration canadiens</h2>
+            <h2 className="text-2xl font-semibold text-center mb-6">Nos services d'accompagnement</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-white p-5 rounded-lg shadow-sm border border-blue-100">
-                <h3 className="font-semibold text-lg mb-2">Entrée Express</h3>
-                <p className="text-sm text-gray-600 mb-4">Système de gestion des demandes d'immigration pour les travailleurs qualifiés.</p>
-                <div className="text-xs text-gray-500">Délai de traitement: 6 mois</div>
+                <div className="text-primary mb-3">
+                  <CheckCircle2 size={24} />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Évaluation personnalisée</h3>
+                <p className="text-sm text-gray-600">Analyse complète de votre profil par des experts en immigration pour identifier les meilleures options disponibles.</p>
               </div>
               <div className="bg-white p-5 rounded-lg shadow-sm border border-blue-100">
-                <h3 className="font-semibold text-lg mb-2">PSTQ (Québec)</h3>
-                <p className="text-sm text-gray-600 mb-4">Nouveau Programme de sélection des travailleurs qualifiés du Québec avec 4 volets distincts.</p>
-                <div className="text-xs text-gray-500">Délai de traitement: 12-24 mois</div>
+                <div className="text-primary mb-3">
+                  <HeartHandshake size={24} />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Support continu</h3>
+                <p className="text-sm text-gray-600">Accompagnement personnalisé tout au long du processus avec un conseiller dédié à votre dossier.</p>
               </div>
               <div className="bg-white p-5 rounded-lg shadow-sm border border-blue-100">
-                <h3 className="font-semibold text-lg mb-2">Programme des Candidats Provinciaux</h3>
-                <p className="text-sm text-gray-600 mb-4">Programmes spécifiques à chaque province canadienne.</p>
-                <div className="text-xs text-gray-500">Délai de traitement: variable selon la province</div>
+                <div className="text-primary mb-3">
+                  <GraduationCap size={24} />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Formation préparatoire</h3>
+                <p className="text-sm text-gray-600">Sessions informatives sur la vie au Canada, le marché du travail et les différences culturelles pour faciliter votre adaptation.</p>
               </div>
             </div>
             <div className="text-center mt-8">
