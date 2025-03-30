@@ -254,5 +254,150 @@
     "title": "Page non trouvée",
     "description": "Désolé, la page que vous recherchez n'existe pas ou a été déplacée.",
     "backHome": "Retour à l'accueil"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "description": "Vous avez des questions ou besoin d'informations ? N'hésitez pas à nous contacter. Notre équipe est prête à vous aider dans votre démarche.",
+    "info": {
+      "title": "Informations de contact",
+      "phone": "Téléphone",
+      "email": "Email",
+      "address": "Adresse",
+      "hours": "Heures d'ouverture",
+      "weekdays": "Lun-Ven: 9h00 - 18h00",
+      "saturday": "Sam: 10h00 - 14h00"
+    },
+    "social": {
+      "title": "Suivez-nous"
+    },
+    "map": {
+      "title": "Notre Emplacement"
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "name": "Nom complet",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "votre@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "Votre numéro de téléphone",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Sélectionnez un sujet",
+      "message": "Message",
+      "messagePlaceholder": "Votre message",
+      "submit": "Envoyer le message",
+      "other": "Autre",
+      "success": "Message envoyé avec succès! Nous vous contacterons bientôt.",
+      "errorRequired": "Veuillez remplir tous les champs obligatoires",
+      "errorEmail": "Veuillez entrer une adresse email valide"
+    }
+  },
+  "blog": {
+    "title": "Notre Blog",
+    "description": "Découvrez nos articles, guides et conseils pour vous aider dans vos démarches d'immigration, de formation professionnelle et de recherche d'emploi.",
+    "featured": "Article à la une",
+    "recommended": "Recommandé",
+    "allArticles": "Tous les articles",
+    "readArticle": "Lire l'article",
+    "bookmarkAriaLabel": "Sauvegarder l'article",
+    "shareAriaLabel": "Partager l'article",
+    "moreInfo": "En savoir plus",
+    "newsletter": {
+      "title": "Restez informé",
+      "description": "Abonnez-vous à notre newsletter pour recevoir les derniers articles et conseils directement dans votre boîte de réception.",
+      "placeholder": "Votre adresse email",
+      "ariaLabel": "Adresse email pour la newsletter",
+      "button": "S'abonner"
+    },
+    "sponsored": {
+      "title": "Services recommandés",
+      "label": "Sponsorisé",
+      "coaching": "Coaching personnalisé",
+      "coachingDesc": "Consultation individuelle avec un expert en immigration",
+      "preparation": "Préparation de dossier",
+      "preparationDesc": "Service complet de préparation de votre dossier d'immigration",
+      "cv": "Création de CV",
+      "cvDesc": "Service professionnel de rédaction de CV adapté au marché canadien"
+    },
+    "posts": {
+      "1": {
+        "title": "Les étapes essentielles pour réussir votre immigration au Canada",
+        "excerpt": "Découvrez les démarches administratives et les conseils pratiques pour faciliter votre installation au Canada.",
+        "author": "Marie Dubois",
+        "date": "12 juin 2023",
+        "readTime": "8 min"
+      },
+      "2": {
+        "title": "Comment créer un CV qui retient l'attention des recruteurs",
+        "excerpt": "Les techniques et astuces pour rédiger un CV professionnel qui se démarque dans la pile des candidatures.",
+        "author": "Thomas Martin",
+        "date": "24 mai 2023",
+        "readTime": "6 min"
+      },
+      "3": {
+        "title": "Préparer efficacement un entretien d'embauche : les erreurs à éviter",
+        "excerpt": "Les pièges classiques et les stratégies pour les éviter lors de vos entretiens professionnels.",
+        "author": "Sophie Bernard",
+        "date": "5 avril 2023",
+        "readTime": "5 min"
+      },
+      "4": {
+        "title": "Les tendances du marché de l'emploi en 2023",
+        "excerpt": "Analyse des secteurs porteurs et des compétences les plus recherchées par les recruteurs cette année.",
+        "author": "Pierre Leroy",
+        "date": "18 mars 2023",
+        "readTime": "7 min"
+      },
+      "5": {
+        "title": "Comment définir votre projet professionnel : guide pratique",
+        "excerpt": "Les étapes clés pour identifier vos aspirations et construire un parcours professionnel qui vous correspond.",
+        "author": "Claire Dumas",
+        "date": "2 février 2023",
+        "readTime": "9 min"
+      },
+      "6": {
+        "title": "Les clés d'une intégration réussie dans un nouveau pays",
+        "excerpt": "Conseils pratiques pour s'adapter à une nouvelle culture et créer des liens dans votre pays d'accueil.",
+        "author": "Jean Moreau",
+        "date": "15 janvier 2023",
+        "readTime": "10 min"
+      }
+    }
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "description": "Trouvez des réponses aux questions les plus courantes sur nos services d'immigration, de formation, de coaching et de recrutement.",
+    "immigration": {
+      "q1": "Quels sont les critères d'éligibilité pour immigrer au Canada?",
+      "a1": "Les critères d'éligibilité pour l'immigration au Canada dépendent du programme choisi. Généralement, ils incluent l'âge, le niveau d'éducation, l'expérience professionnelle, les compétences linguistiques en français et/ou en anglais, et la capacité d'adaptation. Notre test d'éligibilité vous aidera à déterminer si vous êtes admissible.",
+      "q2": "Combien de temps prend le processus d'immigration en moyenne?",
+      "a2": "La durée du processus d'immigration varie considérablement selon le pays, le programme et les circonstances individuelles. Pour le Canada, le processus peut prendre entre 6 et 24 mois. Certains programmes express peuvent être plus rapides. Nos conseillers peuvent vous donner une estimation plus précise basée sur votre situation spécifique.",
+      "q3": "Quels documents sont nécessaires pour constituer un dossier d'immigration?",
+      "a3": "Les documents requis varient selon le programme d'immigration, mais incluent généralement: passeport valide, diplômes et relevés de notes, preuves d'expérience professionnelle, certificats de compétences linguistiques, certificat de naissance, certificat de mariage le cas échéant, preuve de fonds suffisants, et parfois un certificat médical et un casier judiciaire. Nos conseillers vous fourniront une liste détaillée adaptée à votre situation."
+    },
+    "formation": {
+      "q1": "Comment créer un CV qui se démarque des autres candidatures?",
+      "a1": "Pour créer un CV qui se démarque, concentrez-vous sur la personnalisation pour chaque poste, mettez en avant vos réalisations plutôt que simplement vos responsabilités, utilisez des mots-clés pertinents pour votre secteur, adoptez un format clair et professionnel, et incluez des données quantifiables pour démontrer votre impact. Notre service de création de CV peut vous aider à optimiser votre présentation professionnelle.",
+      "q2": "Quelles sont les erreurs à éviter dans une lettre de motivation?",
+      "a2": "Les erreurs à éviter dans une lettre de motivation incluent: faire un copier-coller générique, se concentrer uniquement sur vos besoins plutôt que sur ce que vous pouvez apporter à l'entreprise, utiliser un langage trop familier, faire des fautes d'orthographe ou de grammaire, écrire une lettre trop longue, et répéter simplement les informations de votre CV sans les développer."
+    },
+    "coaching": {
+      "q1": "Comment se préparer efficacement pour un entretien d'embauche?",
+      "a1": "Pour vous préparer efficacement à un entretien, recherchez l'entreprise et le poste en profondeur, préparez des réponses aux questions courantes, entraînez-vous avec des simulations d'entretien, préparez des questions pertinentes à poser, planifiez votre tenue professionnelle, et arrivez en avance. Notre service de coaching pour entretiens peut vous aider à développer votre confiance et vos compétences en entretien.",
+      "q2": "Quels sont les avantages du coaching professionnel?",
+      "a2": "Le coaching professionnel offre de nombreux avantages, notamment: un regard extérieur objectif sur votre situation, des stratégies personnalisées pour atteindre vos objectifs, un soutien pour surmonter les obstacles, une amélioration de la confiance en soi, le développement de nouvelles compétences, et une meilleure gestion du stress. Nos coachs certifiés vous accompagnent dans votre développement personnel et professionnel."
+    },
+    "orientation": {
+      "q1": "Comment identifier le domaine professionnel qui me correspond le mieux?",
+      "a1": "Pour identifier le domaine professionnel qui vous correspond, analysez vos centres d'intérêt, vos valeurs et vos compétences naturelles, explorez différents secteurs d'activité, échangez avec des professionnels, envisagez de faire des stages ou du bénévolat pour tester différents environnements, et considérez un bilan de compétences. Nos conseillers en orientation vous guideront dans cette réflexion.",
+      "q2": "Qu'est-ce qu'un bilan de compétences et comment se déroule-t-il?",
+      "a2": "Un bilan de compétences est une démarche qui permet d'analyser vos compétences professionnelles et personnelles, vos aptitudes et motivations pour définir un projet professionnel. Il se déroule généralement en trois phases: une phase préliminaire pour définir vos besoins, une phase d'investigation pour analyser vos motivations et compétences, et une phase de conclusion qui synthétise les résultats et établit un plan d'action."
+    },
+    "recruitment": {
+      "q1": "Comment trouver des offres d'emploi qui correspondent à mon profil?",
+      "a1": "Pour trouver des offres d'emploi adaptées à votre profil, utilisez des plateformes spécialisées dans votre secteur, activez votre réseau professionnel, suivez les entreprises qui vous intéressent sur les réseaux sociaux, inscrivez-vous auprès d'agences de recrutement, participez à des salons de l'emploi, et personnalisez vos alertes emploi. Notre service de recrutement peut vous aider à cibler les opportunités les plus pertinentes.",
+      "q2": "Quels sont les secteurs qui recrutent le plus actuellement?",
+      "a2": "Les secteurs qui recrutent le plus actuellement incluent la technologie et l'informatique, la santé et les services médicaux, les énergies renouvelables, la cybersécurité, l'e-commerce, et l'intelligence artificielle. Cependant, les tendances varient selon les régions et évoluent constamment. Nos conseillers peuvent vous fournir des informations à jour sur les secteurs porteurs dans votre région cible."
+    }
   }
 }

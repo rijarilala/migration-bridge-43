@@ -254,5 +254,150 @@
     "title": "Page not found",
     "description": "Sorry, the page you are looking for does not exist or has been moved.",
     "backHome": "Back to home"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Do you have questions or need information? Don't hesitate to contact us. Our team is ready to help you with your journey.",
+    "info": {
+      "title": "Contact Information",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "hours": "Opening Hours",
+      "weekdays": "Mon-Fri: 9:00 AM - 6:00 PM",
+      "saturday": "Sat: 10:00 AM - 2:00 PM"
+    },
+    "social": {
+      "title": "Follow Us"
+    },
+    "map": {
+      "title": "Our Location"
+    },
+    "form": {
+      "title": "Send us a message",
+      "name": "Full Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "Your phone number",
+      "subject": "Subject",
+      "subjectPlaceholder": "Select a subject",
+      "message": "Message",
+      "messagePlaceholder": "Your message",
+      "submit": "Send Message",
+      "other": "Other",
+      "success": "Message sent successfully! We will contact you soon.",
+      "errorRequired": "Please fill in all required fields",
+      "errorEmail": "Please enter a valid email address"
+    }
+  },
+  "blog": {
+    "title": "Our Blog",
+    "description": "Discover our articles, guides and advice to help you with your immigration, professional training and job search.",
+    "featured": "Featured Article",
+    "recommended": "Recommended",
+    "allArticles": "All Articles",
+    "readArticle": "Read Article",
+    "bookmarkAriaLabel": "Save article",
+    "shareAriaLabel": "Share article",
+    "moreInfo": "Learn More",
+    "newsletter": {
+      "title": "Stay Informed",
+      "description": "Subscribe to our newsletter to receive the latest articles and tips directly in your inbox.",
+      "placeholder": "Your email address",
+      "ariaLabel": "Email address for newsletter",
+      "button": "Subscribe"
+    },
+    "sponsored": {
+      "title": "Recommended Services",
+      "label": "Sponsored",
+      "coaching": "Personalized Coaching",
+      "coachingDesc": "Individual consultation with an immigration expert",
+      "preparation": "Application Preparation",
+      "preparationDesc": "Complete service for preparing your immigration application",
+      "cv": "CV Creation",
+      "cvDesc": "Professional CV writing service adapted to the Canadian market"
+    },
+    "posts": {
+      "1": {
+        "title": "Essential steps to successfully immigrate to Canada",
+        "excerpt": "Discover the administrative procedures and practical advice to facilitate your settlement in Canada.",
+        "author": "Marie Dubois",
+        "date": "June 12, 2023",
+        "readTime": "8 min"
+      },
+      "2": {
+        "title": "How to create a CV that catches recruiters' attention",
+        "excerpt": "Techniques and tips for writing a professional CV that stands out in the pile of applications.",
+        "author": "Thomas Martin",
+        "date": "May 24, 2023",
+        "readTime": "6 min"
+      },
+      "3": {
+        "title": "Effectively preparing for a job interview: mistakes to avoid",
+        "excerpt": "Classic pitfalls and strategies to avoid them during your professional interviews.",
+        "author": "Sophie Bernard",
+        "date": "April 5, 2023",
+        "readTime": "5 min"
+      },
+      "4": {
+        "title": "Job market trends in 2023",
+        "excerpt": "Analysis of growing sectors and skills most sought after by recruiters this year.",
+        "author": "Pierre Leroy",
+        "date": "March 18, 2023",
+        "readTime": "7 min"
+      },
+      "5": {
+        "title": "How to define your professional project: practical guide",
+        "excerpt": "Key steps to identify your aspirations and build a professional path that suits you.",
+        "author": "Claire Dumas",
+        "date": "February 2, 2023",
+        "readTime": "9 min"
+      },
+      "6": {
+        "title": "Keys to successful integration in a new country",
+        "excerpt": "Practical advice for adapting to a new culture and creating connections in your host country.",
+        "author": "Jean Moreau",
+        "date": "January 15, 2023",
+        "readTime": "10 min"
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to the most common questions about our immigration, training, coaching and recruitment services.",
+    "immigration": {
+      "q1": "What are the eligibility criteria for immigrating to Canada?",
+      "a1": "Eligibility criteria for immigration to Canada depend on the chosen program. Generally, they include age, education level, work experience, language skills in French and/or English, and adaptability. Our eligibility test will help you determine if you qualify.",
+      "q2": "How long does the immigration process take on average?",
+      "a2": "The duration of the immigration process varies considerably depending on the country, program, and individual circumstances. For Canada, the process can take between 6 and 24 months. Some express programs may be faster. Our consultants can give you a more accurate estimate based on your specific situation.",
+      "q3": "What documents are needed to prepare an immigration application?",
+      "a3": "Required documents vary according to the immigration program, but generally include: valid passport, diplomas and transcripts, proof of work experience, language proficiency certificates, birth certificate, marriage certificate if applicable, proof of sufficient funds, and sometimes a medical certificate and criminal record check. Our consultants will provide you with a detailed list tailored to your situation."
+    },
+    "formation": {
+      "q1": "How to create a CV that stands out from other applications?",
+      "a1": "To create a standout CV, focus on customization for each position, highlight your achievements rather than just your responsibilities, use relevant keywords for your industry, adopt a clear and professional format, and include quantifiable data to demonstrate your impact. Our CV creation service can help you optimize your professional presentation.",
+      "q2": "What mistakes should be avoided in a cover letter?",
+      "a2": "Mistakes to avoid in a cover letter include: making a generic copy-paste, focusing only on your needs rather than on what you can bring to the company, using too casual language, making spelling or grammar mistakes, writing a letter that is too long, and simply repeating information from your CV without developing it."
+    },
+    "coaching": {
+      "q1": "How to effectively prepare for a job interview?",
+      "a1": "To prepare effectively for an interview, research the company and position in depth, prepare answers to common questions, practice with interview simulations, prepare relevant questions to ask, plan professional attire, and arrive early. Our interview coaching service can help you develop your confidence and interview skills.",
+      "q2": "What are the benefits of professional coaching?",
+      "a2": "Professional coaching offers many benefits, including: an objective outside perspective on your situation, personalized strategies to achieve your goals, support to overcome obstacles, improved self-confidence, development of new skills, and better stress management. Our certified coaches accompany you in your personal and professional development."
+    },
+    "orientation": {
+      "q1": "How to identify the professional field that best suits me?",
+      "a1": "To identify the professional field that suits you, analyze your interests, values and natural skills, explore different sectors of activity, talk with professionals, consider doing internships or volunteering to test different environments, and consider a skills assessment. Our career counselors will guide you in this reflection.",
+      "q2": "What is a skills assessment and how does it work?",
+      "a2": "A skills assessment is a process that allows you to analyze your professional and personal skills, aptitudes and motivations to define a professional project. It generally takes place in three phases: a preliminary phase to define your needs, an investigation phase to analyze your motivations and skills, and a conclusion phase that synthesizes the results and establishes an action plan."
+    },
+    "recruitment": {
+      "q1": "How to find job offers that match my profile?",
+      "a1": "To find job offers suited to your profile, use platforms specialized in your sector, activate your professional network, follow companies that interest you on social networks, register with recruitment agencies, participate in job fairs, and personalize your job alerts. Our recruitment service can help you target the most relevant opportunities.",
+      "q2": "Which sectors are currently recruiting the most?",
+      "a2": "Sectors that are currently recruiting the most include technology and IT, health and medical services, renewable energies, cybersecurity, e-commerce, and artificial intelligence. However, trends vary by region and are constantly evolving. Our consultants can provide you with up-to-date information on growing sectors in your target region."
+    }
   }
 }
