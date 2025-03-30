@@ -14,26 +14,21 @@ interface CheckboxOption {
 
 const EligibilityForm = () => {
   const initialFormData = {
-    // Informations personnelles
     age: "",
     education: "",
     experience: "",
     
-    // Compétences linguistiques
     frenchLevel: "",
     englishLevel: "",
     
-    // Informations professionnelles
     profession: "",
     professionType: "",
     licenseInQuebec: "",
     
-    // Informations supplémentaires
     jobOffer: "",
     familyTies: "",
     canadaProject: "",
     
-    // Contact
     name: "",
     email: "",
     phone: "",
@@ -44,7 +39,6 @@ const EligibilityForm = () => {
   const [isEligible, setIsEligible] = useState<boolean | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  // Options pour les cases à cocher
   const ageOptions: CheckboxOption[] = [
     { id: "age-18-29", label: "18 - 29 ans", value: "18-29" },
     { id: "age-30-39", label: "30 - 39 ans", value: "30-39" },
@@ -105,7 +99,6 @@ const EligibilityForm = () => {
   const handleNextStep = () => {
     if (validateCurrentStep()) {
       setCurrentStep(currentStep + 1);
-      // Scroll to the top of the form container smoothly
       const formContainer = document.querySelector('.eligibility-form-container');
       if (formContainer) {
         formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -115,7 +108,6 @@ const EligibilityForm = () => {
 
   const handlePrevStep = () => {
     setCurrentStep(currentStep - 1);
-    // Scroll to the top of the form container smoothly
     const formContainer = document.querySelector('.eligibility-form-container');
     if (formContainer) {
       formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -123,13 +115,9 @@ const EligibilityForm = () => {
   };
 
   const resetForm = () => {
-    // Reset the form data to initial state
     setFormData(initialFormData);
-    // Reset results
     setIsEligible(null);
-    // Return to step 1
     setCurrentStep(1);
-    // Scroll to the top of the form container smoothly
     const formContainer = document.querySelector('.eligibility-form-container');
     if (formContainer) {
       formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -181,7 +169,6 @@ const EligibilityForm = () => {
         toast.error("Veuillez remplir tous les champs de contact");
         return false;
       }
-      // Basic email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
         toast.error("Veuillez entrer une adresse email valide");
@@ -194,49 +181,33 @@ const EligibilityForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateCurrentStep()) {
-      // Simuler un temps de traitement pour donner l'impression d'une évaluation complexe
       setIsProcessing(true);
       
       setTimeout(() => {
-        // Évaluation masquée - la logique précise est cachée et simplifiée
         const eligibility = evaluateEligibilityBehindTheScenes();
         setIsEligible(eligibility);
         setIsProcessing(false);
         
-        // Passer à l'étape des résultats
         setCurrentStep(4);
         
-        // Scroll to the top of the form container smoothly
         const formContainer = document.querySelector('.eligibility-form-container');
         if (formContainer) {
           formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 2500); // Attendre 2.5 secondes pour simuler une évaluation complexe
+      }, 2500);
     }
   };
 
-  // Cette fonction contient la logique d'évaluation complètement masquée à l'utilisateur
   const evaluateEligibilityBehindTheScenes = (): boolean => {
-    // Nouvelle logique: Le candidat est admissible sauf s'il ne correspond à aucun des trois programmes
-    
-    // Évaluation pour le programme Entrée Express
     const isEligibleForExpressEntry = evaluateExpressEntry();
-    
-    // Évaluation pour le programme PSTQ (Québec)
     const isEligibleForPSTQ = evaluatePSTQ();
-    
-    // Évaluation pour le Programme des Candidats Provinciaux
     const isEligibleForPCP = evaluatePCP();
-    
-    // Le candidat est éligible s'il correspond à AU MOINS UN des programmes
     return isEligibleForExpressEntry || isEligibleForPSTQ || isEligibleForPCP;
   };
-  
-  // Évaluation pour Entrée Express (logique masquée)
+
   const evaluateExpressEntry = (): boolean => {
     let score = 0;
     
-    // Évaluation de l'âge
     switch(formData.age) {
       case "18-29": score += 25; break;
       case "30-39": score += 20; break;
@@ -244,7 +215,6 @@ const EligibilityForm = () => {
       default: score += 0;
     }
     
-    // Évaluation de l'éducation
     switch(formData.education) {
       case "none": score += 0; break;
       case "highschool": score += 5; break;
@@ -253,28 +223,24 @@ const EligibilityForm = () => {
       case "master": score += 25; break;
     }
     
-    // Évaluation des langues (plus important pour Entrée Express)
     switch(formData.englishLevel) {
       case "none": score += 0; break;
       case "intermediate": score += 10; break;
       case "fluent": score += 20; break;
     }
     
-    return score >= 45; // Seuil pour Entrée Express
+    return score >= 45;
   };
-  
-  // Évaluation pour PSTQ - Québec (logique masquée)
+
   const evaluatePSTQ = (): boolean => {
     let score = 0;
     
-    // Pour PSTQ, le français est très important
     switch(formData.frenchLevel) {
       case "none": score += 0; break;
       case "intermediate": score += 15; break;
       case "fluent": score += 30; break;
     }
     
-    // Éducation et expérience
     if (formData.education === "bachelor" || formData.education === "master") {
       score += 20;
     }
@@ -283,23 +249,18 @@ const EligibilityForm = () => {
       score += 15;
     }
     
-    // Bonus pour offre d'emploi au Québec
     if (formData.jobOffer === "yes") score += 10;
     
-    return score >= 45; // Seuil pour PSTQ
+    return score >= 45;
   };
-  
-  // Évaluation pour Programme des Candidats Provinciaux (logique masquée)
+
   const evaluatePCP = (): boolean => {
     let score = 0;
     
-    // L'offre d'emploi est très importante pour le PCP
     if (formData.jobOffer === "yes") score += 25;
     
-    // Les liens familiaux aident beaucoup
     if (formData.familyTies === "yes") score += 15;
     
-    // Évaluation de l'expérience (cruciale pour certains PCP)
     switch(formData.experience) {
       case "none": score += 0; break;
       case "less1": score += 5; break;
@@ -308,12 +269,11 @@ const EligibilityForm = () => {
       case "more5": score += 25; break;
     }
     
-    // Éducation
     if (formData.education === "postsecondary" || formData.education === "bachelor" || formData.education === "master") {
       score += 15;
     }
     
-    return score >= 40; // Seuil pour PCP
+    return score >= 40;
   };
 
   return (
