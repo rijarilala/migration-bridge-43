@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -31,9 +32,6 @@ const EligibilityForm = () => {
     englishLevel: "",
     
     profession: "",
-    professionType: "",
-    licenseInQuebec: "",
-    exceptionalTalent: "",
     
     jobOffer: "",
     familyTies: "",
@@ -89,14 +87,6 @@ const EligibilityForm = () => {
     { id: "project-work", label: "Travailler", value: "work" },
     { id: "project-settle", label: "M'établir de façon permanente", value: "settle" },
     { id: "project-family", label: "Rejoindre un membre de ma famille", value: "family" },
-  ];
-
-  const professionTypeOptions: CheckboxOption[] = [
-    { id: "prof-highly-skilled", label: "Profession hautement qualifiée (volet 1)", value: "highly-skilled" },
-    { id: "prof-intermediate", label: "Profession intermédiaire/manuelle (volet 2)", value: "intermediate" },
-    { id: "prof-regulated", label: "Profession réglementée requérant un permis au Québec (volet 3)", value: "regulated" },
-    { id: "prof-exceptional", label: "Talent d'exception (volet 4)", value: "exceptional" },
-    { id: "prof-unknown", label: "Je ne sais pas", value: "unknown" },
   ];
 
   const handleSingleOptionChange = (fieldName: string, value: string) => {
@@ -168,10 +158,6 @@ const EligibilityForm = () => {
         toast.error("Veuillez sélectionner au moins un projet au Canada");
         return false;
       }
-      if (!formData.professionType && formData.canadaProject === "work") {
-        toast.error("Veuillez sélectionner un type de profession");
-        return false;
-      }
       if (!formData.jobOffer) {
         toast.error("Veuillez indiquer si vous avez une offre d'emploi");
         return false;
@@ -213,6 +199,7 @@ const EligibilityForm = () => {
   const calculateEligibilityBehindTheScenes = () => {
     const results = [];
     
+    // Express Entry calculation
     let expressPoints = 0;
     let expressMaxPoints = 100;
     
@@ -313,134 +300,108 @@ const EligibilityForm = () => {
       level: expressLevel
     });
     
-    let pstqPoints = 0;
-    let pstqMaxPoints = 100;
+    // Programme d'immigration générique
+    let genericPoints = 0;
+    let genericMaxPoints = 100;
     
     switch(formData.age) {
       case "18-29":
-        pstqPoints += 20;
+        genericPoints += 20;
         break;
       case "30-39":
-        pstqPoints += 16;
+        genericPoints += 16;
         break;
       case "40-44":
-        pstqPoints += 8;
+        genericPoints += 8;
         break;
       case "45+":
-        pstqPoints += 0;
+        genericPoints += 0;
         break;
     }
     
     switch(formData.education) {
       case "none":
-        pstqPoints += 0;
+        genericPoints += 0;
         break;
       case "highschool":
-        pstqPoints += 4;
+        genericPoints += 4;
         break;
       case "postsecondary":
-        pstqPoints += 8;
+        genericPoints += 8;
         break;
       case "bachelor":
-        pstqPoints += 14;
+        genericPoints += 14;
         break;
       case "master":
-        pstqPoints += 18;
+        genericPoints += 18;
         break;
     }
     
     switch(formData.experience) {
       case "none":
-        pstqPoints += 0;
+        genericPoints += 0;
         break;
       case "less1":
-        pstqPoints += 4;
+        genericPoints += 4;
         break;
       case "1-3":
-        pstqPoints += 8;
+        genericPoints += 8;
         break;
       case "4-5":
-        pstqPoints += 12;
+        genericPoints += 12;
         break;
       case "more5":
-        pstqPoints += 16;
+        genericPoints += 16;
         break;
     }
     
     switch(formData.frenchLevel) {
       case "fluent":
-        pstqPoints += 20;
+        genericPoints += 20;
         break;
       case "intermediate":
-        pstqPoints += 10;
+        genericPoints += 10;
         break;
       case "none":
-        pstqPoints += 0;
+        genericPoints += 0;
         break;
     }
     
     switch(formData.englishLevel) {
       case "fluent":
-        pstqPoints += 10;
+        genericPoints += 10;
         break;
       case "intermediate":
-        pstqPoints += 5;
+        genericPoints += 5;
         break;
       case "none":
-        pstqPoints += 0;
+        genericPoints += 0;
         break;
     }
     
-    if (formData.jobOffer === "yes") pstqPoints += 16;
+    if (formData.jobOffer === "yes") genericPoints += 16;
     
-    let pstqVolet = "";
-    let pstqVoletBonus = 0;
+    let genericLevel: "high" | "medium" | "low" = "low";
+    let genericMessage = "";
+    let genericDetails = "";
     
-    switch(formData.professionType) {
-      case "highly-skilled":
-        pstqVolet = "Volet 1 (Professions hautement qualifiées)";
-        if (formData.frenchLevel === "fluent") pstqVoletBonus += 10;
-        if (formData.education === "master" || formData.education === "bachelor") pstqVoletBonus += 10;
-        break;
-      case "intermediate":
-        pstqVolet = "Volet 2 (Professions intermédiaires et manuelles)";
-        if (formData.experience === "4-5" || formData.experience === "more5") pstqVoletBonus += 15;
-        break;
-      case "regulated":
-        pstqVolet = "Volet 3 (Professions réglementées)";
-        if (formData.licenseInQuebec === "yes") pstqVoletBonus += 20;
-        break;
-      case "exceptional":
-        pstqVolet = "Volet 4 (Talents d'exception)";
-        if (formData.exceptionalTalent === "yes") pstqVoletBonus += 25;
-        break;
-      default:
-        pstqVolet = "Non déterminé";
-        break;
-    }
-    
-    pstqPoints += pstqVoletBonus;
-    
-    let pstqLevel: "high" | "medium" | "low" = "low";
-    let pstqMessage = "";
-    let pstqDetails = "";
-    
-    const pstqPercentage = pstqPoints / pstqMaxPoints;
-    if (pstqPercentage >= 0.7) {
-      pstqLevel = "high";
-    } else if (pstqPercentage >= 0.5) {
-      pstqLevel = "medium";
+    const genericPercentage = genericPoints / genericMaxPoints;
+    if (genericPercentage >= 0.7) {
+      genericLevel = "high";
+    } else if (genericPercentage >= 0.5) {
+      genericLevel = "medium";
     } else {
-      pstqLevel = "low";
+      genericLevel = "low";
     }
     
     results.push({
-      eligible: pstqLevel === "high",
-      message: pstqMessage,
-      details: pstqDetails,
-      level: pstqLevel
+      eligible: genericLevel === "high",
+      message: genericMessage,
+      details: genericDetails,
+      level: genericLevel
     });
     
+    // Programme d'expérience
     const isPeqEligible = formData.frenchLevel === "fluent" || formData.frenchLevel === "intermediate";
     const peqLevel: "high" | "medium" | "low" = isPeqEligible ? 
       (formData.experience !== "none" ? "high" : "medium") : "low";
@@ -634,55 +595,6 @@ const EligibilityForm = () => {
                 ))}
               </RadioGroup>
             </div>
-            
-            {formData.canadaProject === "work" && (
-              <div className="space-y-4 bg-blue-50 p-4 rounded-lg">
-                <h3 className="text-lg font-medium">Type de profession (PSTQ)</h3>
-                <p className="text-sm text-blue-800 mb-4">
-                  Le nouveau Programme de sélection des travailleurs qualifiés (PSTQ) du Québec comprend 4 volets distincts :
-                </p>
-                <RadioGroup value={formData.professionType} onValueChange={(value) => handleSingleOptionChange("professionType", value)} className="grid gap-3">
-                  {professionTypeOptions.map((option) => (
-                    <div key={option.id} className="flex items-center space-x-2">
-                      <RadioGroupItem id={option.id} value={option.value} />
-                      <Label htmlFor={option.id}>{option.label}</Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-
-                {formData.professionType === "regulated" && (
-                  <div className="mt-4 p-3 bg-white rounded-lg">
-                    <h4 className="font-medium mb-2">Autorisation ou permis d'exercice</h4>
-                    <RadioGroup value={formData.licenseInQuebec} onValueChange={(value) => handleSingleOptionChange("licenseInQuebec", value)} className="grid gap-3">
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="license-yes" value="yes" />
-                        <Label htmlFor="license-yes">J'ai ou je peux obtenir une autorisation d'exercice au Québec</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="license-no" value="no" />
-                        <Label htmlFor="license-no">Je n'ai pas d'autorisation d'exercice au Québec</Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
-                )}
-
-                {formData.professionType === "exceptional" && (
-                  <div className="mt-4 p-3 bg-white rounded-lg">
-                    <h4 className="font-medium mb-2">Talents d'exception</h4>
-                    <RadioGroup value={formData.exceptionalTalent} onValueChange={(value) => handleSingleOptionChange("exceptionalTalent", value)} className="grid gap-3">
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="talent-yes" value="yes" />
-                        <Label htmlFor="talent-yes">J'ai une reconnaissance internationale dans mon domaine</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem id="talent-no" value="no" />
-                        <Label htmlFor="talent-no">Je n'ai pas de reconnaissance internationale</Label>
-                      </div>
-                    </RadioGroup>
-                  </div>
-                )}
-              </div>
-            )}
 
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Offre d'emploi validée au Canada ?</h3>
