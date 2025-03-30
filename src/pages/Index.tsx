@@ -15,6 +15,11 @@ const Index = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Fonction pour gérer le défilement vers le haut lors des clics sur les liens
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+  
   const services = [
     {
       title: "Immigration",
@@ -162,7 +167,7 @@ const Index = () => {
           />
           
           <div className="text-center mt-12">
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white">
+            <Button asChild size="lg" onClick={handleLinkClick} className="bg-primary hover:bg-primary/90 text-white">
               <Link to="/eligibility">Tester mon éligibilité</Link>
             </Button>
           </div>
