@@ -367,6 +367,9 @@
   "faq": {
     "title": "Questions Fréquentes",
     "description": "Trouvez des réponses aux questions les plus courantes sur nos services d'immigration, de formation, de coaching et de recrutement.",
+    "searchPlaceholder": "Rechercher des questions...",
+    "noResults": "Aucune question ne correspond à votre recherche. Veuillez essayer d'autres mots-clés.",
+    "readMore": "En savoir plus",
     "immigration": {
       "q1": "Quels sont les critères d'éligibilité pour immigrer au Canada?",
       "a1": "Les critères d'éligibilité pour l'immigration au Canada dépendent du programme choisi. Généralement, ils incluent l'âge, le niveau d'éducation, l'expérience professionnelle, les compétences linguistiques en français et/ou en anglais, et la capacité d'adaptation. Notre test d'éligibilité vous aidera à déterminer si vous êtes admissible.",
@@ -399,5 +402,6 @@
       "q2": "Quels sont les secteurs qui recrutent le plus actuellement?",
       "a2": "Les secteurs qui recrutent le plus actuellement incluent la technologie et l'informatique, la santé et les services médicaux, les énergies renouvelables, la cybersécurité, l'e-commerce, et l'intelligence artificielle. Cependant, les tendances varient selon les régions et évoluent constamment. Nos conseillers peuvent vous fournir des informations à jour sur les secteurs porteurs dans votre région cible."
     }
-  }
+  },
+  "currentLanguage": "Langue actuelle"
 }

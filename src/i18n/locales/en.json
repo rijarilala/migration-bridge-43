@@ -1,4 +1,3 @@
-
 {
   "navigation": {
     "home": "Home",
@@ -367,6 +366,9 @@
   "faq": {
     "title": "Frequently Asked Questions",
     "description": "Find answers to the most common questions about our immigration, training, coaching and recruitment services.",
+    "searchPlaceholder": "Search for questions...",
+    "noResults": "No questions match your search. Please try different keywords.",
+    "readMore": "Read more",
     "immigration": {
       "q1": "What are the eligibility criteria for immigrating to Canada?",
       "a1": "Eligibility criteria for immigration to Canada depend on the chosen program. Generally, they include age, education level, work experience, language skills in French and/or English, and adaptability. Our eligibility test will help you determine if you qualify.",
@@ -399,5 +401,6 @@
       "q2": "Which sectors are currently recruiting the most?",
       "a2": "Sectors that are currently recruiting the most include technology and IT, health and medical services, renewable energies, cybersecurity, e-commerce, and artificial intelligence. However, trends vary by region and are constantly evolving. Our consultants can provide you with up-to-date information on growing sectors in your target region."
     }
-  }
+  },
+  "currentLanguage": "Current language"
 }
