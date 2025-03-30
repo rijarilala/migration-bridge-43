@@ -216,7 +216,10 @@ const Navbar = () => {
                     <div className="mt-8">
                       <Button 
                         className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-                        onClick={handleNavigateToEligibility}
+                        onClick={(handleNavigateToEligibility) => {
+                          handleNavigate('/eligibility');
+                          setIsMenuOpen(false);
+                        }}
                       >
                         {t('navigation.eligibility')}
                       </Button>
