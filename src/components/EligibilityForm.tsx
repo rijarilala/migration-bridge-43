@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -33,7 +32,6 @@ const EligibilityForm = () => {
     
     profession: "",
     
-    jobOffer: "",
     familyTies: "",
     canadaProject: "",
     
@@ -156,10 +154,6 @@ const EligibilityForm = () => {
     } else if (currentStep === 2) {
       if (!formData.canadaProject) {
         toast.error("Veuillez sélectionner au moins un projet au Canada");
-        return false;
-      }
-      if (!formData.jobOffer) {
-        toast.error("Veuillez indiquer si vous avez une offre d'emploi");
         return false;
       }
       if (!formData.familyTies) {
@@ -596,20 +590,6 @@ const EligibilityForm = () => {
               </RadioGroup>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium">Offre d'emploi validée au Canada ?</h3>
-              <RadioGroup value={formData.jobOffer} onValueChange={(value) => handleSingleOptionChange("jobOffer", value)} className="grid gap-3">
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem id="job-yes" value="yes" />
-                  <Label htmlFor="job-yes">Oui</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem id="job-no" value="no" />
-                  <Label htmlFor="job-no">Non</Label>
-                </div>
-              </RadioGroup>
-            </div>
-            
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Avez-vous des liens familiaux au Canada ?</h3>
               <RadioGroup value={formData.familyTies} onValueChange={(value) => handleSingleOptionChange("familyTies", value)} className="grid gap-3">
