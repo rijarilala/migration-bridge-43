@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Search, Filter, ArrowRight } from "lucide-react";
+import { Search, Filter, ArrowRight, Calendar, Clock, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -22,6 +22,8 @@ interface BlogPost {
   image: string;
   sponsored: boolean;
   readTime: number;
+  author?: string;
+  featured?: boolean;
 }
 
 const Blog = () => {
@@ -34,103 +36,128 @@ const Blog = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Simulated blog posts data with bilingual content
+  // Updated blog posts data with bilingual content inspired by africannetwork.ca
   const blogPosts: BlogPost[] = [
     {
       id: "1",
       title: {
-        fr: "Les étapes essentielles pour réussir votre immigration au Canada",
-        en: "Essential Steps to Succeed in Your Immigration to Canada"
+        fr: "Stratégies efficaces pour réussir votre immigration au Canada en 2023",
+        en: "Effective Strategies to Succeed in Your Immigration to Canada in 2023"
       },
       excerpt: {
-        fr: "Découvrez comment optimiser vos chances de réussir votre projet d'immigration au Canada avec notre guide complet des étapes clés à suivre.",
-        en: "Discover how to optimize your chances of succeeding in your immigration project to Canada with our comprehensive guide to key steps to follow."
+        fr: "Découvrez les derniers programmes d'immigration, les changements de politique et les conseils d'experts pour optimiser votre dossier et augmenter vos chances d'être accepté.",
+        en: "Discover the latest immigration programs, policy changes, and expert advice to optimize your application and increase your chances of acceptance."
       },
       category: "Immigration",
       date: "12 juin 2023",
       image: "https://images.unsplash.com/photo-1507992781348-310259076fe0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       sponsored: true,
-      readTime: 8
+      readTime: 8,
+      author: "Marie Durand",
+      featured: true
     },
     {
       id: "2",
       title: {
-        fr: "Les formations les plus demandées au Canada en 2023",
-        en: "Most In-demand Training Programs in Canada in 2023"
+        fr: "Les 10 formations professionnelles les plus demandées au Canada cette année",
+        en: "10 Most In-demand Professional Training Programs in Canada This Year"
       },
       excerpt: {
-        fr: "Analyse des formations et compétences les plus recherchées par les employeurs canadiens cette année pour maximiser vos chances d'emploi.",
-        en: "Analysis of the training programs and skills most sought after by Canadian employers this year to maximize your employment opportunities."
+        fr: "Notre analyse détaillée du marché du travail canadien révèle les secteurs en pleine croissance et les compétences recherchées par les employeurs pour vous aider à orienter votre parcours professionnel.",
+        en: "Our detailed analysis of the Canadian job market reveals growing sectors and skills sought by employers to help you guide your professional journey."
       },
       category: "Formation",
       date: "5 mai 2023",
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       sponsored: false,
-      readTime: 6
+      readTime: 6,
+      author: "Jean Lapointe"
     },
     {
       id: "3",
       title: {
-        fr: "Comment adapter votre CV aux standards canadiens",
-        en: "How to Adapt Your Resume to Canadian Standards"
+        fr: "Guide complet pour créer un CV canadien qui se démarque en 2023",
+        en: "Complete Guide to Creating a Standout Canadian Resume in 2023"
       },
       excerpt: {
-        fr: "Guide pratique pour transformer votre CV selon les attentes des recruteurs canadiens et augmenter vos chances de décrocher un entretien.",
-        en: "Practical guide to transform your resume according to Canadian recruiters' expectations and increase your chances of landing an interview."
+        fr: "Apprenez à structurer votre CV selon les normes canadiennes, à mettre en valeur vos compétences transférables et à éviter les erreurs courantes qui peuvent vous coûter des opportunités d'emploi.",
+        en: "Learn how to structure your resume according to Canadian standards, highlight your transferable skills, and avoid common mistakes that could cost you job opportunities."
       },
       category: "Coaching",
       date: "18 avril 2023",
       image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       sponsored: false,
-      readTime: 7
+      readTime: 7,
+      author: "Sophie Martin"
     },
     {
       id: "4",
       title: {
-        fr: "Les opportunités d'emploi au Québec pour les francophones",
-        en: "Job Opportunities in Quebec for French Speakers"
+        fr: "Réussir comme professionnel francophone au Québec : opportunités et défis",
+        en: "Succeeding as a French-speaking Professional in Quebec: Opportunities and Challenges"
       },
       excerpt: {
-        fr: "Découvrez les secteurs qui recrutent activement les candidats francophones et comment tirer parti de votre maîtrise de la langue française au Québec.",
-        en: "Discover sectors actively recruiting French-speaking candidates and how to leverage your French language proficiency in Quebec."
+        fr: "Analyse des secteurs économiques prioritaires pour les francophones, avantages linguistiques sur le marché du travail québécois et témoignages de professionnels ayant réussi leur intégration.",
+        en: "Analysis of priority economic sectors for French speakers, linguistic advantages in the Quebec job market, and testimonials from professionals who have successfully integrated."
       },
       category: "Recrutement",
       date: "29 mars 2023",
       image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       sponsored: false,
-      readTime: 5
+      readTime: 5,
+      author: "Philippe Tremblay"
     },
     {
       id: "5",
       title: {
-        fr: "Préparer votre projet professionnel pour le Canada",
-        en: "Preparing Your Professional Project for Canada"
+        fr: "Comment développer un projet professionnel adapté au marché canadien",
+        en: "How to Develop a Professional Project Adapted to the Canadian Market"
       },
       excerpt: {
-        fr: "Méthodologie et conseils pour élaborer un projet professionnel cohérent et aligné avec le marché du travail canadien.",
-        en: "Methodology and advice to develop a coherent professional project aligned with the Canadian job market."
+        fr: "Découvrez une méthodologie en 5 étapes pour évaluer vos compétences, identifier les opportunités du marché et créer un plan d'action concret pour votre réussite professionnelle au Canada.",
+        en: "Discover a 5-step methodology to assess your skills, identify market opportunities, and create a concrete action plan for your professional success in Canada."
       },
       category: "Orientation",
       date: "14 mars 2023",
       image: "https://images.unsplash.com/photo-1579389083046-e3df9c2b3325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       sponsored: true,
-      readTime: 9
+      readTime: 9,
+      author: "Claire Dubois",
+      featured: true
     },
     {
       id: "6",
       title: {
-        fr: "Les programmes d'immigration pour entrepreneurs au Canada",
-        en: "Immigration Programs for Entrepreneurs in Canada"
+        fr: "Guide complet des programmes d'immigration pour entrepreneurs et investisseurs",
+        en: "Complete Guide to Immigration Programs for Entrepreneurs and Investors"
       },
       excerpt: {
-        fr: "Tour d'horizon des programmes d'immigration spécifiquement conçus pour les entrepreneurs et les investisseurs souhaitant s'établir au Canada.",
-        en: "Overview of immigration programs specifically designed for entrepreneurs and investors looking to settle in Canada."
+        fr: "Comparaison détaillée des différents programmes provinciaux et fédéraux, critères d'admissibilité, processus de demande et conseils pour maximiser vos chances de succès en tant qu'entrepreneur immigrant.",
+        en: "Detailed comparison of various provincial and federal programs, eligibility criteria, application process, and tips to maximize your chances of success as an immigrant entrepreneur."
       },
       category: "Immigration",
       date: "2 mars 2023",
       image: "https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       sponsored: false,
-      readTime: 10
+      readTime: 10,
+      author: "Claude Tremblay"
+    },
+    {
+      id: "7",
+      title: {
+        fr: "Événements communautaires et réseautage professionnel pour nouveaux arrivants",
+        en: "Community Events and Professional Networking for Newcomers"
+      },
+      excerpt: {
+        fr: "Guide des meilleures opportunités de réseautage, associations professionnelles et événements communautaires pour élargir votre cercle social et professionnel au Canada.",
+        en: "Guide to the best networking opportunities, professional associations, and community events to expand your social and professional circle in Canada."
+      },
+      category: "Intégration",
+      date: "15 février 2023",
+      image: "https://images.unsplash.com/photo-1516834611397-8d633eaec5d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      sponsored: false,
+      readTime: 6,
+      author: "Lisa Koné"
     }
   ];
 
@@ -152,10 +179,13 @@ const Blog = () => {
     return matchesSearch && matchesCategory;
   });
 
+  // Get featured posts
+  const featuredPosts = blogPosts.filter(post => post.featured);
+
   return (
     <section className="pt-24 pb-16 min-h-screen">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
               {t('blog.title')}
@@ -164,6 +194,62 @@ const Blog = () => {
               {t('blog.subtitle')}
             </p>
           </div>
+
+          {/* Featured Posts Section - Inspired by africannetwork.ca */}
+          {featuredPosts.length > 0 && (
+            <div className="mb-16">
+              <h2 className="text-2xl font-serif font-bold text-gray-800 mb-6">
+                {currentLanguage === 'fr' ? 'Articles à la une' : 'Featured Articles'}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {featuredPosts.map((post) => (
+                  <Link to={`/blog/${post.id}`} key={post.id} className="group">
+                    <article className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+                      <div className="relative">
+                        <img
+                          src={post.image}
+                          alt={post.title[currentLanguage as keyof typeof post.title] || ""}
+                          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute top-4 left-4 flex gap-2">
+                          <Badge className="bg-brand-600">
+                            {post.category}
+                          </Badge>
+                        </div>
+                      </div>
+                      
+                      <div className="p-6 flex-grow flex flex-col">
+                        <h2 className="text-2xl font-serif font-semibold mb-3 text-gray-900 group-hover:text-brand-600 transition-colors duration-200">
+                          {post.title[currentLanguage as keyof typeof post.title] || ""}
+                        </h2>
+                        
+                        <div className="flex items-center text-sm text-gray-500 mb-3 space-x-4">
+                          <div className="flex items-center">
+                            <Calendar size={16} className="mr-1" />
+                            {post.date}
+                          </div>
+                          <div className="flex items-center">
+                            <Clock size={16} className="mr-1" />
+                            {post.readTime} {t('blog.minuteRead')}
+                          </div>
+                        </div>
+                        
+                        <p className="text-gray-600 mb-4 flex-grow">
+                          {post.excerpt[currentLanguage as keyof typeof post.excerpt] || ""}
+                        </p>
+                        
+                        <div className="mt-auto">
+                          <span className="text-brand-600 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform duration-300">
+                            {t('blog.readMore')} <ArrowRight size={16} className="ml-1" />
+                          </span>
+                        </div>
+                      </div>
+                    </article>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Search and Filter */}
           <div className="mb-10 flex flex-col sm:flex-row gap-4">
@@ -224,8 +310,15 @@ const Blog = () => {
                     </div>
                     
                     <div className="p-5 flex-grow flex flex-col">
-                      <div className="text-sm text-gray-500 mb-2">
-                        {post.date} • {post.readTime} {t('blog.minuteRead')}
+                      <div className="flex items-center text-sm text-gray-500 mb-3 space-x-4">
+                        <div className="flex items-center">
+                          <Calendar size={16} className="mr-1" />
+                          {post.date}
+                        </div>
+                        <div className="flex items-center">
+                          <Clock size={16} className="mr-1" />
+                          {post.readTime} {t('blog.minuteRead')}
+                        </div>
                       </div>
                       
                       <h2 className="text-xl font-serif font-semibold mb-3 text-gray-900 group-hover:text-brand-600 transition-colors duration-200">
@@ -235,6 +328,12 @@ const Blog = () => {
                       <p className="text-gray-600 mb-4 flex-grow">
                         {post.excerpt[currentLanguage as keyof typeof post.excerpt] || ""}
                       </p>
+                      
+                      {post.author && (
+                        <div className="text-sm text-gray-500 mb-3">
+                          {currentLanguage === 'fr' ? 'Par' : 'By'}: {post.author}
+                        </div>
+                      )}
                       
                       <div className="mt-auto">
                         <span className="text-brand-600 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform duration-300">
