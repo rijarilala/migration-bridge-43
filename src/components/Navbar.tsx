@@ -32,15 +32,14 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
-    
-// Fonction pour gérer le défilement vers le haut lors des clics sur les liens
-const handleLinkClick = () => {
-  window.scrollTo(0, 0);
-};
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  const handleNavigateToEligibility = () => {
+    navigate("/eligibility");
+    window.scrollTo(0, 0);
+  };
   useEffect(() => {
     // Prevent body scroll when menu is open
     if (isMenuOpen) {
@@ -217,10 +216,9 @@ const handleLinkClick = () => {
                     <div className="mt-8">
                       <Button 
                         className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-                        onClick={(handleLinkClick) => {
+                        onClick={(handleNavigateToEligibility) => {
                           handleNavigate('/eligibility');
                           setIsMenuOpen(false);
-                          ;
                         }}
                       >
                         {t('navigation.eligibility')}
