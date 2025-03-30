@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield } from "lucide-react";
@@ -167,7 +166,7 @@ const Index = () => {
           
           <div className="text-center mt-12">
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white">
-              <Link to="/eligibility">Commencer votre essai GRATUIT de 7 jours</Link>
+              <Link to="/eligibility">Tester mon éligibilité</Link>
             </Button>
           </div>
         </div>
