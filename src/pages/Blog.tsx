@@ -22,7 +22,7 @@ interface BlogPost {
 }
 
 const Blog = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -95,6 +95,16 @@ const Blog = () => {
 
   // Featured blog post - we use the first one in the list
   const featuredPost = blogPosts[0];
+
+  // Language indicator
+  const LanguageIndicator = () => (
+    <div className="mt-4 inline-flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full text-sm">
+      <span className="font-medium text-gray-600">{t('currentLanguage')}: </span>
+      <span className="text-brand-600 font-semibold">
+        {i18n.language === 'fr' ? 'Français' : 'English'}
+      </span>
+    </div>
+  );
 
   // Sponsored content section
   const SponsoredContent = () => (
@@ -176,6 +186,9 @@ const Blog = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               {t('blog.description')}
             </p>
+            
+            {/* Language indicator */}
+            <LanguageIndicator />
           </div>
 
           {/* Featured Post */}
