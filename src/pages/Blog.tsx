@@ -96,7 +96,7 @@ const Blog = () => {
       },
       category: "Recrutement",
       date: "29 mars 2023",
-      image: "https://images.unsplash.com/photo-1581256025319-23c56574f93a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       sponsored: false,
       readTime: 5
     },
@@ -128,7 +128,7 @@ const Blog = () => {
       },
       category: "Immigration",
       date: "2 mars 2023",
-      image: "https://images.unsplash.com/photo-1611251188684-fd906091773e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      image: "https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       sponsored: false,
       readTime: 10
     }

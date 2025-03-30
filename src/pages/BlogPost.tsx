@@ -1,3 +1,4 @@
+
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Clock, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -474,7 +475,7 @@ const BlogPost = () => {
       id: "4",
       category: "Recrutement",
       sponsored: false,
-      coverImage: "https://images.unsplash.com/photo-1581256025319-23c56574f93a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      coverImage: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       author: "Philippe Tremblay",
       date: "29 mars 2023",
       readTime: 5,
@@ -718,7 +719,7 @@ const BlogPost = () => {
       id: "6",
       category: "Immigration",
       sponsored: false,
-      coverImage: "https://images.unsplash.com/photo-1611251188684-fd906091773e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      coverImage: "https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       author: "Claude Tremblay",
       date: "2 mars 2023",
       readTime: 10,
