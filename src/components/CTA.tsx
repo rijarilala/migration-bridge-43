@@ -25,13 +25,9 @@ const CTA = ({
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
           <p className="text-lg text-gray-600 mb-8">{description}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-brand-600 hover:bg-brand-700">
-            <Link to={buttonLink}>{buttonText}</Link>
-            </Button>
+           
             {secondaryButtonText && secondaryButtonLink && (
-              <Button asChild variant="outline" size="lg">
-                 <Link to={secondaryButtonLink}>{secondaryButtonText}</Link>
-              </Button>
+              
             )}
           </div>
         </div>
