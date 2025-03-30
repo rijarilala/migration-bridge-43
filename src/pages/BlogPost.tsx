@@ -1,606 +1,554 @@
-import { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { 
-  CalendarIcon, 
-  Clock, 
-  User, 
-  ArrowLeft, 
-  BookmarkPlus, 
-  Share2 
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
-interface BlogPost {
+import { useParams, Link } from "react-router-dom";
+import { ArrowLeft, Clock, User } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+
+interface BlogContent {
   id: string;
-  title: string;
-  excerpt: string;
   category: string;
+  sponsored: boolean;
+  coverImage: string;
   author: string;
   date: string;
-  readTime: string;
-  imageSrc: string;
-  sponsored?: boolean;
-  content?: string;
+  readTime: number;
+  title: {
+    fr: string;
+    en: string;
+  };
+  content: {
+    fr: string;
+    en: string;
+  };
 }
-
-const blogPosts: BlogPost[] = [
-  {
-    id: "1",
-    title: "Les étapes essentielles pour réussir votre immigration au Canada",
-    excerpt: "Découvrez les démarches administratives et les conseils pratiques pour faciliter votre installation au Canada.",
-    category: "Immigration",
-    author: "Marie Dubois",
-    date: "12 juin 2023",
-    readTime: "8 min",
-    imageSrc: "https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?q=80&w=800&auto=format&fit=crop",
-    sponsored: true,
-    content: `
-      <h2>Préparer son projet d'immigration au Canada</h2>
-      <p>L'immigration au Canada est un processus qui nécessite une préparation minutieuse et une bonne compréhension des différentes étapes à suivre. Que vous souhaitiez vous y installer pour des raisons professionnelles, familiales ou pour y étudier, il est essentiel de bien se renseigner sur les programmes d'immigration qui correspondent à votre situation.</p>
-      
-      <h3>Les programmes d'immigration fédéraux</h3>
-      <p>Le Canada propose plusieurs programmes d'immigration fédéraux, notamment :</p>
-      <ul>
-        <li>Entrée express (Express Entry) - pour les travailleurs qualifiés</li>
-        <li>Programme des travailleurs qualifiés</li>
-        <li>Programme des métiers spécialisés</li>
-        <li>Catégorie de l'expérience canadienne</li>
-      </ul>
-      
-      <h3>Les programmes provinciaux</h3>
-      <p>Chaque province canadienne dispose également de ses propres programmes d'immigration (PNP - Programme des Candidats des Provinces) avec des critères spécifiques. Ces programmes peuvent parfois être plus accessibles que les programmes fédéraux, en fonction de votre profil.</p>
-      
-      <h2>Les documents essentiels à préparer</h2>
-      <p>La préparation des documents est une étape cruciale de votre processus d'immigration. Voici une liste non exhaustive des documents généralement demandés :</p>
-      <ul>
-        <li>Passeport valide</li>
-        <li>Diplômes et relevés de notes</li>
-        <li>Certificats de travail et références professionnelles</li>
-        <li>Résultats de tests linguistiques (français et/ou anglais)</li>
-        <li>Certificat de naissance</li>
-        <li>Certificat de mariage (si applicable)</li>
-      </ul>
-      
-      <h2>Préparer son intégration</h2>
-      <p>Au-delà des démarches administratives, il est important de préparer son intégration au Canada :</p>
-      <ul>
-        <li>Renseignez-vous sur le coût de la vie dans la région où vous souhaitez vous installer</li>
-        <li>Informez-vous sur le marché du travail et les opportunités professionnelles</li>
-        <li>Préparez-vous au climat canadien, particulièrement rigoureux en hiver</li>
-        <li>Familiarisez-vous avec la culture et les coutumes canadiennes</li>
-      </ul>
-      
-      <h2>L'importance d'être bien accompagné</h2>
-      <p>Face à la complexité des démarches d'immigration, faire appel à des professionnels peut considérablement faciliter votre parcours. Nos consultants en immigration sont là pour vous guider à chaque étape, de l'évaluation de votre éligibilité à la préparation de votre dossier.</p>
-    `,
-  },
-  {
-    id: "2",
-    title: "Comment créer un CV qui retient l'attention des recruteurs",
-    excerpt: "Les techniques et astuces pour rédiger un CV professionnel qui se démarque dans la pile des candidatures.",
-    category: "Formation",
-    author: "Thomas Martin",
-    date: "24 mai 2023",
-    readTime: "6 min",
-    imageSrc: "https://images.unsplash.com/photo-1563906267088-b029e7101114?q=80&w=800&auto=format&fit=crop",
-    content: `
-      <h2>Structurer efficacement son CV</h2>
-      <p>Un CV bien structuré est la première étape pour retenir l'attention des recruteurs. Voici quelques conseils pour organiser votre CV de manière efficace :</p>
-      
-      <h3>Les sections essentielles</h3>
-      <ul>
-        <li><strong>En-tête</strong> : Nom, coordonnées, profil LinkedIn</li>
-        <li><strong>Résumé professionnel</strong> : Une brève présentation de votre profil et de vos objectifs</li>
-        <li><strong>Expériences professionnelles</strong> : Présentées par ordre chronologique inversé</li>
-        <li><strong>Formation</strong> : Diplômes et certifications pertinentes</li>
-        <li><strong>Compétences</strong> : Techniques et transversales</li>
-        <li><strong>Langues</strong> : Niveau de maîtrise pour chaque langue</li>
-      </ul>
-      
-      <h2>Adapter son CV au marché canadien</h2>
-      <p>Le marché du travail canadien a ses spécificités. Voici quelques éléments à prendre en compte :</p>
-      <ul>
-        <li>Privilégiez un format simple et professionnel</li>
-        <li>Évitez d'inclure une photo, votre âge ou votre situation familiale</li>
-        <li>Mettez en avant vos accomplissements plutôt que vos responsabilités</li>
-        <li>Quantifiez vos réalisations avec des chiffres et des pourcentages</li>
-        <li>Adaptez votre vocabulaire au contexte nord-américain</li>
-      </ul>
-      
-      <h2>Mettre en valeur vos compétences</h2>
-      <p>Pour vous démarquer, il est essentiel de mettre en avant les compétences recherchées par les employeurs :</p>
-      <ul>
-        <li>Identifiez les mots-clés pertinents pour votre secteur</li>
-        <li>Personnalisez votre CV pour chaque offre d'emploi</li>
-        <li>Illustrez vos compétences par des exemples concrets</li>
-        <li>N'hésitez pas à mentionner vos soft skills (communication, travail d'équipe, etc.)</li>
-      </ul>
-      
-      <h2>Les erreurs à éviter</h2>
-      <p>Certaines erreurs peuvent rapidement disqualifier votre candidature :</p>
-      <ul>
-        <li>Fautes d'orthographe et de grammaire</li>
-        <li>CV trop long (idéalement 1-2 pages)</li>
-        <li>Informations obsolètes ou non pertinentes</li>
-        <li>Design trop chargé ou peu professionnel</li>
-        <li>Absence de personnalisation par rapport au poste visé</li>
-      </ul>
-    `,
-  },
-  {
-    id: "3",
-    title: "Préparer efficacement un entretien d'embauche : les erreurs à éviter",
-    excerpt: "Les pièges classiques et les stratégies pour les éviter lors de vos entretiens professionnels.",
-    category: "Coaching",
-    author: "Sophie Bernard",
-    date: "5 avril 2023",
-    readTime: "5 min",
-    imageSrc: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop",
-    content: `
-      <h2>Comment se préparer avant l'entretien</h2>
-      <p>La préparation est la clé d'un entretien réussi. Voici les étapes essentielles :</p>
-      
-      <h3>Recherchez l'entreprise</h3>
-      <p>Prenez le temps de vous renseigner sur l'entreprise :</p>
-      <ul>
-        <li>Son histoire, sa mission et ses valeurs</li>
-        <li>Ses produits ou services</li>
-        <li>Ses actualités récentes et ses projets</li>
-        <li>Sa culture d'entreprise</li>
-      </ul>
-      
-      <h3>Analysez le poste</h3>
-      <p>Décortiquez l'offre d'emploi pour comprendre :</p>
-      <ul>
-        <li>Les compétences et qualifications requises</li>
-        <li>Les responsabilités principales</li>
-        <li>Les défis potentiels liés au poste</li>
-      </ul>
-      
-      <h2>Pendant l'entretien : les erreurs à éviter</h2>
-      
-      <h3>Erreur n°1 : Arriver en retard ou trop tôt</h3>
-      <p>Arriver en retard donne une impression de négligence, mais arriver trop en avance peut également mettre le recruteur dans une position inconfortable. Visez 5 à 10 minutes avant l'heure prévue.</p>
-      
-      <h3>Erreur n°2 : Négliger son apparence</h3>
-      <p>Votre présentation doit être adaptée à la culture de l'entreprise. En cas de doute, optez pour une tenue professionnelle classique.</p>
-      
-      <h3>Erreur n°3 : Parler négativement de vos anciens employeurs</h3>
-      <p>Même si vos expériences passées ont été difficiles, restez professionnel et concentrez-vous sur les apprentissages que vous en avez tirés.</p>
-      
-      <h3>Erreur n°4 : Ne pas préparer de questions</h3>
-      <p>Avoir des questions pertinentes à poser montre votre intérêt pour le poste et l'entreprise. Préparez-en au moins 3 ou 4.</p>
-      
-      <h2>Après l'entretien</h2>
-      <p>L'entretien ne s'arrête pas lorsque vous quittez la pièce :</p>
-      <ul>
-        <li>Envoyez un email de remerciement dans les 24 heures</li>
-        <li>Faites un suivi si vous n'avez pas de nouvelles après une semaine</li>
-        <li>Analysez votre performance pour vous améliorer</li>
-      </ul>
-    `,
-  },
-  {
-    id: "4",
-    title: "Les tendances du marché de l'emploi en 2023",
-    excerpt: "Analyse des secteurs porteurs et des compétences les plus recherchées par les recruteurs cette année.",
-    category: "Recrutement",
-    author: "Pierre Leroy",
-    date: "18 mars 2023",
-    readTime: "7 min",
-    imageSrc: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
-    sponsored: true,
-    content: `
-      <h2>L'évolution du marché du travail canadien</h2>
-      <p>Le marché de l'emploi au Canada connaît actuellement de profondes transformations, influencées par plusieurs facteurs :</p>
-      <ul>
-        <li>Avancées technologiques et numérisation</li>
-        <li>Transition écologique</li>
-        <li>Évolution démographique et pénurie de main-d'œuvre</li>
-        <li>Nouvelles attentes des employés post-pandémie</li>
-      </ul>
-      
-      <h2>Les secteurs les plus dynamiques en 2023</h2>
-      
-      <h3>1. Technologies de l'information</h3>
-      <p>Le secteur IT continue sa forte croissance avec des besoins particuliers dans :</p>
-      <ul>
-        <li>Cybersécurité</li>
-        <li>Intelligence artificielle et machine learning</li>
-        <li>Développement de logiciels</li>
-        <li>Cloud computing</li>
-      </ul>
-      
-      <h3>2. Santé et services sociaux</h3>
-      <p>Avec une population vieillissante, ce secteur recrute massivement :</p>
-      <ul>
-        <li>Infirmiers et infirmières</li>
-        <li>Médecins spécialistes</li>
-        <li>Préposés aux bénéficiaires</li>
-        <li>Professionnels en santé mentale</li>
-      </ul>
-      
-      <h3>3. Construction et infrastructures</h3>
-      <p>Les projets d'infrastructure et la pénurie de logements stimulent ce secteur :</p>
-      <ul>
-        <li>Ingénieurs civils</li>
-        <li>Électriciens et plombiers</li>
-        <li>Gestionnaires de projets</li>
-        <li>Architectes</li>
-      </ul>
-      
-      <h2>Les compétences les plus recherchées</h2>
-      <p>Au-delà des compétences techniques propres à chaque métier, certaines aptitudes sont particulièrement valorisées :</p>
-      <ul>
-        <li><strong>Compétences numériques</strong> : maîtrise des outils digitaux, analyse de données</li>
-        <li><strong>Adaptabilité et résilience</strong> : capacité à s'ajuster aux changements</li>
-        <li><strong>Intelligence émotionnelle</strong> : empathie, communication efficace</li>
-        <li><strong>Résolution de problèmes complexes</strong> : pensée critique et créative</li>
-        <li><strong>Bilinguisme</strong> : français et anglais, un atout majeur au Canada</li>
-      </ul>
-    `,
-  },
-  {
-    id: "5",
-    title: "Comment définir votre projet professionnel : guide pratique",
-    excerpt: "Les étapes clés pour identifier vos aspirations et construire un parcours professionnel qui vous correspond.",
-    category: "Orientation",
-    author: "Claire Dumas",
-    date: "2 février 2023",
-    readTime: "9 min",
-    imageSrc: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop",
-    content: `
-      <h2>Pourquoi définir un projet professionnel ?</h2>
-      <p>Un projet professionnel bien défini permet de :</p>
-      <ul>
-        <li>Donner du sens à votre parcours</li>
-        <li>Fixer des objectifs clairs et réalisables</li>
-        <li>Identifier les étapes et ressources nécessaires</li>
-        <li>Augmenter votre motivation et persévérance</li>
-        <li>Faciliter votre recherche d'emploi ou reconversion</li>
-      </ul>
-      
-      <h2>Les étapes pour construire votre projet professionnel</h2>
-      
-      <h3>Étape 1 : L'auto-évaluation</h3>
-      <p>Commencez par faire le point sur :</p>
-      <ul>
-        <li>Vos compétences et savoir-faire</li>
-        <li>Vos valeurs et ce qui vous motive</li>
-        <li>Vos traits de personnalité</li>
-        <li>Vos intérêts et passions</li>
-        <li>Vos réussites passées</li>
-      </ul>
-      
-      <h3>Étape 2 : Explorer les possibilités</h3>
-      <p>Une fois votre profil établi, explorez les opportunités :</p>
-      <ul>
-        <li>Recherchez des métiers en lien avec vos compétences et intérêts</li>
-        <li>Analysez les tendances du marché du travail</li>
-        <li>Rencontrez des professionnels (entretiens informatifs)</li>
-        <li>Testez vos idées via des stages ou du bénévolat</li>
-      </ul>
-      
-      <h3>Étape 3 : Définir vos objectifs</h3>
-      <p>Formalisez votre projet avec des objectifs SMART :</p>
-      <ul>
-        <li><strong>S</strong>pécifiques</li>
-        <li><strong>M</strong>esurables</li>
-        <li><strong>A</strong>tteignables</li>
-        <li><strong>R</strong>éalistes</li>
-        <li><strong>T</strong>emporels (avec une échéance)</li>
-      </ul>
-      
-      <h3>Étape 4 : Élaborer un plan d'action</h3>
-      <p>Déterminez les actions concrètes à entreprendre :</p>
-      <ul>
-        <li>Formation ou études complémentaires</li>
-        <li>Acquisition de nouvelles compétences</li>
-        <li>Développement de votre réseau professionnel</li>
-        <li>Stratégie de recherche d'emploi ou de création d'entreprise</li>
-      </ul>
-      
-      <h2>Ajuster et faire évoluer votre projet</h2>
-      <p>Un projet professionnel n'est jamais figé. Il évolue avec :</p>
-      <ul>
-        <li>Vos expériences et apprentissages</li>
-        <li>Les opportunités qui se présentent</li>
-        <li>L'évolution du marché du travail</li>
-        <li>Vos priorités personnelles</li>
-      </ul>
-      
-      <p>N'hésitez pas à le réévaluer régulièrement et à l'ajuster si nécessaire.</p>
-    `,
-  },
-  {
-    id: "6",
-    title: "Les clés d'une intégration réussie dans un nouveau pays",
-    excerpt: "Conseils pratiques pour s'adapter à une nouvelle culture et créer des liens dans votre pays d'accueil.",
-    category: "Immigration",
-    author: "Jean Moreau",
-    date: "15 janvier 2023",
-    readTime: "10 min",
-    imageSrc: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800&auto=format&fit=crop",
-    content: `
-      <h2>Les défis de l'adaptation culturelle</h2>
-      <p>S'installer dans un nouveau pays implique de s'adapter à un environnement culturel différent. Ce processus d'adaptation comporte plusieurs phases :</p>
-      
-      <h3>La lune de miel</h3>
-      <p>Les premières semaines sont souvent marquées par l'excitation et la découverte. Tout semble nouveau et fascinant.</p>
-      
-      <h3>Le choc culturel</h3>
-      <p>Après quelque temps, les différences culturelles peuvent devenir source de frustration et d'incompréhension. C'est une phase normale qui peut se manifester par :</p>
-      <ul>
-        <li>Sentiment d'isolement ou de solitude</li>
-        <li>Difficultés de communication</li>
-        <li>Nostalgie du pays d'origine</li>
-        <li>Fatigue émotionnelle</li>
-      </ul>
-      
-      <h3>L'adaptation</h3>
-      <p>Progressivement, vous développez des stratégies pour naviguer dans votre nouvel environnement :</p>
-      <ul>
-        <li>Meilleure compréhension des codes culturels</li>
-        <li>Développement de nouvelles habitudes</li>
-        <li>Construction d'un réseau social</li>
-      </ul>
-      
-      <h3>L'intégration</h3>
-      <p>La phase finale où vous vous sentez à l'aise dans votre pays d'accueil tout en conservant votre identité culturelle d'origine.</p>
-      
-      <h2>Conseils pratiques pour faciliter votre intégration</h2>
-      
-      <h3>Apprendre la langue</h3>
-      <p>La maîtrise de la langue locale est essentielle pour :</p>
-      <ul>
-        <li>Faciliter les démarches administratives</li>
-        <li>Améliorer vos perspectives d'emploi</li>
-        <li>Créer des liens sociaux</li>
-        <li>Comprendre la culture locale</li>
-      </ul>
-      
-      <h3>Créer des liens sociaux</h3>
-      <p>Pour développer votre réseau social :</p>
-      <ul>
-        <li>Participez à des activités communautaires</li>
-        <li>Rejoignez des associations ou clubs</li>
-        <li>Assistez à des événements culturels</li>
-        <li>Connectez-vous avec d'autres expatriés qui comprennent votre expérience</li>
-      </ul>
-      
-      <h3>Comprendre le système local</h3>
-      <p>Familiarisez-vous avec :</p>
-      <ul>
-        <li>Le système de santé</li>
-        <li>Le système éducatif</li>
-        <li>Les démarches administratives</li>
-        <li>Les codes professionnels</li>
-      </ul>
-      
-      <h3>Maintenir un équilibre</h3>
-      <p>Trouvez un équilibre entre :</p>
-      <ul>
-        <li>S'ouvrir à la nouvelle culture</li>
-        <li>Préserver des éléments de votre culture d'origine</li>
-        <li>Prendre soin de votre santé mentale</li>
-        <li>Rester en contact avec vos proches restés au pays</li>
-      </ul>
-    `,
-  },
-];
-
-const RelatedPosts = ({ currentPostId, category }: { currentPostId: string, category: string }) => {
-  const relatedPosts = blogPosts
-    .filter(post => post.id !== currentPostId && post.category === category)
-    .slice(0, 3);
-
-  if (relatedPosts.length === 0) {
-    return null;
-  }
-
-  return (
-    <div className="mt-16">
-      <h3 className="text-2xl font-bold mb-6">Articles associés</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {relatedPosts.map(post => (
-          <Link to={`/blog/${post.id}`} key={post.id} className="block h-full">
-            <div className="bg-white rounded-xl overflow-hidden shadow-md h-full hover:shadow-lg transition-shadow duration-300">
-              <div className="relative aspect-video">
-                <img 
-                  src={post.imageSrc} 
-                  alt={post.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-2 left-2">
-                  <Badge className="bg-accent text-white">{post.category}</Badge>
-                </div>
-              </div>
-              <div className="p-4">
-                <h4 className="text-lg font-semibold mb-2 line-clamp-2 hover:text-primary transition-colors">
-                  {post.title}
-                </h4>
-                <div className="flex items-center text-sm text-gray-500 mt-3">
-                  <Clock size={14} className="mr-1" />
-                  <span>{post.readTime}</span>
-                </div>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-};
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [shareDialogOpen, setShareDialogOpen] = useState(false);
-
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+  
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    if (id) {
-      const foundPost = blogPosts.find(post => post.id === id);
-      
-      if (foundPost) {
-        setPost(foundPost);
-      } else {
-        navigate("/not-found");
+  }, [id]);
+
+  // Base de données simulée des articles de blog avec contenu bilingue
+  const blogPosts: BlogContent[] = [
+    {
+      id: "1",
+      category: "Immigration",
+      sponsored: true,
+      coverImage: "https://images.unsplash.com/photo-1507992781348-310259076fe0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      author: "Marie Dubois",
+      date: "12 juin 2023",
+      readTime: 8,
+      title: {
+        fr: "Les étapes essentielles pour réussir votre immigration au Canada",
+        en: "Essential Steps to Succeed in Your Immigration to Canada"
+      },
+      content: {
+        fr: `
+        <p>L'immigration au Canada est un processus complexe mais accessible avec la bonne préparation. Voici un guide détaillé des étapes à suivre pour maximiser vos chances de succès.</p>
+
+        <h2>1. Évaluer votre admissibilité</h2>
+        <p>Avant toute démarche, vérifiez si vous êtes admissible aux différents programmes d'immigration canadiens. Entrée Express, Programme des travailleurs qualifiés du Québec (PSTQ), ou regroupement familial sont parmi les options les plus courantes. Utilisez notre outil d'évaluation d'éligibilité pour avoir une première idée de vos chances.</p>
+
+        <h2>2. Choisir le bon programme d'immigration</h2>
+        <p>En fonction de votre profil, certains programmes seront plus adaptés que d'autres :</p>
+        <ul>
+          <li>Entrée Express : pour les travailleurs qualifiés avec expérience professionnelle</li>
+          <li>PSTQ : spécifique pour l'immigration au Québec</li>
+          <li>Programme des candidats des provinces : si une province particulière vous intéresse</li>
+          <li>Visa d'études ou permis de travail temporaire : peuvent être des portes d'entrée vers la résidence permanente</li>
+        </ul>
+
+        <h2>3. Préparer votre dossier</h2>
+        <p>La qualité de votre dossier est déterminante. Rassemblez tous les documents nécessaires :</p>
+        <ul>
+          <li>Passeport valide</li>
+          <li>Diplômes et équivalences</li>
+          <li>Certificats de compétences linguistiques (français et/ou anglais)</li>
+          <li>Preuves d'expérience professionnelle</li>
+          <li>Certificat médical et extrait de casier judiciaire</li>
+        </ul>
+
+        <h2>4. Améliorer votre profil</h2>
+        <p>Pour augmenter vos chances, travaillez sur les aspects suivants :</p>
+        <ul>
+          <li>Compétences linguistiques : passez des tests officiels comme l'IELTS ou le TEF</li>
+          <li>Formation : complétez des certifications reconnues</li>
+          <li>Expérience professionnelle : acquérez de l'expérience dans des secteurs en demande</li>
+        </ul>
+
+        <h2>5. Soumettre votre demande</h2>
+        <p>Une fois votre dossier prêt, soumettez votre demande en suivant scrupuleusement les instructions. Les délais de traitement varient selon les programmes et peuvent prendre de quelques mois à plus d'un an.</p>
+
+        <h2>6. Préparer votre installation</h2>
+        <p>En attendant la réponse, commencez à préparer votre nouvelle vie :</p>
+        <ul>
+          <li>Recherche d'emploi</li>
+          <li>Logement</li>
+          <li>Écoles pour les enfants</li>
+          <li>Assurance santé</li>
+          <li>Budget d'installation</li>
+        </ul>
+
+        <h2>7. Obtenir le statut de résident permanent</h2>
+        <p>Si votre demande est acceptée, vous recevrez la confirmation de résidence permanente. Vous devrez alors vous rendre au Canada pour finaliser le processus et obtenir votre carte de résident permanent.</p>
+
+        <h2>Conclusion</h2>
+        <p>L'immigration au Canada est un projet de vie qui demande patience et préparation. En suivant ces étapes et en vous faisant accompagner par des professionnels, vous maximiserez vos chances de réussite. Chez MigraPro, nous vous accompagnons à chaque étape pour concrétiser votre rêve canadien.</p>
+        `,
+        en: `
+        <p>Immigration to Canada is a complex process but accessible with the right preparation. Here is a detailed guide of the steps to follow to maximize your chances of success.</p>
+
+        <h2>1. Assess your eligibility</h2>
+        <p>Before any procedure, check if you are eligible for the various Canadian immigration programs. Express Entry, Quebec Skilled Worker Program (QSWP), or family reunification are among the most common options. Use our eligibility assessment tool to get a first idea of your chances.</p>
+
+        <h2>2. Choose the right immigration program</h2>
+        <p>Depending on your profile, some programs will be more suitable than others:</p>
+        <ul>
+          <li>Express Entry: for skilled workers with professional experience</li>
+          <li>QSWP: specific for immigration to Quebec</li>
+          <li>Provincial Nominee Program: if a particular province interests you</li>
+          <li>Study visa or temporary work permit: can be gateways to permanent residence</li>
+        </ul>
+
+        <h2>3. Prepare your application</h2>
+        <p>The quality of your application is crucial. Gather all necessary documents:</p>
+        <ul>
+          <li>Valid passport</li>
+          <li>Diplomas and equivalencies</li>
+          <li>Language proficiency certificates (French and/or English)</li>
+          <li>Proof of professional experience</li>
+          <li>Medical certificate and criminal record extract</li>
+        </ul>
+
+        <h2>4. Improve your profile</h2>
+        <p>To increase your chances, work on the following aspects:</p>
+        <ul>
+          <li>Language skills: take official tests such as IELTS or TEF</li>
+          <li>Training: complete recognized certifications</li>
+          <li>Professional experience: gain experience in in-demand sectors</li>
+        </ul>
+
+        <h2>5. Submit your application</h2>
+        <p>Once your application is ready, submit it following the instructions carefully. Processing times vary depending on the programs and can take from a few months to more than a year.</p>
+
+        <h2>6. Prepare your settlement</h2>
+        <p>While waiting for the response, start preparing your new life:</p>
+        <ul>
+          <li>Job search</li>
+          <li>Housing</li>
+          <li>Schools for children</li>
+          <li>Health insurance</li>
+          <li>Settlement budget</li>
+        </ul>
+
+        <h2>7. Obtain permanent resident status</h2>
+        <p>If your application is accepted, you will receive confirmation of permanent residence. You will then need to travel to Canada to finalize the process and obtain your permanent resident card.</p>
+
+        <h2>Conclusion</h2>
+        <p>Immigration to Canada is a life project that requires patience and preparation. By following these steps and being accompanied by professionals, you will maximize your chances of success. At MigraPro, we support you at every step to make your Canadian dream come true.</p>
+        `
+      }
+    },
+    {
+      id: "2",
+      category: "Formation",
+      sponsored: false,
+      coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      author: "Jean Tremblay",
+      date: "5 mai 2023",
+      readTime: 6,
+      title: {
+        fr: "Les formations les plus demandées au Canada en 2023",
+        en: "Most In-demand Training Programs in Canada in 2023"
+      },
+      content: {
+        fr: `
+        <p>Le marché du travail canadien évolue constamment. Pour maximiser vos chances d'emploi, il est essentiel de se former dans des domaines porteurs. Découvrez les formations les plus recherchées cette année.</p>
+
+        <h2>1. Technologie et développement informatique</h2>
+        <p>Le secteur technologique continue sa forte croissance au Canada :</p>
+        <ul>
+          <li>Développement web et mobile</li>
+          <li>Intelligence artificielle et apprentissage automatique</li>
+          <li>Cybersécurité</li>
+          <li>Science des données</li>
+        </ul>
+        <p>Des formations comme le DEC en informatique ou des bootcamps spécialisés offrent d'excellentes perspectives.</p>
+
+        <h2>2. Soins de santé</h2>
+        <p>La pandémie a renforcé les besoins dans ce secteur déjà en pénurie :</p>
+        <ul>
+          <li>Soins infirmiers</li>
+          <li>Préposé aux bénéficiaires</li>
+          <li>Physiothérapie et ergothérapie</li>
+          <li>Technicien en pharmacie</li>
+        </ul>
+
+        <h2>3. Commerce et finance</h2>
+        <p>Ces domaines offrent toujours de belles opportunités :</p>
+        <ul>
+          <li>Comptabilité et fiscalité canadienne</li>
+          <li>Gestion de projet</li>
+          <li>Analyse financière</li>
+          <li>Marketing digital</li>
+        </ul>
+
+        <h2>4. Métiers spécialisés</h2>
+        <p>Le Canada fait face à une pénurie importante dans les métiers manuels :</p>
+        <ul>
+          <li>Électricité et plomberie</li>
+          <li>Soudure et usinage</li>
+          <li>Construction et charpenterie</li>
+          <li>Mécanique automobile</li>
+        </ul>
+
+        <h2>5. Environnement et énergies renouvelables</h2>
+        <p>Secteur en pleine expansion avec la transition écologique :</p>
+        <ul>
+          <li>Techniques en environnement</li>
+          <li>Installation de panneaux solaires</li>
+          <li>Gestion des ressources hydriques</li>
+          <li>Économie verte</li>
+        </ul>
+
+        <h2>Comment choisir sa formation ?</h2>
+        <p>Pour faire un choix judicieux :</p>
+        <ul>
+          <li>Évaluez vos compétences actuelles et vos intérêts</li>
+          <li>Renseignez-vous sur les perspectives d'emploi dans votre région d'installation</li>
+          <li>Vérifiez la reconnaissance des diplômes et certifications</li>
+          <li>Calculez le retour sur investissement (durée vs salaire potentiel)</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>Investir dans une formation adaptée au marché canadien est un facteur clé de réussite pour votre projet d'immigration. Chez MigraPro, nous vous accompagnons dans le choix de formations pertinentes et reconnues pour booster votre profil d'immigration et vos perspectives professionnelles au Canada.</p>
+        `,
+        en: `
+        <p>The Canadian job market is constantly evolving. To maximize your employment opportunities, it's essential to train in promising fields. Discover the most sought-after training programs this year.</p>
+
+        <h2>1. Technology and IT Development</h2>
+        <p>The technology sector continues its strong growth in Canada:</p>
+        <ul>
+          <li>Web and mobile development</li>
+          <li>Artificial intelligence and machine learning</li>
+          <li>Cybersecurity</li>
+          <li>Data science</li>
+        </ul>
+        <p>Programs such as DEC in Computer Science or specialized bootcamps offer excellent prospects.</p>
+
+        <h2>2. Healthcare</h2>
+        <p>The pandemic has reinforced needs in this already shortage-affected sector:</p>
+        <ul>
+          <li>Nursing</li>
+          <li>Patient care attendant</li>
+          <li>Physiotherapy and occupational therapy</li>
+          <li>Pharmacy technician</li>
+        </ul>
+
+        <h2>3. Business and Finance</h2>
+        <p>These fields always offer great opportunities:</p>
+        <ul>
+          <li>Canadian accounting and taxation</li>
+          <li>Project management</li>
+          <li>Financial analysis</li>
+          <li>Digital marketing</li>
+        </ul>
+
+        <h2>4. Skilled Trades</h2>
+        <p>Canada faces a significant shortage in manual trades:</p>
+        <ul>
+          <li>Electricity and plumbing</li>
+          <li>Welding and machining</li>
+          <li>Construction and carpentry</li>
+          <li>Automotive mechanics</li>
+        </ul>
+
+        <h2>5. Environment and Renewable Energy</h2>
+        <p>A rapidly expanding sector with the ecological transition:</p>
+        <ul>
+          <li>Environmental techniques</li>
+          <li>Solar panel installation</li>
+          <li>Water resource management</li>
+          <li>Green economy</li>
+        </ul>
+
+        <h2>How to Choose Your Training?</h2>
+        <p>To make a wise choice:</p>
+        <ul>
+          <li>Assess your current skills and interests</li>
+          <li>Research employment prospects in your settlement region</li>
+          <li>Verify the recognition of diplomas and certifications</li>
+          <li>Calculate the return on investment (duration vs. potential salary)</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>Investing in training adapted to the Canadian market is a key success factor for your immigration project. At MigraPro, we assist you in choosing relevant and recognized training programs to boost your immigration profile and professional prospects in Canada.</p>
+        `
+      }
+    },
+    {
+      id: "3",
+      category: "Coaching",
+      sponsored: false,
+      coverImage: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      author: "Sophie Martin",
+      date: "18 avril 2023",
+      readTime: 7,
+      title: {
+        fr: "Comment adapter votre CV aux standards canadiens",
+        en: "How to Adapt Your Resume to Canadian Standards"
+      },
+      content: {
+        fr: `
+        <p>Un CV adapté aux standards canadiens peut faire toute la différence dans votre recherche d'emploi. Voici nos conseils d'experts pour optimiser votre candidature.</p>
+
+        <h2>Les différences essentielles avec un CV européen ou africain</h2>
+        <p>Le CV canadien possède plusieurs spécificités :</p>
+        <ul>
+          <li>Absence de photo, d'âge et d'informations personnelles</li>
+          <li>Format chronologique inversé (expériences les plus récentes en premier)</li>
+          <li>Accent sur les réalisations plutôt que sur les responsabilités</li>
+          <li>Longueur de 2 pages maximum</li>
+        </ul>
+
+        <h2>Structure optimale d'un CV canadien</h2>
+
+        <h3>1. En-tête</h3>
+        <p>Incluez uniquement :</p>
+        <ul>
+          <li>Nom et prénom</li>
+          <li>Numéro de téléphone</li>
+          <li>Adresse email professionnelle</li>
+          <li>Ville et province</li>
+          <li>Lien LinkedIn (optionnel)</li>
+        </ul>
+
+        <h3>2. Profil professionnel</h3>
+        <p>Rédigez un court paragraphe (3-4 lignes) résumant votre expertise, vos compétences clés et ce que vous pouvez apporter à l'employeur.</p>
+
+        <h3>3. Compétences techniques</h3>
+        <p>Listez vos compétences pertinentes pour le poste visé, en mettant l'accent sur :</p>
+        <ul>
+          <li>Compétences techniques spécifiques à votre domaine</li>
+          <li>Maîtrise des logiciels</li>
+          <li>Langues parlées et niveau (précisez si vous êtes bilingue anglais-français)</li>
+        </ul>
+
+        <h3>4. Expérience professionnelle</h3>
+        <p>Pour chaque poste :</p>
+        <ul>
+          <li>Titre du poste</li>
+          <li>Nom de l'entreprise et sa localisation</li>
+          <li>Dates d'emploi (mois et année)</li>
+          <li>3-5 réalisations concrètes avec résultats quantifiables</li>
+        </ul>
+        <p>Utilisez des verbes d'action au passé (développé, créé, augmenté).</p>
+
+        <h3>5. Formation</h3>
+        <p>Mentionnez :</p>
+        <ul>
+          <li>Diplôme obtenu</li>
+          <li>Institution et localisation</li>
+          <li>Année d'obtention</li>
+        </ul>
+        <p>Si votre diplôme étranger a été évalué, précisez l'équivalence canadienne.</p>
+
+        <h3>6. Certifications et formations complémentaires</h3>
+        <p>Ajoutez les certifications pertinentes, particulièrement celles reconnues au Canada.</p>
+
+        <h2>Conseils pour maximiser l'impact de votre CV</h2>
+
+        <h3>Personnalisation</h3>
+        <p>Adaptez votre CV pour chaque offre d'emploi en mettant en avant les compétences requises dans l'annonce.</p>
+
+        <h3>Mots-clés</h3>
+        <p>Intégrez des mots-clés du secteur et de l'offre d'emploi pour passer les filtres des logiciels de recrutement (ATS).</p>
+
+        <h3>Style et présentation</h3>
+        <ul>
+          <li>Utilisez une police lisible (Arial, Calibri, Times New Roman)</li>
+          <li>Privilégiez une mise en page aérée</li>
+          <li>Employez des puces pour faciliter la lecture</li>
+          <li>Vérifiez l'orthographe minutieusement</li>
+        </ul>
+
+        <h3>Évitez</h3>
+        <ul>
+          <li>Le jargon spécifique à votre pays d'origine</li>
+          <li>Les abréviations non expliquées</li>
+          <li>Les informations obsolètes</li>
+          <li>Les références (indiquez "références disponibles sur demande")</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>Un CV adapté aux standards canadiens est votre premier pas vers l'emploi au Canada. Chez MigraPro, nos experts en coaching de carrière vous accompagnent pour optimiser votre CV et mettre toutes les chances de votre côté.</p>
+        `,
+        en: `
+        <p>A resume adapted to Canadian standards can make all the difference in your job search. Here are our expert tips to optimize your application.</p>
+
+        <h2>Essential Differences from European or African Resumes</h2>
+        <p>Canadian resumes have several specific features:</p>
+        <ul>
+          <li>No photo, age, or personal information</li>
+          <li>Reverse chronological format (most recent experiences first)</li>
+          <li>Emphasis on achievements rather than responsibilities</li>
+          <li>Maximum length of 2 pages</li>
+        </ul>
+
+        <h2>Optimal Structure of a Canadian Resume</h2>
+
+        <h3>1. Header</h3>
+        <p>Include only:</p>
+        <ul>
+          <li>First and last name</li>
+          <li>Phone number</li>
+          <li>Professional email address</li>
+          <li>City and province</li>
+          <li>LinkedIn link (optional)</li>
+        </ul>
+
+        <h3>2. Professional Profile</h3>
+        <p>Write a short paragraph (3-4 lines) summarizing your expertise, key skills, and what you can bring to the employer.</p>
+
+        <h3>3. Technical Skills</h3>
+        <p>List your relevant skills for the targeted position, emphasizing:</p>
+        <ul>
+          <li>Technical skills specific to your field</li>
+          <li>Software proficiency</li>
+          <li>Languages spoken and level (specify if you are bilingual English-French)</li>
+        </ul>
+
+        <h3>4. Professional Experience</h3>
+        <p>For each position:</p>
+        <ul>
+          <li>Job title</li>
+          <li>Company name and location</li>
+          <li>Employment dates (month and year)</li>
+          <li>3-5 concrete achievements with quantifiable results</li>
+        </ul>
+        <p>Use action verbs in the past tense (developed, created, increased).</p>
+
+        <h3>5. Education</h3>
+        <p>Mention:</p>
+        <ul>
+          <li>Degree obtained</li>
+          <li>Institution and location</li>
+          <li>Year of completion</li>
+        </ul>
+        <p>If your foreign degree has been evaluated, specify the Canadian equivalence.</p>
+
+        <h3>6. Certifications and Additional Training</h3>
+        <p>Add relevant certifications, particularly those recognized in Canada.</p>
+
+        <h2>Tips to Maximize the Impact of Your Resume</h2>
+
+        <h3>Customization</h3>
+        <p>Adapt your resume for each job opportunity by highlighting the skills required in the job posting.</p>
+
+        <h3>Keywords</h3>
+        <p>Incorporate industry and job posting keywords to pass through Applicant Tracking System (ATS) filters.</p>
+
+        <h3>Style and Presentation</h3>
+        <ul>
+          <li>Use a readable font (Arial, Calibri, Times New Roman)</li>
+          <li>Favor an airy layout</li>
+          <li>Use bullet points to facilitate reading</li>
+          <li>Check spelling meticulously</li>
+        </ul>
+
+        <h3>Avoid</h3>
+        <ul>
+          <li>Jargon specific to your country of origin</li>
+          <li>Unexplained abbreviations</li>
+          <li>Outdated information</li>
+          <li>References (indicate "references available upon request")</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>A resume adapted to Canadian standards is your first step towards employment in Canada. At MigraPro, our career coaching experts will help you optimize your resume and maximize your chances of success.</p>
+        `
       }
     }
-  }, [id, navigate]);
+  ];
+
+  const post = blogPosts.find(post => post.id === id);
 
   if (!post) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+      <div className="pt-24 pb-12 min-h-screen">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-3xl font-bold text-center mb-8">{t('blog.postNotFound')}</h1>
+            <div className="flex justify-center">
+              <Link to="/blog" className="text-brand-600 hover:text-brand-700 flex items-center">
+                <ArrowLeft className="mr-2" size={16} />
+                {t('blog.backToBlog')}
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="pt-24 pb-16 min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
-          <Button variant="outline" asChild className="group">
-            <Link to="/blog" className="flex items-center">
-              <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-              Retour aux articles
+    <div className="pt-24 pb-12 min-h-screen">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-8">
+            <Link to="/blog" className="text-brand-600 hover:text-brand-700 flex items-center mb-4">
+              <ArrowLeft className="mr-2" size={16} />
+              {t('blog.backToArticles')}
             </Link>
-          </Button>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex flex-wrap gap-3 mb-4">
-              <Badge className="bg-accent text-white">{post.category}</Badge>
+            
+            <div className="flex flex-wrap gap-2 mb-4">
+              <span className="bg-brand-100 text-brand-800 px-3 py-1 rounded-full text-sm">
+                {post.category}
+              </span>
               {post.sponsored && (
-                <Badge variant="outline" className="bg-amber-50 text-amber-700 border-amber-200">
-                  Sponsorisé
-                </Badge>
+                <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">
+                  {t('blog.sponsored')}
+                </span>
               )}
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{post.title}</h1>
-            
-            <div className="flex flex-wrap items-center text-sm text-gray-600 mb-8 gap-x-4 gap-y-2">
-              <div className="flex items-center">
-                <User size={16} className="mr-1" />
+            <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6">
+              {currentLanguage === 'fr' ? post.title.fr : post.title.en}
+            </h1>
+
+            <div className="flex items-center text-gray-600 mb-8">
+              <div className="flex items-center mr-6">
+                <User size={16} className="mr-2" />
                 <span>{post.author}</span>
               </div>
-              <div className="flex items-center">
-                <CalendarIcon size={16} className="mr-1" />
+              <div className="flex items-center mr-6">
+                <Clock size={16} className="mr-2" />
                 <span>{post.date}</span>
               </div>
               <div className="flex items-center">
-                <Clock size={16} className="mr-1" />
-                <span>{post.readTime} de lecture</span>
+                <Clock size={16} className="mr-2" />
+                <span>{post.readTime} {t('blog.minuteRead')}</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <div className="rounded-xl overflow-hidden mb-8 shadow-md">
+          <div className="mb-10">
             <img 
-              src={post.imageSrc} 
-              alt={post.title}
-              className="w-full h-auto object-cover"
+              src={post.coverImage} 
+              alt={currentLanguage === 'fr' ? post.title.fr : post.title.en}
+              className="w-full h-auto rounded-lg shadow-md mb-8 object-cover aspect-video"
+            />
+            
+            <div 
+              className="prose prose-lg max-w-none"
+              dangerouslySetInnerHTML={{ 
+                __html: currentLanguage === 'fr' ? post.content.fr : post.content.en 
+              }}
             />
           </div>
-
-          <div className="flex justify-end mb-8 space-x-2">
-            <Button variant="outline" size="sm" className="flex items-center">
-              <BookmarkPlus size={16} className="mr-2" />
-              Sauvegarder
-            </Button>
-            
-            <Dialog open={shareDialogOpen} onOpenChange={setShareDialogOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline" size="sm" className="flex items-center">
-                  <Share2 size={16} className="mr-2" />
-                  Partager
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Partager cet article</DialogTitle>
-                </DialogHeader>
-                <div className="grid grid-cols-2 gap-4 py-4">
-                  <Button variant="outline" className="flex items-center justify-center py-6">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                    </svg>
-                    Facebook
-                  </Button>
-                  <Button variant="outline" className="flex items-center justify-center py-6">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                    </svg>
-                    Twitter
-                  </Button>
-                  <Button variant="outline" className="flex items-center justify-center py-6">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fillRule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 01-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 01-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 01 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clipRule="evenodd" />
-                    </svg>
-                    YouTube
-                  </Button>
-                  <Button variant="outline" className="flex items-center justify-center py-6">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.01-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.045-1.064.207-1.504.344-1.857.182-.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858-.182-.466-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
-                    </svg>
-                    Instagram
-                  </Button>
-                </div>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500 mb-2">Ou copiez le lien :</p>
-                  <div className="flex items-center">
-                    <input 
-                      type="text" 
-                      value={window.location.href} 
-                      readOnly
-                      className="flex-grow px-3 py-2 border rounded-l-md text-sm bg-gray-50"
-                    />
-                    <Button 
-                      className="rounded-l-none"
-                      onClick={() => {
-                        navigator.clipboard.writeText(window.location.href);
-                        setShareDialogOpen(false);
-                      }}
-                    >
-                      Copier
-                    </Button>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
-          </div>
-
-          <div className="prose prose-lg max-w-none bg-white rounded-xl shadow-sm p-8 mb-12">
-            <div dangerouslySetInnerHTML={{ __html: post.content || "" }} />
-          </div>
-
-          {post.sponsored && (
-            <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl p-6 mb-12 shadow-sm">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Vous avez un projet d'immigration?</h3>
-                  <p className="text-gray-600 mb-4">Nos consultants sont disponibles pour vous accompagner dans toutes vos démarches.</p>
-                  <Button asChild>
-                    <Link to="/contact">Prendre rendez-vous</Link>
-                  </Button>
-                </div>
-                <Badge variant="outline" className="bg-primary/10 text-primary shrink-0">Sponsorisé</Badge>
-              </div>
-            </div>
-          )}
-
-          <RelatedPosts currentPostId={post.id} category={post.category} />
         </div>
       </div>
     </div>
