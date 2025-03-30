@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -272,7 +273,7 @@ const EligibilityForm = () => {
         break;
     }
     
-    if (formData.jobOffer === "yes") expressPoints += 15;
+    // Removed reference to jobOffer
     
     let expressLevel: "high" | "medium" | "low" = "low";
     let expressMessage = "";
@@ -373,7 +374,7 @@ const EligibilityForm = () => {
         break;
     }
     
-    if (formData.jobOffer === "yes") genericPoints += 16;
+    // Removed reference to jobOffer
     
     let genericLevel: "high" | "medium" | "low" = "low";
     let genericMessage = "";
