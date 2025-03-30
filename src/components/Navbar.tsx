@@ -82,7 +82,7 @@ const Navbar = () => {
 
   return (
     <header 
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed w-full z-40 transition-all duration-300 ${
         scrolled 
           ? "bg-white/80 backdrop-blur-sm shadow-md py-2" 
           : "bg-transparent py-4"
@@ -160,66 +160,80 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu - Fixed position with higher z-index */}
       <div
-        className={`md:hidden fixed inset-0 bg-white z-[100] transition-transform duration-300 ease-in-out transform ${
+        className={`md:hidden fixed inset-0 bg-white z-50 transition-transform duration-300 ease-in-out transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 100,
+          backgroundColor: 'white',
+        }}
       >
         <div className="flex justify-end p-4">
           <button onClick={toggleMenu} className="p-2 rounded-md text-gray-700">
             <X size={24} />
           </button>
         </div>
-        <div className="overflow-auto max-h-[calc(100vh-80px)] pb-20">
-          <nav className="mt-4 px-8">
-            <div className="mb-6">
-              <Link to="/" className="block text-2xl font-bold text-brand-600" onClick={() => setIsMenuOpen(false)}>
+
+        <div className="overflow-auto h-full pb-20 pt-4">
+          <nav className="px-8">
+            <div className="mb-8">
+              <Link 
+                to="/" 
+                className="block text-2xl font-bold text-brand-600" 
+                onClick={() => setIsMenuOpen(false)}
+              >
                 MigraPro
               </Link>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 mt-2">
                 Services d'immigration, de formation et d'intégration professionnelle.
               </p>
             </div>
             
-            {navLinks.map((link) => (
-              <div key={link.name} className="mb-4">
-                {link.dropdown ? (
-                  <div className="py-2">
-                    <p className="w-full text-left py-2 text-lg font-medium text-gray-700">
-                      {link.name}
-                    </p>
-                    <div className="ml-4 border-l-2 border-gray-200 pl-4 space-y-2">
-                      {link.items?.map((item) => (
-                        <Link 
-                          key={item.name} 
-                          to={item.path}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="block w-full text-left py-2 text-gray-600 hover:text-brand-600"
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
+            <div className="space-y-6">
+              {navLinks.map((link) => (
+                <div key={link.name} className="mb-2">
+                  {link.dropdown ? (
+                    <div className="py-2">
+                      <p className="w-full text-left py-1 text-lg font-medium text-gray-700">
+                        {link.name}
+                      </p>
+                      <div className="ml-4 border-l-2 border-gray-200 pl-4 space-y-3 mt-2">
+                        {link.items?.map((item) => (
+                          <Link 
+                            key={item.name} 
+                            to={item.path}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="block w-full text-left py-2 text-gray-600 hover:text-brand-600"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                )}
-              </div>
-            ))}
+                  ) : (
+                    <Link
+                      to={link.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
+
             <div className="mt-8">
               <Button 
                 className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-                onClick={() => {
-                  handleNavigate('/eligibility');
-                  setIsMenuOpen(false);
-                }}
+                onClick={() => handleNavigate('/eligibility')}
               >
                 {t('navigation.eligibility')}
               </Button>
