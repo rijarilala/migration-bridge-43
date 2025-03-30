@@ -234,7 +234,21 @@
   },
   "sitemap": {
     "title": "Plan du Site",
-    "description": "Cette page vous présente la structure complète du site de MigraPro pour vous aider à naviguer et à trouver rapidement l'information que vous recherchez."
+    "description": "Cette page vous présente la structure complète du site de MigraPro pour vous aider à naviguer et à trouver rapidement l'information que vous recherchez.",
+    "legalInformation": "Informations légales",
+    "homeDescription": "Page d'accueil du site MigraPro",
+    "immigrationDescription": "Services de conseil et d'accompagnement en immigration",
+    "trainingDescription": "Formation professionnelle et linguistique",
+    "coachingDescription": "Coaching personnalisé pour votre projet",
+    "orientationDescription": "Services d'orientation et de développement de carrière",
+    "recruitmentDescription": "Services de recrutement et placement professionnel",
+    "aboutDescription": "Informations sur MigraPro, notre mission et notre équipe",
+    "blogDescription": "Articles et actualités sur l'immigration et nos services",
+    "faqDescription": "Questions fréquemment posées sur nos services",
+    "contactDescription": "Nos coordonnées et formulaire de contact",
+    "eligibilityDescription": "Évaluez votre éligibilité pour l'immigration",
+    "privacyDescription": "Notre politique de confidentialité et protection des données",
+    "termsDescription": "Conditions générales d'utilisation de nos services"
   },
   "notFound": {
     "title": "Page non trouvée",

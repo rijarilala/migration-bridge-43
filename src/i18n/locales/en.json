@@ -234,7 +234,21 @@
   },
   "sitemap": {
     "title": "Sitemap",
-    "description": "This page presents the complete structure of the MigraPro website to help you navigate and quickly find the information you are looking for."
+    "description": "This page presents the complete structure of the MigraPro website to help you navigate and quickly find the information you are looking for.",
+    "legalInformation": "Legal Information",
+    "homeDescription": "Homepage of MigraPro website",
+    "immigrationDescription": "Immigration consulting and support services",
+    "trainingDescription": "Professional and language training",
+    "coachingDescription": "Personalized coaching for your project",
+    "orientationDescription": "Professional orientation and career development services",
+    "recruitmentDescription": "Recruitment and professional placement services",
+    "aboutDescription": "Information about MigraPro, our mission and our team",
+    "blogDescription": "Articles and news about immigration and our services",
+    "faqDescription": "Frequently asked questions about our services",
+    "contactDescription": "Our contact information and contact form",
+    "eligibilityDescription": "Evaluate your eligibility for immigration",
+    "privacyDescription": "Our privacy policy and data protection",
+    "termsDescription": "Terms of use for our services"
   },
   "notFound": {
     "title": "Page not found",

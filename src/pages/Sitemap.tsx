@@ -19,7 +19,7 @@ const Sitemap = () => {
     {
       title: t('navigation.home'),
       path: "/",
-      description: t('sitemap.description')
+      description: t('sitemap.homeDescription', 'This page presents the complete structure of the MigraPro website to help you navigate and quickly find the information you are looking for.')
     },
     {
       title: t('navigation.services'),
@@ -27,72 +27,72 @@ const Sitemap = () => {
         {
           title: t('services.immigration'),
           path: "/services/immigration",
-          description: "Services de conseil et d'accompagnement en immigration"
+          description: t('sitemap.immigrationDescription', 'Services de conseil et d\'accompagnement en immigration')
         },
         {
           title: t('services.training'),
           path: "/services/formation",
-          description: "Formation professionnelle et linguistique"
+          description: t('sitemap.trainingDescription', 'Formation professionnelle et linguistique')
         },
         {
           title: t('services.coaching'),
           path: "/services/coaching",
-          description: "Coaching personnalisé pour votre projet"
+          description: t('sitemap.coachingDescription', 'Coaching personnalisé pour votre projet')
         },
         {
           title: t('services.professionalOrientation'),
           path: "/services/orientation",
-          description: "Services d'orientation et de développement de carrière"
+          description: t('sitemap.orientationDescription', 'Services d\'orientation et de développement de carrière')
         },
         {
           title: t('services.recruitment'),
           path: "/services/recrutement",
-          description: "Services de recrutement et placement professionnel"
+          description: t('sitemap.recruitmentDescription', 'Services de recrutement et placement professionnel')
         }
       ]
     },
     {
       title: t('navigation.about'),
       path: "/about",
-      description: "Informations sur MigraPro, notre mission et notre équipe"
+      description: t('sitemap.aboutDescription', 'Informations sur MigraPro, notre mission et notre équipe')
     },
     {
       title: t('navigation.blog'),
       path: "/blog",
-      description: "Articles et actualités sur l'immigration et nos services"
+      description: t('sitemap.blogDescription', 'Articles et actualités sur l\'immigration et nos services')
     },
     {
       title: t('navigation.faq'),
       path: "/faq",
-      description: "Questions fréquemment posées sur nos services"
+      description: t('sitemap.faqDescription', 'Questions fréquemment posées sur nos services')
     },
     {
       title: t('navigation.contact'),
       path: "/contact",
-      description: "Nos coordonnées et formulaire de contact"
+      description: t('sitemap.contactDescription', 'Nos coordonnées et formulaire de contact')
     },
     {
       title: t('navigation.eligibility'),
       path: "/eligibility",
-      description: "Évaluez votre éligibilité pour l'immigration"
+      description: t('sitemap.eligibilityDescription', 'Évaluez votre éligibilité pour l\'immigration')
     },
     {
-      title: "Informations légales",
+      title: t('sitemap.legalInformation'),
       children: [
         {
           title: t('privacy.title'),
           path: "/privacy",
-          description: "Notre politique de confidentialité et protection des données"
+          description: t('sitemap.privacyDescription', 'Notre politique de confidentialité et protection des données')
         },
         {
           title: t('terms.title'),
           path: "/terms",
-          description: "Conditions générales d'utilisation de nos services"
+          description: t('sitemap.termsDescription', 'Conditions générales d\'utilisation de nos services')
         },
         {
           title: t('sitemap.title'),
           path: "/sitemap",
-          description: "Structure complète du site web"
+          description: t('sitemap.description')
         }
       ]
     }
