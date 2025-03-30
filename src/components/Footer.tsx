@@ -80,11 +80,6 @@ const Footer = () => {
             <h3 className="text-xl font-semibold text-gray-800 mb-4">{t('footer.resources')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/blog" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
-                  {t('navigation.blog')}
-                </Link>
-              </li>
-              <li>
                 <Link to="/faq" onClick={handleLinkClick} className="text-gray-600 hover:text-brand-600 transition-colors">
                   {t('navigation.faq')}
                 </Link>

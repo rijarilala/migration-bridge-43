@@ -20,8 +20,6 @@ import Orientation from "./pages/services/Orientation";
 import Recrutement from "./pages/services/Recrutement";
 
 // Other Pages
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
 import FAQ from "./pages/FAQ";
 import About from "./pages/About";
 
@@ -65,8 +63,6 @@ const AppContent = () => {
             <Route path="/services/recrutement" element={<Recrutement />} />
             
             {/* Other Routes */}
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />
             

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -53,10 +52,6 @@ const Navbar = () => {
         { name: t('services.professionalOrientation'), path: "/services/orientation" },
         { name: t('services.recruitment'), path: "/services/recrutement" }
       ]
-    },
-    { 
-      name: t('navigation.blog'), 
-      path: "/blog" 
     },
     { 
       name: t('navigation.faq'), 
