@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -159,44 +160,54 @@ const Navbar = () => {
           </button>
         </div>
         <nav className="mt-8 px-8">
+          <div className="mb-6">
+            <Link to="/" className="block text-2xl font-bold text-brand-600" onClick={() => setIsMenuOpen(false)}>
+              MigraPro
+            </Link>
+            <p className="text-sm text-gray-500 mt-1">
+              Services d'immigration, de formation et d'intégration professionnelle.
+            </p>
+          </div>
+          
           {navLinks.map((link) => (
             <div key={link.name}>
               {link.dropdown ? (
                 <div className="py-2">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <button className="w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200 flex items-center justify-between">
-                        {link.name}
-                        <ChevronDown size={20} />
-                      </button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="bg-white w-56 ml-4 mt-2 z-50">
-                      {link.items?.map((item) => (
-                        <DropdownMenuItem key={item.name} onClick={() => {
-                          handleNavigate(item.path);
-                          toggleMenu();
-                        }}>
-                          {item.name}
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  <p className="w-full text-left py-2 text-lg font-medium text-gray-700">
+                    {link.name}
+                  </p>
+                  <div className="ml-4 border-l-2 border-gray-200 pl-4 space-y-2">
+                    {link.items?.map((item) => (
+                      <Link 
+                        key={item.name} 
+                        to={item.path}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="block w-full text-left py-2 text-gray-600 hover:text-brand-600"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ) : (
-                <button
+                <Link
                   key={link.name}
-                  onClick={() => handleNavigate(link.path)}
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
                   className="block w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
                 >
                   {link.name}
-                </button>
+                </Link>
               )}
             </div>
           ))}
           <div className="mt-8">
             <Button 
               className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-              onClick={() => handleNavigate('/eligibility')}
+              onClick={() => {
+                handleNavigate('/eligibility');
+                setIsMenuOpen(false);
+              }}
             >
               {t('navigation.eligibility')}
             </Button>
