@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import EligibilityForm from "@/components/EligibilityForm";
 import Stats from "@/components/Stats";
 import { motion } from "framer-motion";
-import { Check, MapPin, Clock, FileText } from "lucide-react";
+import { Check, MapPin, Clock, FileText, Shield } from "lucide-react";
 
 const Eligibility = () => {
   const immigrationStats = [
@@ -15,14 +15,14 @@ const Eligibility = () => {
 
   const benefits = [
     { 
-      icon: <Check className="h-5 w-5" />, 
+      icon: <Shield className="h-5 w-5" />, 
       title: "Évaluation complète",
-      description: "Notre algorithme analyse votre profil selon tous les programmes canadiens disponibles, y compris le nouveau PSTQ"
+      description: "Notre système analyse votre profil selon tous les critères d'admissibilité à l'immigration canadienne"
     },
     { 
       icon: <MapPin className="h-5 w-5" />, 
       title: "Conseils personnalisés",
-      description: "Recevez des recommandations adaptées à votre situation spécifique et aux 4 volets du PSTQ"
+      description: "Recevez des recommandations adaptées à votre situation spécifique"
     },
     { 
       icon: <Clock className="h-5 w-5" />, 
@@ -31,8 +31,8 @@ const Eligibility = () => {
     },
     { 
       icon: <FileText className="h-5 w-5" />, 
-      title: "Document détaillé",
-      description: "Téléchargez votre rapport complet d'éligibilité au format PDF"
+      title: "Confidentialité assurée",
+      description: "Votre évaluation est strictement confidentielle et vos données sont protégées"
     }
   ];
 
@@ -50,9 +50,8 @@ const Eligibility = () => {
               Évaluez votre <span className="gradient-text">admissibilité</span> à l'immigration canadienne
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Découvrez votre admissibilité aux programmes d'immigration canadiens comme 
-              Entrée Express, le nouveau Programme de sélection des travailleurs qualifiés (PSTQ) et le 
-              Programme de l'Expérience Québécoise (PEQ).
+              Découvrez votre admissibilité à l'immigration canadienne grâce à notre évaluateur rapide et fiable.
+              Notre système analyse votre profil et vous donne un résultat instantané.
             </p>
           </motion.div>
 
@@ -62,22 +61,19 @@ const Eligibility = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h2 className="text-xl font-semibold mb-4">Nouveau : Programme de sélection des travailleurs qualifiés (PSTQ)</h2>
+            <h2 className="text-xl font-semibold mb-4">Pourquoi évaluer votre admissibilité ?</h2>
             <p className="mb-4">
-              Le PSTQ remplace le Programme régulier des travailleurs qualifiés (PRTQ) et vise à sélectionner des personnes :
+              Le Canada dispose de multiples voies d'immigration adaptées à différents profils. Notre évaluateur vous aide à :
             </p>
             <ul className="list-disc pl-5 space-y-2 mb-4">
-              <li>Connaissant le français</li>
-              <li>Ayant les compétences suffisantes pour intégrer le marché du travail</li>
-              <li>Pouvant répondre aux besoins dans les secteurs touchés par la rareté de main-d'œuvre</li>
+              <li>Déterminer si vous êtes admissible à l'immigration canadienne</li>
+              <li>Comprendre votre potentiel d'immigration</li>
+              <li>Connaître les prochaines étapes à suivre</li>
+              <li>Économiser du temps et des efforts dans votre processus d'immigration</li>
             </ul>
-            <p className="font-medium">Le PSTQ comprend 4 volets distincts :</p>
-            <ul className="list-disc pl-5 space-y-1 mt-2">
-              <li><span className="font-medium">Volet 1 :</span> Professions hautement qualifiées exigeant des compétences spécialisées</li>
-              <li><span className="font-medium">Volet 2 :</span> Professions exigeant des compétences intermédiaires et manuelles</li>
-              <li><span className="font-medium">Volet 3 :</span> Professions réglementées requérant une autorisation d'exercice au Québec</li>
-              <li><span className="font-medium">Volet 4 :</span> Talents d'exception</li>
-            </ul>
+            <p className="font-medium">
+              Notre système analyse en profondeur votre profil selon les critères officiels d'immigration.
+            </p>
           </motion.div>
 
           <Stats 

@@ -14,7 +14,6 @@ interface CheckboxOption {
 }
 
 interface EligibilityResult {
-  program: string;
   eligible: boolean;
   message: string;
   details: string;
@@ -51,8 +50,7 @@ const EligibilityForm = () => {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState(initialFormData);
-  const [results, setResults] = useState<EligibilityResult[]>([]);
-  const [bestProgram, setBestProgram] = useState<string>("");
+  const [globalEligibilityResult, setGlobalEligibilityResult] = useState<EligibilityResult | null>(null);
 
   // Options pour les cases à cocher
   const ageOptions: CheckboxOption[] = [
@@ -141,8 +139,7 @@ const EligibilityForm = () => {
     // Reset the form data to initial state
     setFormData(initialFormData);
     // Reset results
-    setResults([]);
-    setBestProgram("");
+    setGlobalEligibilityResult(null);
     // Return to step 1
     setCurrentStep(1);
     // Scroll to the top of the form container smoothly
@@ -210,24 +207,7 @@ const EligibilityForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateCurrentStep()) {
-      // Calculer les résultats d'éligibilité
-      const eligibilityResults = calculateEligibility();
-      setResults(eligibilityResults);
-      
-      // Déterminer le meilleur programme
-      const highEligibilityPrograms = eligibilityResults.filter(r => r.level === "high");
-      if (highEligibilityPrograms.length > 0) {
-        setBestProgram(highEligibilityPrograms[0].program);
-      } else {
-        const mediumEligibilityPrograms = eligibilityResults.filter(r => r.level === "medium");
-        if (mediumEligibilityPrograms.length > 0) {
-          setBestProgram(mediumEligibilityPrograms[0].program);
-        } else {
-          setBestProgram("Aucun programme optimal");
-        }
-      }
-      
-      // Passer à l'étape des résultats
+      // Simuler un temps de chargement pour l'évaluation
       setCurrentStep(4);
       
       // Scroll to the top of the form container smoothly
@@ -235,13 +215,21 @@ const EligibilityForm = () => {
       if (formContainer) {
         formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+      
+      setTimeout(() => {
+        // Calculer l'éligibilité globale (derrière le rideau)
+        const eligibilityResults = calculateEligibilityBehindTheScenes();
+        setGlobalEligibilityResult(determineGlobalEligibility(eligibilityResults));
+      }, 1500);
     }
   };
 
-  const calculateEligibility = (): EligibilityResult[] => {
-    const results: EligibilityResult[] = [];
+  const calculateEligibilityBehindTheScenes = () => {
+    // Nous allons garder la logique d'évaluation existante pour chaque programme
+    // mais nous ne montrerons pas ces résultats individuels à l'utilisateur
+    const results = [];
     
-    // Points pour Entrée Express
+    // Évaluation pour Entrée Express (masquée à l'utilisateur)
     let expressPoints = 0;
     let expressMaxPoints = 100;
     
@@ -335,27 +323,20 @@ const EligibilityForm = () => {
     const expressPercentage = expressPoints / expressMaxPoints;
     if (expressPercentage >= 0.7) {
       expressLevel = "high";
-      expressMessage = "✅ Vous semblez éligible à Entrée Express, découvrez les prochaines étapes !";
-      expressDetails = "Votre profil correspond aux critères du programme Entrée Express. Nous vous recommandons de poursuivre votre démarche avec un conseiller en immigration.";
     } else if (expressPercentage >= 0.5) {
       expressLevel = "medium";
-      expressMessage = "⚠️ Votre profil pourrait convenir à Entrée Express, contactez-nous pour une analyse approfondie.";
-      expressDetails = "Vous avez un potentiel d'éligibilité au programme Entrée Express, mais certains aspects de votre profil pourraient nécessiter une attention particulière.";
     } else {
       expressLevel = "low";
-      expressMessage = "❌ Vous ne remplissez pas actuellement les critères d'Entrée Express, mais d'autres options peuvent être envisageables.";
-      expressDetails = "Votre profil actuel ne correspond pas suffisamment aux critères d'Entrée Express. Un conseiller pourrait vous suggérer d'autres programmes.";
     }
     
     results.push({
-      program: "Entrée Express",
       eligible: expressLevel === "high",
       message: expressMessage,
       details: expressDetails,
       level: expressLevel
     });
     
-    // Évaluation pour le PSTQ (Programme de sélection des travailleurs qualifiés - Québec)
+    // Évaluation pour le PSTQ (masquée à l'utilisateur)
     let pstqPoints = 0;
     let pstqMaxPoints = 100;
     
@@ -478,27 +459,20 @@ const EligibilityForm = () => {
     const pstqPercentage = pstqPoints / pstqMaxPoints;
     if (pstqPercentage >= 0.7) {
       pstqLevel = "high";
-      pstqMessage = `✅ Vous semblez éligible au PSTQ ${pstqVolet}, découvrez les prochaines étapes !`;
-      pstqDetails = `Votre profil correspond aux critères du Programme de sélection des travailleurs qualifiés du Québec pour le ${pstqVolet}. Nous vous recommandons de poursuivre votre démarche avec un conseiller.`;
     } else if (pstqPercentage >= 0.5) {
       pstqLevel = "medium";
-      pstqMessage = `⚠️ Votre profil pourrait convenir au PSTQ ${pstqVolet}, contactez-nous pour une analyse approfondie.`;
-      pstqDetails = `Vous avez un potentiel d'éligibilité au PSTQ pour le ${pstqVolet}, mais certains aspects de votre profil pourraient nécessiter une attention particulière.`;
     } else {
       pstqLevel = "low";
-      pstqMessage = "❌ Vous ne remplissez pas actuellement les critères du PSTQ, mais d'autres options peuvent être envisageables.";
-      pstqDetails = "Votre profil actuel ne correspond pas suffisamment aux critères du PSTQ. Un conseiller pourrait vous suggérer d'autres programmes.";
     }
     
     results.push({
-      program: `Programme de sélection des travailleurs qualifiés (PSTQ) - ${pstqVolet}`,
       eligible: pstqLevel === "high",
       message: pstqMessage,
       details: pstqDetails,
       level: pstqLevel
     });
     
-    // Évaluation pour le PEQ (Programme de l'Expérience Québécoise)
+    // Évaluation pour le PEQ (masquée à l'utilisateur)
     const isPeqEligible = formData.frenchLevel === "fluent" || formData.frenchLevel === "intermediate";
     const peqLevel: "high" | "medium" | "low" = isPeqEligible ? 
       (formData.experience !== "none" ? "high" : "medium") : "low";
@@ -506,55 +480,44 @@ const EligibilityForm = () => {
     let peqMessage = "";
     let peqDetails = "";
     
-    if (peqLevel === "high") {
-      peqMessage = "✅ Vous semblez éligible au PEQ, découvrez les prochaines étapes !";
-      peqDetails = "Votre profil semble correspondre aux critères du Programme de l'Expérience Québécoise. Vos compétences en français et votre expérience professionnelle sont des atouts.";
-    } else if (peqLevel === "medium") {
-      peqMessage = "⚠️ Votre profil pourrait convenir au PEQ avec quelques ajustements.";
-      peqDetails = "Vous pourriez être éligible au PEQ, mais il vous manque peut-être de l'expérience professionnelle pertinente.";
-    } else {
-      peqMessage = "❌ Vous ne remplissez pas actuellement les critères du PEQ.";
-      peqDetails = "Le PEQ exige généralement une bonne maîtrise du français. Sans cette compétence, ce programme n'est pas recommandé.";
-    }
-    
     results.push({
-      program: "Programme de l'Expérience Québécoise (PEQ)",
       eligible: peqLevel === "high",
       message: peqMessage,
       details: peqDetails,
       level: peqLevel
     });
     
-    // Évaluation pour le regroupement familial
-    const hasFamilyInCanada = formData.familyTies === "yes";
-    const projectIsFamily = formData.canadaProject === "family";
-    
-    const familyLevel: "high" | "medium" | "low" = hasFamilyInCanada && projectIsFamily ? "high" : 
-                                                   hasFamilyInCanada ? "medium" : "low";
-    
-    let familyMessage = "";
-    let familyDetails = "";
-    
-    if (familyLevel === "high") {
-      familyMessage = "✅ Vous semblez éligible au Regroupement Familial, découvrez les prochaines étapes !";
-      familyDetails = "Avec de la famille directe au Canada et votre projet de les rejoindre, le programme de Regroupement Familial semble parfaitement adapté à votre situation.";
-    } else if (familyLevel === "medium") {
-      familyMessage = "⚠️ Vous pourriez être éligible au Regroupement Familial selon les liens familiaux exacts.";
-      familyDetails = "Bien que vous ayez de la famille au Canada, l'éligibilité au Regroupement Familial dépend du type de relation et du statut de résidence de votre famille au Canada.";
-    } else {
-      familyMessage = "❌ Sans liens familiaux au Canada, vous n'êtes pas éligible au Regroupement Familial.";
-      familyDetails = "Ce programme est exclusivement destiné aux personnes ayant des membres de leur famille proche déjà établis au Canada.";
+    return results;
+  };
+  
+  const determineGlobalEligibility = (results: EligibilityResult[]): EligibilityResult => {
+    // Si l'un des programmes a un niveau "high", le candidat est éligible
+    if (results.some(result => result.level === "high")) {
+      return {
+        eligible: true,
+        level: "high",
+        message: "✅ Félicitations ! Votre profil correspond à nos critères d'éligibilité.",
+        details: "Selon notre analyse, vous avez d'excellentes chances d'être admissible à l'immigration canadienne. Nous vous recommandons de poursuivre votre démarche avec un conseiller en immigration."
+      };
     }
     
-    results.push({
-      program: "Regroupement Familial",
-      eligible: familyLevel === "high",
-      message: familyMessage,
-      details: familyDetails,
-      level: familyLevel
-    });
+    // Si l'un des programmes a un niveau "medium", le candidat a une éligibilité possible
+    if (results.some(result => result.level === "medium")) {
+      return {
+        eligible: true,
+        level: "medium",
+        message: "⚠️ Éligibilité possible. Votre profil présente un potentiel intéressant.",
+        details: "Notre évaluation préliminaire indique que vous pourriez être admissible à l'immigration canadienne, mais certains aspects de votre profil nécessitent une analyse plus approfondie par un expert."
+      };
+    }
     
-    return results;
+    // Sinon, le candidat a une faible chance d'éligibilité (mais nous restons positifs)
+    return {
+      eligible: false,
+      level: "low",
+      message: "ℹ️ Faible chance d'éligibilité avec votre profil actuel.",
+      details: "Votre profil actuel pourrait ne pas correspondre entièrement aux critères d'admissibilité, mais d'autres options peuvent être envisageables. Un conseiller pourrait vous suggérer des alternatives ou des moyens d'améliorer votre candidature."
+    };
   };
 
   const getStatusBadgeClass = (level: "high" | "medium" | "low") => {
@@ -564,7 +527,7 @@ const EligibilityForm = () => {
       case "medium":
         return "bg-yellow-100 text-yellow-800";
       case "low":
-        return "bg-red-100 text-red-800";
+        return "bg-blue-100 text-blue-800"; // Changé de rouge à bleu pour être moins négatif
       default:
         return "bg-gray-100 text-gray-800";
     }
@@ -573,11 +536,11 @@ const EligibilityForm = () => {
   const getStatusText = (level: "high" | "medium" | "low") => {
     switch (level) {
       case "high":
-        return "Forte chance d'éligibilité";
+        return "Excellente éligibilité";
       case "medium":
         return "Éligibilité possible";
       case "low":
-        return "Faible chance d'éligibilité";
+        return "Potentiel à développer"; // Formulation plus positive
       default:
         return "Indéterminé";
     }
@@ -607,7 +570,7 @@ const EligibilityForm = () => {
                   ? "Projet"
                   : step === 3
                   ? "Contact"
-                  : "Résultats"}
+                  : "Résultat"}
               </div>
             </div>
           ))}
@@ -836,93 +799,4 @@ const EligibilityForm = () => {
           <div className="space-y-8 animate-fade-in">
             <div className="text-center mb-6">
               <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Résultats de votre évaluation</h2>
-              <p className="text-gray-600 mb-6">
-                Voici une analyse préliminaire de votre admissibilité aux différents programmes d'immigration canadiens.
-              </p>
-            </div>
-
-            {bestProgram && (
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <h3 className="font-bold text-blue-800 mb-2">Recommandation principale</h3>
-                <p>
-                  Selon votre profil, le programme le plus adapté à votre situation est le <span className="font-bold">{bestProgram}</span>.
-                </p>
-              </div>
-            )}
-
-            <div className="space-y-6">
-              {results.map((result, index) => (
-                <div key={index} className="border rounded-lg overflow-hidden">
-                  <div className={`p-4 ${result.level === "high" ? "bg-green-50 border-b border-green-200" : result.level === "medium" ? "bg-yellow-50 border-b border-yellow-200" : "bg-red-50 border-b border-red-200"}`}>
-                    <div className="flex justify-between items-center">
-                      <h3 className="font-semibold text-gray-800">{result.program}</h3>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusBadgeClass(result.level)}`}>
-                        {getStatusText(result.level)}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-white">
-                    <p className="text-gray-700 font-medium mb-2">{result.message}</p>
-                    <p className="text-gray-600 text-sm">{result.details}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-6">
-              <h3 className="font-semibold mb-2">Prochaines étapes</h3>
-              <p className="text-gray-600 mb-4">
-                Pour continuer votre processus d'immigration, nous vous recommandons de :
-              </p>
-              <ul className="list-disc pl-5 space-y-1 text-gray-600">
-                <li>Consulter notre simulateur détaillé pour une évaluation plus précise</li>
-                <li>Prendre rendez-vous avec un de nos consultants en immigration</li>
-                <li>Préparer vos documents justificatifs (diplômes, certificats de langue, etc.)</li>
-              </ul>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-              <Button type="button" onClick={resetForm} variant="outline">
-                Faire un nouveau test
-              </Button>
-              <Button asChild className="bg-brand-600 hover:bg-brand-700">
-                <a href="/contact">Prendre rendez-vous avec un consultant</a>
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {currentStep < 3 && (
-          <div className="flex justify-end">
-            <Button type="button" onClick={handleNextStep} className="bg-brand-600 hover:bg-brand-700">
-              Continuer
-            </Button>
-          </div>
-        )}
-        
-        {currentStep === 3 && (
-          <div className="flex justify-end">
-            <Button type="submit" className="bg-brand-600 hover:bg-brand-700">
-              Soumettre
-            </Button>
-          </div>
-        )}
-        
-        {currentStep > 1 && currentStep < 4 && (
-          <div className="flex justify-start mt-6">
-            <Button type="button" variant="outline" onClick={handlePrevStep}>
-              Précédent
-            </Button>
-          </div>
-        )}
-      </form>
-    </div>
-  );
-};
-
-export default EligibilityForm;
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24
