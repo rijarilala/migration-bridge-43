@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -23,27 +22,22 @@ interface EligibilityResult {
 
 const EligibilityForm = () => {
   const initialFormData = {
-    // Informations personnelles
     age: "",
     education: "",
     experience: "",
     
-    // Compétences linguistiques séparées
     frenchLevel: "",
     englishLevel: "",
     
-    // Informations professionnelles (pour PSTQ)
     profession: "",
     professionType: "",
     licenseInQuebec: "",
     exceptionalTalent: "",
     
-    // Informations supplémentaires
     jobOffer: "",
     familyTies: "",
     canadaProject: "",
     
-    // Contact
     name: "",
     email: "",
     phone: "",
@@ -52,8 +46,8 @@ const EligibilityForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState(initialFormData);
   const [globalEligibilityResult, setGlobalEligibilityResult] = useState<EligibilityResult | null>(null);
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
-  // Options pour les cases à cocher
   const ageOptions: CheckboxOption[] = [
     { id: "age-18-29", label: "18 - 29 ans", value: "18-29" },
     { id: "age-30-39", label: "30 - 39 ans", value: "30-39" },
@@ -119,7 +113,6 @@ const EligibilityForm = () => {
   const handleNextStep = () => {
     if (validateCurrentStep()) {
       setCurrentStep(currentStep + 1);
-      // Scroll to the top of the form container smoothly
       const formContainer = document.querySelector('.eligibility-form-container');
       if (formContainer) {
         formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -129,7 +122,6 @@ const EligibilityForm = () => {
 
   const handlePrevStep = () => {
     setCurrentStep(currentStep - 1);
-    // Scroll to the top of the form container smoothly
     const formContainer = document.querySelector('.eligibility-form-container');
     if (formContainer) {
       formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -137,13 +129,10 @@ const EligibilityForm = () => {
   };
 
   const resetForm = () => {
-    // Reset the form data to initial state
     setFormData(initialFormData);
-    // Reset results
     setGlobalEligibilityResult(null);
-    // Return to step 1
+    setAttemptedSubmit(false);
     setCurrentStep(1);
-    // Scroll to the top of the form container smoothly
     const formContainer = document.querySelector('.eligibility-form-container');
     if (formContainer) {
       formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -174,6 +163,10 @@ const EligibilityForm = () => {
         return false;
       }
     } else if (currentStep === 2) {
+      if (!formData.canadaProject) {
+        toast.error("Veuillez sélectionner au moins un projet au Canada");
+        return false;
+      }
       if (!formData.professionType && formData.canadaProject === "work") {
         toast.error("Veuillez sélectionner un type de profession");
         return false;
@@ -186,16 +179,11 @@ const EligibilityForm = () => {
         toast.error("Veuillez indiquer si vous avez des liens familiaux au Canada");
         return false;
       }
-      if (!formData.canadaProject) {
-        toast.error("Veuillez sélectionner au moins un projet au Canada");
-        return false;
-      }
-    } else if (currentStep === 3) {
+    } else if (currentStep === 3 && attemptedSubmit) {
       if (!formData.name || !formData.email || !formData.phone) {
         toast.error("Veuillez remplir tous les champs de contact");
         return false;
       }
-      // Basic email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
         toast.error("Veuillez entrer une adresse email valide");
@@ -207,18 +195,14 @@ const EligibilityForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setAttemptedSubmit(true);
     if (validateCurrentStep()) {
-      // Simuler un temps de chargement pour l'évaluation
       setCurrentStep(4);
-      
-      // Scroll to the top of the form container smoothly
       const formContainer = document.querySelector('.eligibility-form-container');
       if (formContainer) {
         formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-      
       setTimeout(() => {
-        // Calculer l'éligibilité globale (derrière le rideau)
         const eligibilityResults = calculateEligibilityBehindTheScenes();
         setGlobalEligibilityResult(determineGlobalEligibility(eligibilityResults));
       }, 1500);
@@ -226,15 +210,11 @@ const EligibilityForm = () => {
   };
 
   const calculateEligibilityBehindTheScenes = () => {
-    // Nous allons garder la logique d'évaluation existante pour chaque programme
-    // mais nous ne montrerons pas ces résultats individuels à l'utilisateur
     const results = [];
     
-    // Évaluation pour Entrée Express (masquée à l'utilisateur)
     let expressPoints = 0;
     let expressMaxPoints = 100;
     
-    // Points pour l'âge
     switch(formData.age) {
       case "18-29":
         expressPoints += 25;
@@ -250,7 +230,6 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Points pour l'éducation
     switch(formData.education) {
       case "none":
         expressPoints += 0;
@@ -269,7 +248,6 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Points pour l'expérience professionnelle
     switch(formData.experience) {
       case "none":
         expressPoints += 0;
@@ -288,7 +266,6 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Points pour les compétences linguistiques séparées
     switch(formData.frenchLevel) {
       case "fluent":
         expressPoints += 15;
@@ -313,10 +290,8 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Bonus pour offre d'emploi
     if (formData.jobOffer === "yes") expressPoints += 15;
     
-    // Déterminer l'éligibilité pour Entrée Express
     let expressLevel: "high" | "medium" | "low" = "low";
     let expressMessage = "";
     let expressDetails = "";
@@ -337,11 +312,9 @@ const EligibilityForm = () => {
       level: expressLevel
     });
     
-    // Évaluation pour le PSTQ (masquée à l'utilisateur)
     let pstqPoints = 0;
     let pstqMaxPoints = 100;
     
-    // Points pour l'âge
     switch(formData.age) {
       case "18-29":
         pstqPoints += 20;
@@ -357,7 +330,6 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Points pour l'éducation
     switch(formData.education) {
       case "none":
         pstqPoints += 0;
@@ -376,7 +348,6 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Points pour l'expérience professionnelle
     switch(formData.experience) {
       case "none":
         pstqPoints += 0;
@@ -395,7 +366,6 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Points pour les compétences linguistiques (Français priorisé pour le Québec)
     switch(formData.frenchLevel) {
       case "fluent":
         pstqPoints += 20;
@@ -420,10 +390,8 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Bonus pour offre d'emploi
     if (formData.jobOffer === "yes") pstqPoints += 16;
     
-    // Bonus spécifiques pour les volets du PSTQ
     let pstqVolet = "";
     let pstqVoletBonus = 0;
     
@@ -452,7 +420,6 @@ const EligibilityForm = () => {
     
     pstqPoints += pstqVoletBonus;
     
-    // Déterminer l'éligibilité pour le PSTQ
     let pstqLevel: "high" | "medium" | "low" = "low";
     let pstqMessage = "";
     let pstqDetails = "";
@@ -473,7 +440,6 @@ const EligibilityForm = () => {
       level: pstqLevel
     });
     
-    // Évaluation pour le PEQ (masquée à l'utilisateur)
     const isPeqEligible = formData.frenchLevel === "fluent" || formData.frenchLevel === "intermediate";
     const peqLevel: "high" | "medium" | "low" = isPeqEligible ? 
       (formData.experience !== "none" ? "high" : "medium") : "low";
@@ -490,9 +456,8 @@ const EligibilityForm = () => {
     
     return results;
   };
-  
+
   const determineGlobalEligibility = (results: EligibilityResult[]): EligibilityResult => {
-    // Si l'un des programmes a un niveau "high", le candidat est éligible
     if (results.some(result => result.level === "high")) {
       return {
         eligible: true,
@@ -502,7 +467,6 @@ const EligibilityForm = () => {
       };
     }
     
-    // Si l'un des programmes a un niveau "medium", le candidat a une éligibilité possible
     if (results.some(result => result.level === "medium")) {
       return {
         eligible: true,
@@ -512,7 +476,6 @@ const EligibilityForm = () => {
       };
     }
     
-    // Sinon, le candidat a une faible chance d'éligibilité (mais nous restons positifs)
     return {
       eligible: false,
       level: "low",
@@ -528,7 +491,7 @@ const EligibilityForm = () => {
       case "medium":
         return "bg-yellow-100 text-yellow-800";
       case "low":
-        return "bg-blue-100 text-blue-800"; // Changé de rouge à bleu pour être moins négatif
+        return "bg-blue-100 text-blue-800";
       default:
         return "bg-gray-100 text-gray-800";
     }
@@ -541,7 +504,7 @@ const EligibilityForm = () => {
       case "medium":
         return "Éligibilité possible";
       case "low":
-        return "Potentiel à développer"; // Formulation plus positive
+        return "Potentiel à développer";
       default:
         return "Indéterminé";
     }
