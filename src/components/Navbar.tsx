@@ -6,6 +6,12 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -43,8 +49,6 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  
   const handleNavigate = (path: string) => {
     navigate(path);
     setIsMenuOpen(false);
@@ -146,99 +150,82 @@ const Navbar = () => {
             </div>
           </nav>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu using Sheet component */}
           <div className="md:hidden flex items-center gap-2">
             <LanguageSwitcher />
-            <button
-              onClick={toggleMenu}
-              className="p-2 rounded-md text-gray-700"
-              aria-expanded={isMenuOpen}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu - Fixed position with higher z-index */}
-      <div
-        className={`md:hidden fixed inset-0 bg-white z-50 transition-transform duration-300 ease-in-out transform ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-        style={{ 
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 100,
-          backgroundColor: 'white',
-        }}
-      >
-        <div className="flex justify-end p-4">
-          <button onClick={toggleMenu} className="p-2 rounded-md text-gray-700">
-            <X size={24} />
-          </button>
-        </div>
-
-        <div className="overflow-auto h-full pb-20 pt-4">
-          <nav className="px-8">
-            <div className="mb-8">
-              <Link 
-                to="/" 
-                className="block text-2xl font-bold text-brand-600" 
-                onClick={() => setIsMenuOpen(false)}
-              >
-                MigraPro
-              </Link>
-              <p className="text-sm text-gray-500 mt-2">
-                Services d'immigration, de formation et d'intégration professionnelle.
-              </p>
-            </div>
-            
-            <div className="space-y-6">
-              {navLinks.map((link) => (
-                <div key={link.name} className="mb-2">
-                  {link.dropdown ? (
-                    <div className="py-2">
-                      <p className="w-full text-left py-1 text-lg font-medium text-gray-700">
-                        {link.name}
-                      </p>
-                      <div className="ml-4 border-l-2 border-gray-200 pl-4 space-y-3 mt-2">
-                        {link.items?.map((item) => (
-                          <Link 
-                            key={item.name} 
-                            to={item.path}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="block w-full text-left py-2 text-gray-600 hover:text-brand-600"
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <Link
-                      to={link.path}
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-9 w-9" aria-label="Menu">
+                  <Menu size={24} />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-full sm:w-80 p-0">
+                <div className="flex flex-col h-full bg-white">
+                  <div className="flex items-center justify-between p-4 border-b">
+                    <Link 
+                      to="/" 
+                      className="text-2xl font-bold text-brand-600"
                       onClick={() => setIsMenuOpen(false)}
-                      className="block w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
                     >
-                      {link.name}
+                      MigraPro
                     </Link>
-                  )}
+                    <SheetClose className="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none">
+                      <X size={24} />
+                      <span className="sr-only">Close</span>
+                    </SheetClose>
+                  </div>
+                  
+                  <div className="flex-1 overflow-auto py-4 px-6">
+                    <nav className="space-y-6">
+                      {navLinks.map((link) => (
+                        <div key={link.name} className="mb-2">
+                          {link.dropdown ? (
+                            <div className="py-2">
+                              <p className="text-lg font-medium text-gray-700">
+                                {link.name}
+                              </p>
+                              <div className="ml-4 border-l-2 border-gray-200 pl-4 space-y-3 mt-2">
+                                {link.items?.map((item) => (
+                                  <Link 
+                                    key={item.name} 
+                                    to={item.path}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="block py-2 text-gray-600 hover:text-brand-600"
+                                  >
+                                    {item.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          ) : (
+                            <Link
+                              to={link.path}
+                              onClick={() => setIsMenuOpen(false)}
+                              className="block py-2 text-lg font-medium text-gray-700 hover:text-brand-600"
+                            >
+                              {link.name}
+                            </Link>
+                          )}
+                        </div>
+                      ))}
+                    </nav>
+                    
+                    <div className="mt-8">
+                      <Button 
+                        className="w-full bg-brand-600 hover:bg-brand-700 text-white"
+                        onClick={() => {
+                          handleNavigate('/eligibility');
+                          setIsMenuOpen(false);
+                        }}
+                      >
+                        {t('navigation.eligibility')}
+                      </Button>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <Button 
-                className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-                onClick={() => handleNavigate('/eligibility')}
-              >
-                {t('navigation.eligibility')}
-              </Button>
-            </div>
-          </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
