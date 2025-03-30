@@ -32,7 +32,11 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
-
+    
+// Fonction pour gérer le défilement vers le haut lors des clics sur les liens
+const handleLinkClick = () => {
+  window.scrollTo(0, 0);
+};
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -213,9 +217,10 @@ const Navbar = () => {
                     <div className="mt-8">
                       <Button 
                         className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-                        onClick={() => {
+                        onClick={(handleLinkClick) => {
                           handleNavigate('/eligibility');
                           setIsMenuOpen(false);
+                          ;
                         }}
                       >
                         {t('navigation.eligibility')}
