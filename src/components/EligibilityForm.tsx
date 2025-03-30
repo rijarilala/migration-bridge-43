@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 interface CheckboxOption {
   id: string;
@@ -804,8 +805,10 @@ const EligibilityForm = () => {
                   <Button onClick={resetForm} variant="outline">
                     Refaire l'évaluation
                   </Button>
-                  <Button>
-                    Prendre rendez-vous
+                  <Button asChild>
+                    <Link to="/contact">
+                      Prendre rendez-vous
+                    </Link>
                   </Button>
                 </div>
               </div>
