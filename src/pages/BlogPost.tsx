@@ -1,4 +1,3 @@
-
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Clock, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -25,13 +24,12 @@ interface BlogContent {
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
   const { t, i18n } = useTranslation();
-  const currentLanguage = i18n.language;
-  
+  const currentLanguage = i18n.language || "fr";
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  // Base de données simulée des articles de blog avec contenu bilingue
   const blogPosts: BlogContent[] = [
     {
       id: "1",
@@ -449,7 +447,7 @@ const BlogPost = () => {
         <p>Adapt your resume for each job opportunity by highlighting the skills required in the job posting.</p>
 
         <h3>Keywords</h3>
-        <p>Incorporate industry and job posting keywords to pass through Applicant Tracking System (ATS) filters.</p>
+        <p>Integrate industry and job posting keywords to pass through Applicant Tracking System (ATS) filters.</p>
 
         <h3>Style and Presentation</h3>
         <ul>
@@ -469,6 +467,277 @@ const BlogPost = () => {
 
         <h2>Conclusion</h2>
         <p>A resume adapted to Canadian standards is your first step towards employment in Canada. At MigraPro, our career coaching experts will help you optimize your resume and maximize your chances of success.</p>
+        `
+      }
+    },
+    {
+      id: "4",
+      category: "Recrutement",
+      sponsored: false,
+      coverImage: "https://images.unsplash.com/photo-1581256025319-23c56574f93a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      author: "Philippe Tremblay",
+      date: "29 mars 2023",
+      readTime: 5,
+      title: {
+        fr: "Les opportunités d'emploi au Québec pour les francophones",
+        en: "Job Opportunities in Quebec for French Speakers"
+      },
+      content: {
+        fr: `
+        <p>Découvrez les secteurs qui recrutent activement les candidats francophones et comment tirer parti de votre maîtrise de la langue française au Québec.</p>
+
+        <h2>1. Le marché de l'emploi québécois pour les francophones</h2>
+        <p>Le Québec, seule province majoritairement francophone du Canada, offre des opportunités uniques pour les immigrants maîtrisant la langue française :</p>
+        <ul>
+          <li>Plus de 80% de la population du Québec a le français comme langue maternelle ou d'usage</li>
+          <li>Le français est la langue officielle de travail et des affaires</li>
+          <li>De nombreux programmes d'immigration favorisent les candidats francophones</li>
+        </ul>
+
+        <h2>2. Les secteurs en forte demande pour les francophones</h2>
+        
+        <h3>Technologies et informatique</h3>
+        <p>Montréal est devenu un hub majeur en intelligence artificielle et jeux vidéo :</p>
+        <ul>
+          <li>Développeurs et programmeurs bilingues</li>
+          <li>Chefs de projet informatique</li>
+          <li>Spécialistes en cybersécurité</li>
+          <li>Analystes de données</li>
+        </ul>
+
+        <h3>Santé et services sociaux</h3>
+        <p>Un secteur en pénurie chronique de personnel :</p>
+        <ul>
+          <li>Infirmiers et infirmières</li>
+          <li>Préposés aux bénéficiaires</li>
+          <li>Psychologues et travailleurs sociaux</li>
+          <li>Médecins spécialistes (avec reconnaissance des diplômes)</li>
+        </ul>
+
+        <h3>Éducation</h3>
+        <p>Les francophones sont particulièrement recherchés pour :</p>
+        <ul>
+          <li>Enseignants à tous les niveaux</li>
+          <li>Éducateurs en petite enfance</li>
+          <li>Professeurs de français langue seconde</li>
+          <li>Conseillers pédagogiques</li>
+        </ul>
+
+        <h3>Finance et administration</h3>
+        <p>Des opportunités nombreuses, notamment à Montréal :</p>
+        <ul>
+          <li>Comptables et auditeurs</li>
+          <li>Analystes financiers</li>
+          <li>Gestionnaires administratifs bilingues</li>
+          <li>Spécialistes en ressources humaines</li>
+        </ul>
+
+        <h3>Tourisme et hôtellerie</h3>
+        <p>Un avantage compétitif pour les postes en contact avec la clientèle :</p>
+        <ul>
+          <li>Guides touristiques</li>
+          <li>Personnel hôtelier bilingue</li>
+          <li>Restauration</li>
+          <li>Organisateurs d'événements</li>
+        </ul>
+
+        <h2>3. Les avantages d'être francophone au Québec</h2>
+        
+        <h3>Processus d'immigration simplifié</h3>
+        <p>Le Programme régulier des travailleurs qualifiés du Québec (PRTQ) accorde une importance majeure à la connaissance du français, avec :</p>
+        <ul>
+          <li>Jusqu'à 16 points pour la connaissance avancée du français</li>
+          <li>Des programmes spécifiques comme le Programme d'expérience québécoise (PEQ)</li>
+        </ul>
+
+        <h3>Intégration professionnelle et sociale facilitée</h3>
+        <p>Maîtriser le français permet de :</p>
+        <ul>
+          <li>Accéder à un plus grand nombre d'opportunités d'emploi</li>
+          <li>Faciliter les relations professionnelles au quotidien</li>
+          <li>S'intégrer plus rapidement dans la société québécoise</li>
+        </ul>
+
+        <h3>Bilinguisme : un atout supplémentaire</h3>
+        <p>Maîtriser à la fois le français et l'anglais multiplie les opportunités, notamment :</p>
+        <ul>
+          <li>Dans les entreprises internationales</li>
+          <li>Dans les services gouvernementaux fédéraux</li>
+          <li>Pour les postes de liaison avec le reste du Canada</li>
+        </ul>
+
+        <h2>4. Stratégies pour valoriser votre francophonie</h2>
+        
+        <h3>Dans votre CV et lettre de motivation</h3>
+        <ul>
+          <li>Précisez votre niveau de français (et certification si disponible)</li>
+          <li>Mettez en avant vos expériences professionnelles en milieu francophone</li>
+          <li>Soulignez votre capacité à travailler dans un environnement bilingue</li>
+        </ul>
+
+        <h3>Lors des entretiens</h3>
+        <ul>
+          <li>Proposez de réaliser une partie de l'entretien en français</li>
+          <li>Valorisez votre compréhension de la culture francophone</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>Être francophone représente un avantage considérable sur le marché de l'emploi québécois. En ciblant les secteurs en demande et en mettant en valeur vos compétences linguistiques, vous maximiserez vos chances de décrocher un emploi correspondant à vos qualifications. Chez MigraPro, nous vous accompagnons pour tirer le meilleur parti de cet atout dans votre recherche d'emploi au Québec.</p>
+        `,
+        en: `
+        <p>Discover sectors actively recruiting French-speaking candidates and how to leverage your French language proficiency in Quebec.</p>
+
+        <h2>1. The Quebec Job Market for French Speakers</h2>
+        <p>Quebec, the only predominantly French-speaking province in Canada, offers unique opportunities for immigrants proficient in French:</p>
+        <ul>
+          <li>Over 80% of Quebec's population has French as their mother tongue or language of use</li>
+          <li>French is the official language of work and business</li>
+          <li>Many immigration programs favor French-speaking candidates</li>
+        </ul>
+
+        <h2>2. High-Demand Sectors for French Speakers</h2>
+        
+        <h3>Technology and IT</h3>
+        <p>Montreal has become a major hub for artificial intelligence and video games:</p>
+        <ul>
+          <li>Bilingual developers and programmers</li>
+          <li>IT project managers</li>
+          <li>Cybersecurity specialists</li>
+          <li>Data analysts</li>
+        </ul>
+
+        <h3>Health and Social Services</h3>
+        <p>A sector with chronic staff shortages:</p>
+        <ul>
+          <li>Nurses</li>
+          <li>Orderlies</li>
+          <li>Psychologists and social workers</li>
+          <li>Specialist physicians (with credential recognition)</li>
+        </ul>
+
+        <h3>Education</h3>
+        <p>French speakers are particularly sought after for:</p>
+        <ul>
+          <li>Teachers at all levels</li>
+          <li>Early childhood educators</li>
+          <li>French as a second language teachers</li>
+          <li>Educational consultants</li>
+        </ul>
+
+        <h3>Finance and Administration</h3>
+        <p>Numerous opportunities, especially in Montreal:</p>
+        <ul>
+          <li>Accountants and auditors</li>
+          <li>Financial analysts</li>
+          <li>Bilingual administrative managers</li>
+          <li>Human resources specialists</li>
+        </ul>
+
+        <h3>Tourism and Hospitality</h3>
+        <p>A competitive advantage for customer-facing positions:</p>
+        <ul>
+          <li>Tour guides</li>
+          <li>Bilingual hotel staff</li>
+          <li>Restaurant personnel</li>
+          <li>Event organizers</li>
+        </ul>
+
+        <h2>3. Benefits of Being a French Speaker in Quebec</h2>
+        
+        <h3>Simplified Immigration Process</h3>
+        <p>The Quebec Regular Skilled Worker Program (QSWP) places major importance on French language knowledge, with:</p>
+        <ul>
+          <li>Up to 16 points for advanced French knowledge</li>
+          <li>Specific programs such as the Quebec Experience Program (PEQ)</li>
+        </ul>
+
+        <h3>Easier Professional and Social Integration</h3>
+        <p>Mastering French allows you to:</p>
+        <ul>
+          <li>Access a greater number of job opportunities</li>
+          <li>Facilitate daily professional relationships</li>
+          <li>Integrate more quickly into Quebec society</li>
+        </ul>
+
+        <h3>Bilingualism: An Additional Asset</h3>
+        <p>Mastering both French and English multiplies opportunities, particularly:</p>
+        <ul>
+          <li>In international companies</li>
+          <li>In federal government services</li>
+          <li>For liaison positions with the rest of Canada</li>
+        </ul>
+
+        <h2>4. Strategies to Highlight Your French Proficiency</h2>
+        
+        <h3>In Your Resume and Cover Letter</h3>
+        <ul>
+          <li>Specify your French level (and certification if available)</li>
+          <li>Highlight your professional experiences in French-speaking environments</li>
+          <li>Soulignez votre capacité à travailler dans un environnement bilingue</li>
+        </ul>
+
+        <h3>During Interviews</h3>
+        <ul>
+          <li>Offer to conduct part of the interview in French</li>
+          <li>Valorisez votre compréhension de la culture francophone</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>Being French-speaking represents a considerable advantage in the Quebec job market. By targeting in-demand sectors and highlighting your language skills, you will maximize your chances of landing a job matching your qualifications. At MigraPro, we help you make the most of this asset in your job search in Quebec.</p>
+        `
+      }
+    },
+    {
+      id: "5",
+      category: "Orientation",
+      sponsored: true,
+      coverImage: "https://images.unsplash.com/photo-1579389083046-e3df9c2b3325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      author: "Michel Dubois",
+      date: "14 mars 2023",
+      readTime: 9,
+      title: {
+        fr: "Préparer votre projet professionnel pour le Canada",
+        en: "Preparing Your Professional Project for Canada"
+      },
+      content: {
+        fr: `
+        <p>Méthodologie et conseils pour élaborer un projet professionnel cohérent et aligné avec le marché du travail canadien.</p>
+        
+        <h2>Contenu à venir</h2>
+        <p>Ce contenu est en cours de rédaction et sera disponible prochainement. Merci de votre patience.</p>
+        `,
+        en: `
+        <p>Methodology and advice to develop a coherent professional project aligned with the Canadian job market.</p>
+        
+        <h2>Content coming soon</h2>
+        <p>This content is being drafted and will be available soon. Thank you for your patience.</p>
+        `
+      }
+    },
+    {
+      id: "6",
+      category: "Immigration",
+      sponsored: false,
+      coverImage: "https://images.unsplash.com/photo-1611251188684-fd906091773e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      author: "Claude Tremblay",
+      date: "2 mars 2023",
+      readTime: 10,
+      title: {
+        fr: "Les programmes d'immigration pour entrepreneurs au Canada",
+        en: "Immigration Programs for Entrepreneurs in Canada"
+      },
+      content: {
+        fr: `
+        <p>Tour d'horizon des programmes d'immigration spécifiquement conçus pour les entrepreneurs et les investisseurs souhaitant s'établir au Canada.</p>
+        
+        <h2>Contenu à venir</h2>
+        <p>Ce contenu est en cours de rédaction et sera disponible prochainement. Merci de votre patience.</p>
+        `,
+        en: `
+        <p>Overview of immigration programs specifically designed for entrepreneurs and investors looking to settle in Canada.</p>
+        
+        <h2>Content coming soon</h2>
+        <p>This content is being drafted and will be available soon. Thank you for your patience.</p>
         `
       }
     }
