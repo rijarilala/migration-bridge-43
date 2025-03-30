@@ -142,10 +142,7 @@ const Index = () => {
       <Hero
         title="Votre partenaire pour un nouveau départ"
         subtitle="Nous vous accompagnons dans toutes vos démarches d'immigration, de formation et d'intégration professionnelle."
-        ctaText="Tester mon éligibilité"
-        ctaLink="/eligibility"
-        secondaryCtaText="Nos services"
-        secondaryCtaLink="/services"
+        
         imageSrc="https://images.unsplash.com/photo-1524569970261-f3b491d7933b?auto=format&fit=crop&w=2000&q=80"
       />
 
@@ -271,10 +268,7 @@ const Index = () => {
       <CTA
         title="Prêt à démarrer votre projet?"
         description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé."
-        buttonText="Tester mon éligibilité"
-        buttonLink="/eligibility"
-        secondaryButtonText="Contactez-nous"
-        secondaryButtonLink="/contact"
+        
       />
     </div>
   );
