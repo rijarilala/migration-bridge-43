@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -798,5 +799,80 @@ const EligibilityForm = () => {
         {currentStep === 4 && (
           <div className="space-y-8 animate-fade-in">
             <div className="text-center mb-6">
-              <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24
+              {globalEligibilityResult ? (
+                <>
+                  <div className={`inline-flex items-center justify-center p-2 px-4 rounded-full ${getStatusBadgeClass(globalEligibilityResult.level)}`}>
+                    {getStatusText(globalEligibilityResult.level)}
+                  </div>
+                  <h2 className="text-2xl font-semibold mt-4 mb-2">{globalEligibilityResult.message}</h2>
+                  <p className="text-gray-600">{globalEligibilityResult.details}</p>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 border-t-4 border-b-4 border-primary rounded-full animate-spin"></div>
+                  </div>
+                  <h2 className="text-xl font-medium">Évaluation en cours...</h2>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Veuillez patienter pendant que nous analysons votre profil
+                  </p>
+                </>
+              )}
+            </div>
+
+            {globalEligibilityResult && (
+              <div className="space-y-6">
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                  <h3 className="text-lg font-medium mb-4">Prochaines étapes recommandées</h3>
+                  <ol className="list-decimal pl-5 space-y-3">
+                    <li className="pl-2">
+                      <span className="font-medium">Consultation personnalisée</span> - Prenez rendez-vous avec l'un de nos conseillers en immigration pour une analyse approfondie de votre profil.
+                    </li>
+                    <li className="pl-2">
+                      <span className="font-medium">Préparation du dossier</span> - Commencez à rassembler les documents nécessaires pour votre demande d'immigration.
+                    </li>
+                    <li className="pl-2">
+                      <span className="font-medium">Plan d'action</span> - Nous vous aiderons à élaborer un plan d'action sur mesure pour maximiser vos chances.
+                    </li>
+                  </ol>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button onClick={resetForm} variant="outline">
+                    Refaire l'évaluation
+                  </Button>
+                  <Button>
+                    Prendre rendez-vous
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {currentStep < 4 && (
+          <div className="flex justify-between mt-8">
+            {currentStep > 1 ? (
+              <Button type="button" variant="outline" onClick={handlePrevStep}>
+                Précédent
+              </Button>
+            ) : (
+              <div></div>
+            )}
+            {currentStep < 3 ? (
+              <Button type="button" onClick={handleNextStep}>
+                Suivant
+              </Button>
+            ) : (
+              <Button type="submit">
+                Évaluer mon admissibilité
+              </Button>
+            )}
+          </div>
+        )}
+      </form>
+    </div>
+  );
+};
+
+export default EligibilityForm;
