@@ -9,12 +9,89 @@
     "contact": "Contact",
     "eligibility": "Test d'éligibilité"
   },
+  "currentLanguage": "Langue actuelle",
   "services": {
     "immigration": "Immigration",
     "training": "Formation",
     "coaching": "Coaching",
     "professionalOrientation": "Orientation professionnelle",
     "recruitment": "Recrutement"
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "description": "Trouvez des réponses aux questions courantes sur nos services et le processus d'immigration.",
+    "searchPlaceholder": "Rechercher des questions...",
+    "noResults": "Aucun résultat trouvé pour votre recherche.",
+    "readMore": "Lire plus",
+    "immigration": {
+      "q1": "Quelles sont les conditions pour obtenir un visa de travail ?",
+      "a1": "Les exigences pour un visa de travail varient selon les pays, mais comprennent généralement une offre d'emploi valide, une preuve de qualifications, un passeport valide et parfois un examen médical. Notre équipe peut vous guider à travers les exigences spécifiques pour votre pays de destination.",
+      "q2": "Combien de temps dure le processus d'immigration ?",
+      "a2": "Le délai du processus d'immigration varie considérablement selon le pays, le type de visa et les circonstances individuelles. En général, cela peut prendre de 3 mois à 2 ans. Lors de votre consultation, nous pourrons vous fournir un calendrier plus précis en fonction de votre situation spécifique.",
+      "q3": "Ma famille peut-elle m'accompagner lors de l'immigration ?",
+      "a3": "Oui, dans la plupart des cas, votre conjoint et vos enfants à charge peuvent vous accompagner lors de l'immigration. Le regroupement familial est une priorité dans de nombreux systèmes d'immigration. Nous pouvons vous aider à naviguer dans le processus de demande pour les membres de votre famille."
+    },
+    "formation": {
+      "q1": "Quels cours de formation proposez-vous ?",
+      "a1": "Nous proposons une variété de cours de formation, notamment la préparation linguistique (IELTS, TOEFL, TEF), la préparation à la certification professionnelle et des programmes de formation spécifiques à l'industrie. Nos cours sont adaptés pour soutenir vos objectifs d'immigration et de développement de carrière.",
+      "q2": "Vos cours de formation sont-ils reconnus internationalement ?",
+      "a2": "Oui, nos cours de formation sont conçus pour répondre aux normes internationales et sont reconnus par les employeurs et les autorités d'immigration du monde entier. Nous collaborons avec des institutions accréditées pour garantir la qualité et la reconnaissance de nos programmes de formation."
+    },
+    "coaching": {
+      "q1": "Qu'implique le coaching de carrière ?",
+      "a1": "Notre service de coaching de carrière comprend des conseils personnalisés sur la planification de carrière, l'évaluation des compétences, la création de CV, la préparation aux entretiens et les stratégies de réseautage. Nous travaillons avec vous pour développer un plan sur mesure qui s'aligne sur vos objectifs professionnels et le marché du travail dans votre pays cible.",
+      "q2": "De combien de séances de coaching aurai-je besoin ?",
+      "a2": "Le nombre de séances de coaching varie en fonction des besoins et des objectifs individuels. Certains clients atteignent leurs objectifs en 3 à 5 séances, tandis que d'autres bénéficient d'un soutien continu. Après une évaluation initiale, nous pouvons recommander un plan de coaching adapté à votre situation spécifique."
+    },
+    "orientation": {
+      "q1": "Comment l'orientation professionnelle peut-elle aider ma carrière ?",
+      "a1": "L'orientation professionnelle vous aide à identifier vos forces, vos compétences et vos intérêts, et les aligne sur des parcours de carrière adaptés. Ce service est particulièrement précieux lorsque vous envisagez un changement de carrière, un déménagement dans un nouveau pays ou une progression dans votre domaine actuel.",
+      "q2": "Quelles évaluations utilisez-vous pour l'orientation professionnelle ?",
+      "a2": "Nous utilisons une combinaison d'évaluations standardisées, d'inventaires de personnalité, de tests de compétences et d'entretiens approfondis pour fournir une compréhension globale de votre profil professionnel. Notre approche est fondée sur des preuves et adaptée à votre situation unique."
+    },
+    "recruitment": {
+      "q1": "Dans quels secteurs êtes-vous spécialisés pour le recrutement ?",
+      "a1": "Nous sommes spécialisés dans le recrutement pour les secteurs de la santé, des technologies de l'information, de l'ingénierie, de l'éducation et de l'hôtellerie. Ces industries ont fréquemment une demande internationale et offrent de bonnes opportunités pour les migrants qualifiés.",
+      "q2": "Comment associez-vous les candidats aux opportunités d'emploi ?",
+      "a2": "Nous associons les candidats sur la base d'une évaluation complète des compétences, de l'expérience, des qualifications et des objectifs de carrière, ainsi que de l'adéquation culturelle et de la faisabilité de l'immigration. Notre vaste réseau d'employeurs et notre connaissance du marché nous permettent d'identifier des opportunités adaptées qui correspondent à votre profil."
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "description": "Entrez en contact avec notre équipe pour toute question ou demande concernant nos services.",
+    "info": {
+      "title": "Informations de contact",
+      "phone": "Téléphone",
+      "email": "Email",
+      "address": "Adresse",
+      "hours": "Heures d'ouverture",
+      "weekdays": "Lun-Ven : 8h30 - 17h30",
+      "saturday": "Samedi : 9h00 - 13h00"
+    },
+    "social": {
+      "title": "Suivez-nous"
+    },
+    "map": {
+      "title": "Notre localisation"
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "name": "Nom complet",
+      "namePlaceholder": "Entrez votre nom complet",
+      "email": "Adresse email",
+      "emailPlaceholder": "Entrez votre adresse email",
+      "phone": "Numéro de téléphone",
+      "phonePlaceholder": "Entrez votre numéro de téléphone",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Sélectionnez un sujet",
+      "other": "Autre",
+      "message": "Message",
+      "messagePlaceholder": "Comment pouvons-nous vous aider ?",
+      "submit": "Envoyer le message",
+      "success": "Votre message a été envoyé avec succès !",
+      "errorRequired": "Veuillez remplir tous les champs obligatoires.",
+      "errorEmail": "Veuillez entrer une adresse email valide."
+    }
   },
   "home": {
     "hero": {
@@ -254,4 +331,3 @@
     "contactUsText": "Si vous avez des questions concernant ces conditions d'utilisation, veuillez nous contacter à :"
   }
 }
-
