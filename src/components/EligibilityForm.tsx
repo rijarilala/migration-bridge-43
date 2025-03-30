@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -161,16 +160,19 @@ const EligibilityForm = () => {
         toast.error("Veuillez indiquer si vous avez des liens familiaux au Canada");
         return false;
       }
-    } else if (currentStep === 3 && attemptedSubmit) {
-      if (!formData.name || !formData.email || !formData.phone) {
-        toast.error("Veuillez remplir tous les champs de contact");
-        return false;
+    } else if (currentStep === 3) {
+      if (attemptedSubmit) {
+        if (!formData.name || !formData.email || !formData.phone) {
+          toast.error("Veuillez remplir tous les champs de contact");
+          return false;
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+          toast.error("Veuillez entrer une adresse email valide");
+          return false;
+        }
       }
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
-        toast.error("Veuillez entrer une adresse email valide");
-        return false;
-      }
+      return true;
     }
     return true;
   };
@@ -178,23 +180,34 @@ const EligibilityForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setAttemptedSubmit(true);
-    if (validateCurrentStep()) {
-      setCurrentStep(4);
-      const formContainer = document.querySelector('.eligibility-form-container');
-      if (formContainer) {
-        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (currentStep === 3) {
+      if (!formData.name || !formData.email || !formData.phone) {
+        toast.error("Veuillez remplir tous les champs de contact");
+        return;
       }
-      setTimeout(() => {
-        const eligibilityResults = calculateEligibilityBehindTheScenes();
-        setGlobalEligibilityResult(determineGlobalEligibility(eligibilityResults));
-      }, 1500);
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        toast.error("Veuillez entrer une adresse email valide");
+        return;
+      }
     }
+    
+    setCurrentStep(4);
+    const formContainer = document.querySelector('.eligibility-form-container');
+    if (formContainer) {
+      formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setTimeout(() => {
+      const eligibilityResults = calculateEligibilityBehindTheScenes();
+      setGlobalEligibilityResult(determineGlobalEligibility(eligibilityResults));
+    }, 1500);
   };
 
   const calculateEligibilityBehindTheScenes = () => {
     const results = [];
     
-    // Express Entry calculation
     let expressPoints = 0;
     let expressMaxPoints = 100;
     
@@ -273,8 +286,6 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Removed reference to jobOffer
-    
     let expressLevel: "high" | "medium" | "low" = "low";
     let expressMessage = "";
     let expressDetails = "";
@@ -295,7 +306,6 @@ const EligibilityForm = () => {
       level: expressLevel
     });
     
-    // Programme d'immigration générique
     let genericPoints = 0;
     let genericMaxPoints = 100;
     
@@ -374,8 +384,6 @@ const EligibilityForm = () => {
         break;
     }
     
-    // Removed reference to jobOffer
-    
     let genericLevel: "high" | "medium" | "low" = "low";
     let genericMessage = "";
     let genericDetails = "";
@@ -396,7 +404,6 @@ const EligibilityForm = () => {
       level: genericLevel
     });
     
-    // Programme d'expérience
     const isPeqEligible = formData.frenchLevel === "fluent" || formData.frenchLevel === "intermediate";
     const peqLevel: "high" | "medium" | "low" = isPeqEligible ? 
       (formData.experience !== "none" ? "high" : "medium") : "low";
@@ -722,11 +729,11 @@ const EligibilityForm = () => {
               <Button type="button" onClick={handleNextStep}>
                 Suivant
               </Button>
-            ) : (
+            ) : currentStep === 3 ? (
               <Button type="submit">
                 Évaluer mon admissibilité
               </Button>
-            )}
+            ) : null}
           </div>
         )}
       </form>
