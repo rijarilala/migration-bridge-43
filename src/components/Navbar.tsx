@@ -31,6 +31,18 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Prevent body scroll when menu is open
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
   const handleNavigate = (path: string) => {
@@ -150,7 +162,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out transform ${
+        className={`md:hidden fixed inset-0 bg-white z-[100] transition-transform duration-300 ease-in-out transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -159,60 +171,61 @@ const Navbar = () => {
             <X size={24} />
           </button>
         </div>
-        <nav className="mt-8 px-8">
-          <div className="mb-6">
-            <Link to="/" className="block text-2xl font-bold text-brand-600" onClick={() => setIsMenuOpen(false)}>
-              MigraPro
-            </Link>
-            <p className="text-sm text-gray-500 mt-1">
-              Services d'immigration, de formation et d'intégration professionnelle.
-            </p>
-          </div>
-          
-          {navLinks.map((link) => (
-            <div key={link.name}>
-              {link.dropdown ? (
-                <div className="py-2">
-                  <p className="w-full text-left py-2 text-lg font-medium text-gray-700">
-                    {link.name}
-                  </p>
-                  <div className="ml-4 border-l-2 border-gray-200 pl-4 space-y-2">
-                    {link.items?.map((item) => (
-                      <Link 
-                        key={item.name} 
-                        to={item.path}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="block w-full text-left py-2 text-gray-600 hover:text-brand-600"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
-                >
-                  {link.name}
-                </Link>
-              )}
+        <div className="overflow-auto max-h-[calc(100vh-80px)] pb-20">
+          <nav className="mt-4 px-8">
+            <div className="mb-6">
+              <Link to="/" className="block text-2xl font-bold text-brand-600" onClick={() => setIsMenuOpen(false)}>
+                MigraPro
+              </Link>
+              <p className="text-sm text-gray-500 mt-1">
+                Services d'immigration, de formation et d'intégration professionnelle.
+              </p>
             </div>
-          ))}
-          <div className="mt-8">
-            <Button 
-              className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-              onClick={() => {
-                handleNavigate('/eligibility');
-                setIsMenuOpen(false);
-              }}
-            >
-              {t('navigation.eligibility')}
-            </Button>
-          </div>
-        </nav>
+            
+            {navLinks.map((link) => (
+              <div key={link.name} className="mb-4">
+                {link.dropdown ? (
+                  <div className="py-2">
+                    <p className="w-full text-left py-2 text-lg font-medium text-gray-700">
+                      {link.name}
+                    </p>
+                    <div className="ml-4 border-l-2 border-gray-200 pl-4 space-y-2">
+                      {link.items?.map((item) => (
+                        <Link 
+                          key={item.name} 
+                          to={item.path}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="block w-full text-left py-2 text-gray-600 hover:text-brand-600"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full text-left py-2 text-lg font-medium text-gray-700 hover:text-brand-600 transition-all duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
+            ))}
+            <div className="mt-8">
+              <Button 
+                className="w-full bg-brand-600 hover:bg-brand-700 text-white"
+                onClick={() => {
+                  handleNavigate('/eligibility');
+                  setIsMenuOpen(false);
+                }}
+              >
+                {t('navigation.eligibility')}
+              </Button>
+            </div>
+          </nav>
+        </div>
       </div>
     </header>
   );
