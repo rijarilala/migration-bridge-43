@@ -24,7 +24,7 @@ const CTA = ({
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
           <p className="text-lg text-gray-600 mb-8">{description}</p>
-          
+         
         </div>
       </div>
     </section>
