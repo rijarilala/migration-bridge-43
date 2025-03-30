@@ -54,21 +54,7 @@ const Hero = ({
                 {subtitle}
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">
-                <a href={ctaLink}>
-                  {ctaText}
-                  <ChevronRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              {secondaryCtaText && secondaryCtaLink && (
-                <Button asChild variant="outline" size="lg" className="rounded-full border-2 border-primary/20 hover:border-primary/40">
-                  <a href={secondaryCtaLink}>
-                    {secondaryCtaText}
-                  </a>
-                </Button>
-              )}
-            </div>
+            
           </div>
           
           <div className="hidden md:block relative">
