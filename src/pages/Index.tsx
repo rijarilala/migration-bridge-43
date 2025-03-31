@@ -9,6 +9,7 @@ import Stats from "@/components/Stats";
 import TestimonialCard from "@/components/TestimonialCard";
 import { Button } from "@/components/ui/button";
 import ComparisonSection from "@/components/ComparisonSection";
+import AboutSection from "@/components/AboutSection";
 
 const Index = () => {
   useEffect(() => {
@@ -174,6 +175,7 @@ const Index = () => {
         </div>
       </section>
 
+      <AboutSection />
       {/* Services section */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
