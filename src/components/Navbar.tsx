@@ -171,10 +171,7 @@ const Navbar = () => {
                     >
                       MigraPro
                     </Link>
-                    <SheetClose className="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none">
-                      <X size={24} />
-                      <span className="sr-only">Close</span>
-                    </SheetClose>
+                   
                   </div>
                   
                   <div className="flex-1 overflow-auto py-4 px-6">
