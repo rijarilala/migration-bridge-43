@@ -123,7 +123,7 @@ const AboutSection = () => {
                     <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-3">
                       <Check size={16} />
                     </div>
-                    <p className="text-gray-700">Accompagnement personnalisé adapté aux Malgaches</p>
+                    <p className="text-gray-700">Accompagnement personnalisé adapté aux Malagasy</p>
                   </div>
                 </CardContent>
               </Card>
