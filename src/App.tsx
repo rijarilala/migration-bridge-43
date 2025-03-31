@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import Eligibility from "./pages/Eligibility";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Service Pages
 import Immigration from "./pages/services/Immigration";
@@ -74,6 +75,7 @@ const AppContent = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
+        <ScrollToTop />
         <Footer />
       </div>
     </BrowserRouter>
