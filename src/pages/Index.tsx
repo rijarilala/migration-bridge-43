@@ -151,7 +151,7 @@ const Index = () => {
         
         imageSrc="https://images.unsplash.com/photo-1524569970261-f3b491d7933b?auto=format&fit=crop&w=2000&q=80"
       />
-
+ <AboutSection />
       {/* Comparison Section - NEW */}
       <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 md:px-6">
@@ -175,7 +175,7 @@ const Index = () => {
         </div>
       </section>
 
-      <AboutSection />
+     
       {/* Services section */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
