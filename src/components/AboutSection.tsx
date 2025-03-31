@@ -20,7 +20,7 @@ const AboutSection = () => {
                 Qui sommes-nous et quelle est notre mission ?
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                Vous êtes Malgache et vous rêvez de travailler, étudier ou vous installer au Canada ? 
+                Vous êtes Malagasy et vous rêvez de travailler, étudier ou vous installer au Canada ? 
                 <span className="inline-block ml-2">🇨🇦</span> Nous sommes là pour vous guider à chaque étape de votre projet d'immigration !
               </p>
               <p className="text-gray-600 mb-6">
