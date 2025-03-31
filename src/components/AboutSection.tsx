@@ -20,7 +20,7 @@ const AboutSection = () => {
                 Qui sommes-nous et quelle est notre mission ?
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                Vous êtes Malgache et vous rêvez de travailler, étudier ou vous installer au Canada ? 
+                Vous êtes Malagasy et vous rêvez de travailler, étudier ou vous installer au Canada ? 
                 <span className="inline-block ml-2">🇨🇦</span> Nous sommes là pour vous guider à chaque étape de votre projet d'immigration !
               </p>
               <p className="text-gray-600 mb-6">
@@ -123,7 +123,7 @@ const AboutSection = () => {
                     <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-3">
                       <Check size={16} />
                     </div>
-                    <p className="text-gray-700">Accompagnement personnalisé adapté aux Malgaches</p>
+                    <p className="text-gray-700">Accompagnement personnalisé adapté aux Malagasy</p>
                   </div>
                 </CardContent>
               </Card>
