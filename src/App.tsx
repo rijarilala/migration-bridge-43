@@ -39,9 +39,9 @@ const AppContent = () => {
   const { i18n } = useTranslation();
   
   useEffect(() => {
-    // Vous pouvez ajouter une logique pour définir la langue par défaut
+    // Définir le français comme langue par défaut s'il n'y a pas de préférence enregistrée
     const savedLanguage = localStorage.getItem('i18nextLng');
-    if (!savedLanguage) {
+    if (!savedLanguage || (savedLanguage !== 'fr' && savedLanguage !== 'en')) {
       i18n.changeLanguage('fr');
     }
   }, [i18n]);

@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -22,6 +21,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'fr',
+    lng: 'fr', // Définir explicitement le français comme langue par défaut
     debug: process.env.NODE_ENV === 'development',
     interpolation: {
       escapeValue: false, // non nécessaire pour React
