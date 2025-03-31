@@ -240,7 +240,7 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Button asChild size="lg" onClick={handleLinkClick} className="bg-primary hover:bg-primary/90 text-white">
-              <Link to="/#">Tester mon éligibilité</Link>
+              <Link to="/#">voir plus de témoignages</Link>
             </Button>
           </div>
         </div>
