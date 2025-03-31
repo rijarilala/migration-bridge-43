@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -36,10 +35,7 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const handleNavigateToEligibility = () => {
-    navigate("/eligibility");
-    window.scrollTo(0, 0);
-  };
+
   useEffect(() => {
     // Prevent body scroll when menu is open
     if (isMenuOpen) {
@@ -144,7 +140,6 @@ const Navbar = () => {
               <Button 
                 className="ml-4 bg-brand-600 hover:bg-brand-700 text-white" 
                 size="sm"
-                onClick={handleNavigateToEligibility}
               >
                 {t('navigation.eligibility')}
               </Button>
@@ -217,7 +212,10 @@ const Navbar = () => {
                     <div className="mt-8">
                       <Button 
                         className="w-full bg-brand-600 hover:bg-brand-700 text-white"
-                        onClick={handleNavigateToEligibility}
+                        onClick={() => {
+                          handleNavigate('/eligibility');
+                          setIsMenuOpen(false);
+                        }}
                       >
                         {t('navigation.eligibility')}
                       </Button>
