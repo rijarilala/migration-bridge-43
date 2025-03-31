@@ -44,7 +44,7 @@ const AboutSection = () => {
                   </div>
                   <p className="text-gray-600">
                     <span className="font-medium">Informer et conseiller :</span> Nous vous aidons à comprendre les différentes voies 
-                    d'immigration (Entrée Express, Québec, permis de travail, études…).
+                    d'immigration.
                   </p>
                 </div>
                 <div className="flex items-start">
