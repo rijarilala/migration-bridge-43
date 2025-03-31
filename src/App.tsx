@@ -7,11 +7,11 @@ import { Suspense, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import Eligibility from "./pages/Eligibility";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import ScrollToTop from "./components/ScrollToTop";
 
 // Service Pages
 import Immigration from "./pages/services/Immigration";
