@@ -1,5 +1,4 @@
 
-import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface HeroProps {
@@ -54,7 +53,7 @@ const Hero = ({
                 {subtitle}
               </p>
             </div>
-            
+            {/* Suppression des boutons CTA */}
           </div>
           
           <div className="hidden md:block relative">
