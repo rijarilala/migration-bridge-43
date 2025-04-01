@@ -1,40 +1,48 @@
 
-import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import ServicePage from "@/components/ServicePage";
-import { FileEdit, PenTool, GraduationCap } from "lucide-react";
+import { BookOpen, Award, Briefcase, PieChart, Layers } from "lucide-react";
 
 const Formation = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const { t } = useTranslation();
 
   const features = [
     {
-      title: "Création de CV personnalisé",
-      description: "Créez un CV professionnel adapté à votre secteur d'activité et à vos compétences.",
-      icon: <FileEdit size={24} />,
+      icon: <BookOpen size={24} />,
+      title: t("servicePages.formation.features.0.title"),
+      description: t("servicePages.formation.features.0.description")
     },
     {
-      title: "Rédaction de lettres de motivation",
-      description: "Assistance pour rédiger des lettres de motivation percutantes qui retiennent l'attention des recruteurs.",
-      icon: <PenTool size={24} />,
+      icon: <Award size={24} />,
+      title: t("servicePages.formation.features.1.title"),
+      description: t("servicePages.formation.features.1.description")
     },
     {
-      title: "Sélection d'offres de formation",
-      description: "Découvrez des programmes de formation pour améliorer vos compétences professionnelles.",
-      icon: <GraduationCap size={24} />,
+      icon: <Briefcase size={24} />,
+      title: t("servicePages.formation.features.2.title"),
+      description: t("servicePages.formation.features.2.description")
     },
+    {
+      icon: <PieChart size={24} />,
+      title: t("servicePages.formation.features.3.title"),
+      description: t("servicePages.formation.features.3.description")
+    },
+    {
+      icon: <Layers size={24} />,
+      title: t("servicePages.formation.features.4.title"),
+      description: t("servicePages.formation.features.4.description")
+    }
   ];
 
   return (
-    <ServicePage 
-      title="Services de Formation"
-      subtitle="Développez vos compétences et optimisez votre présentation professionnelle pour maximiser vos chances de réussite."
-      description="Nos experts vous aident à valoriser votre profil professionnel et à acquérir de nouvelles compétences pour atteindre vos objectifs de carrière."
+    <ServicePage
+      title={t("servicePages.formation.title")}
+      subtitle={t("servicePages.formation.subtitle")}
+      description={t("servicePages.formation.description")}
       features={features}
-      imageSrc="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1024&auto=format&fit=crop"
+      imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1471&auto=format&fit=crop"
       ctaLink="/contact"
-      ctaText="Demander un devis"
+      ctaText={t("servicePages.formation.cta")}
     />
   );
 };

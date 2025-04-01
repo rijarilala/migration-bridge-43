@@ -178,156 +178,185 @@
     },
     "vision": {
       "title": "Our Vision",
-      "paragraph1": "To be recognized as a trusted partner for all those who wish to realize their immigration and professional development projects, in France and internationally.",
-      "paragraph2": "We aspire to create a world where borders are no longer obstacles to professional ambitions and where everyone can fully develop their potential."
-    },
-    "stats": {
-      "title": "MigraPro in Numbers",
-      "description": "Concrete results that testify to our expertise and commitment to our clients.",
-      "yearsExperience": "Years of experience",
-      "satisfiedClients": "Satisfied clients",
-      "successRate": "Success rate",
-      "destinationCountries": "Destination countries"
+      "paragraph": "To be the leading immigration and professional development consultancy, known for our integrity, expertise, and client-centered approach."
     },
     "values": {
       "title": "Our Values",
-      "subtitle": "These values guide each of our actions and are an integral part of our corporate culture.",
-      "expertise": {
-        "title": "Expertise",
-        "description": "A team of qualified professionals in their respective fields, offering advice based on solid experience and in-depth knowledge."
+      "integrity": {
+        "title": "Integrity",
+        "description": "We operate with transparency and honesty in all our interactions."
       },
       "excellence": {
         "title": "Excellence",
-        "description": "A constant commitment to quality and excellence in all our services, with attention to detail and a focus on the needs of each client."
+        "description": "We strive for the highest quality in our services and constantly seek to improve."
       },
-      "inclusivity": {
-        "title": "Inclusivity",
-        "description": "An inclusive approach that respects cultural diversity and adapts to the specific needs of each person, regardless of their origin."
+      "empathy": {
+        "title": "Empathy",
+        "description": "We understand the challenges of immigration and career transitions and provide compassionate support."
       },
-      "efficiency": {
-        "title": "Efficiency",
-        "description": "Optimized processes and clear communication to save you time and facilitate your procedures at every step."
+      "innovation": {
+        "title": "Innovation",
+        "description": "We embrace new approaches and technologies to better serve our clients."
       }
     },
     "team": {
       "title": "Our Team",
-      "subtitle": "Passionate and experienced professionals dedicated to the success of your projects.",
-      "member1": {
-        "role": "Director & Immigration Advisor",
-        "bio": "Immigration specialist with over 15 years of experience in supporting immigration candidates."
-      },
-      "member2": {
-        "role": "Training Advisor",
-        "bio": "Expert in professional development and creation of personalized training paths."
-      },
-      "member3": {
-        "role": "Professional Coach",
-        "bio": "Certified coach specializing in supporting professional transitions and personal development."
-      },
-      "member4": {
-        "role": "Recruitment Advisor",
-        "bio": "International recruitment specialist with particular expertise in the technology and health sectors."
-      }
-    },
-    "cta": {
-      "title": "Ready to start your project with us?",
-      "description": "Contact our team today to discuss your needs and find out how we can help you.",
-      "button": "Contact us"
+      "description": "Our multicultural team brings together expertise in immigration law, career counseling, and international recruitment."
     }
   },
-  "privacy": {
-    "title": "Privacy Policy",
-    "effectiveDate": "Effective date",
-    "introduction": "Introduction",
-    "introText": "Welcome to MigraPro's Privacy Policy. We respect your privacy and are committed to protecting the personal information you provide to us. This policy explains how we collect, use, disclose and protect your information when you use our services.",
-    "infoCollected": "Information we collect",
-    "infoCollectedText": "We may collect the following types of information:",
-    "infoCollectedItems": [
-      "Personal information: name, address, email, phone number",
-      "Identification information: copies of passport, visa, work permit",
-      "Professional information: CV, employment history, qualifications",
-      "Financial information: bank statements, proof of funds",
-      "Navigation data: IP address, browser type, pages visited"
-    ],
-    "infoUse": "How we use your information",
-    "infoUseText": "We use your personal information to:",
-    "infoUseItems": [
-      "Provide our immigration consulting, training and recruitment services",
-      "Prepare and submit immigration applications on your behalf",
-      "Contact you regarding your case or our services",
-      "Improve our services and your user experience",
-      "Comply with legal and regulatory obligations"
-    ],
-    "infoSharing": "Sharing your information",
-    "infoSharingText": "We do not sell your personal information to third parties. We may share your information with:",
-    "infoSharingItems": [
-      "Immigration and government authorities as part of your application",
-      "Our service partners who help us provide our services",
-      "Legal experts or consultants involved in your case"
-    ],
-    "dataSecurity": "Data security",
-    "dataSecurityText": "We implement appropriate security measures to protect your personal information against unauthorized access, modification, disclosure or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.",
-    "dataRetention": "Data retention",
-    "dataRetentionText": "We retain your personal information for as long as necessary for the purposes for which it was collected, including to satisfy any legal, accounting, or reporting requirements.",
-    "yourRights": "Your rights",
-    "yourRightsText": "Depending on your place of residence, you may have the right to:",
-    "yourRightsItems": [
-      "Access the personal information we hold about you",
-      "Correct inaccurate information",
-      "Delete your personal information",
-      "Restrict or object to the processing of your information",
-      "Request the portability of your data"
-    ],
-    "policyChanges": "Changes to this policy",
-    "policyChangesText": "We may update this privacy policy from time to time. The most recent version will always be available on our website with the effective date.",
-    "contactUs": "Contact us",
-    "contactUsText": "If you have any questions regarding this privacy policy or our data processing practices, please contact us at:"
+  "eligibility": {
+    "pageTitle": "Eligibility Test",
+    "title": "Test Your Eligibility",
+    "subtitle": "Complete our online questionnaire to assess your eligibility for Canadian immigration programs",
+    "description": "In just a few minutes, receive a personalized evaluation based on your profile. Our tool analyzes your chances of success for various Canadian immigration programs.",
+    "startButton": "Start the assessment",
+    "steps": {
+      "profile": "Profile",
+      "project": "Project",
+      "contact": "Contact",
+      "result": "Result"
+    }
   },
-  "terms": {
-    "title": "Terms of Use",
-    "effectiveDate": "Effective date",
-    "acceptance": "Acceptance of terms",
-    "acceptanceText": "By accessing or using MigraPro's services, you agree to be bound by these Terms of Use. If you do not accept these terms, please do not use our services.",
-    "services": "Description of services",
-    "servicesText": "MigraPro offers immigration consulting, professional training, coaching, career guidance and recruitment services. Our services include, but are not limited to:",
-    "servicesItems": [
-      "Immigration eligibility consultation and assessment",
-      "Preparation and submission of immigration applications",
-      "Professional and language training services",
-      "Employment preparation coaching",
-      "Professional orientation services",
-      "Recruitment assistance and professional placement"
-    ],
-    "fees": "Fees and payment",
-    "feesText": "Fees for our services are communicated before any service begins. Payment must be made according to the agreed terms. All fees are non-refundable unless otherwise specified in a specific written agreement.",
-    "clientObligations": "Client obligations",
-    "clientObligationsText": "By using our services, you agree to:",
-    "clientObligationsItems": [
-      "Provide truthful, accurate and complete information",
-      "Promptly update your information if changes occur",
-      "Cooperate in good faith with our team",
-      "Meet agreed deadlines for providing documents",
-      "Pay the agreed fees within the given timeframes"
-    ],
-    "liability": "Limitation of liability",
-    "liabilityText": "MigraPro provides professional advice based on our expertise, but cannot guarantee the results of immigration applications or recruitment processes, which are subject to the final decision of the competent authorities or employers. Our liability is limited to the fees paid for our services.",
-    "intellectualProperty": "Intellectual property",
-    "intellectualPropertyText": "All content and materials provided as part of our services remain the intellectual property of MigraPro. They may not be reproduced, distributed or used for commercial purposes without our prior written permission.",
-    "confidentiality": "Confidentiality",
-    "confidentialityText": "We are committed to treating your information confidentially in accordance with our Privacy Policy. In return, you agree not to disclose confidential information about our methods and processes to third parties.",
-    "termination": "Termination",
-    "terminationText": "MigraPro reserves the right to terminate its services at any time in case of:",
-    "terminationItems": [
-      "Non-payment of fees",
-      "Provision of false or misleading information",
-      "Failure to comply with client obligations",
-      "Abusive behavior towards our staff"
-    ],
-    "governingLaw": "Governing law",
-    "governingLawText": "These Terms of Use are governed by the laws of Madagascar. Any dispute arising from the use of our services will be subject to the exclusive jurisdiction of the competent courts of Madagascar.",
-    "changes": "Changes to terms",
-    "changesText": "We reserve the right to modify these terms at any time. Modifications will take effect upon their publication on our website. It is your responsibility to regularly consult these terms.",
-    "contactUs": "Contact us",
-    "contactUsText": "If you have any questions regarding these Terms of Use, please contact us at:"
+  "servicePages": {
+    "immigration": {
+      "title": "Immigration Services",
+      "subtitle": "Expert guidance through every step of your immigration journey",
+      "description": "Our comprehensive immigration services are designed to make your transition to a new country as smooth as possible.",
+      "features": [
+        {
+          "title": "Eligibility Assessment",
+          "description": "Detailed evaluation of your profile to identify the most suitable immigration pathways."
+        },
+        {
+          "title": "Application Preparation",
+          "description": "Expert assistance in completing and submitting your immigration applications."
+        },
+        {
+          "title": "Document Verification",
+          "description": "Thorough review of all your documents to ensure compliance with immigration requirements."
+        },
+        {
+          "title": "Interview Preparation",
+          "description": "Comprehensive coaching for immigration interviews to increase your chances of success."
+        },
+        {
+          "title": "Post-Landing Support",
+          "description": "Ongoing assistance after your arrival to help you settle in your new country."
+        }
+      ],
+      "cta": "Contact our immigration experts"
+    },
+    "formation": {
+      "title": "Training Services",
+      "subtitle": "Develop the skills you need for success in your new country",
+      "description": "Our training programs are designed to equip you with the skills and knowledge needed for a successful transition.",
+      "features": [
+        {
+          "title": "Language Courses",
+          "description": "Intensive language programs to help you achieve proficiency in English or French."
+        },
+        {
+          "title": "Professional Certifications",
+          "description": "Training for internationally recognized certifications in your field."
+        },
+        {
+          "title": "Job Market Preparation",
+          "description": "Workshops on local job markets, application processes, and workplace culture."
+        },
+        {
+          "title": "Skills Assessment",
+          "description": "Evaluation of your current skills and identification of areas for development."
+        },
+        {
+          "title": "Customized Learning Plans",
+          "description": "Personalized training programs tailored to your specific needs and goals."
+        }
+      ],
+      "cta": "Explore our training programs"
+    },
+    "coaching": {
+      "title": "Career Coaching",
+      "subtitle": "Unlock your professional potential with personalized guidance",
+      "description": "Our career coaching services help you navigate professional challenges and achieve your career goals.",
+      "features": [
+        {
+          "title": "Career Path Planning",
+          "description": "Strategic guidance to map out your professional journey and set achievable goals."
+        },
+        {
+          "title": "Resume and Cover Letter Optimization",
+          "description": "Expert review and enhancement of your professional documents to stand out to employers."
+        },
+        {
+          "title": "Interview Training",
+          "description": "Personalized coaching sessions to prepare you for job interviews in your target market."
+        },
+        {
+          "title": "Professional Branding",
+          "description": "Strategies to build and maintain a strong professional brand in your industry."
+        },
+        {
+          "title": "Ongoing Support",
+          "description": "Continuous guidance and feedback as you progress in your career journey."
+        }
+      ],
+      "cta": "Book a coaching session"
+    },
+    "orientation": {
+      "title": "Professional Orientation",
+      "subtitle": "Find the right career path that aligns with your skills and aspirations",
+      "description": "Our professional orientation services help you identify suitable career options based on your unique profile.",
+      "features": [
+        {
+          "title": "Skills Assessment",
+          "description": "Comprehensive evaluation of your skills, strengths, and areas for development."
+        },
+        {
+          "title": "Career Compatibility Analysis",
+          "description": "Matching your profile with potential career paths and industries."
+        },
+        {
+          "title": "Market Opportunities Research",
+          "description": "Exploration of job market trends and opportunities in your target location."
+        },
+        {
+          "title": "Educational Pathway Guidance",
+          "description": "Advice on educational options to enhance your qualifications for your chosen career."
+        },
+        {
+          "title": "Action Plan Development",
+          "description": "Creation of a step-by-step plan to achieve your career objectives."
+        }
+      ],
+      "cta": "Discover your career path"
+    },
+    "recruitment": {
+      "title": "Recruitment Services",
+      "subtitle": "Connecting talented professionals with the right opportunities",
+      "description": "Our recruitment services bridge the gap between skilled candidates and employers seeking international talent.",
+      "features": [
+        {
+          "title": "Job Matching",
+          "description": "Identification of suitable job opportunities aligned with your skills and experience."
+        },
+        {
+          "title": "Employer Connections",
+          "description": "Access to our network of employers actively seeking international talent."
+        },
+        {
+          "title": "Interview Arrangement",
+          "description": "Coordination of interviews with potential employers and preparation support."
+        },
+        {
+          "title": "Negotiation Assistance",
+          "description": "Expert advice on job offers, contracts, and compensation negotiations."
+        },
+        {
+          "title": "Relocation Support",
+          "description": "Practical guidance on relocation logistics and settlement in your new workplace."
+        }
+      ],
+      "cta": "Find your next opportunity"
+    }
   }
 }
