@@ -1,48 +1,40 @@
 
-import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 import ServicePage from "@/components/ServicePage";
-import { BarChart2, Layers, Search, BookOpen, ClipboardList } from "lucide-react";
+import { Compass, BarChart2, BookOpen } from "lucide-react";
 
 const Orientation = () => {
-  const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const features = [
     {
+      title: "Conseil en orientation professionnelle",
+      description: "Accompagnement personnalisé pour définir votre parcours professionnel idéal.",
+      icon: <Compass size={24} />,
+    },
+    {
+      title: "Analyse des compétences et du marché",
+      description: "Évaluation de vos compétences et identification des secteurs porteurs sur le marché du travail.",
       icon: <BarChart2 size={24} />,
-      title: t("servicePages.orientation.features.0.title"),
-      description: t("servicePages.orientation.features.0.description")
     },
     {
-      icon: <Layers size={24} />,
-      title: t("servicePages.orientation.features.1.title"),
-      description: t("servicePages.orientation.features.1.description")
-    },
-    {
-      icon: <Search size={24} />,
-      title: t("servicePages.orientation.features.2.title"),
-      description: t("servicePages.orientation.features.2.description")
-    },
-    {
+      title: "Bilan de compétences",
+      description: "Un diagnostic complet de vos aptitudes, motivations et aspirations professionnelles.",
       icon: <BookOpen size={24} />,
-      title: t("servicePages.orientation.features.3.title"),
-      description: t("servicePages.orientation.features.3.description")
     },
-    {
-      icon: <ClipboardList size={24} />,
-      title: t("servicePages.orientation.features.4.title"),
-      description: t("servicePages.orientation.features.4.description")
-    }
   ];
 
   return (
-    <ServicePage
-      title={t("servicePages.orientation.title")}
-      subtitle={t("servicePages.orientation.subtitle")}
-      description={t("servicePages.orientation.description")}
+    <ServicePage 
+      title="Conseil et Orientation Professionnelle"
+      subtitle="Trouvez votre voie professionnelle grâce à nos services de conseil et d'orientation personnalisés."
+      description="Nos conseillers vous aident à faire le point sur vos compétences, à identifier vos aspirations et à définir un plan d'action concret pour votre avenir professionnel."
       features={features}
-      imageSrc="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1472&auto=format&fit=crop"
+      imageSrc="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
-      ctaText={t("servicePages.orientation.cta")}
+      ctaText="Demander un rendez-vous"
     />
   );
 };

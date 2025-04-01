@@ -1,48 +1,40 @@
 
-import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 import ServicePage from "@/components/ServicePage";
-import { Map, FileEdit, MessageCircle, UserPlus, Compass } from "lucide-react";
+import { MessageSquare, Users, Target } from "lucide-react";
 
 const Coaching = () => {
-  const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const features = [
     {
-      icon: <Map size={24} />,
-      title: t("servicePages.coaching.features.0.title"),
-      description: t("servicePages.coaching.features.0.description")
+      title: "Préparation aux entretiens d'embauche",
+      description: "Des conseils pratiques et des simulations pour réussir vos entretiens professionnels.",
+      icon: <MessageSquare size={24} />,
     },
     {
-      icon: <FileEdit size={24} />,
-      title: t("servicePages.coaching.features.1.title"),
-      description: t("servicePages.coaching.features.1.description")
+      title: "Ateliers de coaching",
+      description: "Sessions interactives pour développer vos compétences en communication et gestion du stress.",
+      icon: <Users size={24} />,
     },
     {
-      icon: <MessageCircle size={24} />,
-      title: t("servicePages.coaching.features.2.title"),
-      description: t("servicePages.coaching.features.2.description")
+      title: "Coaching personnalisé",
+      description: "Un accompagnement sur-mesure pour atteindre vos objectifs professionnels.",
+      icon: <Target size={24} />,
     },
-    {
-      icon: <UserPlus size={24} />,
-      title: t("servicePages.coaching.features.3.title"),
-      description: t("servicePages.coaching.features.3.description")
-    },
-    {
-      icon: <Compass size={24} />,
-      title: t("servicePages.coaching.features.4.title"),
-      description: t("servicePages.coaching.features.4.description")
-    }
   ];
 
   return (
-    <ServicePage
-      title={t("servicePages.coaching.title")}
-      subtitle={t("servicePages.coaching.subtitle")}
-      description={t("servicePages.coaching.description")}
+    <ServicePage 
+      title="Services de Coaching"
+      subtitle="Développez votre potentiel et préparez-vous efficacement pour réussir dans votre parcours professionnel."
+      description="Nos coachs certifiés vous accompagnent dans le développement de vos compétences et la préparation aux défis professionnels."
       features={features}
-      imageSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1470&auto=format&fit=crop"
+      imageSrc="https://images.unsplash.com/photo-1633008808000-ce86bff6c1ed?q=80&w=1024&auto=format&fit=crop"
       ctaLink="/contact"
-      ctaText={t("servicePages.coaching.cta")}
+      ctaText="Prendre rendez-vous"
     />
   );
 };

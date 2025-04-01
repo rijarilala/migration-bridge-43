@@ -1,37 +1,25 @@
 
 import { Button } from "@/components/ui/button";
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
 interface HeroProps {
-  title?: string;
-  subtitle?: string;
+  title: string;
+  subtitle: string;
   ctaText?: string;
   ctaLink?: string;
   secondaryCtaText?: string;
   secondaryCtaLink?: string;
   imageSrc: string;
-  useTranslations?: boolean;
 }
 
 const Hero = ({
   title,
   subtitle,
-  ctaText,
+  ctaText = "En savoir plus",
   ctaLink = "/services",
   secondaryCtaText,
   secondaryCtaLink,
   imageSrc,
-  useTranslations = true,
 }: HeroProps) => {
-  const { t } = useTranslation();
-  
-  const heroTitle = useTranslations ? t("home.hero.title") : title;
-  const heroSubtitle = useTranslations ? t("home.hero.subtitle") : subtitle;
-  const heroCtaText = useTranslations ? t("home.hero.ctaTest") : ctaText;
-  const heroSecondaryCtaText = useTranslations ? t("home.hero.ctaServices") : secondaryCtaText;
-
   return (
     <div className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-secondary/70 to-background pt-16">
       {/* Background elements */}
@@ -53,66 +41,23 @@ const Hero = ({
 
       <div className="relative z-10 container mx-auto px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            className="flex flex-col space-y-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="flex flex-col space-y-8">
             <div className="space-y-6">
-              <motion.div
-                className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-              >
+              <div className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm">
                 Immigration | Formation | Coaching
-              </motion.div>
-              <motion.h1 
-                className="font-serif font-bold tracking-tight text-gray-900 text-4xl md:text-5xl lg:text-6xl leading-tight"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <span className="gradient-text">{heroTitle}</span>
-              </motion.h1>
-              <motion.p 
-                className="text-xl text-gray-600 max-w-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                {heroSubtitle}
-              </motion.p>
+              </div>
+              <h1 className="font-serif font-bold tracking-tight text-gray-900 text-4xl md:text-5xl lg:text-6xl leading-tight">
+                <span className="gradient-text">{title}</span>
+              </h1>
+              <p className="text-xl text-gray-600 max-w-xl">
+                {subtitle}
+              </p>
             </div>
-            
-            <motion.div
-              className="flex flex-wrap gap-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              {heroCtaText && (
-                <Button asChild size="lg" className="rounded-md bg-primary hover:bg-primary/90">
-                  <Link to="/eligibility">{heroCtaText}</Link>
-                </Button>
-              )}
-              
-              {heroSecondaryCtaText && secondaryCtaLink && (
-                <Button asChild variant="outline" size="lg" className="rounded-md">
-                  <Link to={secondaryCtaLink}>{heroSecondaryCtaText}</Link>
-                </Button>
-              )}
-            </motion.div>
-          </motion.div>
+            {/* Suppression des boutons CTA */}
+          </div>
           
           <div className="hidden md:block relative">
-            <motion.div 
-              className="relative w-full max-w-md mx-auto"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
+            <div className="relative w-full max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-2xl rotate-3 opacity-20"></div>
               <div className="relative overflow-hidden rounded-xl shadow-2xl">
                 <img 
@@ -121,20 +66,15 @@ const Hero = ({
                   className="w-full object-cover animate-float"
                 />
               </div>
-              <motion.div 
-                className="absolute -bottom-6 -right-6 p-6 bg-white rounded-lg shadow-lg max-w-[200px]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
+              <div className="absolute -bottom-6 -right-6 p-6 bg-white rounded-lg shadow-lg max-w-[200px]">
                 <div className="flex items-center space-x-2">
                   <div className="bg-green-100 text-green-800 font-bold rounded-full w-10 h-10 flex items-center justify-center">
                     95%
                   </div>
                   <p className="text-sm font-medium">de taux de réussite avec notre accompagnement</p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

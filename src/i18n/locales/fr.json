@@ -18,55 +18,55 @@
     "recruitment": "Recrutement"
   },
   "faq": {
-    "title": "Questions fréquentes",
+    "title": "Questions fréquemment posées",
     "description": "Trouvez des réponses aux questions courantes sur nos services et le processus d'immigration.",
     "searchPlaceholder": "Rechercher des questions...",
     "noResults": "Aucun résultat trouvé pour votre recherche.",
-    "readMore": "En savoir plus",
+    "readMore": "Lire plus",
     "immigration": {
-      "q1": "Quelles sont les exigences pour un visa de travail ?",
-      "a1": "Les exigences pour un visa de travail varient selon le pays mais incluent généralement une offre d'emploi valide, une preuve de qualifications, un passeport valide, et parfois un examen médical. Notre équipe peut vous guider à travers les exigences spécifiques pour votre pays de destination.",
-      "q2": "Combien de temps prend le processus d'immigration ?",
-      "a2": "Le délai du processus d'immigration varie considérablement selon le pays, le type de visa et les circonstances individuelles. En général, cela peut prendre de 3 mois à 2 ans. Lors de votre consultation, nous pourrons vous fournir un calendrier plus précis basé sur votre situation spécifique.",
+      "q1": "Quelles sont les conditions pour obtenir un visa de travail ?",
+      "a1": "Les exigences pour un visa de travail varient selon les pays, mais comprennent généralement une offre d'emploi valide, une preuve de qualifications, un passeport valide et parfois un examen médical. Notre équipe peut vous guider à travers les exigences spécifiques pour votre pays de destination.",
+      "q2": "Combien de temps dure le processus d'immigration ?",
+      "a2": "Le délai du processus d'immigration varie considérablement selon le pays, le type de visa et les circonstances individuelles. En général, cela peut prendre de 3 mois à 2 ans. Lors de votre consultation, nous pourrons vous fournir un calendrier plus précis en fonction de votre situation spécifique.",
       "q3": "Ma famille peut-elle m'accompagner lors de l'immigration ?",
       "a3": "Oui, dans la plupart des cas, votre conjoint et vos enfants à charge peuvent vous accompagner lors de l'immigration. Le regroupement familial est une priorité dans de nombreux systèmes d'immigration. Nous pouvons vous aider à naviguer dans le processus de demande pour les membres de votre famille."
     },
     "formation": {
       "q1": "Quels cours de formation proposez-vous ?",
-      "a1": "Nous proposons une variété de cours de formation comprenant la préparation linguistique (IELTS, TOEFL, TEF), la préparation à la certification professionnelle et des programmes de formation spécifiques à l'industrie. Nos cours sont adaptés pour soutenir vos objectifs d'immigration et de développement de carrière.",
+      "a1": "Nous proposons une variété de cours de formation, notamment la préparation linguistique (IELTS, TOEFL, TEF), la préparation à la certification professionnelle et des programmes de formation spécifiques à l'industrie. Nos cours sont adaptés pour soutenir vos objectifs d'immigration et de développement de carrière.",
       "q2": "Vos cours de formation sont-ils reconnus internationalement ?",
-      "a2": "Oui, nos cours de formation sont conçus pour répondre aux normes internationales et sont reconnus par les employeurs et les autorités d'immigration du monde entier. Nous travaillons en partenariat avec des institutions accréditées pour garantir la qualité et la reconnaissance de nos programmes de formation."
+      "a2": "Oui, nos cours de formation sont conçus pour répondre aux normes internationales et sont reconnus par les employeurs et les autorités d'immigration du monde entier. Nous collaborons avec des institutions accréditées pour garantir la qualité et la reconnaissance de nos programmes de formation."
     },
     "coaching": {
-      "q1": "Que comprend le coaching de carrière ?",
-      "a1": "Notre service de coaching de carrière comprend des conseils personnalisés sur la planification de carrière, l'évaluation des compétences, la création de CV, la préparation aux entretiens et les stratégies de réseautage. Nous travaillons avec vous pour développer un plan sur mesure qui s'aligne avec vos objectifs professionnels et le marché de l'emploi dans votre pays cible.",
-      "q2": "Combien de séances de coaching aurai-je besoin ?",
-      "a2": "Le nombre de séances de coaching varie en fonction des besoins et des objectifs individuels. Certains clients atteignent leurs objectifs en 3-5 séances, tandis que d'autres bénéficient d'un soutien continu. Après une évaluation initiale, nous pouvons recommander un plan de coaching adapté à votre situation spécifique."
+      "q1": "Qu'implique le coaching de carrière ?",
+      "a1": "Notre service de coaching de carrière comprend des conseils personnalisés sur la planification de carrière, l'évaluation des compétences, la création de CV, la préparation aux entretiens et les stratégies de réseautage. Nous travaillons avec vous pour développer un plan sur mesure qui s'aligne sur vos objectifs professionnels et le marché du travail dans votre pays cible.",
+      "q2": "De combien de séances de coaching aurai-je besoin ?",
+      "a2": "Le nombre de séances de coaching varie en fonction des besoins et des objectifs individuels. Certains clients atteignent leurs objectifs en 3 à 5 séances, tandis que d'autres bénéficient d'un soutien continu. Après une évaluation initiale, nous pouvons recommander un plan de coaching adapté à votre situation spécifique."
     },
     "orientation": {
       "q1": "Comment l'orientation professionnelle peut-elle aider ma carrière ?",
-      "a1": "L'orientation professionnelle vous aide à identifier vos forces, compétences et intérêts, et les aligne avec des parcours de carrière appropriés. Ce service est particulièrement précieux lorsque vous envisagez un changement de carrière, un déménagement dans un nouveau pays ou une progression dans votre domaine actuel.",
+      "a1": "L'orientation professionnelle vous aide à identifier vos forces, vos compétences et vos intérêts, et les aligne sur des parcours de carrière adaptés. Ce service est particulièrement précieux lorsque vous envisagez un changement de carrière, un déménagement dans un nouveau pays ou une progression dans votre domaine actuel.",
       "q2": "Quelles évaluations utilisez-vous pour l'orientation professionnelle ?",
-      "a2": "Nous utilisons une combinaison d'évaluations standardisées, d'inventaires de personnalité, de tests de compétences et d'entretiens approfondis pour fournir une compréhension complète de votre profil professionnel. Notre approche est basée sur des preuves et adaptée à votre situation unique."
+      "a2": "Nous utilisons une combinaison d'évaluations standardisées, d'inventaires de personnalité, de tests de compétences et d'entretiens approfondis pour fournir une compréhension globale de votre profil professionnel. Notre approche est fondée sur des preuves et adaptée à votre situation unique."
     },
     "recruitment": {
       "q1": "Dans quels secteurs êtes-vous spécialisés pour le recrutement ?",
       "a1": "Nous sommes spécialisés dans le recrutement pour les secteurs de la santé, des technologies de l'information, de l'ingénierie, de l'éducation et de l'hôtellerie. Ces industries ont fréquemment une demande internationale et offrent de bonnes opportunités pour les migrants qualifiés.",
-      "q2": "Comment faites-vous correspondre les candidats avec les opportunités d'emploi ?",
-      "a2": "Nous mettons en correspondance les candidats sur la base d'une évaluation complète des compétences, de l'expérience, des qualifications et des objectifs de carrière, ainsi que de l'adéquation culturelle et de la faisabilité de l'immigration. Notre vaste réseau d'employeurs et notre connaissance du marché nous permettent d'identifier des opportunités adaptées qui correspondent à votre profil."
+      "q2": "Comment associez-vous les candidats aux opportunités d'emploi ?",
+      "a2": "Nous associons les candidats sur la base d'une évaluation complète des compétences, de l'expérience, des qualifications et des objectifs de carrière, ainsi que de l'adéquation culturelle et de la faisabilité de l'immigration. Notre vaste réseau d'employeurs et notre connaissance du marché nous permettent d'identifier des opportunités adaptées qui correspondent à votre profil."
     }
   },
   "contact": {
     "title": "Contactez-nous",
-    "description": "Contactez notre équipe pour toute question ou demande concernant nos services.",
+    "description": "Entrez en contact avec notre équipe pour toute question ou demande concernant nos services.",
     "info": {
       "title": "Informations de contact",
       "phone": "Téléphone",
       "email": "Email",
       "address": "Adresse",
       "hours": "Heures d'ouverture",
-      "weekdays": "Lun-Ven: 8h30 - 17h30",
-      "saturday": "Samedi: 9h00 - 13h00"
+      "weekdays": "Lun-Ven : 8h30 - 17h30",
+      "saturday": "Samedi : 9h00 - 13h00"
     },
     "social": {
       "title": "Suivez-nous"
@@ -101,12 +101,12 @@
       "ctaServices": "Nos services"
     },
     "services": {
-      "title": "Nos Services",
-      "description": "Découvrez notre gamme complète de services conçus pour vous accompagner dans votre projet d'immigration et de développement professionnel."
+      "title": "Nos services",
+      "description": "Découvrez notre gamme complète de services conçus pour vous soutenir dans votre projet d'immigration et de développement professionnel."
     },
     "immigration": {
       "title": "Immigration simplifiée",
-      "subtitle": "Notre équipe d'experts vous guide à travers le processus complexe d'immigration, en vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
+      "subtitle": "Notre équipe d'experts vous guide à travers le processus complexe d'immigration, vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
     },
     "stats": {
       "title": "Notre impact en chiffres",
@@ -118,14 +118,14 @@
     },
     "testimonials": {
       "title": "Ce que disent nos clients",
-      "description": "Découvrez les témoignages de personnes qui ont fait confiance à nos services et réussi leur projet.",
+      "description": "Découvrez les témoignages de personnes qui ont fait confiance à nos services et ont réussi leur projet.",
       "more": "Voir plus de témoignages"
     },
     "career": {
       "title": "Développez votre carrière",
-      "subtitle": "Nos services de coaching vous aident à révéler votre potentiel professionnel et à vous démarquer sur le marché du travail compétitif.",
+      "subtitle": "Nos services de coaching vous aident à révéler votre potentiel professionnel et à vous démarquer sur le marché du travail concurrentiel.",
       "interviews": "Préparation aux entretiens",
-      "interviewsDesc": "Sessions personnalisées de simulation d'entretien pour vous aider à gagner en confiance et à maîtriser votre discours.",
+      "interviewsDesc": "Des sessions de simulation d'entretien personnalisées pour vous aider à prendre confiance et à maîtriser votre discours.",
       "cv": "CV et lettre de motivation",
       "cvDesc": "Création de documents professionnels qui mettent en valeur vos compétences et attirent l'attention des recruteurs.",
       "skills": "Bilan de compétences",
@@ -133,7 +133,7 @@
     },
     "cta": {
       "title": "Prêt à démarrer votre projet ?",
-      "description": "Franchissez le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé.",
+      "description": "Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé.",
       "test": "Tester mon éligibilité",
       "contact": "Nous contacter"
     }
@@ -150,7 +150,7 @@
     "filter": "Filtrer",
     "loadMore": "Charger plus d'articles",
     "noResults": "Aucun résultat trouvé",
-    "postNotFound": "Article non trouvé",
+    "postNotFound": "Article introuvable",
     "backToBlog": "Retour au blog",
     "sponsored": "Sponsorisé"
   },
@@ -167,10 +167,10 @@
     "sitemap": "Plan du site"
   },
   "about": {
-    "pageTitle": "À propos de nous",
+    "pageTitle": "À propos",
     "title": "À propos de MigraPro",
-    "description": "MigraPro accompagne les particuliers et les professionnels dans leurs projets d'immigration, de formation et de développement de carrière depuis plus de 10 ans.",
-    "teamImageAlt": "Équipe MigraPro",
+    "description": "MigraPro accompagne depuis plus de 10 ans les particuliers et les professionnels dans leurs projets d'immigration, de formation et de développement de carrière.",
+    "teamImageAlt": "L'équipe MigraPro",
     "mission": {
       "title": "Notre mission",
       "paragraph1": "Faciliter l'accès à de nouvelles opportunités professionnelles et personnelles pour nos clients en leur fournissant un accompagnement personnalisé et des outils adaptés à leurs besoins spécifiques.",
@@ -178,216 +178,156 @@
     },
     "vision": {
       "title": "Notre vision",
-      "paragraph1": "Être le cabinet de conseil en immigration et développement professionnel de référence, reconnu pour notre intégrité, notre expertise et notre approche centrée sur le client.",
-      "paragraph2": "Nous aspirons à créer un monde où les frontières ne sont plus des obstacles aux ambitions personnelles et professionnelles."
-    },
-    "values": {
-      "title": "Nos valeurs",
-      "subtitle": "Les principes qui guident nos actions et nos décisions au quotidien.",
-      "integrity": {
-        "title": "Intégrité",
-        "description": "Nous opérons avec transparence et honnêteté dans toutes nos interactions."
-      },
-      "excellence": {
-        "title": "Excellence",
-        "description": "Nous visons la plus haute qualité dans nos services et cherchons constamment à nous améliorer."
-      },
-      "empathy": {
-        "title": "Empathie",
-        "description": "Nous comprenons les défis de l'immigration et des transitions de carrière et fournissons un soutien bienveillant."
-      },
-      "innovation": {
-        "title": "Innovation",
-        "description": "Nous adoptons de nouvelles approches et technologies pour mieux servir nos clients."
-      }
+      "paragraph1": "Être reconnu comme un partenaire de confiance pour tous ceux qui souhaitent concrétiser leurs projets d'immigration et de développement professionnel, en France et à l'international.",
+      "paragraph2": "Nous aspirons à créer un monde où les frontières ne sont plus des obstacles aux ambitions professionnelles et où chacun peut développer pleinement son potentiel."
     },
     "stats": {
-      "title": "Notre impact en chiffres",
-      "description": "Des résultats qui parlent d'eux-mêmes. Découvrez notre contribution au succès de nos clients.",
+      "title": "MigraPro en chiffres",
+      "description": "Des résultats concrets qui témoignent de notre expertise et de notre engagement envers nos clients.",
       "yearsExperience": "Années d'expérience",
       "satisfiedClients": "Clients satisfaits",
       "successRate": "Taux de réussite",
       "destinationCountries": "Pays de destination"
     },
+    "values": {
+      "title": "Nos valeurs",
+      "subtitle": "Ces valeurs guident chacune de nos actions et font partie intégrante de notre culture d'entreprise.",
+      "expertise": {
+        "title": "Expertise",
+        "description": "Une équipe de professionnels qualifiés dans leurs domaines respectifs, offrant des conseils basés sur une expérience solide et des connaissances approfondies."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "Un engagement constant pour la qualité et l'excellence dans tous nos services, avec une attention aux détails et un focus sur les besoins de chaque client."
+      },
+      "inclusivity": {
+        "title": "Inclusivité",
+        "description": "Une approche inclusive qui respecte la diversité culturelle et s'adapte aux besoins spécifiques de chaque personne, quelle que soit son origine."
+      },
+      "efficiency": {
+        "title": "Efficacité",
+        "description": "Des processus optimisés et une communication claire pour vous faire gagner du temps et faciliter vos démarches à chaque étape."
+      }
+    },
     "team": {
       "title": "Notre équipe",
-      "subtitle": "Une équipe dévouée de professionnels à votre service",
+      "subtitle": "Des professionnels passionnés et expérimentés dévoués à la réussite de vos projets.",
       "member1": {
-        "role": "Directrice",
-        "bio": "Spécialiste en immigration avec 15 ans d'expérience"
+        "role": "Directeur & Conseiller en immigration",
+        "bio": "Spécialiste de l'immigration avec plus de 15 ans d'expérience dans l'accompagnement des candidats à l'immigration."
       },
       "member2": {
-        "role": "Consultant Senior",
-        "bio": "Expert en droit de l'immigration et politiques internationales"
+        "role": "Conseillère en formation",
+        "bio": "Experte en développement professionnel et création de parcours de formation personnalisés."
       },
       "member3": {
-        "role": "Conseillère en carrière",
-        "bio": "Spécialiste en développement professionnel et coaching"
+        "role": "Coach professionnel",
+        "bio": "Coach certifié spécialisé dans l'accompagnement des transitions professionnelles et le développement personnel."
       },
       "member4": {
-        "role": "Responsable des relations",
-        "bio": "Chargé des partenariats avec les entreprises et institutions"
+        "role": "Conseiller en recrutement",
+        "bio": "Spécialiste du recrutement international avec une expertise particulière dans les secteurs technologiques et santé."
       }
     },
     "cta": {
-      "title": "Prêt à démarrer votre projet d'avenir ?",
-      "description": "Nos experts sont disponibles pour vous accompagner dans toutes vos démarches d'immigration et de développement professionnel.",
+      "title": "Prêt à débuter votre projet avec nous ?",
+      "description": "Contactez notre équipe dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous aider.",
       "button": "Nous contacter"
     }
   },
-  "eligibility": {
-    "pageTitle": "Test d'éligibilité",
-    "title": "Testez votre éligibilité",
-    "subtitle": "Complétez notre questionnaire en ligne pour évaluer votre éligibilité aux programmes d'immigration canadiens",
-    "description": "En quelques minutes seulement, recevez une évaluation personnalisée basée sur votre profil. Notre outil analyse vos chances de succès pour différents programmes d'immigration canadiens.",
-    "startButton": "Commencer l'évaluation",
-    "steps": {
-      "profile": "Profil",
-      "project": "Projet",
-      "contact": "Contact",
-      "result": "Résultat"
-    }
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "effectiveDate": "Date d'effet",
+    "introduction": "Introduction",
+    "introText": "Bienvenue dans la Politique de Confidentialité de MigraPro. Nous respectons votre vie privée et nous nous engageons à protéger les informations personnelles que vous nous fournissez. Cette politique explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez nos services.",
+    "infoCollected": "Informations que nous collectons",
+    "infoCollectedText": "Nous pouvons collecter les types d'informations suivants :",
+    "infoCollectedItems": [
+      "Informations personnelles : nom, adresse, email, numéro de téléphone",
+      "Informations d'identification : copies de passeport, visa, permis de travail",
+      "Informations professionnelles : CV, historique d'emploi, qualifications",
+      "Informations financières : relevés bancaires, preuves de fonds",
+      "Données de navigation : adresse IP, type de navigateur, pages visitées"
+    ],
+    "infoUse": "Comment nous utilisons vos informations",
+    "infoUseText": "Nous utilisons vos informations personnelles pour :",
+    "infoUseItems": [
+      "Fournir nos services de conseil en immigration, formation et recrutement",
+      "Préparer et soumettre des demandes d'immigration en votre nom",
+      "Vous contacter concernant votre dossier ou nos services",
+      "Améliorer nos services et votre expérience utilisateur",
+      "Respecter nos obligations légales et réglementaires"
+    ],
+    "infoSharing": "Partage de vos informations",
+    "infoSharingText": "Nous ne vendons pas vos informations personnelles à des tiers. Nous pouvons partager vos informations avec :",
+    "infoSharingItems": [
+      "Les autorités d'immigration et gouvernementales dans le cadre de votre demande",
+      "Nos partenaires de service qui nous aident à fournir nos services",
+      "Des experts juridiques ou consultants impliqués dans votre dossier"
+    ],
+    "dataSecurity": "Sécurité des données",
+    "dataSecurityText": "Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos informations personnelles contre l'accès non autorisé, la modification, la divulgation ou la destruction. Cependant, aucune méthode de transmission sur Internet ou de stockage électronique n'est sécurisée à 100%.",
+    "dataRetention": "Conservation des données",
+    "dataRetentionText": "Nous conservons vos informations personnelles aussi longtemps que nécessaire aux fins pour lesquelles elles ont été collectées, y compris pour satisfaire à toute exigence légale, comptable ou de rapport.",
+    "yourRights": "Vos droits",
+    "yourRightsText": "Selon votre lieu de résidence, vous pouvez avoir le droit de :",
+    "yourRightsItems": [
+      "Accéder aux informations personnelles que nous détenons à votre sujet",
+      "Corriger les informations inexactes",
+      "Supprimer vos informations personnelles",
+      "Restreindre ou vous opposer au traitement de vos informations",
+      "Demander la portabilité de vos données"
+    ],
+    "policyChanges": "Modifications de cette politique",
+    "policyChangesText": "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. La version la plus récente sera toujours disponible sur notre site Web avec la date d'effet.",
+    "contactUs": "Nous contacter",
+    "contactUsText": "Si vous avez des questions concernant cette politique de confidentialité ou nos pratiques de traitement des données, veuillez nous contacter à :"
   },
-  "servicePages": {
-    "immigration": {
-      "title": "Services d'immigration",
-      "subtitle": "Un accompagnement expert à chaque étape de votre parcours d'immigration",
-      "description": "Nos services d'immigration complets sont conçus pour rendre votre transition vers un nouveau pays aussi fluide que possible.",
-      "features": [
-        {
-          "title": "Évaluation d'éligibilité",
-          "description": "Évaluation détaillée de votre profil pour identifier les voies d'immigration les plus adaptées."
-        },
-        {
-          "title": "Préparation des demandes",
-          "description": "Assistance experte pour compléter et soumettre vos demandes d'immigration."
-        },
-        {
-          "title": "Vérification des documents",
-          "description": "Examen minutieux de tous vos documents pour assurer la conformité aux exigences d'immigration."
-        },
-        {
-          "title": "Préparation aux entretiens",
-          "description": "Coaching complet pour les entretiens d'immigration afin d'augmenter vos chances de succès."
-        },
-        {
-          "title": "Soutien après l'arrivée",
-          "description": "Assistance continue après votre arrivée pour vous aider à vous installer dans votre nouveau pays."
-        }
-      ],
-      "cta": "Contactez nos experts en immigration"
-    },
-    "formation": {
-      "title": "Services de formation",
-      "subtitle": "Développez les compétences dont vous avez besoin pour réussir dans votre nouveau pays",
-      "description": "Nos programmes de formation sont conçus pour vous doter des compétences et des connaissances nécessaires à une transition réussie.",
-      "features": [
-        {
-          "title": "Cours de langue",
-          "description": "Programmes linguistiques intensifs pour vous aider à atteindre la maîtrise de l'anglais ou du français."
-        },
-        {
-          "title": "Certifications professionnelles",
-          "description": "Formation pour des certifications internationalement reconnues dans votre domaine."
-        },
-        {
-          "title": "Préparation au marché du travail",
-          "description": "Ateliers sur les marchés de l'emploi locaux, les processus de candidature et la culture en milieu de travail."
-        },
-        {
-          "title": "Évaluation des compétences",
-          "description": "Évaluation de vos compétences actuelles et identification des domaines à développer."
-        },
-        {
-          "title": "Plans d'apprentissage personnalisés",
-          "description": "Programmes de formation personnalisés adaptés à vos besoins et objectifs spécifiques."
-        }
-      ],
-      "cta": "Découvrez nos programmes de formation"
-    },
-    "coaching": {
-      "title": "Coaching de carrière",
-      "subtitle": "Libérez votre potentiel professionnel avec des conseils personnalisés",
-      "description": "Nos services de coaching de carrière vous aident à naviguer dans les défis professionnels et à atteindre vos objectifs de carrière.",
-      "features": [
-        {
-          "title": "Planification de parcours professionnel",
-          "description": "Orientation stratégique pour tracer votre parcours professionnel et définir des objectifs réalisables."
-        },
-        {
-          "title": "Optimisation de CV et lettre de motivation",
-          "description": "Révision et amélioration expertes de vos documents professionnels pour vous démarquer auprès des employeurs."
-        },
-        {
-          "title": "Formation aux entretiens",
-          "description": "Sessions de coaching personnalisées pour vous préparer aux entretiens d'embauche sur votre marché cible."
-        },
-        {
-          "title": "Image de marque professionnelle",
-          "description": "Stratégies pour construire et maintenir une image de marque professionnelle forte dans votre secteur."
-        },
-        {
-          "title": "Soutien continu",
-          "description": "Guidance et feedback continus à mesure que vous progressez dans votre parcours professionnel."
-        }
-      ],
-      "cta": "Réservez une séance de coaching"
-    },
-    "orientation": {
-      "title": "Orientation professionnelle",
-      "subtitle": "Trouvez le parcours professionnel qui correspond à vos compétences et aspirations",
-      "description": "Nos services d'orientation professionnelle vous aident à identifier des options de carrière adaptées en fonction de votre profil unique.",
-      "features": [
-        {
-          "title": "Bilan de compétences",
-          "description": "Évaluation complète de vos compétences, forces et domaines à développer."
-        },
-        {
-          "title": "Analyse de compatibilité de carrière",
-          "description": "Mise en correspondance de votre profil avec des parcours professionnels et des secteurs potentiels."
-        },
-        {
-          "title": "Recherche d'opportunités de marché",
-          "description": "Exploration des tendances du marché de l'emploi et des opportunités dans votre lieu de destination."
-        },
-        {
-          "title": "Orientation des parcours éducatifs",
-          "description": "Conseils sur les options éducatives pour améliorer vos qualifications pour la carrière choisie."
-        },
-        {
-          "title": "Élaboration d'un plan d'action",
-          "description": "Création d'un plan étape par étape pour atteindre vos objectifs professionnels."
-        }
-      ],
-      "cta": "Découvrez votre parcours professionnel"
-    },
-    "recruitment": {
-      "title": "Services de recrutement",
-      "subtitle": "Connecter les professionnels talentueux avec les bonnes opportunités",
-      "description": "Nos services de recrutement comblent le fossé entre les candidats qualifiés et les employeurs à la recherche de talents internationaux.",
-      "features": [
-        {
-          "title": "Mise en relation d'emploi",
-          "description": "Identification d'opportunités d'emploi appropriées alignées avec vos compétences et votre expérience."
-        },
-        {
-          "title": "Connexions avec les employeurs",
-          "description": "Accès à notre réseau d'employeurs activement à la recherche de talents internationaux."
-        },
-        {
-          "title": "Organisation d'entretiens",
-          "description": "Coordination d'entretiens avec des employeurs potentiels et soutien à la préparation."
-        },
-        {
-          "title": "Assistance à la négociation",
-          "description": "Conseils d'experts sur les offres d'emploi, les contrats et les négociations de rémunération."
-        },
-        {
-          "title": "Soutien à la relocalisation",
-          "description": "Conseils pratiques sur la logistique de relocalisation et l'installation dans votre nouveau lieu de travail."
-        }
-      ],
-      "cta": "Trouvez votre prochaine opportunité"
-    }
+  "terms": {
+    "title": "Conditions d'utilisation",
+    "effectiveDate": "Date d'effet",
+    "acceptance": "Acceptation des conditions",
+    "acceptanceText": "En accédant ou en utilisant les services de MigraPro, vous acceptez d'être lié par ces Conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser nos services.",
+    "services": "Description des services",
+    "servicesText": "MigraPro offre des services de conseil en immigration, formation professionnelle, coaching, orientation professionnelle et recrutement. Nos services comprennent, sans s'y limiter :",
+    "servicesItems": [
+      "Consultation et évaluation d'éligibilité à l'immigration",
+      "Préparation et soumission de demandes d'immigration",
+      "Services de formation professionnelle et linguistique",
+      "Coaching de préparation à l'emploi",
+      "Services d'orientation professionnelle",
+      "Assistance au recrutement et placement professionnel"
+    ],
+    "fees": "Frais et paiement",
+    "feesText": "Les frais pour nos services sont communiqués avant le début de tout service. Le paiement doit être effectué selon les modalités convenues. Tous les frais sont non remboursables sauf indication contraire dans un accord écrit spécifique.",
+    "clientObligations": "Obligations du client",
+    "clientObligationsText": "En utilisant nos services, vous acceptez de :",
+    "clientObligationsItems": [
+      "Fournir des informations véridiques, précises et complètes",
+      "Mettre à jour rapidement vos informations en cas de changement",
+      "Coopérer de bonne foi avec notre équipe",
+      "Respecter les délais convenus pour la fourniture de documents",
+      "Payer les frais convenus dans les délais impartis"
+    ],
+    "liability": "Limitation de responsabilité",
+    "liabilityText": "MigraPro fournit des conseils professionnels basés sur notre expertise, mais ne peut garantir les résultats des demandes d'immigration ou des processus de recrutement, qui sont soumis à la décision finale des autorités compétentes ou des employeurs. Notre responsabilité est limitée aux frais payés pour nos services.",
+    "intellectualProperty": "Propriété intellectuelle",
+    "intellectualPropertyText": "Tout le contenu et les documents fournis dans le cadre de nos services restent la propriété intellectuelle de MigraPro. Ils ne peuvent être reproduits, distribués ou utilisés à des fins commerciales sans notre autorisation écrite préalable.",
+    "confidentiality": "Confidentialité",
+    "confidentialityText": "Nous nous engageons à traiter vos informations de manière confidentielle conformément à notre Politique de Confidentialité. En retour, vous acceptez de ne pas divulguer d'informations confidentielles concernant nos méthodes et processus à des tiers.",
+    "termination": "Résiliation",
+    "terminationText": "MigraPro se réserve le droit de mettre fin à ses services à tout moment en cas de :",
+    "terminationItems": [
+      "Non-paiement des frais",
+      "Fourniture d'informations fausses ou trompeuses",
+      "Non-respect des obligations du client",
+      "Comportement abusif envers notre personnel"
+    ],
+    "governingLaw": "Loi applicable",
+    "governingLawText": "Ces conditions d'utilisation sont régies par les lois de Madagascar. Tout litige découlant de l'utilisation de nos services sera soumis à la juridiction exclusive des tribunaux compétents de Madagascar.",
+    "changes": "Modifications des conditions",
+    "changesText": "Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications prendront effet dès leur publication sur notre site Web. Il est de votre responsabilité de consulter régulièrement ces conditions.",
+    "contactUs": "Nous contacter",
+    "contactUsText": "Si vous avez des questions concernant ces conditions d'utilisation, veuillez nous contacter à :"
   }
 }
