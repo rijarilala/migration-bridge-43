@@ -6,6 +6,7 @@ import { ChevronRight, Award, Clock, Users, Globe, Check } from "lucide-react";
 import Stats from "@/components/Stats";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
+import AboutSection from "@/components/AboutSection";
 
 const About = () => {
   const { t } = useTranslation();
@@ -44,8 +45,8 @@ const About = () => {
   const values = [
     {
       icon: <Users size={24} className="text-brand-600" />,
-      title: t('about.values.expertise.title'),
-      description: t('about.values.expertise.description'),
+      title: t('about.values.integrity.title'),
+      description: t('about.values.integrity.description'),
     },
     {
       icon: <Award size={24} className="text-brand-600" />,
@@ -54,13 +55,13 @@ const About = () => {
     },
     {
       icon: <Globe size={24} className="text-brand-600" />,
-      title: t('about.values.inclusivity.title'),
-      description: t('about.values.inclusivity.description'),
+      title: t('about.values.empathy.title'),
+      description: t('about.values.empathy.description'),
     },
     {
       icon: <Clock size={24} className="text-brand-600" />,
-      title: t('about.values.efficiency.title'),
-      description: t('about.values.efficiency.description'),
+      title: t('about.values.innovation.title'),
+      description: t('about.values.innovation.description'),
     },
   ];
 

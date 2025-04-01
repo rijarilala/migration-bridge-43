@@ -1,4 +1,3 @@
-
 {
   "navigation": {
     "home": "Home",
@@ -178,10 +177,12 @@
     },
     "vision": {
       "title": "Our Vision",
-      "paragraph": "To be the leading immigration and professional development consultancy, known for our integrity, expertise, and client-centered approach."
+      "paragraph1": "To be the leading immigration and professional development consultancy, known for our integrity, expertise, and client-centered approach.",
+      "paragraph2": "We aspire to create a world where borders are no longer obstacles to personal and professional ambitions."
     },
     "values": {
       "title": "Our Values",
+      "subtitle": "The principles that guide our actions and decisions every day.",
       "integrity": {
         "title": "Integrity",
         "description": "We operate with transparency and honesty in all our interactions."
@@ -199,9 +200,38 @@
         "description": "We embrace new approaches and technologies to better serve our clients."
       }
     },
+    "stats": {
+      "title": "Our Impact in Numbers",
+      "description": "Results that speak for themselves. Discover our contribution to our clients' success.",
+      "yearsExperience": "Years of Experience",
+      "satisfiedClients": "Satisfied Clients",
+      "successRate": "Success Rate",
+      "destinationCountries": "Destination Countries"
+    },
     "team": {
       "title": "Our Team",
-      "description": "Our multicultural team brings together expertise in immigration law, career counseling, and international recruitment."
+      "subtitle": "A dedicated team of professionals at your service",
+      "member1": {
+        "role": "Director",
+        "bio": "Immigration specialist with 15 years of experience"
+      },
+      "member2": {
+        "role": "Senior Consultant",
+        "bio": "Expert in immigration law and international policies"
+      },
+      "member3": {
+        "role": "Career Advisor",
+        "bio": "Specialist in professional development and coaching"
+      },
+      "member4": {
+        "role": "Relationship Manager",
+        "bio": "In charge of partnerships with companies and institutions"
+      }
+    },
+    "cta": {
+      "title": "Ready to Start Your Future Project?",
+      "description": "Our experts are available to support you in all your immigration and professional development endeavors.",
+      "button": "Contact Us"
     }
   },
   "eligibility": {

@@ -178,10 +178,12 @@
     },
     "vision": {
       "title": "Notre vision",
-      "paragraph": "Être le cabinet de conseil en immigration et développement professionnel de référence, reconnu pour notre intégrité, notre expertise et notre approche centrée sur le client."
+      "paragraph1": "Être le cabinet de conseil en immigration et développement professionnel de référence, reconnu pour notre intégrité, notre expertise et notre approche centrée sur le client.",
+      "paragraph2": "Nous aspirons à créer un monde où les frontières ne sont plus des obstacles aux ambitions personnelles et professionnelles."
     },
     "values": {
       "title": "Nos valeurs",
+      "subtitle": "Les principes qui guident nos actions et nos décisions au quotidien.",
       "integrity": {
         "title": "Intégrité",
         "description": "Nous opérons avec transparence et honnêteté dans toutes nos interactions."
@@ -199,9 +201,38 @@
         "description": "Nous adoptons de nouvelles approches et technologies pour mieux servir nos clients."
       }
     },
+    "stats": {
+      "title": "Notre impact en chiffres",
+      "description": "Des résultats qui parlent d'eux-mêmes. Découvrez notre contribution au succès de nos clients.",
+      "yearsExperience": "Années d'expérience",
+      "satisfiedClients": "Clients satisfaits",
+      "successRate": "Taux de réussite",
+      "destinationCountries": "Pays de destination"
+    },
     "team": {
       "title": "Notre équipe",
-      "description": "Notre équipe multiculturelle réunit des expertises en droit de l'immigration, conseil de carrière et recrutement international."
+      "subtitle": "Une équipe dévouée de professionnels à votre service",
+      "member1": {
+        "role": "Directrice",
+        "bio": "Spécialiste en immigration avec 15 ans d'expérience"
+      },
+      "member2": {
+        "role": "Consultant Senior",
+        "bio": "Expert en droit de l'immigration et politiques internationales"
+      },
+      "member3": {
+        "role": "Conseillère en carrière",
+        "bio": "Spécialiste en développement professionnel et coaching"
+      },
+      "member4": {
+        "role": "Responsable des relations",
+        "bio": "Chargé des partenariats avec les entreprises et institutions"
+      }
+    },
+    "cta": {
+      "title": "Prêt à démarrer votre projet d'avenir ?",
+      "description": "Nos experts sont disponibles pour vous accompagner dans toutes vos démarches d'immigration et de développement professionnel.",
+      "button": "Nous contacter"
     }
   },
   "eligibility": {
