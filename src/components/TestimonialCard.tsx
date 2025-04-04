@@ -13,13 +13,14 @@ interface TestimonialCardProps {
 const TestimonialCard = ({ name, role, testimonial, rating, image }: TestimonialCardProps) => {
   return (
     <motion.div 
-      className="relative bg-white rounded-xl shadow-md p-6 border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300"
+      className="testimonial-modern relative overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
+      whileHover={{ y: -5 }}
     >
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-accent"></div>
+      <div className="accent-line"></div>
       
       {/* Quote icon */}
       <div className="absolute top-6 right-6 text-primary/10 text-5xl font-serif">"</div>
@@ -37,7 +38,7 @@ const TestimonialCard = ({ name, role, testimonial, rating, image }: Testimonial
         
         <p className="text-gray-600 mb-6 flex-grow italic">{testimonial}</p>
         
-        <div className="flex items-center mt-auto">
+        <div className="flex items-center mt-auto pt-4 border-t border-gray-100">
           <div className="relative w-12 h-12 mr-4">
             <img 
               src={image} 

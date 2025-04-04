@@ -110,6 +110,31 @@
   .card-gradient {
     @apply bg-gradient-to-br from-white to-secondary/80 shadow-md hover:shadow-lg transition-all duration-300;
   }
+  
+  /* Nouvelles classes pour le design modernisé */
+  .section-modern {
+    @apply py-20 overflow-hidden relative;
+  }
+  
+  .section-alternative {
+    @apply py-20 bg-gradient-to-br from-primary/5 to-secondary/20 overflow-hidden relative;
+  }
+  
+  .card-modern {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100/50;
+  }
+  
+  .testimonial-modern {
+    @apply bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-md p-6 hover:shadow-lg transition-all duration-300;
+  }
+  
+  .accent-line {
+    @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent;
+  }
+  
+  .floating-blob {
+    @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob;
+  }
 }
 
 /* Animation utilities */
@@ -141,6 +166,19 @@
   .animate-pulse-slow {
     animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
+  
+  /* Nouvelles animations */
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  
+  .animation-delay-6000 {
+    animation-delay: 6s;
+  }
 }
 
 @keyframes float {
@@ -149,5 +187,29 @@
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
   }
 }

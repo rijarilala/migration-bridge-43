@@ -1,6 +1,8 @@
+
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield } from "lucide-react";
+import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import FeatureSection from "@/components/FeatureSection";
@@ -148,17 +150,31 @@ const Index = () => {
       <Hero
         title="Votre partenaire pour un nouveau départ"
         subtitle="MigraPro, basé à Moramanga, Madagascar, est votre partenaire de confiance pour concrétiser votre projet d'immigration et de carrière au Canada. Spécialistes en mobilité internationale et orientation professionnelle, nous accompagnons les particuliers et les professionnels dans toutes les étapes de leur démarche, en mettant à leur disposition une expertise pointue et un suivi personnalisé."
-        
         imageSrc="https://images.unsplash.com/photo-1524569970261-f3b491d7933b?auto=format&fit=crop&w=2000&q=80"
       />
- <AboutSection />
-      {/* Comparison Section - NEW */}
-      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+
+      {/* About section */}
+      <section className="section-alternative">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Prenez 2 minutes pour sécuriser votre avenir</h2>
+          <AboutSection />
+        </div>
+      </section>
+
+      {/* Comparison Section */}
+      <section className="section-modern">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div 
+            className="text-center max-w-3xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Prenez <span className="text-primary">2 minutes</span> pour sécuriser votre avenir
+            </h2>
             <p className="text-xl font-medium text-primary mb-4">Quels sont les enjeux ?</p>
-          </div>
+          </motion.div>
           
           <ComparisonSection 
             withoutMembershipTitle="Sans adhésion"
@@ -167,24 +183,39 @@ const Index = () => {
             withMembershipItems={comparisonData.withMembership}
           />
           
-          <div className="text-center mt-12">
-            <Button asChild size="lg" onClick={handleLinkClick} className="bg-primary hover:bg-primary/90 text-white">
-              <Link to="/eligibility">Tester mon éligibilité</Link>
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Button asChild size="lg" onClick={handleLinkClick} className="rounded-full px-6 py-6 text-base font-medium">
+              <Link to="/eligibility" className="flex items-center gap-2">
+                Tester mon éligibilité <ArrowRight size={18} />
+              </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-     
       {/* Services section */}
-      <section className="py-24 bg-gray-50">
+      <section className="section-alternative">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
+          <motion.div 
+            className="text-center max-w-3xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Nos <span className="gradient-text">Services</span>
+            </h2>
             <p className="text-lg text-gray-600">
               Découvrez notre gamme complète de services conçus pour vous accompagner dans votre projet d'immigration et de développement professionnel.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
@@ -209,21 +240,33 @@ const Index = () => {
       />
 
       {/* Stats section */}
-      <Stats
-        title="Notre impact en chiffres"
-        description="Des résultats qui parlent d'eux-mêmes. Découvrez comment nous avons aidé des milliers de personnes à réaliser leurs projets d'immigration et d'évolution professionnelle."
-        stats={stats}
-      />
+      <section className="section-alternative">
+        <div className="container mx-auto px-4 md:px-6">
+          <Stats
+            title="Notre impact en chiffres"
+            description="Des résultats qui parlent d'eux-mêmes. Découvrez comment nous avons aidé des milliers de personnes à réaliser leurs projets d'immigration et d'évolution professionnelle."
+            stats={stats}
+          />
+        </div>
+      </section>
 
       {/* Testimonials section */}
-      <section className="py-24 bg-white">
+      <section className="section-modern">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ce que nos clients disent</h2>
+          <motion.div 
+            className="text-center max-w-3xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Ce que <span className="gradient-text">nos clients</span> disent
+            </h2>
             <p className="text-lg text-gray-600">
               Découvrez les témoignages de personnes qui ont fait confiance à nos services et ont réussi leur projet.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
@@ -238,11 +281,19 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Button asChild size="lg" onClick={handleLinkClick} className="bg-primary hover:bg-primary/90 text-white">
-              <Link to="/#">voir plus de témoignages</Link>
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Button asChild variant="outline" size="lg" onClick={handleLinkClick} className="rounded-full px-6 py-6 text-base font-medium">
+              <Link to="/#" className="flex items-center gap-2">
+                Voir plus de témoignages <ArrowRight size={18} />
+              </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -272,10 +323,16 @@ const Index = () => {
       />
 
       {/* CTA section */}
-      <CTA
-        title="Prêt à démarrer votre projet?"
-        description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé." buttonText={""} buttonLink={""}        
-      />
+      <section className="section-alternative">
+        <div className="container mx-auto px-4 md:px-6">
+          <CTA
+            title="Prêt à démarrer votre projet?"
+            description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé." 
+            buttonText={""}
+            buttonLink={""}        
+          />
+        </div>
+      </section>
     </div>
   );
 };
