@@ -13,36 +13,42 @@ interface TestimonialCardProps {
 const TestimonialCard = ({ name, role, testimonial, rating, image }: TestimonialCardProps) => {
   return (
     <motion.div 
-      className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300"
+      className="relative bg-white rounded-xl shadow-md p-6 border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      whileHover={{ y: -5 }}
     >
-      <div className="mb-4 flex gap-1">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <StarIcon 
-            key={i} 
-            size={16} 
-            className={i < rating ? "fill-accent text-accent" : "fill-gray-200 text-gray-200"} 
-          />
-        ))}
-      </div>
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-accent"></div>
       
-      <p className="text-gray-600 mb-6 flex-grow italic text-sm">{testimonial}</p>
+      {/* Quote icon */}
+      <div className="absolute top-6 right-6 text-primary/10 text-5xl font-serif">"</div>
       
-      <div className="flex items-center mt-auto pt-4 border-t border-gray-100">
-        <div className="relative w-12 h-12 mr-4">
-          <img 
-            src={image} 
-            alt={name} 
-            className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm"
-          />
+      <div className="flex flex-col h-full">
+        <div className="mb-4 flex gap-1">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <StarIcon 
+              key={i} 
+              size={16} 
+              className={i < rating ? "fill-accent text-accent" : "fill-gray-200 text-gray-200"} 
+            />
+          ))}
         </div>
-        <div>
-          <h4 className="font-semibold text-gray-900">{name}</h4>
-          <p className="text-sm text-gray-500">{role}</p>
+        
+        <p className="text-gray-600 mb-6 flex-grow italic">{testimonial}</p>
+        
+        <div className="flex items-center mt-auto">
+          <div className="relative w-12 h-12 mr-4">
+            <img 
+              src={image} 
+              alt={name} 
+              className="w-full h-full object-cover rounded-full border-2 border-white shadow-sm"
+            />
+          </div>
+          <div>
+            <h4 className="font-semibold text-gray-900">{name}</h4>
+            <p className="text-sm text-gray-500">{role}</p>
+          </div>
         </div>
       </div>
     </motion.div>

@@ -1,8 +1,6 @@
-
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield } from "lucide-react";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import FeatureSection from "@/components/FeatureSection";
@@ -148,31 +146,48 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Hero section */}
       <Hero
-        title="Réalisez votre rêve de visa"
-        subtitle="MigraPro, basé à Moramanga, Madagascar, est votre partenaire de confiance pour concrétiser votre projet d'immigration et de carrière au Canada. Spécialistes en mobilité internationale et orientation professionnelle, nous accompagnons les particuliers et les professionnels dans toutes les étapes de leur démarche."
+        title="Votre partenaire pour un nouveau départ"
+        subtitle="MigraPro, basé à Moramanga, Madagascar, est votre partenaire de confiance pour concrétiser votre projet d'immigration et de carrière au Canada. Spécialistes en mobilité internationale et orientation professionnelle, nous accompagnons les particuliers et les professionnels dans toutes les étapes de leur démarche, en mettant à leur disposition une expertise pointue et un suivi personnalisé."
+        
         imageSrc="https://images.unsplash.com/photo-1524569970261-f3b491d7933b?auto=format&fit=crop&w=2000&q=80"
       />
-
-      {/* Services section */}
-      <section className="section-modern bg-white">
+ <AboutSection />
+      {/* Comparison Section - NEW */}
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            className="text-center max-w-3xl mx-auto mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Solutions d'immigration pour <span className="text-primary">tous vos besoins</span>
-            </h2>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Prenez 2 minutes pour sécuriser votre avenir</h2>
+            <p className="text-xl font-medium text-primary mb-4">Quels sont les enjeux ?</p>
+          </div>
+          
+          <ComparisonSection 
+            withoutMembershipTitle="Sans adhésion"
+            withMembershipTitle="Avec une adhésion"
+            withoutMembershipItems={comparisonData.withoutMembership}
+            withMembershipItems={comparisonData.withMembership}
+          />
+          
+          <div className="text-center mt-12">
+            <Button asChild size="lg" onClick={handleLinkClick} className="bg-primary hover:bg-primary/90 text-white">
+              <Link to="/eligibility">Tester mon éligibilité</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+     
+      {/* Services section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
             <p className="text-lg text-gray-600">
               Découvrez notre gamme complète de services conçus pour vous accompagner dans votre projet d'immigration et de développement professionnel.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {services.slice(0, 3).map((service, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
               <ServiceCard
                 key={index}
                 title={service.title}
@@ -185,20 +200,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats section */}
-      <section className="py-12 bg-primary/10">
-        <div className="container mx-auto px-4 md:px-6">
-          <Stats stats={stats} />
-        </div>
-      </section>
-
-      {/* About section */}
-      <section className="section-modern">
-        <div className="container mx-auto px-4 md:px-6">
-          <AboutSection />
-        </div>
-      </section>
-
       {/* Feature section - Immigration */}
       <FeatureSection
         title="Immigration simplifiée"
@@ -207,64 +208,24 @@ const Index = () => {
         imageSrc="https://images.unsplash.com/photo-1529386084422-5aded8767727?auto=format&fit=crop&w=1000&q=80"
       />
 
-      {/* Comparison Section */}
-      <section className="section-alternative">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            className="text-center max-w-3xl mx-auto mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Prenez <span className="text-primary">2 minutes</span> pour sécuriser votre avenir
-            </h2>
-            <p className="text-xl font-medium text-primary mb-4">Quels sont les enjeux ?</p>
-          </motion.div>
-          
-          <ComparisonSection 
-            withoutMembershipTitle="Sans adhésion"
-            withMembershipTitle="Avec une adhésion"
-            withoutMembershipItems={comparisonData.withoutMembership}
-            withMembershipItems={comparisonData.withMembership}
-          />
-          
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <Button asChild size="lg" onClick={handleLinkClick} className="rounded-full px-6 py-6 text-base font-medium">
-              <Link to="/eligibility" className="flex items-center gap-2">
-                Tester mon éligibilité <ArrowRight size={18} />
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+      {/* Stats section */}
+      <Stats
+        title="Notre impact en chiffres"
+        description="Des résultats qui parlent d'eux-mêmes. Découvrez comment nous avons aidé des milliers de personnes à réaliser leurs projets d'immigration et d'évolution professionnelle."
+        stats={stats}
+      />
 
       {/* Testimonials section */}
-      <section className="section-modern bg-white">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            className="text-center max-w-3xl mx-auto mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Ce que <span className="text-primary">nos clients</span> disent
-            </h2>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ce que nos clients disent</h2>
             <p className="text-lg text-gray-600">
               Découvrez les témoignages de personnes qui ont fait confiance à nos services et ont réussi leur projet.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={index}
@@ -276,27 +237,45 @@ const Index = () => {
               />
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* CTA section */}
-      <section className="py-16 bg-primary/5">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Toujours fournir <span className="text-primary">la meilleure expérience</span>
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Commencez votre parcours d'immigration dès aujourd'hui avec notre équipe d'experts à vos côtés.
-            </p>
-            <Button asChild size="lg" className="rounded-full px-8 font-medium">
-              <Link to="/contact" className="flex items-center gap-2">
-                Nous contacter <ArrowRight size={18} />
-              </Link>
+          <div className="text-center mt-12">
+            <Button asChild size="lg" onClick={handleLinkClick} className="bg-primary hover:bg-primary/90 text-white">
+              <Link to="/#">voir plus de témoignages</Link>
             </Button>
           </div>
         </div>
       </section>
+
+      {/* Feature section - Career coaching */}
+      <FeatureSection
+        title="Développez votre carrière"
+        subtitle="Nos services de coaching vous aident à révéler votre potentiel professionnel et à vous démarquer sur le marché du travail concurrentiel."
+        features={[
+          {
+            icon: <Briefcase size={24} />,
+            title: "Préparation aux entretiens",
+            description: "Des séances de simulation d'entretien personnalisées pour vous aider à gagner en confiance et à maîtriser votre discours."
+          },
+          {
+            icon: <FileText size={24} />,
+            title: "CV et Lettre de motivation",
+            description: "Création de documents professionnels qui mettent en valeur vos compétences et attirent l'attention des recruteurs."
+          },
+          {
+            icon: <GraduationCap size={24} />,
+            title: "Bilan de compétences",
+            description: "Évaluation approfondie de vos compétences et identification des opportunités de carrière adaptées à votre profil."
+          }
+        ]}
+        imageSrc="https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?auto=format&fit=crop&w=1000&q=80"
+        reversed={true}
+      />
+
+      {/* CTA section */}
+      <CTA
+        title="Prêt à démarrer votre projet?"
+        description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé." buttonText={""} buttonLink={""}        
+      />
     </div>
   );
 };
