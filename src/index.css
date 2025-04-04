@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 220 70% 50%;
+    --primary: 204 80% 40%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 220 20% 92%;
@@ -113,19 +113,19 @@
   
   /* Nouvelles classes pour le design modernisé */
   .section-modern {
-    @apply py-20 overflow-hidden relative;
+    @apply py-16 overflow-hidden relative;
   }
   
   .section-alternative {
-    @apply py-20 bg-gradient-to-br from-primary/5 to-secondary/20 overflow-hidden relative;
+    @apply py-16 bg-gray-50 overflow-hidden relative;
   }
   
   .card-modern {
-    @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100/50;
+    @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100/50;
   }
   
   .testimonial-modern {
-    @apply bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-md p-6 hover:shadow-lg transition-all duration-300;
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300;
   }
   
   .accent-line {
