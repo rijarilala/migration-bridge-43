@@ -17,6 +17,22 @@ const queryClient = new QueryClient();
 // Loading component
 const Loading = () => <div className="flex items-center justify-center min-h-screen">Chargement...</div>;
 
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <BrowserRouter>
+          <AuthProvider>
+            <AppContent />
+            <Toaster />
+            <Sonner />
+          </AuthProvider>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
+
 // Main app content component with language setting
 const AppContent = () => {
   const { i18n } = useTranslation();
@@ -31,30 +47,16 @@ const AppContent = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        <AppRoutes />
-      </main>
-      <ScrollToTop />
-      <Footer />
+      <Suspense fallback={<Loading />}>
+        <Navbar />
+        <main className="flex-grow">
+          <AppRoutes />
+        </main>
+        <ScrollToTop />
+        <Footer />
+      </Suspense>
     </div>
   );
 };
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <BrowserRouter>
-        <AuthProvider>
-          <Toaster />
-          <Sonner />
-          <Suspense fallback={<Loading />}>
-            <AppContent />
-          </Suspense>
-        </AuthProvider>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
 
 export default App;
