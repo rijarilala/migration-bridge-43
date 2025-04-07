@@ -1,41 +1,46 @@
 
-import { useEffect } from "react";
+import { Briefcase, BookOpen, Users, Award } from "lucide-react";
 import ServicePage from "@/components/ServicePage";
-import { Compass, BarChart2, BookOpen } from "lucide-react";
+import PricingSection from "@/components/PricingSection";
 
 const Orientation = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const features = [
     {
-      title: "Conseil en orientation professionnelle",
-      description: "Accompagnement personnalisé pour définir votre parcours professionnel idéal.",
-      icon: <Compass size={24} />,
-    },
-    {
-      title: "Analyse des compétences et du marché",
-      description: "Évaluation de vos compétences et identification des secteurs porteurs sur le marché du travail.",
-      icon: <BarChart2 size={24} />,
-    },
-    {
       title: "Bilan de compétences",
-      description: "Un diagnostic complet de vos aptitudes, motivations et aspirations professionnelles.",
+      description: "Évaluez vos compétences, valeurs et aspirations pour mieux définir votre projet professionnel.",
+      icon: <Briefcase size={24} />,
+    },
+    {
+      title: "Tests d'orientation",
+      description: "Des outils psychométriques et tests de personnalité pour identifier vos aptitudes et préférences.",
       icon: <BookOpen size={24} />,
+    },
+    {
+      title: "Coaching individualisé",
+      description: "Un accompagnement sur mesure pour vous aider à faire les meilleurs choix pour votre carrière.",
+      icon: <Users size={24} />,
+    },
+    {
+      title: "Plan d'action concret",
+      description: "Développement d'un plan d'action détaillé pour atteindre vos objectifs professionnels.",
+      icon: <Award size={24} />,
     },
   ];
 
   return (
-    <ServicePage 
-      title="Conseil et Orientation Professionnelle"
-      subtitle="Trouvez votre voie professionnelle grâce à nos services de conseil et d'orientation personnalisés."
-      description="Nos conseillers vous aident à faire le point sur vos compétences, à identifier vos aspirations et à définir un plan d'action concret pour votre avenir professionnel."
-      features={features}
-      imageSrc="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1024&auto=format&fit=crop"
-      ctaLink="/contact"
-      ctaText="Demander un rendez-vous"
-    />
+    <>
+      <ServicePage
+        title="Conseil & Orientation Professionnelle"
+        subtitle="Trouvez votre voie et développez tout votre potentiel professionnel"
+        description="Notre service de conseil et d'orientation professionnelle vous aide à faire le point sur vos compétences, identifier vos aspirations et vous guider vers le parcours qui vous correspond le mieux."
+        features={features}
+        imageSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+        ctaLink="/contact"
+        ctaText="Prendre rendez-vous"
+      />
+      
+      <PricingSection />
+    </>
   );
 };
 

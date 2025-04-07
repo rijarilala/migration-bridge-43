@@ -1,9 +1,11 @@
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { AuthButtons } from "./AuthButtons";
 import {
   Sheet,
   SheetContent,
@@ -150,11 +152,15 @@ const Navbar = () => {
             <div className="ml-2">
               <LanguageSwitcher />
             </div>
+            <div className="ml-2">
+              <AuthButtons />
+            </div>
           </nav>
 
           {/* Mobile menu using Sheet component */}
           <div className="md:hidden flex items-center gap-2">
             <LanguageSwitcher />
+            <AuthButtons />
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-9 w-9" aria-label="Menu">
