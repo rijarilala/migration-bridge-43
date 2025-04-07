@@ -1,21 +1,13 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { 
-  signInWithPopup, 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
-  sendPasswordResetEmail,
-  signOut, 
-  onAuthStateChanged,
-  User
-} from "firebase/auth";
-import { auth, googleProvider } from "./firebase";
+import { User, Session } from "@supabase/supabase-js";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 interface AuthContextType {
   currentUser: User | null;
+  session: Session | null;
   loading: boolean;
-  signInWithGoogle: () => Promise<void>;
   signInWithEmail: (email: string, password: string) => Promise<void>;
   signUpWithEmail: (email: string, password: string) => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
@@ -38,71 +30,94 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
-
-  const signInWithGoogle = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-      toast.success("Connexion réussie");
-    } catch (error) {
-      console.error("Erreur de connexion Google:", error);
-      toast.error("Échec de la connexion avec Google");
-    }
-  };
 
   const signInWithEmail = async (email: string, password: string) => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      
+      if (error) {
+        throw error;
+      }
+      
       toast.success("Connexion réussie");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Erreur de connexion par email:", error);
-      toast.error("Identifiants incorrects");
+      toast.error(error.message || "Identifiants incorrects");
     }
   };
 
   const signUpWithEmail = async (email: string, password: string) => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      toast.success("Compte créé avec succès");
-    } catch (error) {
+      const { error } = await supabase.auth.signUp({ email, password });
+      
+      if (error) {
+        throw error;
+      }
+      
+      toast.success("Compte créé avec succès. Vérifiez votre email pour confirmer.");
+    } catch (error: any) {
       console.error("Erreur de création de compte:", error);
-      toast.error("Impossible de créer le compte");
+      toast.error(error.message || "Impossible de créer le compte");
     }
   };
 
   const resetPassword = async (email: string) => {
     try {
-      await sendPasswordResetEmail(auth, email);
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/login?reset=true`,
+      });
+      
+      if (error) {
+        throw error;
+      }
+      
       toast.success("Email de réinitialisation envoyé");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Erreur de réinitialisation:", error);
-      toast.error("Échec de l'envoi de l'email");
+      toast.error(error.message || "Échec de l'envoi de l'email");
     }
   };
 
   const logout = async () => {
     try {
-      await signOut(auth);
+      const { error } = await supabase.auth.signOut();
+      
+      if (error) {
+        throw error;
+      }
+      
       toast.success("Déconnexion réussie");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Erreur de déconnexion:", error);
-      toast.error("Échec de la déconnexion");
+      toast.error(error.message || "Échec de la déconnexion");
     }
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setCurrentUser(session?.user ?? null);
+      }
+    );
+
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setCurrentUser(session?.user ?? null);
       setLoading(false);
     });
 
-    return unsubscribe;
+    return () => subscription.unsubscribe();
   }, []);
 
   const value = {
     currentUser,
+    session,
     loading,
-    signInWithGoogle,
     signInWithEmail,
     signUpWithEmail,
     resetPassword,
