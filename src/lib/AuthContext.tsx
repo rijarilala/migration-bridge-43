@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { User, Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
@@ -11,6 +10,7 @@ interface AuthContextType {
   signInWithEmail: (email: string, password: string) => Promise<void>;
   signUpWithEmail: (email: string, password: string) => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -45,6 +45,21 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     } catch (error: any) {
       console.error("Erreur de connexion par email:", error);
       toast.error(error.message || "Identifiants incorrects");
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+      });
+      
+      if (error) {
+        throw error;
+      }
+    } catch (error: any) {
+      console.error("Erreur de connexion avec Google:", error);
+      toast.error(error.message || "Échec de connexion avec Google");
     }
   };
 
@@ -121,6 +136,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     signInWithEmail,
     signUpWithEmail,
     resetPassword,
+    signInWithGoogle,
     logout,
   };
 
