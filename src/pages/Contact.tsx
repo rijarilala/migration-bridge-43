@@ -49,7 +49,7 @@ const Contact = () => {
     try {
       // Call the Supabase Edge Function to send emails
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_FUNCTIONS_URL || 'https://yoursupabaseproject.supabase.co/functions/v1'}/send-contact-email`,
+        "https://wegzylnyopbcnutmtigk.supabase.co/functions/v1/send-contact-email",
         {
           method: "POST",
           headers: {
