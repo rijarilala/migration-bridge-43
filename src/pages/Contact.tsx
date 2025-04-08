@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
 import Map from "@/components/Map";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
@@ -54,6 +54,8 @@ const Contact = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${supabase.auth.getSession().then(({ data }) => data.session?.access_token)}`,
+            "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZ3p5bG55b3BiY251dG10aWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQwMDY0NzEsImV4cCI6MjA1OTU4MjQ3MX0.bK0B0dqpDDMgfeV8Co4q7ydBmwjPuwUzl2fnvgA5Pm0"
           },
           body: JSON.stringify(values),
         }
