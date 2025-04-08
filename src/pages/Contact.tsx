@@ -1,269 +1,248 @@
 
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { toast } from "sonner";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
 import Map from "@/components/Map";
 
+const formSchema = z.object({
+  name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
+  email: z.string().email("Adresse email invalide"),
+  phone: z.string().optional(),
+  subject: z.string().min(5, "Le sujet doit contenir au moins 5 caractères"),
+  message: z.string().min(10, "Le message doit contenir au moins 10 caractères"),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
 const Contact = () => {
-  const { t } = useTranslation();
-  
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      toast.error(t('contact.form.errorRequired'));
-      return;
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast.error(t('contact.form.errorEmail'));
-      return;
-    }
-
-    // Submit logic would go here
-    console.log("Form submitted:", formData);
-    toast.success(t('contact.form.success'));
-    
-    // Reset form
-    setFormData({
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
       name: "",
       email: "",
       phone: "",
       subject: "",
       message: "",
-    });
+    },
+  });
+
+  const onSubmit = async (values: FormValues) => {
+    setIsSubmitting(true);
+    
+    try {
+      // Call the Supabase Edge Function to send emails
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_FUNCTIONS_URL || 'https://yoursupabaseproject.supabase.co/functions/v1'}/send-contact-email`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || "Erreur lors de l'envoi du message");
+      }
+      
+      // Show success message
+      toast.success("Message envoyé avec succès !");
+      setSubmitted(true);
+      form.reset();
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast.error(error instanceof Error ? error.message : "Une erreur s'est produite lors de l'envoi du message.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const contactInfo = [
-    {
-      icon: <Phone className="w-5 h-5 text-brand-600" />,
-      title: t('contact.info.phone'),
-      details: ["+261 34 05 350 68"],
-    },
-    {
-      icon: <Mail className="w-5 h-5 text-brand-600" />,
-      title: t('contact.info.email'),
-      details: ["contact@migrapro.com", "support@migrapro.com"],
-    },
-    {
-      icon: <MapPin className="w-5 h-5 text-brand-600" />,
-      title: t('contact.info.address'),
-      details: ["Lot 108T Moramanga 514", "Madagascar"],
-    },
-    {
-      icon: <Clock className="w-5 h-5 text-brand-600" />,
-      title: t('contact.info.hours'),
-      details: [t('contact.info.weekdays'), t('contact.info.saturday')],
-    },
-  ];
-
   return (
-    <div className="pt-24 pb-16 min-h-screen">
-      <Helmet>
-        <title>{t('navigation.contact')} | MigraPro</title>
-      </Helmet>
+    <div className="pt-24 pb-16 min-h-screen bg-gradient-to-b from-secondary/20 to-background/0">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {t('contact.title')}
+            <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4 gradient-text">
+              Contactez-nous
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {t('contact.description')}
+              Une question ? Une demande de devis ? Nous sommes là pour vous aider. Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-1">
-              <div className="bg-white shadow-sm border border-gray-100 rounded-xl p-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-6">
-                  {t('contact.info.title')}
-                </h2>
-
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
+                <h2 className="text-xl font-semibold mb-6">Nos coordonnées</h2>
                 <div className="space-y-6">
-                  {contactInfo.map((item, index) => (
-                    <div key={index} className="flex">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center mr-4">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-medium text-gray-900">{item.title}</h3>
-                        <div className="mt-1 text-gray-600">
-                          {item.details.map((detail, i) => (
-                            <p key={i}>{detail}</p>
-                          ))}
-                        </div>
-                      </div>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                      <MapPin size={20} />
                     </div>
-                  ))}
-                </div>
-
-                <div className="mt-8">
-                  <h3 className="font-medium text-gray-900 mb-3">{t('contact.social.title')}</h3>
-                  <div className="flex space-x-4">
-                    <a
-                      href="#"
-                      className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-brand-100 hover:text-brand-600 transition-colors"
-                      aria-label="Facebook"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                      </svg>
-                    </a>
-                    <a
-                      href="#"
-                      className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-brand-100 hover:text-brand-600 transition-colors"
-                      aria-label="Twitter"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-                      </svg>
-                    </a>
-                    <a
-                      href="#"
-                      className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-brand-100 hover:text-brand-600 transition-colors"
-                      aria-label="LinkedIn"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                      </svg>
-                    </a>
-                    <a
-                      href="#"
-                      className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-brand-100 hover:text-brand-600 transition-colors"
-                      aria-label="Instagram"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
-                      </svg>
-                    </a>
+                    <div>
+                      <h3 className="font-medium text-gray-900">Adresse</h3>
+                      <p className="text-gray-600">Lot 108T Moramanga 514, Madagascar</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                      <Mail size={20} />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">Email</h3>
+                      <a href="mailto:contact@migrapro.com" className="text-primary hover:underline">
+                        contact@migrapro.com
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                      <Phone size={20} />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">Téléphone</h3>
+                      <a href="tel:+261340535068" className="text-primary hover:underline">
+                        +261 34 05 350 68
+                      </a>
+                    </div>
                   </div>
                 </div>
-                
-                <div className="mt-8">
-                  <h3 className="font-medium text-gray-900 mb-3">{t('contact.map.title')}</h3>
-                  <Map />
-                </div>
+              </div>
+              
+              <div className="rounded-xl overflow-hidden">
+                <Map />
               </div>
             </div>
 
-            <div className="lg:col-span-2">
-              <div className="bg-white shadow-sm border border-gray-100 rounded-xl p-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-6">
-                  {t('contact.form.title')}
-                </h2>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">{t('contact.form.name')} *</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder={t('contact.form.namePlaceholder')}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">{t('contact.form.email')} *</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder={t('contact.form.emailPlaceholder')}
-                        required
-                      />
-                    </div>
+            <div className="bg-white shadow-lg rounded-xl p-6">
+              {submitted ? (
+                <div className="text-center h-full flex flex-col items-center justify-center py-8">
+                  <div className="text-green-500 mb-4">
+                    <CheckCircle size={64} />
                   </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">{t('contact.form.phone')}</Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder={t('contact.form.phonePlaceholder')}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">{t('contact.form.subject')} *</Label>
-                      <Select
-                        value={formData.subject}
-                        onValueChange={(value) => handleSelectChange("subject", value)}
-                      >
-                        <SelectTrigger id="subject">
-                          <SelectValue placeholder={t('contact.form.subjectPlaceholder')} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="immigration">{t('services.immigration')}</SelectItem>
-                          <SelectItem value="formation">{t('services.training')}</SelectItem>
-                          <SelectItem value="coaching">{t('services.coaching')}</SelectItem>
-                          <SelectItem value="orientation">{t('services.professionalOrientation')}</SelectItem>
-                          <SelectItem value="recrutement">{t('services.recruitment')}</SelectItem>
-                          <SelectItem value="autre">{t('contact.form.other')}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message">{t('contact.form.message')} *</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder={t('contact.form.messagePlaceholder')}
-                      rows={6}
-                      required
-                    />
-                  </div>
-
-                  <Button type="submit" className="w-full md:w-auto bg-brand-600 hover:bg-brand-700">
-                    {t('contact.form.submit')}
+                  <h3 className="text-xl font-semibold mb-2">Message envoyé !</h3>
+                  <p className="text-gray-600 mb-6">
+                    Merci de nous avoir contactés. Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.
+                  </p>
+                  <Button onClick={() => setSubmitted(false)}>
+                    Envoyer un nouveau message
                   </Button>
-                </form>
-              </div>
+                </div>
+              ) : (
+                <>
+                  <h2 className="text-xl font-semibold mb-6">Envoyez-nous un message</h2>
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Nom complet</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Votre nom" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Email</FormLabel>
+                              <FormControl>
+                                <Input type="email" placeholder="votre@email.com" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="phone"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Téléphone (optionnel)</FormLabel>
+                              <FormControl>
+                                <Input placeholder="+261 XX XX XXX XX" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="subject"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Sujet</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Sujet de votre message" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Message</FormLabel>
+                            <FormControl>
+                              <Textarea placeholder="Détaillez votre demande ici..." rows={5} {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <Button 
+                        type="submit" 
+                        className="w-full" 
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <div className="flex items-center">
+                            <div className="w-5 h-5 border-t-2 border-b-2 border-white rounded-full animate-spin mr-2"></div>
+                            Envoi en cours...
+                          </div>
+                        ) : (
+                          <div className="flex items-center">
+                            <Send size={16} className="mr-2" />
+                            Envoyer
+                          </div>
+                        )}
+                      </Button>
+                    </form>
+                  </Form>
+                </>
+              )}
             </div>
           </div>
         </div>
