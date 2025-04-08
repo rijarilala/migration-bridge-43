@@ -4,18 +4,27 @@ import ServicePage from "@/components/ServicePage";
 import { FileCheck, Users, BarChart, Globe, Briefcase, CheckCircle2, HeartHandshake, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/lib/AuthContext";
+import { toast } from "sonner";
 
 const Immigration = () => {
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const handleNavigateToEligibility = () => {
-    navigate("/eligibility");
-    window.scrollTo(0, 0);
+    if (currentUser) {
+      navigate("/eligibility");
+      window.scrollTo(0, 0);
+    } else {
+      toast.error("Vous devez être connecté pour accéder au test d'éligibilité");
+      navigate("/login");
+    }
   };
+
   const features = [
     {
       title: "Évaluation d'admissibilité",
@@ -76,7 +85,7 @@ const Immigration = () => {
                   ))}
                 </div>
                 <Button onClick={handleNavigateToEligibility} className="mt-4">
-                  Tester mon admissibilité
+                  {currentUser ? "Tester mon admissibilité" : "Se connecter pour tester mon admissibilité"}
                 </Button>
               </div>
               <div className="order-first lg:order-last mb-6 lg:mb-0">
@@ -116,7 +125,7 @@ const Immigration = () => {
             </div>
             <div className="text-center mt-8">
             <Button onClick={handleNavigateToEligibility} variant="outline">
-                Évaluer mon admissibilité maintenant
+                {currentUser ? "Évaluer mon admissibilité maintenant" : "Se connecter pour évaluer mon admissibilité"}
               </Button>
             </div>
           </div>

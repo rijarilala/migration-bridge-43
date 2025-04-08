@@ -1,9 +1,11 @@
+
 import { Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Eligibility from "./pages/Eligibility";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/LoginPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // Service Pages
 import Immigration from "./pages/services/Immigration";
@@ -25,7 +27,14 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Index />} />
-      <Route path="/eligibility" element={<Eligibility />} />
+      <Route 
+        path="/eligibility" 
+        element={
+          <ProtectedRoute>
+            <Eligibility />
+          </ProtectedRoute>
+        } 
+      />
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<LoginPage />} />
       
