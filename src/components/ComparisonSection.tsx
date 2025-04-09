@@ -1,18 +1,22 @@
+
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+
 interface ComparisonItem {
   icon: ReactNode;
   text: string;
 }
+
 interface ComparisonSectionProps {
   withoutMembershipTitle: string;
   withMembershipTitle: string;
   withoutMembershipItems: ComparisonItem[];
   withMembershipItems: ComparisonItem[];
 }
+
 const ComparisonSection = ({
   withoutMembershipTitle,
   withMembershipTitle,
@@ -33,11 +37,12 @@ const ComparisonSection = ({
       }
     })
   };
+
   return <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       {/* Without Membership Column */}
       <Card className="border-red-200 shadow-lg overflow-hidden">
         <div className="bg-red-100 px-6 py-4">
-          <h3 className="text-xl font-semibold text-red-800 text-center">{withoutMembershipTitle}</h3>
+          <h3 className="text-xl font-semibold text-red-800 text-center">Sans accompagnement</h3>
         </div>
         <CardContent className="p-6">
           <ul className="space-y-4">
@@ -54,7 +59,7 @@ const ComparisonSection = ({
       {/* With Membership Column */}
       <Card className="border-green-200 shadow-lg overflow-hidden">
         <div className="bg-green-100 px-6 py-4">
-          <h3 className="text-xl font-semibold text-green-800 text-center">{withMembershipTitle}</h3>
+          <h3 className="text-xl font-semibold text-green-800 text-center">Avec notre accompagnement expert</h3>
         </div>
         <CardContent className="p-6">
           <ul className="space-y-4">
@@ -69,4 +74,5 @@ const ComparisonSection = ({
       </Card>
     </div>;
 };
+
 export default ComparisonSection;
