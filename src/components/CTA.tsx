@@ -21,9 +21,13 @@ const CTA = ({
   secondaryButtonLink
 }: CTAProps) => {
   return (
-    <section className="py-20 bg-primary/5">
+    <section className="py-20 bg-primary/5 relative overflow-hidden">
+      {/* Decorative elements similar to Contact page */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-accent/5 rounded-full blur-xl"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-primary/5 rounded-full blur-xl"></div>
+      
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center relative">
           <span className="company-section-title mb-4">Commencez maintenant</span>
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">{title}</h2>
           <div className="flex justify-center mb-6">

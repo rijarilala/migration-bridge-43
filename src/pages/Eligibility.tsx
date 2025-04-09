@@ -3,9 +3,14 @@ import { useEffect } from "react";
 import EligibilityForm from "@/components/EligibilityForm";
 import Stats from "@/components/Stats";
 import { motion } from "framer-motion";
-import { Check, MapPin, Clock, FileText, Shield } from "lucide-react";
+import { Check, MapPin, Clock, FileText, Shield, Home } from "lucide-react";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
 const Eligibility = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const immigrationStats = [
     { value: "350k+", label: "Immigrants acceptés par année" },
     { value: "60+", label: "Programmes d'immigration" },
@@ -37,30 +42,53 @@ const Eligibility = () => {
   ];
 
   return (
-    <div className="pt-24 pb-16 min-h-screen bg-gradient-to-b from-background to-secondary/30">
+    <div className="pt-24 pb-16 min-h-screen bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
+          {/* Breadcrumb navigation like the Contact page */}
+          <Breadcrumb className="mb-8">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/" className="text-primary/80 hover:text-primary">
+                  <Home size={16} className="mr-1" />
+                  Accueil
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/eligibility" className="text-primary font-medium">
+                  Éligibilité
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
           <motion.div 
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-              Évaluez votre <span className="gradient-text">admissibilité</span> à l'immigration canadienne
+            <span className="company-section-title">Test d'éligibilité</span>
+            <h1 className="page-title flex flex-col items-center justify-center">
+              Évaluez votre <span className="gradient-text">admissibilité</span>
+              <span className="block mt-2 w-20 h-1 bg-accent mx-auto"></span>
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
               Découvrez votre admissibilité à l'immigration canadienne grâce à notre évaluateur rapide et fiable.
               Notre système analyse votre profil et vous donne un résultat instantané.
             </p>
           </motion.div>
 
           <motion.div 
-            className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-12"
+            className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-12 relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
+            {/* Decorative top border like Contact form */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-accent"></div>
+            
             <h2 className="text-xl font-semibold mb-4">Pourquoi évaluer votre admissibilité ?</h2>
             <p className="mb-4">
               Le Canada dispose de multiples voies d'immigration adaptées à différents profils. Notre évaluateur vous aide à :
@@ -74,6 +102,10 @@ const Eligibility = () => {
             <p className="font-medium">
               Notre système analyse en profondeur votre profil selon les critères officiels d'immigration.
             </p>
+            
+            {/* Decorative elements like in Contact page */}
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-xl"></div>
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-accent/5 rounded-full blur-xl"></div>
           </motion.div>
 
           <Stats 
@@ -89,7 +121,7 @@ const Eligibility = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="bg-white p-8 rounded-xl shadow-md relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-accent"></div>
               <h2 className="text-2xl font-serif font-bold mb-6">Pourquoi utiliser notre évaluateur ?</h2>
               
               <div className="space-y-6">
@@ -105,6 +137,9 @@ const Eligibility = () => {
                   </div>
                 ))}
               </div>
+              
+              {/* Decorative elements like in Contact page */}
+              <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-primary/5 rounded-full blur-xl"></div>
             </div>
             
             <div className="relative">
@@ -125,6 +160,10 @@ const Eligibility = () => {
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
             <EligibilityForm />
+            
+            {/* Decorative elements like in Contact page */}
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-xl"></div>
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-accent/5 rounded-full blur-xl"></div>
           </motion.div>
         </div>
       </div>

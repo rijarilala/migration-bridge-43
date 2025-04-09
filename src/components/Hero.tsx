@@ -1,5 +1,7 @@
 
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 interface HeroProps {
   title: string;
@@ -21,7 +23,7 @@ const Hero = ({
   imageSrc,
 }: HeroProps) => {
   return (
-    <div className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-secondary/70 to-background pt-16">
+    <div className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-secondary/20 to-background/0 pt-16">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-50 md:opacity-70">
@@ -33,7 +35,7 @@ const Hero = ({
           <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background" />
         </div>
         
-        {/* Animated blobs */}
+        {/* Animated blobs similar to Contact page */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
         <div className="absolute top-1/3 right-1/3 w-72 h-72 bg-accent/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-1/4 right-1/2 w-56 h-56 bg-brand-300/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
@@ -53,7 +55,22 @@ const Hero = ({
                 {subtitle}
               </p>
             </div>
-            {/* Suppression des boutons CTA */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button asChild className="bg-accent hover:bg-accent/90 text-white px-8 rounded-full">
+                <Link to={ctaLink}>
+                  {ctaText}
+                  <ArrowRight size={18} className="ml-2" />
+                </Link>
+              </Button>
+              
+              {secondaryCtaText && secondaryCtaLink && (
+                <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/5 rounded-full">
+                  <Link to={secondaryCtaLink}>
+                    {secondaryCtaText}
+                  </Link>
+                </Button>
+              )}
+            </div>
           </div>
           
           <div className="hidden md:block relative">
