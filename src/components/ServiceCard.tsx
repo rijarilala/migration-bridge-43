@@ -12,16 +12,7 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ title, description, icon, link }: ServiceCardProps) => {
   return (
-    <div className="bg-white rounded-xl overflow-hidden h-full group hover:scale-[1.02] transition-all duration-300 shadow-md border border-gray-100 relative">
-      {/* Ajout d'une décoration de fond en rapport avec le voyage */}
-      <div className="absolute top-0 right-0 w-16 h-16 opacity-5">
-        <img 
-          src={title === "Immigration" ? "public/lovable-uploads/4a066ffe-5b4e-44e7-8133-1bae24de50b7.png" : "public/lovable-uploads/039d6288-7250-434f-9dd4-565a94d979a8.png"} 
-          alt="" 
-          className="w-full h-full object-contain"
-        />
-      </div>
-      
+    <div className="bg-white rounded-xl overflow-hidden h-full group hover:scale-[1.02] transition-all duration-300 shadow-md border border-gray-100">
       <div className="p-8 h-full flex flex-col">
         <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary/20 transition-all duration-300">
           {icon}
