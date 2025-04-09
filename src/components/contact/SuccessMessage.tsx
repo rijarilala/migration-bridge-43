@@ -9,19 +9,23 @@ type SuccessMessageProps = {
 const SuccessMessage = ({ onReset }: SuccessMessageProps) => {
   return (
     <div className="text-center h-full flex flex-col items-center justify-center py-8">
-      <div className="text-green-500 mb-4">
-        <CheckCircle size={64} />
+      <div className="text-accent mb-6">
+        <CheckCircle size={80} strokeWidth={1.5} />
       </div>
-      <h3 className="text-xl font-semibold mb-2 text-primary">Message envoyé !</h3>
-      <p className="text-gray-600 mb-6">
+      <h3 className="text-2xl font-semibold mb-3 text-primary">Message envoyé !</h3>
+      <p className="text-gray-600 mb-8 max-w-md mx-auto">
         Merci de nous avoir contactés. Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.
       </p>
       <Button 
         onClick={onReset} 
-        className="bg-primary hover:bg-primary/90 text-white px-6"
+        className="bg-primary hover:bg-primary/90 text-white px-8 py-2.5 rounded-full"
       >
         Envoyer un nouveau message
       </Button>
+      
+      {/* Decorative elements */}
+      <div className="absolute top-4 right-4 w-20 h-20 bg-accent/5 rounded-full"></div>
+      <div className="absolute bottom-4 left-4 w-16 h-16 bg-primary/5 rounded-full"></div>
     </div>
   );
 };

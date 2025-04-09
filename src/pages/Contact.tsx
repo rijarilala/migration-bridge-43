@@ -22,29 +22,30 @@ const Contact = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           {/* Breadcrumb navigation */}
-          <Breadcrumb className="mb-6">
+          <Breadcrumb className="mb-8">
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/">
+                <BreadcrumbLink href="/" className="text-primary/80 hover:text-primary">
                   <Home size={16} className="mr-1" />
                   Accueil
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink href="/contact">Contact</BreadcrumbLink>
+                <BreadcrumbLink href="/contact" className="text-primary font-medium">
+                  Contact
+                </BreadcrumbLink>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
 
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2">
+            <span className="company-section-title">Nous Contacter</span>
+            <h1 className="page-title flex flex-col items-center justify-center">
               Contactez-nous
+              <span className="block mt-2 w-20 h-1 bg-accent mx-auto"></span>
             </h1>
-            <div className="flex justify-center mb-4">
-              <div className="w-20 h-1 bg-accent"></div>
-            </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
               Une question ? Une demande de devis ? Nous sommes là pour vous aider. Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
             </p>
           </div>
@@ -54,7 +55,10 @@ const Contact = () => {
               <ContactInfo />
             </div>
 
-            <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-100">
+            <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-100 relative overflow-hidden">
+              {/* Decorative element */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-accent"></div>
+              
               {submitted ? (
                 <SuccessMessage onReset={handleReset} />
               ) : (

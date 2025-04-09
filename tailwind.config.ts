@@ -32,18 +32,18 @@ const config = {
           200: "#ADD6FF",
           300: "#84C1FF",
           400: "#5AACFF",
-          500: "#0056b3", // Main brand blue
-          600: "#004494",
-          700: "#003575",
-          800: "#002656",
-          900: "#001737",
+          500: "#003566", // Darker navy blue
+          600: "#002855",
+          700: "#001F44",
+          800: "#001633",
+          900: "#000D22",
         },
         accent: {
-          DEFAULT: "#e53e3e", // Brand red accent
+          DEFAULT: "#e5194f", // Brighter red accent
           foreground: "hsl(var(--accent-foreground))",
         },
         primary: {
-          DEFAULT: "#0056b3", // Updated primary color to match brand blue
+          DEFAULT: "#003566", // Updated primary color to match navy blue from images
           foreground: "#ffffff",
         },
         secondary: {

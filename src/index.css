@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 212 70% 35%;
+    --primary: 212 100% 20%;
     --primary-foreground: 210 40% 98%;
  
     --secondary: 210 40% 96.1%;
@@ -23,7 +23,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
  
-    --accent: 0 72% 51%;
+    --accent: 346 82% 49%;
     --accent-foreground: 210 40% 98%;
  
     --destructive: 0 84.2% 60.2%;
@@ -161,12 +161,12 @@
   --brand-200: #ADD6FF;
   --brand-300: #84C1FF;
   --brand-400: #5AACFF;
-  --brand-500: #0056b3;
-  --brand-600: #004494;
-  --brand-700: #003575;
-  --brand-800: #002656;
-  --brand-900: #001737;
-  --accent: #e53e3e;
+  --brand-500: #003566;
+  --brand-600: #002855;
+  --brand-700: #001F44;
+  --brand-800: #001633;
+  --brand-900: #000D22;
+  --accent: #e5194f;
 }
 
 /* Immigration-specific styles */
@@ -179,7 +179,12 @@
 }
 
 .stat-card {
-  @apply bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-all duration-300;
+  @apply bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-all duration-300 relative overflow-hidden;
+}
+
+.stat-card::before {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-1 bg-accent;
 }
 
 .section-heading {
@@ -188,11 +193,11 @@
 
 .section-heading::after {
   content: '';
-  @apply absolute bottom-0 left-0 w-20 h-1 bg-accent mt-2;
+  @apply absolute -bottom-2 left-0 w-20 h-1 bg-accent;
 }
 
 .hero-pattern {
-  background-color: #0056b3;
+  background-color: #003566;
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
@@ -203,4 +208,47 @@
 .accent-underline::after {
   content: '';
   @apply absolute -bottom-1 left-0 w-full h-0.5 bg-accent;
+}
+
+/* New styles inspired by the provided images */
+.company-section-title {
+  @apply text-sm font-medium text-accent uppercase tracking-wider relative inline-block mb-4;
+}
+
+.company-section-title::after {
+  content: '';
+  @apply absolute -right-10 top-1/2 w-8 h-0.5 bg-accent;
+}
+
+.feature-icon-box {
+  @apply flex items-center p-4 rounded-lg hover:shadow-md transition-all border border-gray-100;
+}
+
+.feature-icon {
+  @apply w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3;
+}
+
+.feature-dot {
+  @apply inline-block w-2 h-2 rounded-full bg-accent mr-2;
+}
+
+.stat-number {
+  @apply text-4xl font-bold text-primary;
+}
+
+.stat-label {
+  @apply text-sm text-gray-500 uppercase tracking-wide;
+}
+
+.contact-info-box {
+  @apply flex items-center gap-3 text-lg font-medium text-primary;
+}
+
+.page-title {
+  @apply text-3xl md:text-4xl font-bold text-primary mb-4 relative;
+}
+
+.page-title::after {
+  content: '';
+  @apply absolute -bottom-4 left-0 w-16 h-1 bg-accent;
 }
