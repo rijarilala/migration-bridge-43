@@ -24,12 +24,12 @@ const FeatureSection = ({
   imageSrc 
 }: FeatureSectionProps) => {
   // Determine which image to use based on the title or position
-  let displayImage = "/lovable-uploads/1590250c-c1f2-40ec-843d-faf8fb969a38.png"; // Default to first feature image
+  let displayImage = "/lovable-uploads/d21729e1-07f0-4513-a633-247e7f60e5f5.png"; // Photo d'avion par défaut
   
   if (title.toLowerCase().includes("immigration")) {
-    displayImage = "/lovable-uploads/1590250c-c1f2-40ec-843d-faf8fb969a38.png"; // Woman with luggage at airport
+    displayImage = "/lovable-uploads/4fe71fb8-5f16-40ca-a9df-6428df760df8.png"; // Famille devant l'avion
   } else if (title.toLowerCase().includes("carrière") || title.toLowerCase().includes("développez")) {
-    displayImage = "/lovable-uploads/24c7fcdb-ae47-4783-842b-28c941fd2134.png"; // Person at train station
+    displayImage = "/lovable-uploads/d21729e1-07f0-4513-a633-247e7f60e5f5.png"; // Photo d'avion
   }
   
   return (
