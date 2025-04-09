@@ -62,7 +62,7 @@ const CTA = ({
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl -rotate-3 opacity-10"></div>
                 <img
-                  src="/public/lovable-uploads/3e8e63b6-cd30-44f6-9771-0103c5b66dd8.png"
+                  src="/lovable-uploads/3e8e63b6-cd30-44f6-9771-0103c5b66dd8.png"
                   alt="Voyageur à l'aéroport"
                   className="relative w-full h-auto rounded-xl shadow-lg object-cover"
                 />

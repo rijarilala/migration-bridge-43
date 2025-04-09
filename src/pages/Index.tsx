@@ -148,7 +148,7 @@ const Index = () => {
       <Hero
         title="Votre partenaire pour un nouveau départ"
         subtitle="MigraPro, basé à Moramanga, Madagascar, est votre partenaire de confiance pour concrétiser votre projet d'immigration et de carrière au Canada. Spécialistes en mobilité internationale et orientation professionnelle, nous accompagnons les particuliers et les professionnels dans toutes les étapes de leur démarche, en mettant à leur disposition une expertise pointue et un suivi personnalisé."
-        imageSrc="/public/lovable-uploads/d04e725a-b074-4cc5-a043-58931fdc38e8.png"
+        imageSrc="/lovable-uploads/d04e725a-b074-4cc5-a043-58931fdc38e8.png"
       />
       
       <AboutSection />
@@ -205,7 +205,7 @@ const Index = () => {
         title="Immigration simplifiée"
         subtitle="Notre équipe d'experts vous guide à travers le processus d'immigration complexe, en vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
         features={featuresImmigration}
-        imageSrc="/public/lovable-uploads/1590250c-c1f2-40ec-843d-faf8fb969a38.png"
+        imageSrc="/lovable-uploads/1590250c-c1f2-40ec-843d-faf8fb969a38.png"
       />
 
       {/* Stats section */}
@@ -267,7 +267,7 @@ const Index = () => {
             description: "Évaluation approfondie de vos compétences et identification des opportunités de carrière adaptées à votre profil."
           }
         ]}
-        imageSrc="/public/lovable-uploads/24c7fcdb-ae47-4783-842b-28c941fd2134.png"
+        imageSrc="/lovable-uploads/24c7fcdb-ae47-4783-842b-28c941fd2134.png"
         reversed={true}
       />
 
