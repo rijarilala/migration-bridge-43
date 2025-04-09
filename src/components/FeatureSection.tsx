@@ -37,7 +37,7 @@ const FeatureSection = ({
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl -rotate-3 opacity-10"></div>
               <img
-                src={imageSrc}
+                src={reversed ? "public/lovable-uploads/645a3ce4-c721-43dd-ad06-412c144e97d5.png" : "public/lovable-uploads/9dd4286c-1a4a-4e56-abe5-809333648791.png"}
                 alt={title}
                 className="relative w-full h-auto rounded-xl shadow-lg object-cover"
               />

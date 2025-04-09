@@ -23,8 +23,10 @@ const SuccessMessage = ({ onReset }: SuccessMessageProps) => {
         Envoyer un nouveau message
       </Button>
       
-      {/* Decorative elements */}
-      <div className="absolute top-4 right-4 w-20 h-20 bg-accent/5 rounded-full"></div>
+      {/* Decorative elements with passport image */}
+      <div className="absolute top-4 right-4 w-20 h-20 rounded-full overflow-hidden">
+        <img src="public/lovable-uploads/a5109544-d931-4b50-99ee-e17782777198.png" alt="Passport" className="w-full h-full object-cover" />
+      </div>
       <div className="absolute bottom-4 left-4 w-16 h-16 bg-primary/5 rounded-full"></div>
     </div>
   );

@@ -90,8 +90,8 @@ const Immigration = () => {
               </div>
               <div className="order-first lg:order-last mb-6 lg:mb-0">
                 <img
-                  src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1024&auto=format&fit=crop"
-                  alt="Famille heureuse arrivant au Canada"
+                  src="public/lovable-uploads/c5d0ac96-47ae-4c5b-88e9-671295610c4f.png"
+                  alt="Homme à l'aéroport avec passeport"
                   className="w-full h-auto rounded-xl shadow-md object-cover aspect-video"
                 />
               </div>

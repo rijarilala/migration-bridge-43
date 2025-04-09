@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, MapPin, Globe } from "lucide-react";
 import { motion } from "framer-motion";
@@ -139,8 +140,13 @@ const AboutSection = () => {
                 </CardContent>
               </Card>
               
-              <div className="bg-primary/10 p-4 rounded-lg">
-                <p className="text-gray-700 font-medium flex items-center">
+              <div className="bg-primary/10 p-4 rounded-lg relative">
+                <img 
+                  src="public/lovable-uploads/039d6288-7250-434f-9dd4-565a94d979a8.png" 
+                  alt="Carte du monde" 
+                  className="absolute inset-0 w-full h-full object-cover opacity-5"
+                />
+                <p className="text-gray-700 font-medium flex items-center relative z-10">
                   <span className="mr-2">💡</span> Prêt à démarrer votre projet ? Contactez-nous dès aujourd'hui !
                 </p>
               </div>

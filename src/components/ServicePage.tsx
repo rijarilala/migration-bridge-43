@@ -67,7 +67,7 @@ const ServicePage = ({
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl rotate-2 blur-sm"></div>
                   <img
-                    src={imageSrc}
+                    src="public/lovable-uploads/b48b43cc-fe0b-402f-9127-96bc64499e58.png"
                     alt={title}
                     className="relative w-full h-auto rounded-xl shadow-md object-cover aspect-video"
                   />

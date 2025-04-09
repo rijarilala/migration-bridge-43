@@ -110,8 +110,8 @@ const Eligibility = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl rotate-2 opacity-10"></div>
               <img 
-                src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?auto=format&fit=crop&w=600&h=700" 
-                alt="Immigration au Canada" 
+                src="public/lovable-uploads/5f3d0fa7-ca35-4fbb-9635-7388026c71b2.png" 
+                alt="Passeports et documents d'immigration" 
                 className="relative rounded-xl shadow-lg object-cover w-full h-full"
               />
             </div>

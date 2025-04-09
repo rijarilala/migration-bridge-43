@@ -26,8 +26,8 @@ const Hero = ({
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-50 md:opacity-70">
           <img
-            src={imageSrc}
-            alt="Hero background"
+            src="public/lovable-uploads/854a4dd5-d4d2-467e-9ec8-181280afd40b.png"
+            alt="Hero background - Toronto skyline"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background" />
@@ -61,8 +61,8 @@ const Hero = ({
               <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-2xl rotate-3 opacity-20"></div>
               <div className="relative overflow-hidden rounded-xl shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1455541504462-57ebb2a9cec1?q=80&w=600&h=800&auto=format&fit=crop" 
-                  alt="Famille heureuse immigrée au Canada"
+                  src="public/lovable-uploads/debaebb5-8fa5-4437-833e-30365887c6f0.png" 
+                  alt="Immigration au Canada"
                   className="w-full object-cover animate-float"
                 />
               </div>
