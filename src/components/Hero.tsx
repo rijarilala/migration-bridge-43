@@ -28,8 +28,8 @@ const Hero = ({
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-50 md:opacity-70">
           <img
-            src="/lovable-uploads/d04e725a-b074-4cc5-a043-58931fdc38e8.png"
-            alt="Femme voyageuse à l'aéroport"
+            src="/lovable-uploads/c1574abf-376b-429f-bd07-8dcd9fa1fad1.png"
+            alt="Famille voyageuse à l'aéroport"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background" />
@@ -78,8 +78,8 @@ const Hero = ({
               <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-2xl rotate-3 opacity-20"></div>
               <div className="relative overflow-hidden rounded-xl shadow-2xl">
                 <img 
-                  src="/lovable-uploads/d04e725a-b074-4cc5-a043-58931fdc38e8.png" 
-                  alt="Femme voyageuse à l'aéroport"
+                  src="/lovable-uploads/c1574abf-376b-429f-bd07-8dcd9fa1fad1.png" 
+                  alt="Famille voyageuse à l'aéroport"
                   className="w-full object-cover animate-float"
                 />
               </div>
