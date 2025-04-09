@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 221.2 83.2% 53.3%;
+    --primary: 212 70% 35%;
     --primary-foreground: 210 40% 98%;
  
     --secondary: 210 40% 96.1%;
@@ -23,8 +23,8 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
  
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 72% 51%;
+    --accent-foreground: 210 40% 98%;
  
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -78,7 +78,7 @@
 
 /* Custom gradients */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-accent;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-brand-700;
 }
 
 /* Custom animations */
@@ -156,14 +156,51 @@
 
 /* Custom brand colors */
 :root {
-  --brand-50: #EFF6FF;
-  --brand-100: #DBEAFE;
-  --brand-200: #BFDBFE;
-  --brand-300: #93C5FD;
-  --brand-400: #60A5FA;
-  --brand-500: #3B82F6;
-  --brand-600: #2563EB;
-  --brand-700: #1D4ED8;
-  --brand-800: #1E40AF;
-  --brand-900: #1E3A8A;
+  --brand-50: #EBF5FF;
+  --brand-100: #D6EBFF;
+  --brand-200: #ADD6FF;
+  --brand-300: #84C1FF;
+  --brand-400: #5AACFF;
+  --brand-500: #0056b3;
+  --brand-600: #004494;
+  --brand-700: #003575;
+  --brand-800: #002656;
+  --brand-900: #001737;
+  --accent: #e53e3e;
+}
+
+/* Immigration-specific styles */
+.visa-card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100;
+}
+
+.visa-icon {
+  @apply w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4;
+}
+
+.stat-card {
+  @apply bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-all duration-300;
+}
+
+.section-heading {
+  @apply text-2xl md:text-3xl font-bold text-primary mb-6 relative;
+}
+
+.section-heading::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-20 h-1 bg-accent mt-2;
+}
+
+.hero-pattern {
+  background-color: #0056b3;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.accent-underline {
+  position: relative;
+}
+
+.accent-underline::after {
+  content: '';
+  @apply absolute -bottom-1 left-0 w-full h-0.5 bg-accent;
 }

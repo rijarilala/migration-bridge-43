@@ -5,8 +5,11 @@ import Map from "@/components/Map";
 const ContactInfo = () => {
   return (
     <>
-      <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-6">Nos coordonnées</h2>
+      <div className="bg-white shadow-lg rounded-lg p-6 mb-8 border border-gray-100">
+        <h2 className="text-xl font-semibold mb-6 text-primary relative pb-2">
+          Nos coordonnées
+          <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-accent"></span>
+        </h2>
         <div className="space-y-6">
           <div className="flex items-start">
             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
@@ -42,7 +45,7 @@ const ContactInfo = () => {
         </div>
       </div>
       
-      <div className="rounded-xl overflow-hidden">
+      <div className="rounded-lg overflow-hidden border border-gray-100 shadow-lg">
         <Map />
       </div>
     </>
