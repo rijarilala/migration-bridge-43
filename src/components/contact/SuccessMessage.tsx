@@ -27,8 +27,8 @@ const SuccessMessage = ({ onReset }: SuccessMessageProps) => {
       <div className="mt-8 max-w-xs mx-auto relative">
         <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-lg -rotate-2 opacity-10"></div>
         <img 
-          src="/lovable-uploads/4fe71fb8-5f16-40ca-a9df-6428df760df8.png"
-          alt="Famille en voyage à l'aéroport" 
+          src="/lovable-uploads/d04e725a-b074-4cc5-a043-58931fdc38e8.png"
+          alt="Accompagnement personnalisé" 
           className="rounded-lg w-full h-auto relative"
         />
         <div className="absolute bottom-4 left-4 bg-white rounded-full px-4 py-2 shadow-md flex items-center">
