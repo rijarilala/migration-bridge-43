@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield } from "lucide-react";
@@ -148,7 +149,8 @@ const Index = () => {
       <Hero
         title="Votre partenaire pour un nouveau départ"
         subtitle="MigraPro, basé à Moramanga, Madagascar, est votre partenaire de confiance pour concrétiser votre projet d'immigration et de carrière au Canada. Spécialistes en mobilité internationale et orientation professionnelle, nous accompagnons les particuliers et les professionnels dans toutes les étapes de leur démarche, en mettant à leur disposition une expertise pointue et un suivi personnalisé."
-        imageSrc="/lovable-uploads/d04e725a-b074-4cc5-a043-58931fdc38e8.png"
+        imageSrc="/lovable-uploads/c1574abf-376b-429f-bd07-8dcd9fa1fad1.png"
+        scrollToId="services-section" // Ajouter l'ID de la section
       />
       
       <AboutSection />
@@ -176,8 +178,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services section */}
-      <section className="py-24 bg-gray-50">
+      {/* Services section - ID ajouté ici */}
+      <section id="services-section" className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>

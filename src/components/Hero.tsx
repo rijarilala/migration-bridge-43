@@ -8,6 +8,7 @@ interface HeroProps {
   subtitle: string;
   ctaText?: string;
   ctaLink?: string;
+  scrollToId?: string; // Nouveau prop pour l'ID de section à défiler
   secondaryCtaText?: string;
   secondaryCtaLink?: string;
   imageSrc: string;
@@ -18,10 +19,19 @@ const Hero = ({
   subtitle,
   ctaText = "En savoir plus",
   ctaLink = "/services",
+  scrollToId,
   secondaryCtaText,
   secondaryCtaLink,
   imageSrc,
 }: HeroProps) => {
+  // Fonction pour défiler vers une section
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-secondary/20 to-background/0 pt-16">
       {/* Background elements */}
@@ -56,12 +66,22 @@ const Hero = ({
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild className="bg-accent hover:bg-accent/90 text-white px-8 rounded-full">
-                <Link to={ctaLink}>
+              {scrollToId ? (
+                <Button 
+                  className="bg-accent hover:bg-accent/90 text-white px-8 rounded-full"
+                  onClick={() => scrollToSection(scrollToId)}
+                >
                   {ctaText}
                   <ArrowRight size={18} className="ml-2" />
-                </Link>
-              </Button>
+                </Button>
+              ) : (
+                <Button asChild className="bg-accent hover:bg-accent/90 text-white px-8 rounded-full">
+                  <Link to={ctaLink}>
+                    {ctaText}
+                    <ArrowRight size={18} className="ml-2" />
+                  </Link>
+                </Button>
+              )}
               
               {secondaryCtaText && secondaryCtaLink && (
                 <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/5 rounded-full">
