@@ -23,11 +23,11 @@ const SuccessMessage = ({ onReset }: SuccessMessageProps) => {
         Envoyer un nouveau message
       </Button>
       
-      {/* Section ajoutée avec l'image de la femme */}
+      {/* Section ajoutée avec l'image */}
       <div className="mt-8 max-w-xs mx-auto relative">
         <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-lg -rotate-2 opacity-10"></div>
         <img 
-          src="/public/lovable-uploads/cbb48c30-293c-4eb4-a841-031c05bc3d35.png"
+          src="/public/lovable-uploads/d04e725a-b074-4cc5-a043-58931fdc38e8.png"
           alt="Accompagnement personnalisé" 
           className="rounded-lg w-full h-auto relative"
         />

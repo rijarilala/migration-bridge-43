@@ -23,6 +23,15 @@ const FeatureSection = ({
   reversed = false,
   imageSrc 
 }: FeatureSectionProps) => {
+  // Determine which image to use based on the title or position
+  let displayImage = "/public/lovable-uploads/1590250c-c1f2-40ec-843d-faf8fb969a38.png"; // Default to first feature image
+  
+  if (title.toLowerCase().includes("immigration")) {
+    displayImage = "/public/lovable-uploads/1590250c-c1f2-40ec-843d-faf8fb969a38.png"; // Woman with luggage at airport
+  } else if (title.toLowerCase().includes("carrière") || title.toLowerCase().includes("développez")) {
+    displayImage = "/public/lovable-uploads/24c7fcdb-ae47-4783-842b-28c941fd2134.png"; // Person at train station
+  }
+  
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
@@ -37,7 +46,7 @@ const FeatureSection = ({
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl -rotate-3 opacity-10"></div>
               <img
-                src={imageSrc}
+                src={displayImage}
                 alt={title}
                 className="relative w-full h-auto rounded-xl shadow-lg object-cover"
               />

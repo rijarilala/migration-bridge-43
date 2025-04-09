@@ -148,11 +148,12 @@ const Index = () => {
       <Hero
         title="Votre partenaire pour un nouveau départ"
         subtitle="MigraPro, basé à Moramanga, Madagascar, est votre partenaire de confiance pour concrétiser votre projet d'immigration et de carrière au Canada. Spécialistes en mobilité internationale et orientation professionnelle, nous accompagnons les particuliers et les professionnels dans toutes les étapes de leur démarche, en mettant à leur disposition une expertise pointue et un suivi personnalisé."
-        
-        imageSrc="https://images.unsplash.com/photo-1524569970261-f3b491d7933b?auto=format&fit=crop&w=2000&q=80"
+        imageSrc="/public/lovable-uploads/d04e725a-b074-4cc5-a043-58931fdc38e8.png"
       />
- <AboutSection />
-      {/* Comparison Section - NEW */}
+      
+      <AboutSection />
+      
+      {/* Comparison Section */}
       <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -175,7 +176,6 @@ const Index = () => {
         </div>
       </section>
 
-     
       {/* Services section */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
@@ -205,7 +205,7 @@ const Index = () => {
         title="Immigration simplifiée"
         subtitle="Notre équipe d'experts vous guide à travers le processus d'immigration complexe, en vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
         features={featuresImmigration}
-        imageSrc="https://images.unsplash.com/photo-1529386084422-5aded8767727?auto=format&fit=crop&w=1000&q=80"
+        imageSrc="/public/lovable-uploads/1590250c-c1f2-40ec-843d-faf8fb969a38.png"
       />
 
       {/* Stats section */}
@@ -267,14 +267,18 @@ const Index = () => {
             description: "Évaluation approfondie de vos compétences et identification des opportunités de carrière adaptées à votre profil."
           }
         ]}
-        imageSrc="https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?auto=format&fit=crop&w=1000&q=80"
+        imageSrc="/public/lovable-uploads/24c7fcdb-ae47-4783-842b-28c941fd2134.png"
         reversed={true}
       />
 
       {/* CTA section */}
       <CTA
         title="Prêt à démarrer votre projet?"
-        description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé." buttonText={""} buttonLink={""}        
+        description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé."
+        buttonText="Tester mon éligibilité"
+        buttonLink="/eligibility"
+        secondaryButtonText="Nous contacter"
+        secondaryButtonLink="/contact"
       />
     </div>
   );

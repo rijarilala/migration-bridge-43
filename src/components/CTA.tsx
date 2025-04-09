@@ -57,13 +57,13 @@ const CTA = ({
               </div>
             </div>
             
-            {/* Ajout d'une section avec l'image */}
+            {/* Section avec l'image */}
             <div className="lg:w-1/2">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl -rotate-3 opacity-10"></div>
                 <img
-                  src="/public/lovable-uploads/cbb48c30-293c-4eb4-a841-031c05bc3d35.png"
-                  alt="Voyageuse prête pour l'immigration"
+                  src="/public/lovable-uploads/3e8e63b6-cd30-44f6-9771-0103c5b66dd8.png"
+                  alt="Voyageur à l'aéroport"
                   className="relative w-full h-auto rounded-xl shadow-lg object-cover"
                 />
                 <div className="absolute -bottom-5 -left-5 p-4 bg-white rounded-lg shadow-lg hidden md:block">
