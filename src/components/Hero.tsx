@@ -78,8 +78,8 @@ const Hero = ({
               <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-2xl rotate-3 opacity-20"></div>
               <div className="relative overflow-hidden rounded-xl shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1455541504462-57ebb2a9cec1?q=80&w=600&h=800&auto=format&fit=crop" 
-                  alt="Famille heureuse immigrée au Canada"
+                  src="/public/lovable-uploads/cbb48c30-293c-4eb4-a841-031c05bc3d35.png" 
+                  alt="Femme voyageuse à l'aéroport"
                   className="w-full object-cover animate-float"
                 />
               </div>
