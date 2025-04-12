@@ -33,30 +33,29 @@ const Formation = () => {
 
   const features = [
     {
-      title: "CV Professionnel à la Canadienne",
-      description: "Nous concevons des CV modernes, clairs et efficaces, respectant les normes canadiennes. Chaque CV est personnalisé selon votre profil.",
+      title: "Un CV aux normes canadiennes",
+      description: "Nous réalisons des CV sur mesure, clairs et adaptés à votre secteur d'activité, en respectant les standards attendus par les employeurs au Canada.",
       icon: <FileEdit size={24} />,
       benefits: [
-        "Mettez en valeur vos compétences",
-        "Attirez l'attention des recruteurs",
-        "Passez les filtres des logiciels de sélection (ATS)"
+        "L'objectif : mettre en valeur vos compétences",
+        "Vous rendre visible auprès des recruteurs"
       ]
     },
     {
-      title: "Lettre de motivation sur mesure",
-      description: "Votre lettre de motivation est un outil essentiel pour démontrer votre motivation, votre connaissance de l'entreprise et la valeur que vous pouvez apporter.",
+      title: "Une lettre de motivation percutante",
+      description: "Nous rédigeons des lettres personnalisées, ciblées et convaincantes, qui mettent en avant votre valeur ajoutée pour chaque poste visé.",
       icon: <PenTool size={24} />,
       benefits: []
     },
     {
-      title: "Optimisation de votre profil LinkedIn",
-      description: "Un bon profil LinkedIn est souvent la clé pour décrocher des opportunités. Nous vous aidons à le rendre professionnel et attractif pour les recruteurs canadiens.",
+      title: "Profil LinkedIn professionnel",
+      description: "Nous optimisons votre présence en ligne pour qu'elle reflète votre profil de façon cohérente, claire et professionnelle.",
       icon: <Linkedin size={24} />,
       benefits: []
     },
     {
-      title: "Correction et traduction",
-      description: "Tous vos documents peuvent être corrigés, traduits ou adaptés (français ↔ anglais) pour vous assurer une candidature claire, sans fautes, et culturellement adaptée.",
+      title: "Correction & traduction",
+      description: "Pour des documents sans fautes, prêts à être utilisés en français ou en anglais, selon vos besoins.",
       icon: <Languages size={24} />,
       benefits: []
     },
@@ -64,20 +63,20 @@ const Formation = () => {
 
   const workshopFeatures = [
     {
-      title: "Coaching emploi",
-      description: "Bénéficiez d'un accompagnement personnalisé pour identifier les bonnes offres, adapter vos candidatures et approcher les recruteurs efficacement.",
+      title: "Préparation à la recherche d'emploi",
+      description: "Apprenez à cibler les bonnes opportunités, à adapter votre candidature et à aborder les recruteurs avec confiance.",
       icon: <Users size={24} />,
       benefits: []
     },
     {
       title: "Simulations d'entretiens",
-      description: "Préparez vos entretiens grâce à des mises en situation réalistes avec retour détaillé. Apprenez à répondre aux questions types posées par les employeurs canadiens.",
+      description: "Entraînez-vous dans des conditions réelles et bénéficiez de conseils pour répondre aux attentes des employeurs canadiens.",
       icon: <Target size={24} />,
       benefits: []
     },
     {
-      title: "Formation à la culture professionnelle canadienne",
-      description: "Comprenez les codes du monde du travail au Canada : ponctualité, communication, gestion du temps, relations hiérarchiques... Un véritable atout pour réussir.",
+      title: "Décoder la culture professionnelle",
+      description: "Comprenez les habitudes de travail, les normes et les comportements attendus en entreprise au Canada pour faciliter votre intégration.",
       icon: <Building size={24} />,
       benefits: []
     },
@@ -85,26 +84,26 @@ const Formation = () => {
 
   const packages = [
     {
-      title: "Pack \"Candidat prêt à postuler\"",
+      title: "Pack \"Prêt à postuler\"",
       features: [
-        "CV + Lettre de motivation",
-        "Coaching entretien",
+        "CV + Lettre",
+        "Préparation à l'entretien",
         "Suivi personnalisé"
       ]
     },
     {
-      title: "Pack \"Immigration professionnelle\"",
+      title: "Pack \"Immigration Pro\"",
       features: [
-        "Formation culture professionnelle",
+        "Culture d'entreprise",
         "LinkedIn optimisé",
-        "Accompagnement à la recherche d'emploi"
+        "Stratégie de recherche"
       ]
     },
     {
-      title: "Express \"CV & LM en 48h\"",
+      title: "Service express",
       features: [
-        "Pour les candidatures urgentes",
-        "Service rapide et efficace"
+        "CV & lettre de motivation livrés sous 48h",
+        "Pour les candidatures urgentes"
       ]
     }
   ];
@@ -151,8 +150,8 @@ const Formation = () => {
     <div className="pt-24 pb-16 min-h-screen">
       {/* Hero Section */}
       <Hero 
-        title="Services de Formation"
-        subtitle="Maximisez vos chances de réussir votre projet professionnel au Canada"
+        title="Accompagnement en Formation Professionnelle"
+        subtitle="Donnez un nouvel élan à votre parcours vers le Canada"
         ctaText="Découvrir nos formules"
         ctaLink="#packages"
         secondaryCtaText="Demander un devis"
@@ -192,13 +191,13 @@ const Formation = () => {
             <div className="bg-white shadow-lg rounded-lg p-8 border border-gray-100">
               <span className="company-section-title">Nos Services de Formation</span>
               <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6 gradient-text">
-                Boostez votre carrière au Canada
+                Donnez un nouvel élan à votre parcours vers le Canada
               </h1>
               <p className="text-lg text-gray-600 mb-6">
-                Vous souhaitez travailler au Canada mais ne savez pas par où commencer pour créer un CV percutant ou réussir un entretien d'embauche ?
+                Vous envisagez une carrière au Canada ? Nos services de formation sont conçus pour vous préparer efficacement à intégrer le marché du travail canadien.
               </p>
               <p className="text-lg text-gray-600">
-                Notre cabinet vous propose des services de formation sur mesure pour vous aider à structurer votre candidature, valoriser vos compétences et vous adapter aux attentes du marché canadien.
+                Nous vous aidons à structurer vos candidatures, à vous démarquer et à vous adapter aux exigences locales.
               </p>
             </div>
           </div>
@@ -209,7 +208,7 @@ const Formation = () => {
           <div className="text-center mb-12">
             <span className="company-section-title mb-4">Services professionnels</span>
             <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 flex flex-col items-center justify-center">
-              ✍️ Création de CV & Lettres de Motivation
+              ✍️ CV & Lettres de Motivation
               <span className="block mt-2 w-20 h-1 bg-accent mx-auto"></span>
             </h2>
           </div>
@@ -232,7 +231,7 @@ const Formation = () => {
           <div className="text-center mb-12">
             <span className="company-section-title mb-4">Développez vos compétences</span>
             <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 flex flex-col items-center justify-center">
-              🧑‍🏫 Ateliers et Coaching Individuel
+              🧑‍🏫 Ateliers et Coaching
               <span className="block mt-2 w-20 h-1 bg-accent mx-auto"></span>
             </h2>
           </div>
@@ -273,7 +272,7 @@ const Formation = () => {
           <div className="text-center mb-12">
             <span className="company-section-title mb-4">Nos offres</span>
             <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 flex flex-col items-center justify-center">
-              🧩 Nos formules
+              🧩 Formules disponibles
               <span className="block mt-2 w-20 h-1 bg-accent mx-auto"></span>
             </h2>
           </div>
@@ -312,7 +311,7 @@ const Formation = () => {
           <div className="text-center mb-12">
             <span className="company-section-title mb-4">Nos avantages</span>
             <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 flex flex-col items-center justify-center">
-              🎯 Pourquoi choisir notre accompagnement ?
+              ✅ Nos atouts
               <span className="block mt-2 w-20 h-1 bg-accent mx-auto"></span>
             </h2>
           </div>
@@ -323,7 +322,7 @@ const Formation = () => {
                 <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   <Users className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="font-medium text-gray-900 mb-2">Approche personnalisée et humaine</h3>
+                <h3 className="font-medium text-gray-900 mb-2">Accompagnement individualisé</h3>
               </CardContent>
             </Card>
             
@@ -332,7 +331,7 @@ const Formation = () => {
                 <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   <GraduationCap className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="font-medium text-gray-900 mb-2">Formateurs expérimentés, spécialisés dans l'emploi au Canada</h3>
+                <h3 className="font-medium text-gray-900 mb-2">Méthode claire et efficace</h3>
               </CardContent>
             </Card>
             
@@ -341,7 +340,7 @@ const Formation = () => {
                 <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   <ArrowRight className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="font-medium text-gray-900 mb-2">Suivi continu jusqu'à la réussite</h3>
+                <h3 className="font-medium text-gray-900 mb-2">Expertise en immigration et en insertion professionnelle</h3>
               </CardContent>
             </Card>
             
@@ -350,7 +349,7 @@ const Formation = () => {
                 <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   <Target className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="font-medium text-gray-900 mb-2">Idéal pour les nouveaux arrivants et professionnels en reconversion</h3>
+                <h3 className="font-medium text-gray-900 mb-2">Services adaptés à tous les profils</h3>
               </CardContent>
             </Card>
           </div>
@@ -359,11 +358,11 @@ const Formation = () => {
 
       {/* CTA section */}
       <CTA 
-        title="Prêt à booster votre profil ?"
-        description="Prenez un rendez-vous gratuit pour évaluer vos besoins et recevoir un devis personnalisé pour votre projet professionnel au Canada."
+        title="Envie de commencer ?"
+        description="Réservez un entretien gratuit pour évaluer vos besoins et recevoir un devis personnalisé pour votre projet professionnel au Canada."
         buttonText="Demander un devis"
         buttonLink="/contact"
-        secondaryButtonText="Télécharger notre guide gratuit"
+        secondaryButtonText="Télécharger notre mini-guide"
         secondaryButtonLink="#"
       />
     </div>
