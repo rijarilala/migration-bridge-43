@@ -1,3 +1,4 @@
+
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,8 +17,6 @@ interface ComparisonSectionProps {
   withMembershipItems: ComparisonItem[];
   ctaText?: string;
   ctaLink?: string;
-  secondaryCtaText?: string;
-  secondaryCtaLink?: string;
 }
 
 const ComparisonSection = ({
@@ -26,9 +25,7 @@ const ComparisonSection = ({
   withoutMembershipItems,
   withMembershipItems,
   ctaText = "Tester mon éligibilité",
-  ctaLink = "/eligibility",
-  secondaryCtaText = "Tester mon éligibilité",
-  secondaryCtaLink = "/eligibility"
+  ctaLink = "/eligibility"
 }: ComparisonSectionProps) => {
   const fadeIn = {
     hidden: {
@@ -113,7 +110,7 @@ const ComparisonSection = ({
         </motion.div>
       </div>
       
-      <div className="flex justify-center space-x-4">
+      <div className="flex justify-center">
         <motion.div 
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -127,22 +124,6 @@ const ComparisonSection = ({
             className="bg-primary hover:bg-primary/90 text-white transition-all duration-300 transform hover:scale-105"
           >
             <Link to={ctaLink}>{ctaText}</Link>
-          </Button>
-        </motion.div>
-        
-        <motion.div 
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <Button 
-            asChild 
-            size="lg" 
-            className="bg-primary hover:bg-primary/90 text-white transition-all duration-300 transform hover:scale-105"
-          >
-            <Link to={secondaryCtaLink}>{secondaryCtaText}</Link>
           </Button>
         </motion.div>
       </div>

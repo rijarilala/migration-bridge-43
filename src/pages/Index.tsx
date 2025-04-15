@@ -16,11 +16,10 @@ const Index = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Fonction pour gérer le défilement vers le haut lors des clics sur les liens
   const handleLinkClick = () => {
     window.scrollTo(0, 0);
   };
-  
+
   const services = [
     {
       title: "Immigration",
@@ -144,17 +143,15 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero section */}
       <Hero
         title="Votre partenaire pour un nouveau départ"
         subtitle="MigraPro, basé à Moramanga, Madagascar, est votre partenaire de confiance pour concrétiser votre projet d'immigration et de carrière au Canada. Spécialistes en mobilité internationale et orientation professionnelle, nous accompagnons les particuliers et les professionnels dans toutes les étapes de leur démarche, en mettant à leur disposition une expertise pointue et un suivi personnalisé."
         imageSrc="/lovable-uploads/c1574abf-376b-429f-bd07-8dcd9fa1fad1.png"
-        scrollToId="services-section" // Ajouter l'ID de la section
+        scrollToId="services-section"
       />
       
       <AboutSection />
       
-      {/* Comparison Section */}
       <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -167,13 +164,10 @@ const Index = () => {
             withMembershipTitle="Avec une adhésion"
             withoutMembershipItems={comparisonData.withoutMembership}
             withMembershipItems={comparisonData.withMembership}
-            ctaText="Tester mon éligibilité"
-            secondaryCtaText="Tester mon éligibilité"
           />
         </div>
       </section>
 
-      {/* Services section - ID ajouté ici */}
       <section id="services-section" className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -197,7 +191,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Feature section - Immigration */}
       <FeatureSection
         title="Immigration simplifiée"
         subtitle="Notre équipe d'experts vous guide à travers le processus d'immigration complexe, en vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
@@ -205,14 +198,12 @@ const Index = () => {
         imageSrc="/lovable-uploads/1590250c-c1f2-40ec-843d-faf8fb969a38.png"
       />
 
-      {/* Stats section */}
       <Stats
         title="Notre impact en chiffres"
         description="Des résultats qui parlent d'eux-mêmes. Découvrez comment nous avons aidé des milliers de personnes à réaliser leurs projets d'immigration et d'évolution professionnelle."
         stats={stats}
       />
 
-      {/* Testimonials section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -243,7 +234,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Feature section - Career coaching */}
       <FeatureSection
         title="Développez votre carrière"
         subtitle="Nos services de coaching vous aident à révéler votre potentiel professionnel et à vous démarquer sur le marché du travail concurrentiel."
@@ -251,7 +241,7 @@ const Index = () => {
           {
             icon: <Briefcase size={24} />,
             title: "Préparation aux entretiens",
-            description: "Des séances de simulation d'entretien personnalisées pour vous aider à gagner en confiance et à maîtriser votre discours."
+            description: "Des séances de simulation d'entretien personnalisées pour vous aider �� gagner en confiance et à maîtriser votre discours."
           },
           {
             icon: <FileText size={24} />,
@@ -268,7 +258,6 @@ const Index = () => {
         reversed={true}
       />
 
-      {/* CTA section */}
       <CTA
         title="Prêt à démarrer votre projet?"
         description="Faites le premier pas vers votre nouvelle vie. Testez votre éligibilité ou contactez-nous pour un accompagnement personnalisé."
