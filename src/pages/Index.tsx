@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield, Star, Award, FileEdit, MessageSquare } from "lucide-react";
+import { motion } from "framer-motion";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import FeatureSection from "@/components/FeatureSection";
