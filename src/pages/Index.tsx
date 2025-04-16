@@ -1,6 +1,7 @@
+
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield } from "lucide-react";
+import { Users, GraduationCap, Briefcase, MapPin, FileText, CheckCircle, XCircle, Clock, Shield, Star, Award, FileEdit, MessageSquare } from "lucide-react";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import FeatureSection from "@/components/FeatureSection";
@@ -20,39 +21,54 @@ const Index = () => {
     window.scrollTo(0, 0);
   };
 
+  // Services mis à jour selon la nouvelle structure
   const services = [
     {
-      title: "Immigration",
-      description: "Accompagnement personnalisé pour toutes vos démarches d'immigration et d'intégration dans votre pays d'accueil.",
-      icon: <MapPin size={24} />,
-      link: "/services/immigration"
-    },
-    {
-      title: "Formation",
-      description: "Création de CV et lettres de motivation adaptés aux standards professionnels avec des modèles personnalisés.",
-      icon: <FileText size={24} />,
-      link: "/services/formation"
-    },
-    {
-      title: "Coaching",
-      description: "Préparation aux entretiens d'embauche et développement des compétences professionnelles.",
-      icon: <Users size={24} />,
-      link: "/services/coaching"
-    },
-    {
-      title: "Orientation Professionnelle",
-      description: "Conseil personnalisé pour orienter votre carrière selon vos compétences et le marché du travail.",
+      title: "Conseil & Orientation Professionnelle",
+      description: "Diagnostic de profil, bilan de compétences et plan de carrière personnalisé pour votre réussite professionnelle.",
       icon: <GraduationCap size={24} />,
       link: "/services/orientation"
     },
     {
+      title: "Coaching & Formation CV / LM / Entretien",
+      description: "Notre Pack Réussite Pro combine formation e-learning et coaching personnalisé pour maximiser vos chances.",
+      icon: <FileText size={24} />,
+      link: "/services/formation"
+    },
+    {
+      title: "Immigration & Accompagnement (Canada)",
+      description: "Accompagnement complet pour votre projet d'immigration au Canada : de l'évaluation à l'installation.",
+      icon: <MapPin size={24} />,
+      link: "/services/immigration"
+    },
+    {
       title: "Recrutement",
-      description: "Accès aux offres d'emploi et mise en relation avec des entreprises qui recrutent dans votre domaine.",
+      description: "Notre service de mise en relation avec des employeurs canadiens sera bientôt disponible.",
       icon: <Briefcase size={24} />,
       link: "/services/recrutement"
     }
   ];
 
+  // Pack Réussite Pro features
+  const featuresPackReussitePro = [
+    {
+      icon: <FileEdit size={24} />,
+      title: "CV aux normes internationales",
+      description: "Apprenez à créer un CV professionnel adapté aux standards canadiens et malgaches qui attire l'attention des recruteurs."
+    },
+    {
+      icon: <MessageSquare size={24} />,
+      title: "Lettre de motivation percutante",
+      description: "Maîtrisez l'art de la lettre de motivation avec notre formation sur la structuration et la personnalisation efficace."
+    },
+    {
+      icon: <Users size={24} />,
+      title: "Coaching entretien d'embauche",
+      description: "Préparez-vous aux entretiens avec des simulations personnalisées et des retours d'experts pour réussir avec confiance."
+    }
+  ];
+
+  // Immigration Canada features
   const featuresImmigration = [
     {
       icon: <FileText size={24} />,
@@ -144,40 +160,74 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Hero
-        title="Votre partenaire pour un nouveau départ"
-        subtitle="MigraPro, basé à Moramanga, Madagascar, est votre partenaire de confiance pour concrétiser votre projet d'immigration et de carrière au Canada. Spécialistes en mobilité internationale et orientation professionnelle, nous accompagnons les particuliers et les professionnels dans toutes les étapes de leur démarche, en mettant à leur disposition une expertise pointue et un suivi personnalisé."
+        title="Votre avenir professionnel commence ici"
+        subtitle="Conseil, formation et accompagnement pour l'immigration au Canada et le développement professionnel à Madagascar"
         imageSrc="/lovable-uploads/c1574abf-376b-429f-bd07-8dcd9fa1fad1.png"
+        ctaText="Découvrir nos services"
         scrollToId="services-section"
       />
       
       <AboutSection />
-      
-      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+
+      {/* Nouvelle section Pack Réussite Pro */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Prenez 2 minutes pour sécuriser votre avenir</h2>
-            <p className="text-xl font-medium text-primary mb-4">Quels sont les enjeux ?</p>
+            <div className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent font-medium text-sm mb-3">
+              Notre offre phare
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Pack Réussite Pro</h2>
+            <p className="text-xl text-gray-600">CV + Lettre de Motivation + Coaching Entretien</p>
           </div>
           
-          <ComparisonSection 
-            withoutMembershipTitle="Sans adhésion"
-            withMembershipTitle="Avec une adhésion"
-            withoutMembershipItems={comparisonData.withoutMembership}
-            withMembershipItems={comparisonData.withMembership}
-          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+            {featuresPackReussitePro.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-5">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Button 
+                asChild 
+                size="lg" 
+                className="bg-accent hover:bg-accent/90 text-white transition-all duration-300 transform hover:scale-105"
+              >
+                <Link to="/services/formation">Je choisis ce pack</Link>
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </section>
-
+      
       <section id="services-section" className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
             <p className="text-lg text-gray-600">
-              Découvrez notre gamme complète de services conçus pour vous accompagner dans votre projet d'immigration et de développement professionnel.
+              Découvrez notre gamme complète de services conçus pour vous accompagner dans votre projet professionnel et d'immigration.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {services.map((service, index) => (
               <ServiceCard
                 key={index}
@@ -190,10 +240,28 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Pourquoi choisir MigraPro ?</h2>
+            <p className="text-xl font-medium text-primary mb-4">Les avantages de notre accompagnement</p>
+          </div>
+          
+          <ComparisonSection 
+            withoutMembershipTitle="Sans MigraPro"
+            withMembershipTitle="Avec MigraPro"
+            withoutMembershipItems={comparisonData.withoutMembership}
+            withMembershipItems={comparisonData.withMembership}
+            ctaText="Tester mon éligibilité"
+            ctaLink="/eligibility"
+          />
+        </div>
+      </section>
 
       <FeatureSection
-        title="Immigration simplifiée"
-        subtitle="Notre équipe d'experts vous guide à travers le processus d'immigration complexe, en vous offrant un accompagnement sur mesure pour concrétiser votre projet de vie à l'étranger."
+        title="Immigration Canada simplifiée"
+        subtitle="Notre équipe d'experts vous guide à travers le processus d'immigration complexe, en vous offrant un accompagnement sur mesure."
         features={featuresImmigration}
         imageSrc="/lovable-uploads/1590250c-c1f2-40ec-843d-faf8fb969a38.png"
       />
@@ -228,32 +296,16 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Button asChild size="lg" onClick={handleLinkClick} className="bg-primary hover:bg-primary/90 text-white">
-              <Link to="/#">voir plus de témoignages</Link>
+              <Link to="/testimonials">Voir plus de témoignages</Link>
             </Button>
           </div>
         </div>
       </section>
 
       <FeatureSection
-        title="Développez votre carrière"
-        subtitle="Nos services de coaching vous aident à révéler votre potentiel professionnel et à vous démarquer sur le marché du travail concurrentiel."
-        features={[
-          {
-            icon: <Briefcase size={24} />,
-            title: "Préparation aux entretiens",
-            description: "Des séances de simulation d'entretien personnalisées pour vous aider �� gagner en confiance et à maîtriser votre discours."
-          },
-          {
-            icon: <FileText size={24} />,
-            title: "CV et Lettre de motivation",
-            description: "Création de documents professionnels qui mettent en valeur vos compétences et attirent l'attention des recruteurs."
-          },
-          {
-            icon: <GraduationCap size={24} />,
-            title: "Bilan de compétences",
-            description: "Évaluation approfondie de vos compétences et identification des opportunités de carrière adaptées à votre profil."
-          }
-        ]}
+        title="Pack Réussite Pro"
+        subtitle="Alliez formation et coaching pour maximiser vos chances professionnelles au Canada et à Madagascar."
+        features={featuresPackReussitePro}
         imageSrc="/lovable-uploads/24c7fcdb-ae47-4783-842b-28c941fd2134.png"
         reversed={true}
       />

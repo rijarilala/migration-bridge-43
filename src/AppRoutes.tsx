@@ -6,6 +6,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Testimonials from "./pages/Testimonials";
 
 // Service Pages
 import Immigration from "./pages/services/Immigration";
@@ -37,6 +38,7 @@ const AppRoutes = () => {
       />
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/testimonials" element={<Testimonials />} />
       
       {/* Service Routes */}
       <Route path="/services/immigration" element={<Immigration />} />
